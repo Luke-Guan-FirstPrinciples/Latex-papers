@@ -1,0 +1,545 @@
+
+
+\documentclass[nohyperref]{article}
+
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{booktabs} 
+
+\input{maths}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{calc}
+
+\usepackage{enumitem}
+\setlist{leftmargin=2.5mm}
+
+
+
+\usepackage{hyperref}
+
+
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+\usepackage[accepted]{icml2022}
+
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+\usepackage[capitalize]{cleveref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\im}[1]{{\color{magenta} I: #1}}
+
+\usepackage[textsize=tiny]{todonotes}
+
+
+\icmltitlerunning{A Data-Augmentation Is Worth A Thousand Samples}
+
+\begin{document}
+
+\twocolumn[
+\icmltitle{A Data-Augmentation Is Worth A Thousand Samples:\\Exact Quantification From Analytical Augmented Sample Moments}
+
+
+
+
+
+
+
+\begin{icmlauthorlist}
+\icmlauthor{Randall Balestriero}{yyy}
+\icmlauthor{Ishan Misra}{yyy}
+\icmlauthor{Yann LeCun}{yyy}
+\end{icmlauthorlist}
+
+\icmlaffiliation{yyy}{Meta/Facebook AI Research}
+
+\icmlcorrespondingauthor{Randall Balestriero}{rbalestriero@fb.com}
+
+\icmlkeywords{Machine Learning, ICML}
+
+\vskip 0.3in
+]
+
+
+
+
+
+\printAffiliationsAndNotice{\icmlEqualContribution} 
+
+\begin{abstract}
+Data-Augmentation (DA) is known to improve performance across tasks and datasets. We propose a method to theoretically analyze the effect of DA and study questions such as: how many augmented samples are needed to correctly estimate the information encoded by that DA? How does the augmentation policy impact the final parameters of a model? We derive several quantities in close-form, such as the expectation and variance of an image, loss, and model's output under a given DA distribution. Those derivations open new avenues to quantify the benefits and limitations of DA. For example, we show that common DAs require tens of thousands of samples for the loss at hand to be correctly estimated and for the model training to converge. We show that for a training loss to be stable under DA sampling, the model's saliency map (gradient of the loss with respect to the model's input) must align with the smallest eigenvector of the sample variance under the considered DA augmentation, hinting at a possible explanation on why models tend to shift their focus from edges to textures.
+\end{abstract}
+
+
+\input{introduction}
+\input{background}
+\input{image_transformation}
+\input{convergence}
+
+
+
+
+
+@article{lee2020predicting,
+  title={Predicting what you already know helps: Provable self-supervised learning},
+  author={Lee, Jason D and Lei, Qi and Saunshi, Nikunj and Zhuo, Jiacheng},
+  journal={arXiv preprint arXiv:2008.01064},
+  year={2020}
+}
+@article{gunasekar2018implicit,
+  title={Implicit bias of gradient descent on linear convolutional networks},
+  author={Gunasekar, Suriya and Lee, Jason and Soudry, Daniel and Srebro, Nathan},
+  journal={arXiv preprint arXiv:1806.00468},
+  year={2018}
+}
+@article{lecun2015deep,
+  title={Deep learning},
+  author={LeCun, Yann and Bengio, Yoshua and Hinton, Geoffrey},
+  journal={nature},
+  volume={521},
+  number={7553},
+  pages={436--444},
+  year={2015},
+  publisher={Nature Publishing Group}
+}
+@article{zhang2018three,
+  title={Three mechanisms of weight decay regularization},
+  author={Zhang, Guodong and Wang, Chaoqi and Xu, Bowen and Grosse, Roger},
+  journal={arXiv preprint arXiv:1810.12281},
+  year={2018}
+}
+@inproceedings{tikhonov1943stability,
+  title={On the stability of inverse problems},
+  author={Tikhonov, Andrey Nikolayevich},
+  booktitle={Dokl. Akad. Nauk SSSR},
+  volume={39},
+  pages={195--198},
+  year={1943}
+}
+@article{zbontar2021barlow,
+  title={Barlow twins: Self-supervised learning via redundancy reduction},
+  author={Zbontar, Jure and Jing, Li and Misra, Ishan and LeCun, Yann and Deny, St{\'e}phane},
+  journal={arXiv preprint arXiv:2103.03230},
+  year={2021}
+}
+@inproceedings{misra2020self,
+  title={Self-supervised learning of pretext-invariant representations},
+  author={Misra, Ishan and Maaten, Laurens van der},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={6707--6717},
+  year={2020}
+}
+@article{perez2017effectiveness,
+  title={The effectiveness of data augmentation in image classification using deep learning},
+  author={Perez, Luis and Wang, Jason},
+  journal={arXiv preprint arXiv:1712.04621},
+  year={2017}
+}
+@article{shorten2019survey,
+  title={A survey on image data augmentation for deep learning},
+  author={Shorten, Connor and Khoshgoftaar, Taghi M},
+  journal={Journal of Big Data},
+  volume={6},
+  number={1},
+  pages={1--48},
+  year={2019},
+  publisher={Springer}
+}
+@inproceedings{taqi2018impact,
+  title={The impact of multi-optimizers and data augmentation on TensorFlow convolutional neural network performance},
+  author={Taqi, Arwa Mohammed and Awad, Ahmed and Al-Azzo, Fadwa and Milanova, Mariofanna},
+  booktitle={2018 IEEE Conference on Multimedia Information Processing and Retrieval (MIPR)},
+  pages={140--145},
+  year={2018},
+  organization={IEEE}
+}
+@article{zhang2021understanding,
+  title={Understanding deep learning (still) requires rethinking generalization},
+  author={Zhang, Chiyuan and Bengio, Samy and Hardt, Moritz and Recht, Benjamin and Vinyals, Oriol},
+  journal={Communications of the ACM},
+  volume={64},
+  number={3},
+  pages={107--115},
+  year={2021},
+  publisher={ACM New York, NY, USA}
+}
+@article{unser2019representer,
+  title={A Representer Theorem for Deep Neural Networks.},
+  author={Unser, Michael},
+  journal={J. Mach. Learn. Res.},
+  volume={20},
+  number={110},
+  pages={1--30},
+  year={2019}
+}
+@inproceedings{he2016identity,
+  title={Identity mappings in deep residual networks},
+  author={He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  booktitle={European conference on computer vision},
+  pages={630--645},
+  year={2016},
+  organization={Springer}
+}
+@article{neyshabur2014search,
+  title={In search of the real inductive bias: On the role of implicit regularization in deep learning},
+  author={Neyshabur, Behnam and Tomioka, Ryota and Srebro, Nathan},
+  journal={arXiv preprint arXiv:1412.6614},
+  year={2014}
+}
+@article{yamada2018shakedrop,
+  title={Shakedrop regularization},
+  author={Yamada, Yoshihiro and Iwamura, Masakazu and Kise, Koichi},
+  year={2018}
+}
+@article{goodfellow2016regularization,
+  title={Regularization for deep learning},
+  author={Goodfellow, Ian and Bengio, Y and Courville, A},
+  journal={Deep learning},
+  pages={216--261},
+  year={2016},
+  publisher={MIT Press Cambridge, MA, USA}
+}
+@article{DBLP:journals/corr/abs-2110-09485,
+  author    = {Randall Balestriero and
+               Jerome Pesenti and
+               Yann LeCun},
+  title     = {Learning in High Dimension Always Amounts to Extrapolation},
+  journal   = {CoRR},
+  volume    = {abs/2110.09485},
+  year      = {2021},
+  url       = {https://arxiv.org/abs/2110.09485},
+  eprinttype = {arXiv},
+  eprint    = {2110.09485},
+  timestamp = {Mon, 25 Oct 2021 20:07:12 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-2110-09485.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@inproceedings{wang2018max,
+  title={A max-affine spline perspective of recurrent neural networks},
+  author={Wang, Zichao and Balestriero, Randall and Baraniuk, Richard},
+  booktitle={International Conference on Learning Representations},
+  year={2018}
+}
+@article{sawchuk1974space,
+  title={Space-variant image restoration by coordinate transformations},
+  author={Sawchuk, Alexander A},
+  journal={JOSA},
+  volume={64},
+  number={2},
+  pages={138--144},
+  year={1974},
+  publisher={Optical Society of America}
+}
+@inproceedings{wolberg2000robust,
+  title={Robust image registration using log-polar transform},
+  author={Wolberg, George and Zokai, Siavash},
+  booktitle={Proceedings 2000 International Conference on Image Processing (Cat. No. 00CH37101)},
+  volume={1},
+  pages={493--496},
+  year={2000},
+  organization={IEEE}
+}
+@article{mukundan2001image,
+  title={Image analysis by Tchebichef moments},
+  author={Mukundan, Ramakrishnan and Ong, SH and Lee, Poh Aun},
+  journal={IEEE Transactions on image Processing},
+  volume={10},
+  number={9},
+  pages={1357--1364},
+  year={2001},
+  publisher={IEEE}
+}
+@article{heckbert1982color,
+  title={Color image quantization for frame buffer display},
+  author={Heckbert, Paul},
+  journal={ACM Siggraph Computer Graphics},
+  volume={16},
+  number={3},
+  pages={297--307},
+  year={1982},
+  publisher={ACM New York, NY, USA}
+}
+@article{mallat1989multifrequency,
+  title={Multifrequency channel decompositions of images and wavelet models},
+  author={Mallat, Stephane G},
+  journal={IEEE Transactions on Acoustics, Speech, and Signal Processing},
+  volume={37},
+  number={12},
+  pages={2091--2110},
+  year={1989},
+  publisher={IEEE}
+}
+@book{goodfellow2016deep,
+  title={Deep learning},
+  author={Goodfellow, Ian and Bengio, Yoshua and Courville, Aaron},
+  year={2016},
+  publisher={MIT press}
+}
+@inproceedings{hernandez2018further,
+  title={Further advantages of data augmentation on convolutional neural networks},
+  author={Hern{\'a}ndez-Garc{\'\i}a, Alex and K{\"o}nig, Peter},
+  booktitle={International Conference on Artificial Neural Networks},
+  pages={95--103},
+  year={2018},
+  organization={Springer}
+}
+@article{soudry2018implicit,
+  title={The implicit bias of gradient descent on separable data},
+  author={Soudry, Daniel and Hoffer, Elad and Nacson, Mor Shpigel and Gunasekar, Suriya and Srebro, Nathan},
+  journal={The Journal of Machine Learning Research},
+  volume={19},
+  number={1},
+  pages={2822--2878},
+  year={2018},
+  publisher={JMLR. org}
+}
+@article{chapelle2001vicinal,
+  title={Vicinal risk minimization},
+  author={Chapelle, Olivier and Weston, Jason and Bottou, L{\'e}on and Vapnik, Vladimir},
+  journal={Advances in neural information processing systems},
+  pages={416--422},
+  year={2001},
+  publisher={MIT; 1998}
+}
+@inproceedings{simard1991tangent,
+  title={Tangent prop-a formalism for specifying selected invariances in an adaptive network},
+  author={Simard, Patrice and Victorri, Bernard and LeCun, Yann and Denker, John S},
+  booktitle={NIPS},
+  volume={91},
+  pages={895--903},
+  year={1991},
+  organization={Citeseer}
+}
+@article{rifai2011manifold,
+  title={The manifold tangent classifier},
+  author={Rifai, Salah and Dauphin, Yann N and Vincent, Pascal and Bengio, Yoshua and Muller, Xavier},
+  journal={Advances in neural information processing systems},
+  volume={24},
+  pages={2294--2302},
+  year={2011}
+}
+@article{zhang2017mixup,
+  title={mixup: Beyond empirical risk minimization},
+  author={Zhang, Hongyi and Cisse, Moustapha and Dauphin, Yann N and Lopez-Paz, David},
+  journal={arXiv preprint arXiv:1710.09412},
+  year={2017}
+}
+@inproceedings{yun2019cutmix,
+  title={Cutmix: Regularization strategy to train strong classifiers with localizable features},
+  author={Yun, Sangdoo and Han, Dongyoon and Oh, Seong Joon and Chun, Sanghyuk and Choe, Junsuk and Yoo, Youngjoon},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={6023--6032},
+  year={2019}
+}
+@article{devries2017improved,
+  title={Improved regularization of convolutional neural networks with cutout},
+  author={DeVries, Terrance and Taylor, Graham W},
+  journal={arXiv preprint arXiv:1708.04552},
+  year={2017}
+}
+@article{jaderberg2015spatial,
+  title={Spatial transformer networks},
+  author={Jaderberg, Max and Simonyan, Karen and Zisserman, Andrew and others},
+  journal={Advances in neural information processing systems},
+  volume={28},
+  pages={2017--2025},
+  year={2015}
+}
+@article{razin2020implicit,
+  title={Implicit regularization in deep learning may not be explainable by norms},
+  author={Razin, Noam and Cohen, Nadav},
+  journal={arXiv preprint arXiv:2005.06398},
+  year={2020}
+}
+@misc{wei2020implicit,
+      title={The Implicit and Explicit Regularization Effects of Dropout}, 
+      author={Colin Wei and Sham Kakade and Tengyu Ma},
+      year={2020},
+      eprint={2002.12915},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+@article{rosenblatt1956central,
+  title={A central limit theorem and a strong mixing condition},
+  author={Rosenblatt, Murray},
+  journal={Proceedings of the National Academy of Sciences of the United States of America},
+  volume={42},
+  number={1},
+  pages={43},
+  year={1956},
+  publisher={National Academy of Sciences}
+}
+@inproceedings{
+geirhos2018imagenettrained,
+title={ImageNet-trained {CNN}s are biased towards texture; increasing shape bias improves accuracy and robustness.},
+author={Robert Geirhos and Patricia Rubisch and Claudio Michaelis and Matthias Bethge and Felix A. Wichmann and Wieland Brendel},
+booktitle={International Conference on Learning Representations},
+year={2019},
+url={https://openreview.net/forum?id=Bygh9j09KX},
+}
+@inproceedings{arjovsky2017wasserstein,
+  title={Wasserstein generative adversarial networks},
+  author={Arjovsky, Martin and Chintala, Soumith and Bottou, L{\'e}on},
+  booktitle={International conference on machine learning},
+  pages={214--223},
+  year={2017},
+  organization={PMLR}
+}
+@article{oehlert1992note,
+  title={A note on the delta method},
+  author={Oehlert, Gary W},
+  journal={The American Statistician},
+  volume={46},
+  number={1},
+  pages={27--29},
+  year={1992},
+  publisher={Taylor \& Francis}
+}
+@article{doob1935limiting,
+  title={The limiting distributions of certain statistics},
+  author={Doob, Joseph L},
+  journal={The Annals of Mathematical Statistics},
+  volume={6},
+  number={3},
+  pages={160--169},
+  year={1935},
+  publisher={JSTOR}
+}
+@article{hastings1970monte,
+  title={Monte Carlo sampling methods using Markov chains and their applications},
+  author={Hastings, W Keith},
+  year={1970},
+  publisher={Oxford University Press}
+}
+@article{metropolis1953equation,
+  title={Equation of state calculations by fast computing machines},
+  author={Metropolis, Nicholas and Rosenbluth, Arianna W and Rosenbluth, Marshall N and Teller, Augusta H and Teller, Edward},
+  journal={The journal of chemical physics},
+  volume={21},
+  number={6},
+  pages={1087--1092},
+  year={1953},
+  publisher={American Institute of Physics}
+}
+@book{newman1999monte,
+  title={Monte Carlo methods in statistical physics},
+  author={Newman, Mark EJ and Barkema, Gerard T},
+  year={1999},
+  publisher={Clarendon Press}
+}
+@article{neyshabur2017implicit,
+  title={Implicit regularization in deep learning},
+  author={Neyshabur, Behnam},
+  journal={arXiv preprint arXiv:1709.01953},
+  year={2017}
+}
+@article{hernandez2018deep,
+  title={Do deep nets really need weight decay and dropout?},
+  author={Hern{\'a}ndez-Garc{\'\i}a, Alex and K{\"o}nig, Peter},
+  journal={arXiv preprint arXiv:1802.07042},
+  year={2018}
+}
+@article{bouthillier2015dropout,
+  title={Dropout as data augmentation},
+  author={Bouthillier, Xavier and Konda, Kishore and Vincent, Pascal and Memisevic, Roland},
+  journal={arXiv preprint arXiv:1506.08700},
+  year={2015}
+}
+@article{baldi2013understanding,
+  title={Understanding dropout},
+  author={Baldi, Pierre and Sadowski, Peter J},
+  journal={Advances in neural information processing systems},
+  volume={26},
+  pages={2814--2822},
+  year={2013}
+}
+
+@article{srivastava2014dropout,
+  title={Dropout: a simple way to prevent neural networks from overfitting},
+  author={Srivastava, Nitish and Hinton, Geoffrey and Krizhevsky, Alex and Sutskever, Ilya and Salakhutdinov, Ruslan},
+  journal={The journal of machine learning research},
+  volume={15},
+  number={1},
+  pages={1929--1958},
+  year={2014},
+  publisher={JMLR. org}
+}
+@article{lejeune2019implicit,
+  title={Implicit rugosity regularization via data augmentation},
+  author={LeJeune, Daniel and Balestriero, Randall and Javadi, Hamid and Baraniuk, Richard G},
+  journal={arXiv preprint arXiv:1905.11639},
+  year={2019}
+}
+@article{hernandez2018data,
+  title={Data augmentation instead of explicit regularization},
+  author={Hern{\'a}ndez-Garc{\'\i}a, Alex and K{\"o}nig, Peter},
+  journal={arXiv preprint arXiv:1806.03852},
+  year={2018}
+}
+@article{tian2021understanding,
+  title={Understanding self-supervised learning dynamics without contrastive pairs},
+  author={Tian, Yuandong and Chen, Xinlei and Ganguli, Surya},
+  journal={arXiv preprint arXiv:2102.06810},
+  year={2021}
+}
+@article{bardes2021vicreg,
+  title={Vicreg: Variance-invariance-covariance regularization for self-supervised learning},
+  author={Bardes, Adrien and Ponce, Jean and LeCun, Yann},
+  journal={arXiv preprint arXiv:2105.04906},
+  year={2021}
+}
+@article{tipping1999probabilistic,
+  title={Probabilistic principal component analysis},
+  author={Tipping, Michael E and Bishop, Christopher M},
+  journal={Journal of the Royal Statistical Society: Series B (Statistical Methodology)},
+  volume={61},
+  number={3},
+  pages={611--622},
+  year={1999},
+  publisher={Wiley Online Library}
+}
+@article{tipping1999mixtures,
+  title={Mixtures of probabilistic principal component analyzers},
+  author={Tipping, Michael E and Bishop, Christopher M},
+  journal={Neural computation},
+  volume={11},
+  number={2},
+  pages={443--482},
+  year={1999},
+  publisher={MIT Press One Rogers Street, Cambridge, MA 02142-1209, USA journals-info~…}
+}
+@inproceedings{de2001robust,
+  title={Robust principal component analysis for computer vision},
+  author={De la Torre, Fernando and Black, Michael J},
+  booktitle={Proceedings Eighth IEEE International Conference on Computer Vision. ICCV 2001},
+  volume={1},
+  pages={362--369},
+  year={2001},
+  organization={IEEE}
+} 
+\bibliographystyle{icml2022}
+
+
+\appendix
+\input{appendix}
+\end{document}
