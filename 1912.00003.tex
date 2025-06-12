@@ -1,0 +1,623 @@
+\documentclass{article}
+
+
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+
+\usepackage{authblk}
+
+
+
+\usepackage[final,nonatbib]{neurips_2018}
+
+
+
+
+\usepackage[utf8]{inputenc} \usepackage[T1]{fontenc}    \usepackage{hyperref}       \usepackage{url}            \usepackage{booktabs}       \usepackage{amsfonts}       \usepackage{nicefrac}       \usepackage{microtype}      \usepackage[numbers,sort]{natbib}
+
+
+\title{A Case for the Score: Identifying Image Anomalies using Variational Autoencoder Gradients}
+
+
+
+
+\author{
+  \textbf{David Zimmerer, Jens Petersen, Simon A. A. Kohl} and \textbf{Klaus H. Maier-Hein} \\
+  Division of Medical Image Computing\\
+  German Cancer Research Center (DKFZ)\\
+  Heidelberg, Germany \\
+  \texttt{\{d.zimmerer,jens.petersen,simon.kohl,k.maier-hein\}@dkfz.de}
+}
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+  Through training on unlabeled data, anomaly detection has the potential to impact computer-aided diagnosis by outlining suspicious regions. 
+  Previous work on deep-learning-based anomaly detection has primarily focused on the reconstruction error. We argue instead, that pixel-wise anomaly ratings derived from a Variational Autoencoder based \textit{score} approximation yield a theoretically better grounded and more faithful estimate.
+  In our experiments, Variational Autoencoder gradient-based rating outperforms other approaches on unsupervised pixel-wise tumor detection on the BraTS-2017 dataset with a ROC-AUC of 0.94.
+\end{abstract}
+
+\section{Introduction}
+
+In recent years several deep-learning-based methods have reported reaching comparable performance to trained medical physicians \cite{liu_detecting_2017,gulshan_development_2106}.  
+One weakness of those approaches is that they still require a lot of annotated data for each condition to be trained on.
+Due to the time-intensive work of annotating medical images and the combinatorial number of cases for different modalities, image qualities, hardware devices, and different conditions, it is still infeasible to train an algorithm for each of the existing combinations.
+Anomaly detection can, while not determining the condition, highlight and identify suspicious regions for a closer inspection by a trained physician.
+By assigning each pixel an anomaly rating, it allows for an easy trade-off of specificity and sensitivity. 
+While this may not be able to outperform supervised algorithms, it offers a way to make use of unlabeled data and aid physicians during the diagnosis.
+
+Previous unsupervised anomaly detection approaches in the medical field were primarily based on a reconstruction error.
+Leemput et al. \cite{van_leemput_automated_2001} use a statistical model to reconstruct the input tissue-wise, quantifying the discrepancies between the actual image and the model prediction to identify anomalies.
+Liu et al. \cite{liu_low-rank_2014} decompose the model into low-rank components which representing the normal parts of the image, and high-frequency parts which representing anatomical and pathological variations and are thus able to delineate suspicious areas.
+More recently multiple deep learning Autoencoder (AE) based methods have been proposed, all considering the reconstruction error.
+Chen et al. \cite{chen_unsupervised_2018,chen_deep_2018} propose to use an adversarial latent loss in addition to a Variational Autoencoder (VAE) and compare it to different AE-based approaches. 
+Baur et al. \cite{baur_deep_2018} use a VAE with an adversarial loss on the reconstruction to get a more realistic reconstruction.
+Pawlowski et al. \cite{pawlowski_unsupervised_2018} compare different AEs for CT based pixel-wise segmentation.
+
+All those approaches use the reconstruction error to identify suspicious regions, based on the idea that models can not truthfully reproduce anomalies not seen during training. 
+Despite showing good results, there are no formal guarantees for that assumption. 
+In the next section we will describe how to use the \textit{score}, defined as the derivative of the log-density with respect to the input $\frac{\partial \log p(x)}{\partial x}$  \cite{hyvarinen_estimation_2005}, as an alternative anomaly rating. 
+
+
+
+
+
+
+\section{Methods}
+
+Alain et al. \cite{alain_what_2014} have shown that for AE-based models with a denoising criterion the reconstruction error approximates the \textit{score}.
+It can be anticipated that most AE- and reconstruction-based models work due to an approximation of the \textit{score}.
+Consequently and based on the following assumptions, we hypothesize that the \textit{score} can give a good approximation for an abnormality rating:
+\begin{itemize}
+    \item The \textit{score} gives the directions towards the normal data samples, which for medical data is the data sample with abnormal anatomies and pathologies transformed into healthy parts,
+    \item The magnitude of the \textit{score} indicates how abnormal the pixel is.
+\end{itemize}
+
+In this work, we describe a way to directly estimate the \textit{score} using VAEs, one of the best performing density-estimation models for images \cite{chen_deep_2018,kiran_overview_2018}.
+The objective of VAEs is to learn a generative model of the data by maximizing the evidence lower bound (ELBO) for the given training data. 
+The ELBO is defined as:
+\begin{equation}
+\label{eq:elbo}
+\log p(x) \geq -D_{KL}(q(z|x) || p(z)) + \mathbb{E}_{q(z|x)} [\log p(x|z)],
+\end{equation}
+Where $q(z|x)$ is the inference model, $p(z)$ is the prior for the latent variables, $D_{KL}$ is the Kullback-Leibler divergence, and $p(x|z)$ is the generative model.
+Thus after training the VAE and maximizing the ELBO, an estimate of the log probability $\log p(x)$ of a data sample $x$ can be calculated by evaluating the rhs of Eq. \ref{eq:elbo} for the data sample $x$.
+The approximate \textit{score} can consequently be calculated by taking the derivative of the ELBO with respect to the data sample:
+\begin{equation}
+\label{eq:vaescore}
+\frac{\partial \log p(x)}{\partial x} \approx \frac{\partial (-D_{KL}(q(z|x) || p(z)) + \mathbb{E}_{q(z|x)} [\log p(x|z)])}{\partial x},
+\end{equation}
+Furthermore, the ELBO is fully differentiable \cite{kingma_auto-encoding_2013,rezende_stochastic_2014}, when training a VAE using Gaussian distributions for $p(z)$ and $p(x|z)$, a parameterization by neural networks, the reparameterization trick, and MC sampling to approximate the expectation.
+This allows training of the VAE and the evaluation of Eq. \ref{eq:vaescore} using the backpropagation algorithm.
+
+We note that the above-mentioned assumptions
+can be violated in practice, especially in cases far away from the healthy sample data distribution. However, in the next section, we will present empirical evidence that our model can outperform reconstruction-based methods on an anomaly detection tasks and describe its benefits.
+
+
+
+
+
+\section{Experiments \& Results}
+
+
+To learn the healthy data distribution we trained the VAE model on 1092 T2 MRI images of Human Connectome Project (HCP) dataset \cite{van_essen_human_2012}, with minor data augmentations, such as multiplicative color augmentations, random mirroring, and rotations.
+We evaluate the anomaly detection in the context of finding and outlining tumors on the BraTS-2107 dataset \cite{bakas_advancing_2017,menze_multimodal_2015}.
+Therefore we calculate a pixel-wise rating and then report the ROC-AUC. 
+Both datasets were normalized and slice-wise resampled to a resolution of 64x64 pixels. 
+As encoder and decoder for the AE-based models, we used a 5-layer fully convolutional neural network with LeakyReLUs and a latent size of 1024. 
+To backpropagate onto the image and approximate the \textit{score}, we used the Smoothgrad algorithm \cite{smilkov_smoothgrad_2017}. Due to checkerboard artifacts caused by the convolutions, we apply Gaussian smoothing to the gradients. 
+The model was trained for 60 epochs with a batchsize of 64 and Adam as the optimizer with a learning rate of $0.0002$.
+
+
+
+ 
+To evaluate the benefits of the \textit{score}, we compare the model to a Denoising Autoencoder (DAE) \cite{vincent_stacked_2010} with the same architecture using the reconstruction error.
+Furthermore, we compare the \textit{score} with the reconstruction error of the VAE, the smoothed reconstruction error, and the sampling deviations by determining the standard deviation of multiple MC samples.
+We further inspect the \textit{score}, dividing it into the reconstruction-loss gradient and KL-loss gradient to get insights into the benefits of including the KL-term into the anomaly detection.
+The results can be seen in Fig. \ref{fig:comparison}a (and Appendix Table \ref{tab:results}), samples and the corresponding pixel-wise ratings for samples are presented in Fig. \ref{fig:samples}b (and Appendix Fig. \ref{fig:more1} \& \ref{fig:more2}).
+ 
+The reconstruction error performs similarly for the VAE and the DAE, which was also reported in \cite{chen_deep_2018,pawlowski_unsupervised_2018}. Smoothing leads to slightly improved results, presumably by removing high-frequency detections, and performs on par with the usage of the sampling variances.
+The approximated \textit{score} using the ELBO gradient (KL-loss + reconstruction-loss) performs best with a pixel-wise ROC-AUC of 0.94 (see Appendix Fig. \ref{fig:curves}) .
+It is interesting to see, that the addition of the reconstruction-loss to the KL-loss shows little benefit over the KL-loss gradient. Furthermore, the reconstruction-loss gradient performs worse than the KL-loss gradient but outperforms the reconstruction error.
+
+In Fig. \ref{fig:samples}a, the reconstruction-loss gradient focuses on parts of poor reconstruction, and the combination of the KL-loss with the reconstruction-loss shows only marginal benefits over the KL-loss gradient. 
+This might be an indication that for this model the KL-loss focuses primarily on the distance to the data distribution, while the reconstruction focuses more on the actual reconstruction task. 
+
+
+\begin{table}[tb]
+
+\begin{minipage}[c]{0.05\linewidth}
+(a)
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[c]{0.88\linewidth}
+    \centering
+          \includegraphics[width=0.7\textwidth]{plot6}
+\end{minipage}
+
+\begin{minipage}[c]{0.05\linewidth}
+(b)
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[c]{0.84\linewidth}
+\vspace{1.0em}
+
+    \centering
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=0.95\textwidth]{pn_1.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=0.95\textwidth]{pn_2.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=0.95\textwidth]{pnn_3}
+  \end{subfigure}
+\end{minipage}
+
+
+\captionof{figure}{(a) Comparison of the pixel-wise tumor detection ROC-AUC on the BraTS-2017 dataset.
+(b) Samples from the dataset with the different pixel-wise rating schemes, showing the original sample (I), the annotation (II), the reconstruction error (III), the smoothed reconstruction error (IV), the sampling variances (V), the reconstruction-loss gradient  (VI), the KL-loss gradient (VII), and the ELBO gradient which approximates the \textit{score} (VIII).
+}
+\label{fig:samples}
+\label{fig:comparison}
+\end{table}
+
+
+
+
+
+\subsection{Discussion \& Conclusion}
+
+We have presented a way to estimate the \textit{score} using VAE gradients to detect anomalies on the BraTS-2017 tumor segmentation dataset. The results show competitive unsupervised segmentation performance, slightly outperforming the previously best reported ROC-AUC of 0.92 \cite{chen_unsupervised_2018,chen_deep_2018}.
+The relative influence of the reconstruction loss can depend on the regularization of the latent variables. Using fewer latent variables or putting more importance on the KL-loss could, while potentially causing inferior overall performance, lead to a more competitive performance of the reconstruction error.
+
+
+To the best of our knowledge, we are the first to use the gradients of a VAE, which approximate the  \textit{score}, to identify anomalies in images. 
+The results suggest that the approximated \textit{score}, including the often ignored KL-loss, can give a boost on the pixel-wise anomaly detection performance. Furthermore, we want to stress the point that including the KL-loss for a pixel-wise anomaly detection and the \textit{score} of a model can lead to an improvement in VAE-based methods for pixel-wise anomaly ratings.
+
+This method should also be directly applicable to other state-of-the-art density estimation techniques, such as Grow \cite{kingma_glow:_2018} or Pixel-CNN++ \cite{salimans_pixel_2017}, and it would be an interesting next step to see how different models perform.
+
+
+
+
+
+
+
+
+
+
+
+@article{bakas_advancing_2017,
+	title = {Advancing {The} {Cancer} {Genome} {Atlas} glioma {MRI} collections with expert segmentation labels and radiomic features},
+	volume = {4},
+	issn = {2052-4463},
+	doi = {10.1038/sdata.2017.117},
+	abstract = {Gliomas belong to a group of central nervous system tumors, and consist of various sub-regions. Gold standard labeling of these sub-regions in radiographic imaging is essential for both clinical and computational studies, including radiomic and radiogenomic analyses. Towards this end, we release segmentation labels and radiomic features for all pre-operative multimodal magnetic resonance imaging (MRI) (n=243) of the multi-institutional glioma collections of The Cancer Genome Atlas (TCGA), publicly available in The Cancer Imaging Archive (TCIA). Pre-operative scans were identified in both glioblastoma (TCGA-GBM, n=135) and low-grade-glioma (TCGA-LGG, n=108) collections via radiological assessment. The glioma sub-region labels were produced by an automated state-of-the-art method and manually revised by an expert board-certified neuroradiologist. An extensive panel of radiomic features was extracted based on the manually-revised labels. This set of labels and features should enable i) direct utilization of the TCGA/TCIA glioma collections towards repeatable, reproducible and comparative quantitative studies leading to new predictive, prognostic, and diagnostic assessments, as well as ii) performance evaluation of computer-aided segmentation methods, and comparison to our state-of-the-art method.},
+	language = {eng},
+	journal = {Sci Data},
+	author = {Bakas, Spyridon and Akbari, Hamed and Sotiras, Aristeidis and Bilello, Michel and Rozycki, Martin and Kirby, Justin S. and Freymann, John B. and Farahani, Keyvan and Davatzikos, Christos},
+	year = {2017},
+	pmid = {28872634},
+	pmcid = {PMC5685212},
+	keywords = {Humans, Image Interpretation, Computer-Assisted, Magnetic Resonance Imaging, Glioma, Brain Neoplasms, Multimodal Imaging, DNA, Neoplasm},
+	pages = {170117}
+}
+
+@article{menze_multimodal_2015,
+	title = {The {Multimodal} {Brain} {Tumor} {Image} {Segmentation} {Benchmark} ({BRATS})},
+	volume = {34},
+	issn = {1558-254X},
+	doi = {10.1109/TMI.2014.2377694},
+	abstract = {In this paper we report the set-up and results of the Multimodal Brain Tumor Image Segmentation Benchmark (BRATS) organized in conjunction with the MICCAI 2012 and 2013 conferences. Twenty state-of-the-art tumor segmentation algorithms were applied to a set of 65 multi-contrast MR scans of low- and high-grade glioma patients-manually annotated by up to four raters-and to 65 comparable scans generated using tumor image simulation software. Quantitative evaluations revealed considerable disagreement between the human raters in segmenting various tumor sub-regions (Dice scores in the range 74\%-85\%), illustrating the difficulty of this task. We found that different algorithms worked best for different sub-regions (reaching performance comparable to human inter-rater variability), but that no single algorithm ranked in the top for all sub-regions simultaneously. Fusing several good algorithms using a hierarchical majority vote yielded segmentations that consistently ranked above all individual algorithms, indicating remaining opportunities for further methodological improvements. The BRATS image data and manual annotations continue to be publicly available through an online evaluation system as an ongoing benchmarking resource.},
+	language = {eng},
+	number = {10},
+	journal = {IEEE Trans Med Imaging},
+	author = {Menze, Bjoern H. and Jakab, Andras and Bauer, Stefan and Kalpathy-Cramer, Jayashree and Farahani, Keyvan and Kirby, Justin and Burren, Yuliya and Porz, Nicole and Slotboom, Johannes and Wiest, Roland and Lanczi, Levente and Gerstner, Elizabeth and Weber, Marc-André and Arbel, Tal and Avants, Brian B. and Ayache, Nicholas and Buendia, Patricia and Collins, D. Louis and Cordier, Nicolas and Corso, Jason J. and Criminisi, Antonio and Das, Tilak and Delingette, Herve and Demiralp, Cagatay and Durst, Christopher R. and Dojat, Michel and Doyle, Senan and Festa, Joana and Forbes, Florence and Geremia, Ezequiel and Glocker, Ben and Golland, Polina and Guo, Xiaotao and Hamamci, Andac and Iftekharuddin, Khan M. and Jena, Raj and John, Nigel M. and Konukoglu, Ender and Lashkari, Danial and Mariz, José Antonió and Meier, Raphael and Pereira, Sérgio and Precup, Doina and Price, Stephen J. and Raviv, Tammy Riklin and Reza, Syed M. S. and Ryan, Michael and Sarikaya, Duygu and Schwartz, Lawrence and Shin, Hoo-Chang and Shotton, Jamie and Silva, Carlos A. and Sousa, Nuno and Subbanna, Nagesh K. and Szekely, Gabor and Taylor, Thomas J. and Thomas, Owen M. and Tustison, Nicholas J. and Unal, Gozde and Vasseur, Flor and Wintermark, Max and Ye, Dong Hye and Zhao, Liang and Zhao, Binsheng and Zikic, Darko and Prastawa, Marcel and Reyes, Mauricio and Van Leemput, Koen},
+	month = oct,
+	year = {2015},
+	pmid = {25494501},
+	pmcid = {PMC4833122},
+	keywords = {Algorithms, Humans, Magnetic Resonance Imaging, Glioma, Benchmarking, Neuroimaging},
+	pages = {1993--2024}
+}
+
+@article{vernooij_incidental_2007,
+	title = {Incidental {Findings} on {Brain} {MRI} in the {General} {Population}},
+	volume = {357},
+	issn = {0028-4793},
+	url = {https://doi.org/10.1056/NEJMoa070972},
+	doi = {10.1056/NEJMoa070972},
+	abstract = {In this study of 2000 people 45 years of age or older who underwent brain magnetic resonance imaging (MRI) as part of a prospective, population-based cohort study, asymptomatic brain infarcts were found in 7.2\% of subjects, cerebral aneurysms in 1.8\%, and benign primary tumors in 1.6\%. Incidental brain findings on brain MRI are not uncommon.},
+	number = {18},
+	urldate = {2018-10-05},
+	journal = {New England Journal of Medicine},
+	author = {Vernooij, Meike W. and Ikram, M. Arfan and Tanghe, Hervé L. and Vincent, Arnaud J.P.E. and Hofman, Albert and Krestin, Gabriel P. and Niessen, Wiro J. and Breteler, Monique M.B. and van der Lugt, Aad},
+	month = nov,
+	year = {2007},
+	pmid = {17978290},
+	pages = {1821--1828},
+	file = {Full Text PDF:/home/david/Documents/papers/zotero/storage/L2IA75JS/Vernooij et al. - 2007 - Incidental Findings on Brain MRI in the General Po.pdf:application/pdf;Snapshot:/home/david/Documents/papers/zotero/storage/DUPIRWGV/NEJMoa070972.html:text/html}
+}
+
+@inproceedings{rezende_stochastic_2014,
+	address = {Beijing, China},
+	series = {{ICML}'14},
+	title = {Stochastic {Backpropagation} and {Approximate} {Inference} in {Deep} {Generative} {Models}},
+	url = {http://dl.acm.org/citation.cfm?id=3044805.3045035},
+	abstract = {We marry ideas from deep neural networks and approximate Bayesian inference to derive a generalised class of deep, directed generative models, endowed with a new algorithm for scalable inference and learning. Our algorithm introduces a recognition model to represent an approximate posterior distribution and uses this for optimisation of a variational lower bound. We develop stochastic backpropagation - rules for gradient backpropagation through stochastic variables - and derive an algorithm that allows for joint optimisation of the parameters of both the generative and recognition models. We demonstrate on several real-world data sets that by using stochastic backpropagation and variational inference, we obtain models that are able to generate realistic samples of data, allow for accurate imputations of missing data, and provide a useful tool for high-dimensional data visualisation.},
+	urldate = {2018-10-05},
+	booktitle = {Proceedings of the 31st {International} {Conference} on {International} {Conference} on {Machine} {Learning} - {Volume} 32},
+	publisher = {JMLR.org},
+	author = {Rezende, Danilo Jimenez and Mohamed, Shakir and Wierstra, Daan},
+	year = {2014},
+	pages = {II--1278--II--1286}
+}
+
+@article{kingma_auto-encoding_2013,
+	title = {Auto-{Encoding} {Variational} {Bayes}.},
+	volume = {abs/1312.6114},
+	url = {http://dblp.uni-trier.de/db/journals/corr/corr1312.html#KingmaW13},
+	journal = {CoRR},
+	author = {Kingma, Diederik P. and Welling, Max},
+	year = {2013},
+	keywords = {dblp}
+}
+
+@article{van_leemput_automated_2001,
+	title = {Automated segmentation of multiple sclerosis lesions by model outlier detection},
+	volume = {20},
+	issn = {0278-0062},
+	doi = {10.1109/42.938237},
+	abstract = {This paper presents a fully automated algorithm for segmentation of multiple sclerosis (MS) lesions from multispectral magnetic resonance (MR) images. The method performs intensity-based tissue classification using a stochastic model for normal brain images and simultaneously detects MS lesions as outliers that are not well explained by the model. It corrects for MR field inhomogeneities, estimates tissue-specific intensity models from the data itself, and incorporates contextual information in the classification using a Markov random field. The results of the automated method are compared with lesion delineations by human experts, showing a high total lesion load correlation. When the degree of spatial correspondence between segmentations is taken into account, considerable disagreement is found, both between expert segmentations, and between expert and automatic measurements.},
+	language = {eng},
+	number = {8},
+	journal = {IEEE Trans Med Imaging},
+	author = {Van Leemput, K. and Maes, F. and Vandermeulen, D. and Colchester, A. and Suetens, P.},
+	month = aug,
+	year = {2001},
+	pmid = {11513020},
+	keywords = {Brain, Algorithms, Humans, Image Processing, Computer-Assisted, Magnetic Resonance Imaging, Multiple Sclerosis},
+	pages = {677--688}
+}
+
+@article{liu_low-rank_2014,
+	title = {Low-{Rank} to the {Rescue} – {Atlas}-based {Analyses} in the {Presence} of {Pathologies}},
+	volume = {17},
+	url = {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4857018/},
+	abstract = {Low-rank image decomposition has the potential to address a broad range of challenges that routinely occur in clinical practice. Its novelty and utility in the context of atlas-based analysis stems from its ability to handle images containing large pathologies and large deformations. Potential applications include atlas-based tissue segmentation and unbiased atlas building from data containing pathologies. In this paper we present atlas-based tissue segmentation of MRI from patients with large pathologies. Specifically, a healthy brain atlas is registered with the low-rank components from the input MRIs, the low-rank components are then re-computed based on those registrations, and the process is then iteratively repeated. Preliminary evaluations are conducted using the brain tumor segmentation challenge data (BRATS ’12).},
+	number = {Pt 3},
+	urldate = {2018-10-05},
+	journal = {Med Image Comput Comput Assist Interv},
+	author = {Liu, Xiaoxiao and Niethammer, Marc and Kwitt, Roland and McCormick, Matthew and Aylward, Stephen},
+	year = {2014},
+	pmid = {25320787},
+	pmcid = {PMC4857018},
+	pages = {97--104},
+	file = {PubMed Central Full Text PDF:/home/david/Documents/papers/zotero/storage/AGXXATS6/Liu et al. - 2014 - Low-Rank to the Rescue – Atlas-based Analyses in t.pdf:application/pdf}
+}
+
+@inproceedings{schlegl_unsupervised_2017,
+	series = {Lecture {Notes} in {Computer} {Science}},
+	title = {Unsupervised {Anomaly} {Detection} with {Generative} {Adversarial} {Networks} to {Guide} {Marker} {Discovery}},
+	isbn = {978-3-319-59050-9},
+	abstract = {Obtaining models that capture imaging markers relevant for disease progression and treatment monitoring is challenging. Models are typically based on large amounts of data with annotated examples of known markers aiming at automating detection. High annotation effort and the limitation to a vocabulary of known markers limit the power of such approaches. Here, we perform unsupervised learning to identify anomalies in imaging data as candidates for markers. We propose AnoGAN, a deep convolutional generative adversarial network to learn a manifold of normal anatomical variability, accompanying a novel anomaly scoring scheme based on the mapping from image space to a latent space. Applied to new data, the model labels anomalies, and scores image patches indicating their fit into the learned distribution. Results on optical coherence tomography images of the retina demonstrate that the approach correctly identifies anomalous images, such as images containing retinal fluid or hyperreflective foci.},
+	language = {en},
+	booktitle = {Information {Processing} in {Medical} {Imaging}},
+	publisher = {Springer International Publishing},
+	author = {Schlegl, Thomas and Seeböck, Philipp and Waldstein, Sebastian M. and Schmidt-Erfurth, Ursula and Langs, Georg},
+	editor = {Niethammer, Marc and Styner, Martin and Aylward, Stephen and Zhu, Hongtu and Oguz, Ipek and Yap, Pew-Thian and Shen, Dinggang},
+	year = {2017},
+	keywords = {Anomaly Detection, Image Patch, Latent Space, Optical Coherence Tomography, Query Image},
+	pages = {146--157}
+}
+
+@article{baur_deep_2018,
+	title = {Deep {Autoencoding} {Models} for {Unsupervised} {Anomaly} {Segmentation} in {Brain} {MR} {Images}},
+	volume = {abs/1804.04488},
+	journal = {CoRR},
+	author = {Baur, Christoph and Wiestler, Benedikt and Albarqouni, Shadi and Navab, Nassir},
+	year = {2018}
+}
+
+@article{chen_unsupervised_2018,
+	title = {Unsupervised {Detection} of {Lesions} in {Brain} {MRI} using constrained adversarial auto-encoders},
+	volume = {abs/1806.04972},
+	journal = {CoRR},
+	author = {Chen, Xiaoran and Konukoglu, Ender},
+	year = {2018}
+}
+
+@article{pawlowski_unsupervised_2018,
+	title = {Unsupervised {Lesion} {Detection} in {Brain} {CT} using {Bayesian} {Convolutional} {Autoencoders}},
+	author = {Pawlowski, Nick and Lee, Matthew C. H. and Rajchl, Martin and McDonagh, Steven and Ferrante, Enzo and Kamnitsas, Konstantinos and Cooke, Sam and Stevenson, Susan K. and Khetani, Aneesh M. and Newman, Tom and Zeiler, Fred A. and Digby, Richard John and Coles, Jonathan P. and Rueckert, Daniel and Menon, David K. and Newcombe, Virginia F. J. and Glocker, Ben},
+	year = {2018},
+	journal = {CoRR},
+}
+
+@article{van_essen_human_2012,
+	title = {The {Human} {Connectome} {Project}: a data acquisition perspective},
+	volume = {62},
+	issn = {1095-9572},
+	shorttitle = {The {Human} {Connectome} {Project}},
+	doi = {10.1016/j.neuroimage.2012.02.018},
+	abstract = {The Human Connectome Project (HCP) is an ambitious 5-year effort to characterize brain connectivity and function and their variability in healthy adults. This review summarizes the data acquisition plans being implemented by a consortium of HCP investigators who will study a population of 1200 subjects (twins and their non-twin siblings) using multiple imaging modalities along with extensive behavioral and genetic data. The imaging modalities will include diffusion imaging (dMRI), resting-state fMRI (R-fMRI), task-evoked fMRI (T-fMRI), T1- and T2-weighted MRI for structural and myelin mapping, plus combined magnetoencephalography and electroencephalography (MEG/EEG). Given the importance of obtaining the best possible data quality, we discuss the efforts underway during the first two years of the grant (Phase I) to refine and optimize many aspects of HCP data acquisition, including a new 7T scanner, a customized 3T scanner, and improved MR pulse sequences.},
+	language = {eng},
+	number = {4},
+	journal = {Neuroimage},
+	author = {Van Essen, D. C. and Ugurbil, K. and Auerbach, E. and Barch, D. and Behrens, T. E. J. and Bucholz, R. and Chang, A. and Chen, L. and Corbetta, M. and Curtiss, S. W. and Della Penna, S. and Feinberg, D. and Glasser, M. F. and Harel, N. and Heath, A. C. and Larson-Prior, L. and Marcus, D. and Michalareas, G. and Moeller, S. and Oostenveld, R. and Petersen, S. E. and Prior, F. and Schlaggar, B. L. and Smith, S. M. and Snyder, A. Z. and Xu, J. and Yacoub, E. and {WU-Minn HCP Consortium}},
+	month = oct,
+	year = {2012},
+	pmid = {22366334},
+	pmcid = {PMC3606888},
+	keywords = {Brain, Brain Mapping, Humans, Connectome},
+	pages = {2222--2231}
+}
+
+@article{kingma_glow:_2018,
+	title = {Glow: {Generative} {Flow} with {Invertible} 1x1 {Convolutions}},
+	volume = {abs/1807.03039},
+	journal = {CoRR},
+	author = {Kingma, Diederik P. and Dhariwal, Prafulla},
+	year = {2018}
+}
+
+@article{chen_deep_2018,
+	title = {Deep {Generative} {Models} in the {Real}-{World}: {An} {Open} {Challenge} from {Medical} {Imaging}},
+	volume = {abs/1806.05452},
+	journal = {CoRR},
+	author = {Chen, Xiaoran and Pawlowski, Nick and Rajchl, Martin and Glocker, Ben and Konukoglu, Ender},
+	year = {2018}
+}
+
+@article{salimans_pixel_2017,
+  title={PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications},
+  author={Tim Salimans and Andrej Karpathy and Xi Chen and Diederik P. Kingma},
+  journal={CoRR},
+  year={2017},
+  volume={abs/1701.05517}
+}
+
+@techreport{liu_detecting_2017,
+title	= {Detecting Cancer Metastases on Gigapixel Pathology Images},
+author	= {Yun Liu and Krishna Kumar Gadepalli and Mohammad Norouzi and George Dahl and Timo Kohlberger and Subhashini Venugopalan and Aleksey S Boyko and Aleksei Timofeev and Philip Q Nelson and Greg Corrado and Jason Hipp and Lily Peng and Martin Stumpe},
+year	= {2017},
+URL	= {https://arxiv.org/abs/1703.02442},
+institution	= {arXiv}
+}
+
+@article{gulshan_development_2106,
+author = {Gulshan V and Peng L and Coram M and et al},
+title = {Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs},
+journal = {JAMA},
+volume = {316},
+number = {22},
+pages = {2402-2410},
+year = {2016},
+doi = {10.1001/jama.2016.17216},
+URL = { + http://dx.doi.org/10.1001/jama.2016.17216},
+eprint = {/data/journals/jama/935924/joi160132.pdf}
+}
+
+
+@article{alain_what_2014,
+	title = {What {Regularized} {Auto}-encoders {Learn} from the {Data}-generating {Distribution}},
+	volume = {15},
+	issn = {1532-4435},
+	url = {http://dl.acm.org/citation.cfm?id=2627435.2750359},
+	abstract = {What do auto-encoders learn about the underlying data-generating distribution? Recent work suggests that some auto-encoder variants do a good job of capturing the local manifold structure of data. This paper clarifies some of these previous observations by showing that minimizing a particular form of regularized reconstruction error yields a reconstruction function that locally characterizes the shape of the data-generating density. We show that the auto-encoder captures the score (derivative of the log-density with respect to the input). It contradicts previous interpretations of reconstruction error as an energy function. Unlike previous results, the theorems provided here are completely generic and do not depend on the parameterization of the auto-encoder: they show what the auto-encoder would tend to if given enough capacity and examples. These results are for a contractive training criterion we show to be similar to the denoising auto-encoder training criterion with small corruption noise, but with contraction applied on the whole reconstruction function rather than just encoder. Similarly to score matching, one can consider the proposed training criterion as a convenient alternative to maximum likelihood because it does not involve a partition function. Finally, we show how an approximate Metropolis-Hastings MCMC can be setup to recover samples from the estimated distribution, and this is confirmed in sampling experiments.},
+	number = {1},
+	urldate = {2018-10-05},
+	journal = {J. Mach. Learn. Res.},
+	author = {Alain, Guillaume and Bengio, Yoshua},
+	month = jan,
+	year = {2014},
+	keywords = {manifold learning, score matching, auto-encoders, denoising auto-encoders, generative models, Markov chains, unsupervised representation learning},
+	pages = {3563--3593},
+	file = {ACM Full Text PDF:/home/david/Documents/papers/zotero/storage/92AIYNBI/Alain and Bengio - 2014 - What Regularized Auto-encoders Learn from the Data.pdf:application/pdf}
+}
+
+@article{hyvarinen_estimation_2005,
+ author = {Hyv\"{a}rinen, Aapo},
+ title = {Estimation of Non-Normalized Statistical Models by Score Matching},
+ journal = {J. Mach. Learn. Res.},
+ issue_date = {12/1/2005},
+ volume = {6},
+ month = dec,
+ year = {2005},
+ issn = {1532-4435},
+ pages = {695--709},
+ numpages = {15},
+ url = {http://dl.acm.org/citation.cfm?id=1046920.1088696},
+ acmid = {1088696},
+ publisher = {JMLR.org},
+} 
+
+@article{springenberg_striving_2014,
+  title={Striving for Simplicity: The All Convolutional Net},
+  author={Jost Tobias Springenberg and Alexey Dosovitskiy and Thomas Brox and Martin A. Riedmiller},
+  journal={CoRR},
+  year={2014},
+  volume={abs/1412.6806}
+}
+
+
+@article{kiran_overview_2018,
+	title = {An {Overview} of {Deep} {Learning} {Based} {Methods} for {Unsupervised} and {Semi}-{Supervised} {Anomaly} {Detection} in {Videos}},
+	volume = {4},
+	copyright = {http://creativecommons.org/licenses/by/3.0/},
+	url = {https://www.mdpi.com/2313-433X/4/2/36},
+	doi = {10.3390/jimaging4020036},
+	abstract = {Videos represent the primary source of information for surveillance applications. Video material is often available in large quantities but in most cases it contains little or no annotation for supervised learning. This article reviews the state-of-the-art deep learning based methods for video anomaly detection and categorizes them based on the type of model and criteria of detection. We also perform simple studies to understand the different approaches and provide the criteria of evaluation for spatio-temporal anomaly detection.},
+	language = {en},
+	number = {2},
+	urldate = {2018-10-05},
+	journal = {Journal of Imaging},
+	author = {Kiran, B. and Thomas, Dilip and Parakkal, Ranjith and Kiran, B. Ravi and Thomas, Dilip Mathew and Parakkal, Ranjith},
+	month = feb,
+	year = {2018},
+	keywords = {anomaly detection, autoencoders, generative adversarial networks, LSTMs, predictive models, representation learning, unsupervised methods, Variational Autoencoders},
+	pages = {36},
+	file = {Full Text PDF:/home/david/Documents/papers/zotero/storage/FNYINTRL/Kiran et al. - 2018 - An Overview of Deep Learning Based Methods for Uns.pdf:application/pdf;Snapshot:/home/david/Documents/papers/zotero/storage/D874X6JH/36.html:text/html}
+}
+
+@article{vincent_stacked_2010,
+	title = {Stacked {Denoising} {Autoencoders}: {Learning} {Useful} {Representations} in a {Deep} {Network} with a {Local} {Denoising} {Criterion}},
+	volume = {11},
+	issn = {ISSN 1533-7928},
+	shorttitle = {Stacked {Denoising} {Autoencoders}},
+	url = {http://www.jmlr.org/papers/v11/vincent10a.html},
+	number = {Dec},
+	urldate = {2018-10-05},
+	journal = {Journal of Machine Learning Research},
+	author = {Vincent, Pascal and Larochelle, Hugo and Lajoie, Isabelle and Bengio, Yoshua and Manzagol, Pierre-Antoine},
+	year = {2010},
+	pages = {3371--3408},
+	file = {Full Text PDF:/home/david/Documents/papers/zotero/storage/GLK8P6H8/Vincent et al. - 2010 - Stacked Denoising Autoencoders Learning Useful Re.pdf:application/pdf;Snapshot:/home/david/Documents/papers/zotero/storage/7MVQKMNJ/vincent10a.html:text/html}
+}
+
+@article{smilkov_smoothgrad_2017,
+  title={SmoothGrad: removing noise by adding noise},
+  author={Daniel Smilkov and Nikhil Thorat and Been Kim and Fernanda B. Vi{\'e}gas and Martin Wattenberg},
+  journal={CoRR},
+  year={2017},
+  volume={abs/1706.03825}
+} 
+\bibliographystyle{abbrv}
+
+\newpage
+
+\section{Appendix}
+
+\subsection{Quantitative Results}
+
+\begin{table}[ht!]
+\renewcommand\thetable{1}
+\centering
+\begin{tabular}{|l|l|}
+\hline
+                              & ROC-AUC        \\ \hline
+DAE                           & $0.808 \pm 0.009$ \\ \hline
+Reconstruction Error          & $0.817 \pm 0.003$ \\ \hline
+Smoothed Reconstruction Error & $0.843 \pm 0.008$ \\ \hline
+Sampling Variance             & $0.855 \pm 0.013$ \\ \hline
+Reconstruction-Loss Gradient  & $0.894 \pm 0.020$ \\ \hline
+KL-Loss Gradient              & $0.939 \pm 0.007$ \\ \hline
+ELBO Gradient                 & $0.939 \pm 0.008$ \\ \hline
+\end{tabular}
+\vspace{0.7em}
+\caption{Pixel-wise ROC-AUC values of the compared approaches (see Fig. \ref{fig:comparison}).}
+\label{tab:results}
+\end{table}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{ROC}
+\end{subfigure}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{PR}
+\end{subfigure}
+\caption{Pixel-wise Reciver Operator Curve (ROC) and Precision Recall (PR) Curve on the test set for the VAE ELBO-gradient with regard to the anomaly labels (all annotations are considered anomalies).}
+\label{fig:curves}
+\end{figure}
+
+
+
+\newpage
+
+\subsection{Qualitative Results}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_0.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_00056.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_00083.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_00200.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_00289.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_00366.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_00629.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_00761.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/grid.png}
+  \end{subfigure}
+  
+\caption{More samples as presented in Fig. \ref{fig:samples}, showing the original sample (I), the annotation (II), the reconstruction error (III), the smoothed reconstruction error (IV), the sampling variances (V), the reconstruction-loss gradient  (VI), the KL-loss gradient (VII), and the ELBO gradient which approximates the \textit{score} (VIII).}
+\label{fig:more1}
+\end{figure}
+
+\begin{figure}[ht!]
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_00949.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_01222.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_01514.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_01571.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_01588.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_01643.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_01752.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/p_01856.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.95\textwidth}
+      \centering
+      \includegraphics[width=0.95\textwidth]{samples/grid.png}
+  \end{subfigure}
+
+
+\caption{More samples as presented in Fig. \ref{fig:samples}, showing the original sample (I), the annotation (II), the reconstruction error (III), the smoothed reconstruction error (IV), the sampling variances (V), the reconstruction-loss gradient  (VI), the KL-loss gradient (VII), and the ELBO gradient which approximates the \textit{score} (VIII).}
+\label{fig:more2}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,167 @@
+\documentclass[prl,reprint,amsmath,amssymb,notitlepage]{revtex4-1}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\begin{document}
+\textbf{Comment on ``General solution to the $U(1)$ anomaly equations" [PRL 123, 151601 (2019)]}
+
+Ref.~\cite{Costa_Dobrescu_Fox_2019} finds 
+solutions to the anomaly equations
+\begin{align}\label{anomalyeq}
+\sum_{i=1}^n z_i=0,\; \sum_{i=1}^n z_i^3=0
+\end{align}
+ for $n$ charges $z_i
+\in \Z$ in a $U(1)$
+gauge theory.
+The solutions obtained there are general, except they omit solutions which
+do not correspond to chiral representations of $U(1)$, or which are
+obtainable by permuting charges, or concatenating solutions of lower
+$n$, or by adding zeros.  
+
+Here, we show that the ingenious methods of~\cite{Costa_Dobrescu_Fox_2019} have a simple geometric interpretation,
+corresponding to elementary constructions long
+known to number theorists~\cite{Mordell_1969}.
+Viewing them in this context allows a fully general solution
+(i.e.\ {\em without}\/ the exceptions above)
+to be written
+down in one 
+fell swoop. It also allows us to give a variety of other,
+qualitatively similar,
+parameterisations of the general solution, as well as a qualitatively
+different (arguably simpler) form of general solution for even $n$. 
+
+To put the method on a geometric footing, we first observe that, by
+clearing denominators, every
+solution in integers of (\ref{anomalyeq}) is equivalent to a
+solution in the rational number field $\Q$. Eliminating $z_n$, we get
+the homogeneous cubic equation
+\begin{gather} \label{cubichyper}
+\sum_{i=1}^{n-1} z_i^3-\left(\sum_{i=1}^{n-1} z_i\right)^3=0,
+\end{gather} 
+defining a hypersurface in the projective space
+$\mathrm{P}\mathbb{Q}^{n-2}$. As well as identifying solutions
+differing by a common multiple, working projectively allows us to
+sidestep annoyances associated with points at infinity in affine space
+(such as the fact that that affine lines
+can be variously intersecting, parallel, or skew, while projective lines either
+intersect or are disjoint).
+
+A result of antiquity tells us that a chord
+through two given
+rational points on a cubic hypersurface intersects the hypersurface in
+a third rational point, giving us a way of generating new solutions from
+old ones. (This is precisely the obscure construction called a `merger' in~\cite{Costa_Dobrescu_Fox_2019}.)
+Further, a rather more recent (though
+equally elementary) result of
+Mordell~\cite{Mordell_1969} shows that all rational points in a
+cubic {\em surface} can be
+constructed in this way, starting from two
+given disjoint lines in the surface. The generalisation to an arbitrary cubic
+{\em hyper}surface $X$ is immediate and gives the following
+\newline
+{\bf Theorem}: Let $\Gamma_1, \Gamma_2\subset X$ be disjoint
+hyperplanes of dimensions
+$d_1,d_2=m_o:= (n-3)/2$, if $n$ is odd and of dimensions
+$d_1=m_e := (n-2)/2$ and $d_2=m_e-1$ if $n$ is even. Every rational
+point $p\in \mathrm{P}\mathbb{Q}^{n-2}$ ({\em ergo} every $p \in X$) lies on a chord joining a point
+in $\Gamma_1$ to a point in $\Gamma_2$. 
+\newline
+{\bf Proof}: The result is obvious if $p \in \Gamma_2$. If $p\notin
+\Gamma_2$, then $p$ and $\Gamma_2$ define a ($d_2+1$)-d hyperplane,
+which intersects $\Gamma_1$ in a point $p^1$. The line through $p$ and
+$p^1$ intersects $\Gamma_2$ in a point $p^2$, yielding a chord. QED.
+
+In the case of interest,
+the (projective) line $L=\alpha_1 p^1+\alpha_2 p^2$ through $p^{1,2}$ with homogeneous parameter
+$[\alpha_1:\alpha_2] \in \mathrm{P}\mathbb{Q}^1$ 
+intersects the cubic hypersurface $X$ defined by (\ref{cubichyper}) when
+\begin{align} \label{lineincube}
+3\alpha_1 \alpha_2\sum_{i=1}^{n-1}\left(\alpha_1 p^2_i P^1_i+\alpha_2 p^1_i P^2_i\right)=0,\;
+ P^a_i:= (p^a_i)^2-\left(\sum_{j=1}^{n-1} p^a_j\right)^2. \nonumber
+\end{align}
+Thus, along with the points $p^{1,2}$ (corresponding to
+$\alpha_{2,1}=0$) we get either a third rational point on $X$ at
+\begin{align}
+[\alpha_1:\alpha_2]=\Bigg[\sum_{i=1}^{n-1}p^1_i P^2_i:-\sum_{i=1}^{n-1}p^2_iP^1_i\Bigg], \nonumber
+\end{align}
+or, if the terms on the RHS both vanish, we have that every rational point on
+$L$ is on $X$. 
+
+To get a fully general solution, we just need to find suitable
+$\Gamma_1,\Gamma_2$. Many choices are possible; let us choose the one
+that makes closest contact with
+\cite{Costa_Dobrescu_Fox_2019}. To wit,
+\begin{align}
+\Gamma^{e}_{1}&=[k_1: \cdots: k_{m_e}:-\tilde
+            l_1:-k_{1}:\cdots:-k_{m_e}]\nonumber \\
+\Gamma^e_{2}&=[0:l_1: \cdots: l_{m_e}:-l_1:\cdots:-l_{m_e}] \nonumber \\
+\Gamma^o_1 &=[k_1:\cdots:k_{m_o+1}:-k_1:\cdots:- k_{m_o+1}]\nonumber \\
+\Gamma^o_{2}&=[l_2:\cdots: l_{m_o}:\tilde
+              k_1:0:-l_1:\cdots:-l_{m_0}:\tilde k_1]. \nonumber
+\end{align}
+These parameterisations cover $\Gamma_{1,2}$, so by the
+Theorem yield all
+solutions of (\ref{anomalyeq}). The parameterisations of
+\cite{Costa_Dobrescu_Fox_2019}, in contrast, have $\tilde l_1=l_1$
+and $\tilde k_1=k_1$; as a result they are unable to reproduce
+solutions in which one of the points $p^{1,2}$ in the construction is
+at infinity in affine space, e.g.\ $[0:1:-1:0]$ for
+$n=4$, which isn't chiral and has zeros.
+
+Two further remarks are in order. Firstly, as we have seen, our parameterization of the
+general solution is somewhat distasteful, in that occasionally the
+chord joining points on $\Gamma_{1,2}$ lies in $X$, and so yields not
+one, but infinitely many solutions. By repeating the construction with
+2 different choices of $\Gamma_{1,2}$, one can ensure that every
+solution arises as a unique third point of intersection of a chord
+with $X$. One can even choose the original $\Gamma_{1,2}$ such that
+this can be achieved by simply permuting the co-ordinates
+$z_i$. Secondly, in the case where $n$ is even, a completely
+different, and arguably even simpler, construction of a general solution is possible. Indeed, in
+such cases, the cubic hypersurface has double points, where both the
+LHS of  (\ref{cubichyper}) and its partial derivatives vanish
+(e.g.\ the rational point [+1:-1:\dots:+1]). A
+line through such a double point intersects the cubic in one other
+rational point (or the line lies entirely in $X$) and thus all
+solutions can be obtained by constructing all lines through just a single
+double point, as it were.
+
+This work was supported by STFC consolidated grants ST/P000681/1 and ST/S505316/1. 
+\\
+\\
+\\
+B.C.\ Allanach$^{a,1}$, Ben Gripaios$^{b,2}$ and Joseph Tooby-Smith$^{b,3}$\\
+\\
+$^{a}$ DAMTP, University of Cambridge, Wilberforce Road, Cambridge, 
+CB3 0WA, United Kingdom\\
+$^{b}$ Cavendish Laboratory, University of Cambridge, J.J. Thomson
+  Avenue, Cambridge, CB3 0HE, United Kingdom \\
+\\
+$^{1}$ B.C.Allanach@damtp.cam.ac.uk\\
+$^{2}$ gripaios@hep.phy.cam.ac.uk\\
+$^{3}$ jss85@cam.ac.uk
+\begin{thebibliography}{2}\makeatletter
+\providecommand \@ifxundefined [1]{\@ifx{#1\undefined}
+}\providecommand \@ifnum [1]{\ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}\providecommand \@ifx [1]{\ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}\providecommand \natexlab [1]{#1}\providecommand \enquote  [1]{``#1''}\providecommand \bibnamefont  [1]{#1}\providecommand \bibfnamefont [1]{#1}\providecommand \citenamefont [1]{#1}\providecommand \href@noop [0]{\@secondoftwo}\providecommand \href [0]{\begingroup \@sanitize@url \@href}\providecommand \@href[1]{\@@startlink{#1}\@@href}\providecommand \@@href[1]{\endgroup#1\@@endlink}\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}\providecommand \@@startlink[1]{}\providecommand \@@endlink[0]{}\providecommand \url  [0]{\begingroup\@sanitize@url \@url }\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}\providecommand \urlprefix  [0]{URL }\providecommand \Eprint [0]{\href }\providecommand \doibase [0]{http://dx.doi.org/}\providecommand \selectlanguage [0]{\@gobble}\providecommand \bibinfo  [0]{\@secondoftwo}\providecommand \bibfield  [0]{\@secondoftwo}\providecommand \translation [1]{[#1]}\providecommand \BibitemOpen [0]{}\providecommand \bibitemStop [0]{}\providecommand \bibitemNoStop [0]{.\EOS\space}\providecommand \EOS [0]{\spacefactor3000\relax}\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}\let\auto@bib@innerbib\@empty
+\bibitem [{\citenamefont {Costa}\ \emph {et~al.}(2019)\citenamefont {Costa},
+  \citenamefont {Dobrescu},\ and\ \citenamefont
+  {Fox}}]{Costa_Dobrescu_Fox_2019}\BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~B.}\ \bibnamefont
+  {Costa}}, \bibinfo {author} {\bibfnamefont {B.~A.}\ \bibnamefont {Dobrescu}},
+  \ and\ \bibinfo {author} {\bibfnamefont {P.~J.}\ \bibnamefont {Fox}},\ }\href
+  {\doibase 10.1103/PhysRevLett.123.151601} {\bibfield  {journal} {\bibinfo
+  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume} {123}},\
+  \bibinfo {pages} {151601} (\bibinfo {year} {2019})}\BibitemShut {NoStop}\bibitem [{\citenamefont {Mordell}(1969)}]{Mordell_1969}\BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Mordell}},\ }\href@noop {} {\emph {\bibinfo {title} {Diophantine
+  Equations}}}\ (\bibinfo  {publisher} {Academic Press},\ \bibinfo {year}
+  {1969})\BibitemShut {NoStop}\end{thebibliography} 
+\bibliographystyle{apsrev4-1}
+\end{document}
