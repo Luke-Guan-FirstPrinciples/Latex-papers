@@ -1,0 +1,589 @@
+\documentclass{article}
+ \pdfoutput=1
+\PassOptionsToPackage{sort, compress, numbers}{natbib}
+
+
+
+
+\usepackage[preprint]{neurips_2019}
+
+
+
+
+
+\usepackage[utf8]{inputenc} \usepackage[T1]{fontenc}    \usepackage{hyperref}       \usepackage{url}            \usepackage{booktabs}       \usepackage{amsfonts}       \usepackage{nicefrac}       \usepackage{microtype}      
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{caption, rotating, graphicx}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage[subpreambles=true]{standalone}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\setnotation}[1]{\mathcal{#1}}
+\newcommand{\dataindex}[3]{{#1}_{#2}^{(#3)}}
+\newcommand{\parametric}[3]{#1(#2; #3)}
+\newcommand{\shortparam}[2]{#1(#2)}
+\newcommand{\risk}[2]{\mathbb{E}_{#1}\left[#2\right]}
+\newcommand{\seq}[2]{\{#1\}_{#2}}
+\newcommand{\sequd}[3]{\{#1\}_{#2}^{#3}}
+\newcommand{\indfunc}[2]{I^+_{#1}\left(#2\right)}
+\newcommand{\smoothindfunc}[1]{\left(#1\right)_{+}}
+\newcommand{\loss}[2]{\ell(#1, #2)}
+\newcommand{\reg}[2]{R_{#1}(#2)}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\U}{\mathbf{U}}
+
+\newcommand{\YONGXI}[1]{\textbf{\textcolor{red}{(YONGXI: #1)}}}
+\newcommand{\ZIYAO}[1]{\textbf{\textcolor{blue}{(ZIYAO: #1)}}}
+
+\newcommand{\ourtitle}{Implicit Label Augmentation on Partially Annotated Clips via Temporally-Adaptive Features Learning}
+
+\title{\ourtitle}
+
+
+
+\author{Yongxi Lu \qquad Ziyao Tang \qquad Tara Javidi \\
+   University of California, San Diego \\
+   \texttt{\{yol070, zit021, tjavidi\}@eng.ucsd.edu}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+
+  Partially annotated clips contain rich temporal contexts that can complement the sparse key frame annotations in providing supervision for model training. We present a novel paradigm called Temporally-Adaptive Features (TAF) learning that can utilize such data to learn better single frame models. By imposing distinct temporal change rate constraints on different factors in the model, TAF enables learning from unlabeled frames using context to enhance model accuracy. TAF generalizes ``slow feature'' learning and we present much stronger empirical evidence than prior works, showing convincing gains for the challenging semantic segmentation task over a variety of architecture designs and on two popular datasets. TAF can be interpreted as an implicit label augmentation method but is a more principled formulation compared to existing explicit augmentation techniques. Our work thus connects two promising methods that utilize partially annotated clips for single frame model training and can inspire future explorations in this direction. 
+
+\end{abstract}
+
+\input{tex/intro.tex}
+\input{tex/method.tex}
+\input{tex/related.tex}
+\input{tex/exp.tex}
+\input{tex/conclusion.tex}
+
+\newpage
+{\small
+\bibliographystyle{unsrt}
+\begin{thebibliography}{10}
+
+\bibitem{Jampani2017VideoPN}
+Varun Jampani, Raghudeep Gadde, and Peter~V. Gehler.
+\newblock Video propagation networks.
+\newblock {\em 2017 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 3154--3164, 2017.
+
+\bibitem{8296851}
+Mennatullah Siam, Sepehr Valipour, Martin Jagersand, and Nilanjan Ray.
+\newblock Convolutional gated recurrent networks for video segmentation.
+\newblock In {\em 2017 IEEE International Conference on Image Processing
+  (ICIP)}, pages 3090--3094, Sep. 2017.
+
+\bibitem{10.1007/978-3-319-54407-6_33}
+Mohsen Fayyaz, Mohammad~Hajizadeh Saffar, Mohammad Sabokrou, Mahmood Fathy, Fay
+  Huang, and Reinhard Klette.
+\newblock Stfcn: Spatio-temporal fully convolutional neural network for
+  semantic segmentation of street scenes.
+\newblock In Chu-Song Chen, Jiwen Lu, and Kai-Kuang Ma, editors, {\em Computer
+  Vision -- ACCV 2016 Workshops}, pages 493--509, Cham, 2017. Springer
+  International Publishing.
+
+\bibitem{Nilsson2018SemanticVS}
+David Nilsson and Cristian Sminchisescu.
+\newblock Semantic video segmentation by gated recurrent flow propagation.
+\newblock {\em 2018 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition}, pages 6819--6828, 2018.
+
+\bibitem{Gadde2017SemanticVC}
+Raghudeep Gadde, Varun Jampani, and Peter~V. Gehler.
+\newblock Semantic video cnns through representation warping.
+\newblock {\em 2017 IEEE International Conference on Computer Vision (ICCV)},
+  pages 4463--4472, 2017.
+
+\bibitem{Wang_2015_ICCV}
+Xiaolong Wang and Abhinav Gupta.
+\newblock Unsupervised learning of visual representations using videos.
+\newblock In {\em The IEEE International Conference on Computer Vision (ICCV)},
+  December 2015.
+
+\bibitem{Srivastava:2015:ULV:3045118.3045209}
+Nitish Srivastava, Elman Mansimov, and Ruslan Salakhutdinov.
+\newblock Unsupervised learning of video representations using lstms.
+\newblock In {\em Proceedings of the 32Nd International Conference on
+  International Conference on Machine Learning - Volume 37}, ICML'15, pages
+  843--852. JMLR.org, 2015.
+
+\bibitem{8237857}
+Xiaojie Jin, Xin Li, Huaxin Xiao, Xiaohui Shen, Zhe Lin, Jimei Yang, Yunpeng
+  Chen, Jian Dong, Luoqi Liu, Zequn Jie, Jiashi Feng, and Shuicheng Yan.
+\newblock Video scene parsing with predictive feature learning.
+\newblock In {\em 2017 IEEE International Conference on Computer Vision
+  (ICCV)}, pages 5581--5589, Oct 2017.
+
+\bibitem{Mathieu2016DeepMV}
+Micha{\"e}l Mathieu, Camille Couprie, and Yann LeCun.
+\newblock Deep multi-scale video prediction beyond mean square error.
+\newblock {\em CoRR}, abs/1511.05440, 2016.
+
+\bibitem{10.1007/978-3-319-46478-7_51}
+Jacob Walker, Carl Doersch, Abhinav Gupta, and Martial Hebert.
+\newblock An uncertain future: Forecasting from static images using variational
+  autoencoders.
+\newblock In Bastian Leibe, Jiri Matas, Nicu Sebe, and Max Welling, editors,
+  {\em Computer Vision -- ECCV 2016}, pages 835--851, Cham, 2016. Springer
+  International Publishing.
+
+\bibitem{7410822}
+Ross Goroshin, Joan Bruna, Jonathan Tompson, David Eigen, and Yann LeCun.
+\newblock Unsupervised learning of spatiotemporally coherent metrics.
+\newblock In {\em 2015 IEEE International Conference on Computer Vision
+  (ICCV)}, pages 4086--4093, Dec 2015.
+
+\bibitem{Wiskott:2002:SFA:638940.638941}
+Laurenz Wiskott and Terrence~J. Sejnowski.
+\newblock Slow feature analysis: Unsupervised learning of invariances.
+\newblock {\em Neural Comput.}, 14(4):715--770, April 2002.
+
+\bibitem{Mustikovela2016CanGT}
+Siva~Karthik Mustikovela, Michael~Ying Yang, and Carsten Rother.
+\newblock Can ground truth label propagation from video help semantic
+  segmentation?
+\newblock In {\em ECCV Workshops}, 2016.
+
+\bibitem{8265246}
+Ignas Budvytis, Patrick Sauer, Thomas Roddick, Kesar Breen, and Roberto
+  Cipolla.
+\newblock Large scale labelled video data augmentation for semantic
+  segmentation in driving scenarios.
+\newblock In {\em 2017 IEEE International Conference on Computer Vision
+  Workshops (ICCVW)}, pages 230--237, Oct 2017.
+
+\bibitem{Zhu2018ImprovingSS}
+Yi~Zhu, Karan Sapra, Fitsum~A. Reda, Kevin~J. Shih, Shawn~D. Newsam, Andrew
+  Tao, and Bryan Catanzaro.
+\newblock Improving semantic segmentation via video propagation and label
+  relaxation.
+\newblock {\em CoRR}, abs/1812.01593, 2018.
+
+\bibitem{8206371}
+Md.~Alimoor Reza, Hui Zheng, Georgios Georgakis, and Jana Košecká.
+\newblock Label propagation in rgb-d video.
+\newblock In {\em 2017 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems (IROS)}, pages 4917--4922, Sep. 2017.
+
+\bibitem{Alpher19}
+Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun.
+\newblock Faster r-cnn: Towards real-time object detection with region proposal
+  networks.
+\newblock {\em In NIPS}, 2015.
+
+\bibitem{liu2016ssd}
+Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy, Scott Reed,
+  Cheng-Yang Fu, and Alexander~C. Berg.
+\newblock {SSD}: Single shot multibox detector.
+\newblock In {\em ECCV}, 2016.
+
+\bibitem{7780627}
+Yongxi Lu, Tara Javidi, and Svetlana Lazebnik.
+\newblock Adaptive object detection using adjacency and zoom prediction.
+\newblock In {\em 2016 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 2351--2359, June 2016.
+
+\bibitem{8099589}
+Tsung-Yi Lin, Piotr Dollár, Ross Girshick, Kaiming He, Bharath Hariharan, and
+  Serge Belongie.
+\newblock Feature pyramid networks for object detection.
+\newblock In {\em 2017 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 936--944, July 2017.
+
+\bibitem{8237586}
+Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár.
+\newblock Focal loss for dense object detection.
+\newblock In {\em 2017 IEEE International Conference on Computer Vision
+  (ICCV)}, pages 2999--3007, Oct 2017.
+
+\bibitem{Law_2018_ECCV}
+Hei Law and Jia Deng.
+\newblock Cornernet: Detecting objects as paired keypoints.
+\newblock In {\em The European Conference on Computer Vision (ECCV)}, September
+  2018.
+
+\bibitem{8237584}
+Kaiming He, Georgia Gkioxari, Piotr Dollár, and Ross Girshick.
+\newblock Mask r-cnn.
+\newblock In {\em 2017 IEEE International Conference on Computer Vision
+  (ICCV)}, pages 2980--2988, Oct 2017.
+
+\bibitem{6909610}
+Alexander Toshev and Christian Szegedy.
+\newblock Deeppose: Human pose estimation via deep neural networks.
+\newblock In {\em 2014 IEEE Conference on Computer Vision and Pattern
+  Recognition}, pages 1653--1660, June 2014.
+
+\bibitem{8100183}
+Tinghui Zhou, Matthew Brown, Noah Snavely, and David Lowe.
+\newblock Unsupervised learning of depth and ego-motion from video.
+\newblock In {\em 2017 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 6612--6619, July 2017.
+
+\bibitem{Zou_2018_ECCV}
+Yuliang Zou, Zelun Luo, and Jia-Bin Huang.
+\newblock Df-net: Unsupervised joint learning of depth and flow using
+  cross-task consistency.
+\newblock In {\em The European Conference on Computer Vision (ECCV)}, September
+  2018.
+
+\bibitem{Yin2018GeoNetUL}
+Zhichao Yin and Jianping Shi.
+\newblock Geonet: Unsupervised learning of dense depth, optical flow and camera
+  pose.
+\newblock {\em 2018 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition}, pages 1983--1992, 2018.
+
+\bibitem{Godard2017UnsupervisedMD}
+Cl{\'e}ment Godard, Oisin~Mac Aodha, and Gabriel~J. Brostow.
+\newblock Unsupervised monocular depth estimation with left-right consistency.
+\newblock {\em 2017 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 6602--6611, 2017.
+
+\bibitem{Garg2016UnsupervisedCF}
+Ravi Garg, B.~G.~Vijay Kumar, Gustavo Carneiro, and Ian~D. Reid.
+\newblock Unsupervised cnn for single view depth estimation: Geometry to the
+  rescue.
+\newblock In {\em ECCV}, 2016.
+
+\bibitem{Fu2018DeepOR}
+Huan Fu, Mingming Gong, Chaohui Wang, Kayhan Batmanghelich, and Dacheng Tao.
+\newblock Deep ordinal regression network for monocular depth estimation.
+\newblock {\em 2018 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition}, pages 2002--2011, 2018.
+
+\bibitem{Alpher19c}
+Liang-Chieh Chen, Alexander Hermans, George Papandreou, Florian Schroff, Peng
+  Wang, and Hartwig Adam.
+\newblock Masklab: Instance segmentation by refining object detection with
+  semantic and direction features.
+\newblock {\em In CVPR}, 2018.
+
+\bibitem{Alpher19d}
+Shu Liu, Jiaya Jia, Sanja Fidler, and Raquel Urtasun.
+\newblock Sgn: Sequential grouping networks for instance segmentation.
+\newblock {\em In ICCV}, 2017.
+
+\bibitem{Alpher19e}
+Shu Liu, Lu~Qi, Haifang Qin, Jianping Shi, and Jiaya Jia.
+\newblock Path aggregation network for instance segmentation.
+\newblock {\em In CVPR}, 2018.
+
+\bibitem{DBLP:journals/corr/abs-1801-00868}
+Alexander Kirillov, Kaiming He, Ross~B. Girshick, Carsten Rother, and Piotr
+  Doll{\'{a}}r.
+\newblock Panoptic segmentation.
+\newblock {\em CoRR}, abs/1801.00868, 2018.
+
+\bibitem{DBLP:journals/corr/abs-1901-03784}
+Yuwen Xiong, Renjie Liao, Hengshuang Zhao, Rui Hu, Min Bai, Ersin Yumer, and
+  Raquel Urtasun.
+\newblock Upsnet: {A} unified panoptic segmentation network.
+\newblock {\em CoRR}, abs/1901.03784, 2019.
+
+\bibitem{8100143}
+Hengshuang Zhao, Jianping Shi, Xiaojuan Qi, Xiaogang Wang, and Jiaya Jia.
+\newblock Pyramid scene parsing network.
+\newblock In {\em 2017 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 6230--6239, July 2017.
+
+\bibitem{Yu2016MultiScaleCA}
+Fisher Yu and Vladlen Koltun.
+\newblock Multi-scale context aggregation by dilated convolutions.
+\newblock {\em CoRR}, abs/1511.07122, 2016.
+
+\bibitem{Chen2017RethinkingAC}
+Liang-Chieh Chen, George Papandreou, Florian Schroff, and Hartwig Adam.
+\newblock Rethinking atrous convolution for semantic image segmentation.
+\newblock {\em CoRR}, abs/1706.05587, 2017.
+
+\bibitem{7298965}
+Jonathan Long, Evan Shelhamer, and Trevor Darrell.
+\newblock Fully convolutional networks for semantic segmentation.
+\newblock In {\em 2015 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 3431--3440, June 2015.
+
+\bibitem{Chen2018EncoderDecoderWA}
+Liang-Chieh Chen, Yukun Zhu, George Papandreou, Florian Schroff, and Hartwig
+  Adam.
+\newblock Encoder-decoder with atrous separable convolution for semantic image
+  segmentation.
+\newblock In {\em ECCV}, 2018.
+
+\bibitem{7913730}
+Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and
+  Alan~L. Yuille.
+\newblock Deeplab: Semantic image segmentation with deep convolutional nets,
+  atrous convolution, and fully connected crfs.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  40(4):834--848, April 2018.
+
+\bibitem{NIPS1991_563}
+Anders Krogh and John~A. Hertz.
+\newblock A simple weight decay can improve generalization.
+\newblock In J.~E. Moody, S.~J. Hanson, and R.~P. Lippmann, editors, {\em
+  Advances in Neural Information Processing Systems 4}, pages 950--957.
+  Morgan-Kaufmann, 1992.
+
+\bibitem{Ng:2004:FSL:1015330.1015435}
+Andrew~Y. Ng.
+\newblock Feature selection, l1 vs. l2 regularization, and rotational
+  invariance.
+\newblock In {\em Proceedings of the Twenty-first International Conference on
+  Machine Learning}, ICML '04, pages 78--, New York, NY, USA, 2004. ACM.
+
+\bibitem{JMLR:v15:srivastava14a}
+Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan
+  Salakhutdinov.
+\newblock Dropout: A simple way to prevent neural networks from overfitting.
+\newblock {\em Journal of Machine Learning Research}, 15:1929--1958, 2014.
+
+\bibitem{Wan:2013:RNN:3042817.3043055}
+Li~Wan, Matthew Zeiler, Sixin Zhang, Yann LeCun, and Rob Fergus.
+\newblock Regularization of neural networks using dropconnect.
+\newblock In {\em Proceedings of the 30th International Conference on
+  International Conference on Machine Learning - Volume 28}, ICML'13, pages
+  III--1058--III--1066. JMLR.org, 2013.
+
+\bibitem{devries2017cutout}
+Terrance DeVries and Graham~W Taylor.
+\newblock Improved regularization of convolutional neural networks with cutout.
+\newblock {\em arXiv preprint arXiv:1708.04552}, 2017.
+
+\bibitem{6144164}
+Jawad Nagi, Frederick Ducatelle, Gianni A.~Di Caro, Dan Cireşan, Ueli Meier,
+  Alessandro Giusti, Farrukh Nagi, Jürgen Schmidhuber, and Luca~Maria
+  Gambardella.
+\newblock Max-pooling convolutional neural networks for vision-based hand
+  gesture recognition.
+\newblock In {\em 2011 IEEE International Conference on Signal and Image
+  Processing Applications (ICSIPA)}, pages 342--347, Nov 2011.
+
+\bibitem{pmlr-v51-lee16a}
+Chen-Yu Lee, Patrick~W. Gallagher, and Zhuowen Tu.
+\newblock Generalizing pooling functions in convolutional neural networks:
+  Mixed, gated, and tree.
+\newblock In Arthur Gretton and Christian~C. Robert, editors, {\em Proceedings
+  of the 19th International Conference on Artificial Intelligence and
+  Statistics}, volume~51 of {\em Proceedings of Machine Learning Research},
+  pages 464--472, Cadiz, Spain, 09--11 May 2016. PMLR.
+
+\bibitem{8099909}
+Shuangfei Zhai, Hui Wu, Abhishek Kumar, Yu~Cheng, Yongxi Lu, Zhongfei Zhang,
+  and Rogerio Feris.
+\newblock S3pool: Pooling with stochastic spatial sampling.
+\newblock In {\em 2017 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 4003--4011, July 2017.
+
+\bibitem{DBLP:journals/corr/abs-1805-09501}
+Ekin~Dogus Cubuk, Barret Zoph, Dandelion Man{\'{e}}, Vijay Vasudevan, and
+  Quoc~V. Le.
+\newblock Autoaugment: Learning augmentation policies from data.
+\newblock {\em CoRR}, abs/1805.09501, 2018.
+
+\bibitem{Hauberg2016DreamingMD}
+S{\o}ren Hauberg, Oren Freifeld, Anders Boesen~Lindbo Larsen, John~W. Fisher,
+  and Lars~Kai Hansen.
+\newblock Dreaming more data: Class-dependent distributions over
+  diffeomorphisms for learned data augmentation.
+\newblock In {\em AISTATS}, 2016.
+
+\bibitem{DBLP:journals/corr/abs-1902-09383}
+Amy Zhao, Guha Balakrishnan, Fr{\'{e}}do Durand, John~V. Guttag, and Adrian~V.
+  Dalca.
+\newblock Data augmentation using learned transforms for one-shot medical image
+  segmentation.
+\newblock {\em CoRR}, abs/1902.09383, 2019.
+
+\bibitem{NIPS2017_6916}
+Alexander~J Ratner, Henry Ehrenberg, Zeshan Hussain, Jared Dunnmon, and
+  Christopher R\'{e}.
+\newblock Learning to compose domain-specific transformations for data
+  augmentation.
+\newblock In I.~Guyon, U.~V. Luxburg, S.~Bengio, H.~Wallach, R.~Fergus,
+  S.~Vishwanathan, and R.~Garnett, editors, {\em Advances in Neural Information
+  Processing Systems 30}, pages 3236--3246. Curran Associates, Inc., 2017.
+
+\bibitem{8099724}
+Ashish Shrivastava, Tomas Pfister, Oncel Tuzel, Josh Susskind, Wenda Wang, and
+  Russ Webb.
+\newblock Learning from simulated and unsupervised images through adversarial
+  training.
+\newblock In {\em 2017 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 2242--2251, July 2017.
+
+\bibitem{8363576}
+Maayan Frid-Adar, Eyal Klang, Michal Amitai, Jacob Goldberger, and Hayit
+  Greenspan.
+\newblock Synthetic data augmentation using gan for improved liver lesion
+  classification.
+\newblock In {\em 2018 IEEE 15th International Symposium on Biomedical Imaging
+  (ISBI 2018)}, pages 289--293, April 2018.
+
+\bibitem{Antoniou2018DataAG}
+Antreas Antoniou, Amos~J. Storkey, and Harrison~A Edwards.
+\newblock Data augmentation generative adversarial networks.
+\newblock {\em CoRR}, abs/1711.04340, 2018.
+
+\bibitem{DBLP:journals/corr/abs-1810-10863}
+Christopher Bowles, Liang Chen, Ricardo Guerrero, Paul Bentley, Roger~N. Gunn,
+  Alexander Hammers, David~Alexander Dickie, Maria del
+  C.~Vald{\'{e}}s~Hern{\'{a}}ndez, Joanna~M. Wardlaw, and Daniel Rueckert.
+\newblock {GAN} augmentation: Augmenting training data using generative
+  adversarial networks.
+\newblock {\em CoRR}, abs/1810.10863, 2018.
+
+\bibitem{Yu2017DilatedRN}
+Fisher Yu, Vladlen Koltun, and Thomas~A. Funkhouser.
+\newblock Dilated residual networks.
+\newblock {\em 2017 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 636--644, 2017.
+
+\bibitem{Vondrick2015AnticipatingTF}
+Carl Vondrick, Hamed Pirsiavash, and Antonio Torralba.
+\newblock Anticipating the future by watching unlabeled video.
+\newblock {\em CoRR}, abs/1504.08023, 2015.
+
+\bibitem{xiaolong_iccv_17}
+Xiaolong Wang, Kaiming He, and Abhinav Gupta.
+\newblock Transitive invariance for self-supervised visual representation
+  learning.
+\newblock In {\em ICCV}, pages 1338--1347, 10 2017.
+
+\bibitem{Misra2016ShuffleAL}
+Ishan Misra, C.~Lawrence Zitnick, and Martial Hebert.
+\newblock Shuffle and learn: Unsupervised learning using temporal order
+  verification.
+\newblock In {\em ECCV}, 2016.
+
+\bibitem{Jayaraman2017}
+Dinesh Jayaraman and Kristen Grauman.
+\newblock Learning image representations tied to egomotion from unlabeled
+  video.
+\newblock {\em International Journal of Computer Vision}, 125(1):136--161, Dec
+  2017.
+
+\bibitem{7780548}
+Yin Li, Manohar Paluri, James~M. Rehg, and Piotr Dollár.
+\newblock Unsupervised learning of edges.
+\newblock In {\em 2016 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 1619--1627, June 2016.
+
+\bibitem{8100121}
+Deepak Pathak, Ross Girshick, Piotr Dollár, Trevor Darrell, and Bharath
+  Hariharan.
+\newblock Learning features by watching objects move.
+\newblock In {\em 2017 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 6024--6033, July 2017.
+
+\bibitem{Ren2018CrossDomainSM}
+Zhongzheng Ren and Yong~Jae Lee.
+\newblock Cross-domain self-supervised multi-task feature learning using
+  synthetic imagery.
+\newblock {\em 2018 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition}, pages 762--771, 2018.
+
+\bibitem{Doersch2017MultitaskSV}
+Carl Doersch and Andrew Zisserman.
+\newblock Multi-task self-supervised visual learning.
+\newblock {\em 2017 IEEE International Conference on Computer Vision (ICCV)},
+  pages 2070--2079, 2017.
+
+\bibitem{Mahjourian_2018_CVPR}
+Reza Mahjourian, Martin Wicke, and Anelia Angelova.
+\newblock Unsupervised learning of depth and ego-motion from monocular video
+  using 3d geometric constraints.
+\newblock In {\em The IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, June 2018.
+
+\bibitem{DBLP:journals/corr/abs-1812-05642}
+Yue Meng, Yongxi Lu, Aman Raj, Samuel Sunarjo, Rui Guo, Tara Javidi, Gaurav
+  Bansal, and Dinesh Bharadia.
+\newblock Signet: Semantic instance aided unsupervised 3d geometry perception.
+\newblock {\em CoRR}, abs/1812.05642, 2018.
+
+\bibitem{Jiang_2018_ECCV}
+Huaizu Jiang, Gustav Larsson, Michael Maire Greg~Shakhnarovich, and Erik
+  Learned-Miller.
+\newblock Self-supervised relative depth learning for urban scene
+  understanding.
+\newblock In {\em The European Conference on Computer Vision (ECCV)}, September
+  2018.
+
+\bibitem{BrostowSFC:ECCV08}
+Gabriel~J. Brostow, Jamie Shotton, Julien Fauqueur, and Roberto Cipolla.
+\newblock Segmentation and recognition using structure from motion point
+  clouds.
+\newblock In {\em ECCV (1)}, pages 44--57, 2008.
+
+\bibitem{Cordts2016Cityscapes}
+Marius Cordts, Mohamed Omran, Sebastian Ramos, Timo Rehfeld, Markus Enzweiler,
+  Rodrigo Benenson, Uwe Franke, Stefan Roth, and Bernt Schiele.
+\newblock The cityscapes dataset for semantic urban scene understanding.
+\newblock In {\em Proc. of the IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2016.
+
+\bibitem{perceptual_cvpr18}
+Richard Zhang, Phillip Isola, Alexei Efros, Eli Shechtman, and Oliver Wang.
+\newblock The unreasonable effectiveness of deep features as a perceptual
+  metric.
+\newblock In {\em CVPR}, pages 586--595, 06 2018.
+
+\bibitem{Johnson2016PerceptualLF}
+Justin Johnson, Alexandre Alahi, and Li~Fei-Fei.
+\newblock Perceptual losses for real-time style transfer and super-resolution.
+\newblock In {\em ECCV}, 2016.
+
+\bibitem{1284395}
+Zhou Wang, Alan~C. Bovik, Hamid~R. Sheikh, and Eero~P. Simoncelli.
+\newblock Image quality assessment: from error visibility to structural
+  similarity.
+\newblock {\em IEEE Transactions on Image Processing}, 13(4):600--612, April
+  2004.
+
+\bibitem{NIPS2014_5423}
+Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley,
+  Sherjil Ozair, Aaron Courville, and Yoshua Bengio.
+\newblock Generative adversarial nets.
+\newblock In Z.~Ghahramani, M.~Welling, C.~Cortes, N.~D. Lawrence, and K.~Q.
+  Weinberger, editors, {\em Advances in Neural Information Processing Systems
+  27}, pages 2672--2680. Curran Associates, Inc., 2014.
+
+\bibitem{He_2016_CVPR}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em The IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, June 2016.
+
+\bibitem{Sandler_2018_CVPR}
+Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
+  Chen.
+\newblock Mobilenetv2: Inverted residuals and linear bottlenecks.
+\newblock In {\em The IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, June 2018.
+
+\bibitem{ILSVRC15}
+Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
+  Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein,
+  Alexander~C. Berg, and Li~Fei-Fei.
+\newblock {ImageNet Large Scale Visual Recognition Challenge}.
+\newblock {\em International Journal of Computer Vision (IJCV)},
+  115(3):211--252, 2015.
+
+\end{thebibliography}
+ 
+}
+
+\newpage
+\input{tex/sup.tex}
+
+\end{document}

@@ -1,0 +1,280 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}       \usepackage{url}            \usepackage{booktabs}       \usepackage{amsfonts}       \usepackage{nicefrac}       \usepackage{microtype}      \usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{titling}
+\PassOptionsToPackage{numbers, compress}{natbib}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage[ruled,vlined]{algorithm2e}
+
+\newcommand{\dataset}{{\cal D}}
+\newcommand{\fracpartial}[2]{\frac{\partial #1}{\partial  #2}}
+
+\setlength{\droptitle}{-5em}
+\author{Michael Minyi Zhang$ ^{1} $, Bianca Dumitrascu$^{2}$, Sinead A. Williamson$ ^{3,4} $,\\ 
+	Barbara E. Engelhardt$ ^{1} $}
+\title{Sequential Gaussian Processes for Online Learning of Nonstationary Functions}
+\date{\texttt{mz8@cs.princeton.edu, biancad@samsi.info, sinead.williamson@mccombs.utexas.edu, bee@cs.princeton.edu}\\
+	$^{1}$ Department of Computer Science. Princeton University.\\
+	$^{2}$ The Statistical and Applied Mathematical Sciences Institute.\\
+	$^{3}$ Department of Statistics and Data Science. The University of Texas at Austin.\\
+	$^{4}$ Department of Information, Risk, and Operations Management. McCombs School of Business. The University of Texas at Austin.\\
+	\vspace{2em} 
+	\today}	
+\begin{document}
+	\maketitle
+	\begin{abstract}
+		\input{abstract}
+	\end{abstract}
+	\input{intro}
+	\input{background}
+	\input{method}
+	\input{experiments}
+	\input{conclusion}
+	\bibliographystyle{apalike}
+	\begin{thebibliography}{}
+
+\bibitem[Aldous, 1985]{Aldous:1985}
+Aldous, D.~J. (1985).
+\newblock Exchangeability and related topics.
+\newblock In {\em {\'E}cole d'{\'E}t{\'e} de Probabilit{\'e}s de Saint-Flour
+  XIII—1983}, pages 1--198. Springer.
+
+\bibitem[Antoniak, 1974]{Antoniak:1974}
+Antoniak, C.~E. (1974).
+\newblock Mixtures of {D}irichlet processes with applications to {B}ayesian
+  nonparametric problems.
+\newblock {\em The Annals of Statistics}, pages 1152--1174.
+
+\bibitem[Bergstra et~al., 2011]{Bergstra:Bardenet:Bengio:Kegl:2011}
+Bergstra, J.~S., Bardenet, R., Bengio, Y., and K{\'e}gl, B. (2011).
+\newblock Algorithms for hyper-parameter optimization.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  2546--2554.
+
+\bibitem[Bui et~al., 2017]{Bui:Nguyen:Turner:2017}
+Bui, T.~D., Nguyen, C., and Turner, R.~E. (2017).
+\newblock Streaming sparse {G}aussian process approximations.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  3299--3307.
+
+\bibitem[Chapelle and Li, 2011]{TS}
+Chapelle, O. and Li, L. (2011).
+\newblock An empirical evaluation of {T}hompson {S}ampling.
+\newblock In {\em Advances in neural information processing systems}, pages
+  2249--2257.
+
+\bibitem[Cheng et~al., 2017]{Cheng:2017}
+Cheng, L.-F., Darnell, G., Dumitrascu, B., Chivers, C., Draugelis, M.~E., Li,
+  K., and Engelhardt, B.~E. (2017).
+\newblock Sparse multi-output {G}aussian processes for medical time series
+  prediction.
+\newblock {\em arXiv preprint arXiv:1703.09112}.
+
+\bibitem[Csat{\'o} and Opper, 2002]{Csato:Opper:2002}
+Csat{\'o}, L. and Opper, M. (2002).
+\newblock Sparse on-line {G}aussian processes.
+\newblock {\em Neural Computation}, 14(3):641--668.
+
+\bibitem[Dalc\'{i}n et~al., 2005]{Dalcin:2005}
+Dalc\'{i}n, L., Paz, R., and Storti, M. (2005).
+\newblock {MPI} for {P}ython.
+\newblock {\em Journal of Parallel and Distributed Computing}, 65(9):1108 --
+  1115.
+
+\bibitem[Deisenroth and Ng, 2015]{Deisenroth:Ng:2015}
+Deisenroth, M.~P. and Ng, J.~W. (2015).
+\newblock Distributed {G}aussian processes.
+\newblock In {\em International Conference on Machine Learning}, pages
+  1481--1490.
+
+\bibitem[Doucet and Johansen, 2009]{Doucet:Johansen:2009}
+Doucet, A. and Johansen, A.~M. (2009).
+\newblock A tutorial on particle filtering and smoothing: Fifteen years later.
+
+\bibitem[Escobar and West, 1995]{Escobar:West:1995}
+Escobar, M.~D. and West, M. (1995).
+\newblock Bayesian density estimation and inference using mixtures.
+\newblock {\em Journal of the American Statistical Association},
+  90(430):577--588.
+
+\bibitem[Futoma et~al., 2017a]{Futoma:Hariharan:Heller:2017}
+Futoma, J., Hariharan, S., and Heller, K. (2017a).
+\newblock Learning to detect sepsis with a multitask {G}aussian process {RNN}
+  classifier.
+\newblock In {\em Proceedings of the 34th International Conference on Machine
+  Learning-Volume 70}, pages 1174--1182. JMLR. org.
+
+\bibitem[Futoma et~al., 2017b]{Futoma:2017}
+Futoma, J., Hariharan, S., Sendak, M., Brajer, N., Clement, M., Bedoya, A.,
+  O'Brien, C., and Heller, K. (2017b).
+\newblock An improved multi-output {G}aussian process {RNN} with real-time
+  validation for early sepsis detection.
+\newblock {\em arXiv preprint arXiv:1708.05894}.
+
+\bibitem[{GPy}, 2012]{gpy:2014}
+{GPy} (2012).
+\newblock {GPy}: A {G}aussian process framework in {P}ython.
+\newblock \url{http://github.com/SheffieldML/GPy}.
+
+\bibitem[Gramacy and Lee, 2008]{Gramacy:Lee:2005}
+Gramacy, R.~B. and Lee, H. K.~H. (2008).
+\newblock Bayesian treed {G}aussian process models with an application to
+  computer modeling.
+\newblock {\em Journal of the American Statistical Association},
+  103(483):1119--1130.
+
+\bibitem[Gramacy and Polson, 2011]{Gramacy:Polson:2011}
+Gramacy, R.~B. and Polson, N.~G. (2011).
+\newblock Particle learning of {G}aussian process models for sequential design
+  and optimization.
+\newblock {\em Journal of Computational and Graphical Statistics},
+  20(1):102--118.
+
+\bibitem[Haji~Ghassemi and Deisenroth, 2014]{Hajighassemi:Deisenroth:2014}
+Haji~Ghassemi, N. and Deisenroth, M. (2014).
+\newblock Analytic long-term forecasting with periodic gaussian processes.
+\newblock In {\em Artificial Intelligence and Statistics}, pages 303--311.
+
+\bibitem[Hutter et~al., 2011]{Hutter:2011}
+Hutter, F., Hoos, H.~H., and Leyton-Brown, K. (2011).
+\newblock Sequential model-based optimization for general algorithm
+  configuration.
+\newblock In {\em International Conference on Learning and Intelligent
+  Optimization}, pages 507--523. Springer.
+
+\bibitem[Johnson et~al., 2016]{Johnson:Pollard:2016}
+Johnson, A.~E., Pollard, T.~J., Shen, L., Li-wei, H.~L., Feng, M., Ghassemi,
+  M., Moody, B., Szolovits, P., Celi, L.~A., and Mark, R.~G. (2016).
+\newblock {MIMIC-III}, a freely accessible critical care database.
+\newblock {\em Scientific Data}, 3:160035.
+
+\bibitem[Li et~al., 2016]{li2016hyperband}
+Li, L., Jamieson, K., DeSalvo, G., Rostamizadeh, A., and Talwalkar, A. (2016).
+\newblock Hyperband: A novel bandit-based approach to hyperparameter
+  optimization.
+\newblock {\em arXiv preprint arXiv:1603.06560}.
+
+\bibitem[Liu, 2008]{Liu:2008}
+Liu, J.~S. (2008).
+\newblock {\em {M}onte {C}arlo strategies in scientific computing}.
+\newblock Springer Science \& Business Media.
+
+\bibitem[Low et~al., 2015]{Low:2015}
+Low, K.~H., Yu, J., Chen, J., and Jaillet, P. (2015).
+\newblock Parallel {G}aussian process regression for big data: Low-rank
+  representation meets {M}arkov approximation.
+\newblock In {\em AAAI Conference on Artificial Intelligence}.
+
+\bibitem[Ng and Deisenroth, 2014]{Ng:Deisenroth:2014}
+Ng, J.~W. and Deisenroth, M.~P. (2014).
+\newblock Hierarchical mixture-of-experts model for large-scale {G}aussian
+  process regression.
+\newblock {\em arXiv preprint arXiv:1412.3078}.
+
+\bibitem[Nguyen-Tuong et~al., 2009]{Nguyen:Peters:Seeger:2009}
+Nguyen-Tuong, D., Peters, J.~R., and Seeger, M. (2009).
+\newblock Local {G}aussian process regression for real time online model
+  learning.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  1193--1200.
+
+\bibitem[Osborne et~al., 2008]{Osborne:Roberts:2008}
+Osborne, M.~A., Roberts, S.~J., Rogers, A., Ramchurn, S.~D., and Jennings,
+  N.~R. (2008).
+\newblock Towards real-time information processing of sensor network data using
+  computationally efficient multi-output {G}aussian processes.
+\newblock In {\em International Conference on Information Processing in Sensor
+  Networks}, pages 109--120. IEEE.
+
+\bibitem[Paciorek and Schervish, 2004]{Paciorek:Schervish:2004}
+Paciorek, C.~J. and Schervish, M.~J. (2004).
+\newblock Nonstationary covariance functions for {G}aussian process regression.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  273--280.
+
+\bibitem[Rasmussen and Ghahramani, 2002]{Rasmussen:Ghahramani:2002}
+Rasmussen, C.~E. and Ghahramani, Z. (2002).
+\newblock Infinite mixtures of {G}aussian process experts.
+\newblock In {\em Neural Information Processing Systems}, pages 881--888.
+
+\bibitem[Rasmussen and Ghahramani, 2003]{Rasmussen:Ghahramani:2003}
+Rasmussen, C.~E. and Ghahramani, Z. (2003).
+\newblock Bayesian {M}onte {C}arlo.
+\newblock {\em Advances in Neural Information Processing Systems}, pages
+  505--512.
+
+\bibitem[Rasmussen and Williams, 2006]{Rasmussen:Williams:2006}
+Rasmussen, C.~E. and Williams, C. K.~I. (2006).
+\newblock {G}aussian processes for machine learning.
+\newblock {\em Gaussian Processes for Machine Learning}.
+
+\bibitem[Russo and Van~Roy, 2014]{russo2014}
+Russo, D. and Van~Roy, B. (2014).
+\newblock Learning to optimize via posterior sampling.
+\newblock {\em Mathematics of Operations Research}, 39(4):1221--1243.
+
+\bibitem[Russo et~al., 2017]{russo2017}
+Russo, D., Van~Roy, B., Kazerouni, A., and Osband, I. (2017).
+\newblock A {T}utorial on {T}hompson {S}ampling.
+\newblock {\em arXiv preprint arXiv:1707.02038}.
+
+\bibitem[Snelson and Ghahramani, 2005]{Snelson:Ghahramani:2005}
+Snelson, E. and Ghahramani, Z. (2005).
+\newblock Sparse {G}aussian processes using pseudo-inputs.
+\newblock In {\em Neural Information Processing Systems}, pages 1257--1264.
+
+\bibitem[Snoek et~al., 2012]{Snoek:Larochelle:Adams:2012}
+Snoek, J., Larochelle, H., and Adams, R.~P. (2012).
+\newblock Practical {B}ayesian optimization of machine learning algorithms.
+\newblock In {\em Neural Information Processing Systems}, pages 2951--2959.
+
+\bibitem[Srinivas et~al., 2009]{Srinivas:Krause:Kakade:Seeger:2009}
+Srinivas, N., Krause, A., Kakade, S.~M., and Seeger, M. (2009).
+\newblock Gaussian process optimization in the bandit setting: No regret and
+  experimental design.
+\newblock {\em arXiv preprint arXiv:0912.3995}.
+
+\bibitem[Svensson et~al., 2015]{Svensson:Dahlin:Schon:2015}
+Svensson, A., Dahlin, J., and Sch{\"o}n, T.~B. (2015).
+\newblock Marginalizing {G}aussian process hyperparameters using sequential
+  {M}onte {C}arlo.
+\newblock In {\em 2015 IEEE 6th International Workshop on Computational
+  Advances in Multi-Sensor Adaptive Processing (CAMSAP)}, pages 477--480. IEEE.
+
+\bibitem[Titsias, 2009]{Titsias:2009}
+Titsias, M.~K. (2009).
+\newblock Variational learning of inducing variables in sparse {G}aussian
+  processes.
+\newblock In {\em Artificial Intelligence and Statistics}, volume~5, pages
+  567--574.
+
+\bibitem[Urteaga and Wiggins, 2018]{urteaga2018sequential}
+Urteaga, I. and Wiggins, C.~H. (2018).
+\newblock ({S}equential) importance sampling bandits.
+\newblock {\em arXiv preprint arXiv:1808.02933}.
+
+\bibitem[Wang et~al., 2013]{Wang:Zoghi:Hutter:co:2013}
+Wang, Z., Zoghi, M., Hutter, F., Matheson, D., and De~Freitas, N. (2013).
+\newblock Bayesian optimization in high dimensions via random embeddings.
+\newblock In {\em Twenty-Third International Joint Conference on Artificial
+  Intelligence}.
+
+\bibitem[Whittle, 1988]{restlessbandit}
+Whittle, P. (1988).
+\newblock Restless bandits: Activity allocation in a changing world.
+\newblock {\em Journal of Applied Probability}, 25(A):287--298.
+
+\bibitem[Zhang and Williamson, 2017]{Zhang:Williamson:2017}
+Zhang, M.~M. and Williamson, S.~A. (2017).
+\newblock Embarrassingly parallel inference for {G}aussian processes.
+\newblock arXiv:1702.08420.
+
+\end{thebibliography}
+ 
+\end{document}
