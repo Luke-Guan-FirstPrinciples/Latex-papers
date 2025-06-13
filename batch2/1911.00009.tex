@@ -1,0 +1,3618 @@
+\documentclass[apj]{emulateapj}
+
+
+
+\usepackage{natbib}
+
+
+\usepackage{graphicx}
+\usepackage[percent]{overpic}
+\usepackage{lipsum}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{mwe,tikz}
+\usepackage[percent]{overpic}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage[utf8x]{inputenc}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\urlstyle{same}
+
+
+\usepackage{soul}
+
+\newcommand{\msun}{${\rm M_{\sun}}$}
+\def\ltsima{$\; \buildrel < \over \sim \;$}
+\def\simlt{\lower.5ex\hbox{\ltsima}}
+\def\gtsima{$\; \buildrel > \over \sim \;$}
+\def\simgt{\lower.5ex\hbox{\gtsima}}
+\def\km{{\rm\,km}}
+\def\kms{{\rm\,km\,s^{-1}}}
+\def\km2s2{{\rm\,km^{2}\,s^{-2}}}
+\def\pc{{\rm\,pc}}
+\def\kpc{{\rm\,kpc}}
+\def\mpc{{\rm\,Mpc}}
+\def\msun{{\rm\,M_\odot}}
+\def\lsun{{\rm\,L_\odot}}
+\newcommand{\fmmm}[1]{\mbox{$#1$}}
+\newcommand{\scnd}{\mbox{\fmmm{''}\hskip-0.3em .}}
+\newcommand{\scnp}{\mbox{\fmmm{''}}}
+\newcommand{\mcnd}{\mbox{\fmmm{'}\hskip-0.3em .}}
+\newcommand{\mcnp}{\mbox{\fmmm{'}}}
+\makeatletter
+\makeatother
+
+\interfootnotelinepenalty=10000
+
+
+\def\deg{^\circ}
+\def\degg{\hbox{$\null^\circ$\hskip-3pt .}}
+\def\sec{\hbox{"\hskip-3pt .}}
+\def\etal{{\it et al.\ }}
+
+\def\Gyr{{\rm\,Gyr}}
+\def\Myr{{\rm\,Myr}}
+\def\kmsd{{\rm\,km/s/degree}}
+\def\masyr{{\rm\,mas \, yr^{-1}}}
+
+\def\etal{{et al.~}}
+\def\ltsima{$\; \buildrel < \over \sim \;$}
+\def\gtsima{$\; \buildrel > \over \sim \;$}
+
+\def\CCocoon{{\it\,COCOON\,}}
+\def\cocoon{{\it\,cocoon\,}}
+
+\def\Khyati#1{\noindent{{\color{black} \bf[$\diamondsuit$ #1]}}}
+\def\Khyatii#1{\noindent{{\color{blue} #1}}}
+
+
+
+
+
+\slugcomment{Accepted by The Astrophysical Journal Letters}
+
+
+\shorttitle{Phase-space correlation in cold stellar streams}
+\shortauthors{Malhan et al.}
+
+
+
+
+\begin{document}
+
+\title{Phase-space correlation in stellar streams of the Milky Way halo:\\ The clash of Kshir and GD-1\altaffilmark{1}}
+
+\email{khyati.malhan@fysik.su.se}
+
+\author{Khyati Malhan\altaffilmark{2}, Rodrigo A. Ibata\altaffilmark{3}, Raymond G. Carlberg\altaffilmark{4}, Michele Bellazzini\altaffilmark{5}, Benoit Famaey\altaffilmark{3} and Nicolas F. Martin\altaffilmark{3}}
+
+\altaffiltext{1}{Based on observations obtained at the Canada-France-Hawaii Telescope (CFHT) which is operated by the National Research Council of Canada, the Institut National des Sciences de l´Univers of the Centre National de la Recherche Scientique of France, and the University of Hawaii.}
+
+\altaffiltext{2}{The  Oskar  Klein  Centre  for  Cosmoparticle  Physics,  Department  of Physics,  Stockholm  University,  AlbaNova,  10691  Stockholm,  Sweden}
+\altaffiltext{3}{Universit\'e de Strasbourg, CNRS, Observatoire Astronomique de Strasbourg, UMR 7550, F-67000 Strasbourg, France}
+\altaffiltext{4}{Department of Astronomy \& Astrophysics, University of Toronto, Toronto, ON M5S 3H4, Canada}
+\altaffiltext{5}{INAF - Osservatorio di Astrofisica e Scienza dello Spazio, via Gobetti 93/3, 40129 Bologna, Italy}
+
+\begin{abstract}
+We report the discovery of a $70\deg$ long stellar stream in the Milky Way halo, which criss-crosses the well known ``GD-1'' stream.  We show that this new stellar structure (``Kshir'') and GD-1 lie at similar distance, and are remarkably correlated in kinematics. We propose several explanations for the nature of this new structure and its possible association with GD-1. However, a scenario in which these two streams were accreted onto the Milky Way within the same dark matter sub-halo seems to provide a natural explanation for their phase-space entanglement, and other complexities of this coupled-system.
+\end{abstract}
+\keywords{dark matter - Galaxy: halo - globular clusters: general - stars: kinematics and dynamics}
+
+\section{Introduction}\label{sec:Introduction}
+
+
+Stellar streams are ``fossil'' remnants of accretion events that are formed by the tidal disruption of satellite systems as they accrete and begin to orbit in the gravitational potential of the host galaxy. More than 50 streams have been detected so far in the Milky Way halo (for e.g., \citealt{Ibata2001Sgr, Belokurov2006, Grillmair2009_fourStreams, Bernard2016, Balbinot2016Phoenix, Myeong2017_Streams, Shipp2018, Malhan_Ghostly_2018, Ibata_Norse_streams2019}). A large fraction of these old and metal poor structures are observed as narrow and one-dimensional structures \citep{GrillmairCarlin2016}, and are explained as stellar debris produced from globular clusters (GCs), that were perhaps brought in by their parent dark satellite galaxies during accretion \citep{Renaud2017}. Due mainly to their simple morphology and lack of associations with any other observed components of the stellar halo, the GC streams are generally modeled independently as simple GCs disrupting under the tidal force field of the host galaxy (e.g., \citealt{Dehnen2004}). The good match between observations and such simple models, in effect, also favours primeval models of GC formation - a scenario in which GCs originate from dark matter free gravitationally-bound gas clouds in the early Universe \citep{Kravtsov2005, Kruijssen2014}, and then later migrate into the host galaxy. 
+
+In this work, we report the discovery of a new Milky Way stream, and find that it criss-crosses through the previously well known ``GD-1'' stream. We demonstrate that GD-1 and this new structure are highly correlated in distance and kinematics, and have similar stellar populations. 
+We discuss the possible interpretations of the origin of this remarkable entangled system, and the potential implications of our results in dark matter and GC formation studies.
+
+\begin{figure*}
+\begin{center}
+\vspace{-0.3cm}
+\includegraphics[width=0.94\hsize]{Fig_1_final.pdf}
+\end{center}
+\vspace{-0.5cm}
+\caption{Spatial and kinematic distribution of GD-1 and Kshir. a: Sky position in $\phi_1-\phi_2$ coordinates, which are a rotated celestial system aligned along GD-1. The narrow GD-1 ($\approx 30$ pc wide) can be immediately spotted along $\phi_2 \sim 0\deg$. Some additional features can also be observed, such as the low density regions along the stream, the ``spur'' component and the ``cocoon'' component ($\simgt 100$ pc wide). An arc-like structure can be seen at $(\phi_1,\phi_2) \sim (10\deg,8\deg)$, which we refer to as ``Kshir''. Spectroscopically confirmed members for Kshir are shown in yellow. The region of  sky containing the foreground open cluster M67 $(d_{\odot}\sim 0.9\kpc)$ was masked out prior to the running of the \texttt{STREAMFINDER}. The bold arrows indicate the direction of motion of the two streams. Panels b, c and d show, respectively, proper motion in $\mu_{\alpha}$, $\mu_{\delta}$, and parallax $\overline{\mathbb{\omega}}$, as a function of $\phi_1$. Panel e shows the heliocentric line-of-sight velocities $v_{\rm los}$ of the members of GD-1 (pink) and Kshir (yellow). The derived orbits of the two structures are shown in each panel, and can be seen to be very similar.}
+\label{fig:Fig_1_new}
+\end{figure*}
+
+
+
+\section{GD-1 and its neighbour}\label{sec:GD1_and_sibling}
+
+Ranging in heliocentric distance between $d_{\odot} \sim 8-12\kpc$, the GD-1 stream \citep{GrillmairGD12006} has been observed as an $\sim 80\deg$ long ($\sim 12\kpc$, \citealt{WhelanBonacaGD12018}), narrow ($\approx 20\pc$ in physical width, \citealt{Koposov2010}), linear stellar structure. This GC stream is dynamically very cold (with a velocity dispersion of $\approx 1 \kms$, \citealt{Malhan2018PotentialGD1}, MI19 hereafter) and is remarkably metal deficient ([Fe/H]$= -2.24\pm0.21$ dex).
+
+Fig~\ref{fig:Fig_1_new}a shows the density map in the region around GD-1 that we obtained by processing the entire ESA/Gaia DR2 datatset \citep{GaiaDR2_2018_Brown, GaiaDR2_2018_astrometry} with the \texttt{STREAMFINDER} software \citep{Malhan2018_SF, Malhan_Ghostly_2018, Ibata_Norse_streams2019}. Briefly, \texttt{STREAMFINDER} works by examining every star in the Gaia survey in turn, sampling the possible orbits consistent with the observed photometry and kinematics, and finding the maximum-likelihood stream solution given a contamination model and a stream model. As in \cite{Malhan_Ghostly_2018}, we de-reddened the survey using the \cite{Schlegel1998} dust maps, and kept only those stars with (de-reddened) $G_0<19.5$ to ensure homogeneous depth over the sky. The stream width parameter in the search algorithm was set to $50\pc$, and we used single stellar population (SSP) template models from the PARSEC stellar tracks library \citep{Parsec_isochrones2012} of age $12.5\Gyr$, and scanned a range of metallicities of ${\rm [Fe/H]}=-2.2, -2.0, -1.6, -1.2, -0.8, -0.4$. For each processed star, we thus obtained 6 stream solutions, corresponding to the 6 trial SSP metallicity values, and we accepted the solution that yielded the highest likelihood. GD-1 appears as a completely distinguished structure in our \texttt{STREAMFINDER} maps, as shown in Fig~\ref{fig:Fig_1_new}a. It transpires that the best orbital solution for 88\% of the GD-1 stars is obtained with an SSP template with metallicity ${\rm [Fe/H]}=-2.2$, similar to the measured [Fe/H] value (MI19)\footnote{The value 88\% corresponds to the fraction of stars (identified as GD-1) obtained as stream solution using that particular [Fe/H] model.}. We also set the stream-detection significance to $>8\sigma$, which means that at the position of every star, the algorithm finds that there is a $>8\sigma$ significance for there to be a stream-like structure. This results in a sample of $811$ stars in the region around GD-1 that are shown in Fig~\ref{fig:Fig_1_new}a (red and blue points). The region of the sky containing the foreground open cluster M67 was masked out prior to running the \texttt{STREAMFINDER}.
+
+Fig~\ref{fig:Fig_1_new}a reveals the complex structure that surrounds the thin GD-1 stream (shown with red points). The plot is presented in $\phi_1 - \phi_2$ coordinates \citep{Koposov2010}, which align along GD-1. A narrow component of GD-1 ($\approx 30\pc$ wide) can be readily seen along $\phi_2 \approx 0\deg$, enveloped by a broad and diffuse structure ($\simgt 100\pc$ wide). This extended component was previously reported in \cite{MalhanCocoonDetection2019}, and was referred to as the \cocoon component. The code also tentatively detected the previously-known low density regions and the ``spur'' component \citep{WhelanBonacaGD12018}. 
+
+The present study focuses on the detection of the arc-like feature that is conspicuously visible in Fig~\ref{fig:Fig_1_new}a at $(\phi_1,\phi_2) \approx (10\deg,8\deg)$, skirting almost parallel to GD-1 (shown with blue points). We refer to this structure as ``Kshir''\footnote{In Hindu mythology, {\it Kshir} refers to a water body made of milk.}. Based on the orbital analysis of the \texttt{STREAMFINDER} code, we note that both Kshir and GD-1 are found by the algorithm with similar values of the $z$-component of angular momentum ($L_z$) and energy ($E$). In particular, the algorithm (in the adopted potential model) estimates $(L_z, E)_{\rm GD1}=(2900\pm800\kpc\kms, -88000\pm19000\km2s2)$ and $(L_z, E)_{\rm Kshir}=(3200\pm600\kpc\kms, -89000\pm13000\km2s2)$. This indicates that they are, perhaps, part of the same coherent group and share a common origin. The \texttt{STREAMFINDER} detects a total of $42$ stars for the Kshir stream from Gaia DR2. We realized that one of these stars fortuitously had a spectroscopic observation in the SDSS/Segue (DR10, \citealt{SEGUE_SDSS2009}), from which we obtained the metallicity (${\rm [Fe/H]}$) and line-of-sight velocity $(v_{\rm los})$ values. A further 2 stars were observed with the ESPaDOnS high-resolution spectrograph on the Canada-France-Hawaii Telescope (CFHT) in service mode, as a part of our own follow up program. The data were reduced with the Libre-ESpRIT pipeline \citep{1997MNRAS.291..658D}, and we measured the stars' velocities using the {\tt fxcor} command in IRAF. The chemical abundances of the stars (which are part of a much larger sample of streams) are currently being analysed, and will be presented in a later contribution. These $3$ stars are mentioned in the top rows of Table~\ref{tab:GD1x_inventory} and are also shown in Fig~\ref{fig:Fig_1_new}. Kshir is already visible in Fig~1 of \cite{MalhanCocoonDetection2019}, however was not focussed upon, as we previously lacked spectroscopic measurements for this structure.
+
+
+We used the Kshir orbit model, derived in Section~\ref{sec:orbits}, to find additional member stars that lie along its trajectory. To this end, we used the 5D astrometric measurements (that came from Gaia DR2 for blue stars shown in Fig~\ref{fig:Fig_1_new}a), in combination with the aforementioned $3$ velocity measurements, for Kshir stars to obtain a solution for its orbit. This orbit-fitting procedure is detailed in Section~\ref{sec:orbits}. We now assume that we possess a reasonable orbital representation of the Kshir structure.
+
+
+\begin{figure}
+\begin{center}
+\vbox{
+\includegraphics[width=0.90\hsize]{Fig_2a_FeH.pdf}
+\includegraphics[width=0.90\hsize]{Fig_2b_CMD.pdf}
+}
+\end{center}
+\vspace{-0.5cm}
+\caption{Metallicity and photometry of GD-1 and Kshir. {\it Top panel:} [Fe/H] distribution of spectroscopically-confirmed members of GD-1 (red) and Kshir (blue) stars. {\it Bottom panel:} Gaia (de-reddened) color-magnitude diagram of all member stars of Kshir and GD-1, previously shown in Fig~\ref{fig:Fig_1_new}. The absolute magnitude were then obtained by correcting the observed magnitude value for the orbital distance of each star. Two SSP template models, corresponding to the mean metallicity values of the streams, are also shown.}
+\label{fig:Fig_chemistry}
+\end{figure}
+
+
+To identify additional spectroscopic members of Kshir, we first created a special dataset by cross-matching the Gaia DR2 catalogue with the SDSS \citep{SEGUE_SDSS2009} and LAMOST DR4 \citep{Lamost2012} spectroscopic datasets, and selected those stars with Gaia colors in the range $(0.40<[G_{\rm BP}−G_{\rm RP}]_0<1.60)$, with magnitude $(G_0 < 20)$, and with spectroscopic metallicity ${\rm [Fe/H]< -0.5\,dex}$. We further selected those stars that lie within $3\sigma$ of Kshir's orbit model in the observed parallax $(\overline{\mathbb{\omega}})$, proper motion  $(\mu_{\alpha}$, $\mu_{\delta})$, and line of sight velocity $v_{\rm los}$ space, and within $\sim 300 \pc$ perpendicular to the orbit (which defines the maximum possible stream width). We do not make any additional selections in photometry and [Fe/H] at this stage, since we do not a-priori know the properties of Kshir's stellar population. This 6-dimensional selection yields a total of $13$ stars ($8$ from SEGUE and $5$ from LAMOST), that represent additional Kshir's candidate members. These stars were not previously identified by the \texttt{STREAMFINDER} due to their lower contrast. We verified that the expected contamination from a smooth halo model (as predicted by the GUMS simulation, \citealt{GUMS2012_Robin}) along Kshir's orbit is nearly zero.
+
+
+The combined phase-space properties of the stellar members of Kshir and GD-1 are plotted in Fig~\ref{fig:Fig_1_new}a-e (along with the spectroscopically confirmed members for Kshir that are shown in yellow). One readily observes that GD-1 and Kshir intersect spatially, at $\phi_1 \approx -20\deg$, and are also strongly entangled in proper motion space. In the $v_{\rm los}$ panel, the stars corresponding to GD-1 refer to the spectroscopically-confirmed members inventoried in MI19. It can be easily discerned that Kshir stars lie quite close to the GD-1 stars even in $v_{\rm los}$ space. The orbit of GD-1 (obtained from MI19) and Kshir look very similar in every phase-space dimension, and Kshir's orbit predicts similar $v_{\rm los}$ gradient along the length of the stream as observed for GD-1, with an almost constant offset of $\approx 20\kms$. We caution that the lack of stars between $\phi_1\sim-25\deg\,\rm{to}\,0\deg$ in Kshir may either be physical in origin, or could be due to the selection effect of the SEGUE and LAMOST surveys; however is hard to quantify at this stage. Also note that the leading part of Kshir (dominated by 6D members) appears much wider than the trailing part. This result could be specific to the criteria adopted here to select Kshir stars, and future analysis (with a larger sample size) should better characterise the structural morphology of this stream.
+
+The uncertainty-weighted average mean parallax for Kshir (for blue points in Fig~\ref{fig:Fig_1_new}) is $<\overline{\mathbb{\omega}}>=0.10\pm 0.01$ mas, i.e. $\sim 10\kpc$ in distance, which is similar to the distance of the GD-1 orbit in the same range of $\phi_1$ ($\sim 8.5 \kpc$). The metallicities of Kshir and GD-1 are compared in Figure~\ref{fig:Fig_chemistry}a. We find ${\rm [Fe/H]}= -1.78\pm0.21$ dex for Kshir, implying that it is systematically more metal-rich than GD-1 by $\sim 0.4$ dex. On performing a two-sample Kolmogorov-Smirnov (KS) test for the null hypothesis that the two [Fe/H] samples are drawn from the same distribution, the resulting probability was found to be $p_{\rm KS}=3.78\times10^{-5}$: indicating that the hypothesis can be rejected at the $4\sigma$ level. Their stellar populations are compared in Figure~\ref{fig:Fig_chemistry}b, where we display the magnitudes corrected for the distance of the stars, as estimated from the orbit models at the corresponding value of $\phi_1$. While the CMDs appear similar, the metallicity distributions suggest that the stellar populations are not identical. 
+
+
+
+\section{Orbit}\label{sec:orbits}
+
+In MI19 we implemented an orbit-fitting procedure to a sample of GD-1 stars in order to constrain the gravitational potential of the Milky Way. This orbit is shown in Fig~\ref{fig:Fig_1_new}. Here we fix the Galactic potential model derived in that study (which has a circular velocity at the Solar radius of $V_{\rm circ}(R_{\odot}) = 244\kms$, and a density flattening of the dark halo as $q_{\rho}= 0.82$), and follow a similar procedure (with identical likelihood function) as that presented in MI19 to fit the orbit of Kshir. 
+
+We used the $42$ Kshir stars identified by the \texttt{STREAMFINDER} (shown as blue points in Fig~\ref{fig:Fig_1_new}), in combination with the $3$ velocity measurements from CFHT and SEGUE that are available for those targets\footnote{We dealt with the missing $v_{\rm los}$ information for the remaining $39$ stars by setting them all to $v_{\rm los}=0\kms$, but with a Gaussian uncertainty of $10^4\kms$. The results are almost identical if instead an uncertainty of $10^3\kms$ is assumed. The choice of adopting a $10^4\kms$ uncertainty is effectively imposing a prior that the stars must be located in the local universe.}. The best-fit orbit for Kshir is shown in Fig~\ref{fig:Fig_1_new}. We find its orbit to be more circular than that of GD-1 (see Fig~\ref{fig:Fig_orbits}), but with $L_z (\sim 2700\pm 200 \kpc\kms)$ comparable to that of GD-1 ($L_z \sim 2950 \kpc\kms$, MI19). The difference in the $L_z$ values stems from the aforementioned offset in the kinematic measurements between the two structures.
+
+These orbits suggest that the last closest approach between Kshir and GD-1 occurred $\sim 1.7\Gyr$ ago with an impact parameter of $\sim 1-2\kpc$, although we caution that these values depend on the assumed Galactic potential model.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\hsize]{Fig_orbit.pdf}
+\end{center}
+\vspace{-0.4cm}
+\caption{The orbital trajectories of GD-1 and Kshir in the Galactocentric Cartesian system. {\it Top panels:} GD-1's orbit (silver). For perspective, the current locations of GD-1 (red) and Kshir (blue) are also shown. The Galactic centre lies at the origin and the Sun (yellow dot) is at (X,Y,Z)$= (−8.122,0,0) \kpc$. The orbit was integrated backwards in time for 3 Gyr. The arrows represent the direction of motion of the structures. {\it Bottom panels:} As above, but showing Kshir's orbit (black).}
+\label{fig:Fig_orbits}
+\end{figure}
+
+
+\begin{table}
+\caption{Spectroscopically confirmed members of Kshir. The sky coordinates are from Gaia DR2, while the $v_{\rm los}$ and [Fe/H] are measurements from CFHT (C), SEGUE (S) and LAMOST (L).}
+\vspace{-0.4cm}
+\label{tab:GD1x_inventory}
+\begin{center}
+\begin{tabular}{ccccc}
+\hline
+RA J2000 & Dec J2000 & $\rm{v_{los}}$ & ${\rm [Fe/H]}$  & Source \\
+
+[deg] & [deg] & $[\kms]$ & $[\rm{dex}]$  & \\
+\hline
+
+201.53579  &  67.28841  &  -206.32  &  -1.78 &     S\\
+205.87918  &  67.57526  &  -249.95  &    $-$    &     C\\
+230.38107  &  68.16672  &  -284.78  &    $-$    &     C\\
+\hline
+147.96434 	&	9.65499 	&	129.28 	&	-1.56 	&	L\\
+150.32399 	&	23.73448 	&	45.09 	&	-1.76 	&	L\\
+153.05409 	&	25.1087 	&	43.33 	&	-1.74 	&	S\\
+153.10830 	&	26.59341 	&	74.75 	&	-1.41 	&	L\\
+154.73641 	&	37.16519 	&	-58.23 	&	-1.47 	&	L\\
+156.31086 	&	39.28787 	&	-54.95 	&	-1.94 	&	S\\
+156.64035 	&	27.9157 	&	41.96 	&	-1.71 	&	S\\
+157.84587 	&	30.59822 	&	-10.42 	&	-2.1 	&	L\\
+158.26272 	&	32.5852 	&	-8.47 	&	-1.67 	&	S\\
+161.53675 	&	43.45613 	&	-60.52 	&	-2.13 	&	S\\
+162.14438 	&	43.73839 	&	-64.03 	&	-1.99 	&	S\\
+199.92916 	&	66.09159 	&	-218.86 &	$-$ 	&	S\\
+210.43905 	&	66.11245 	&	-253.76 &	-1.83 	&	S\\
+
+
+
+
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\section{Discussion and Conclusions}\label{sec:Discussion}
+
+We have presented the discovery of a new stream structure, referred to as ``Kshir'', which criss-crosses the well studied GD-1 stream on the sky, lies at similar distance, and possesses very similar kinematics (Fig~\ref{fig:Fig_1_new}). Moreover, we find Kshir to be also an old and metal poor structure (${\rm [Fe/H] \approx -1.78\pm0.21}$ dex), though slightly more metal rich than GD-1 (Fig~\ref{fig:Fig_chemistry}). Fig~\ref{fig:Fig_1_new}a shows that Kshir's orbit intersects GD-1 at $\phi_1 \sim -20\deg$, which is also the location of the tentative ``gap'' present along GD-1 \citep{WhelanBonacaGD12018}. 
+
+Such a phase-space entanglement in GC streams has not previously been reported. This makes the nature and origin of Kshir, and its possible association with GD-1, very intriguing. We consider below three explanations for the observed correlation.
+
+{\it A) Orbital wraps of same structure.} If Kshir and GD-1 stemmed from the same GC progenitor, then the observed configuration could be due to the presence of different orbital wraps. In this case, Kshir might possibly be a portion of the GD-1 stream that is wrapped by $\sim 360\deg$ (or multiples thereof). The fact that Kshir does not simply line up along the orbit of GD-1 (Fig~\ref{fig:Fig_orbits}) argues against this possibility, although we stress that this result is valid only for the adopted potential derived in MI19. It is possible that other, more complex, Galactic potentials could simultaneously fit extant data and allow Kshir to be a simple wrap of GD-1. Nevertheless, this scenario seems unlikely, due to the difference in the chemical composition of the two structures. This consideration does not completely rule out the scenario, however, since it is possible that the progenitor satellite may have possessed a  radial metallicity gradient (like, e.g., $\omega$ Cen, \citealt{Johnson2010_omegacen}). If tides act slowly, they disrupt the progenitor by progressively removing its outskirts, which can then result in the tidal stream possessing  metallicity variations along its length.
+
+{\it B) A chance alignment of two independent GCs.} It is possible that Kshir and GD-1 are tidal debris of two unassociated GCs. However, given the vast phase-space volume of the Milky Way, such a degree of phase-space overlapping of two unrelated stellar substructures is a low likelihood event. To obtain an estimate of the corresponding probability, we implemented the following test. Employing the \texttt{HaloTools} package \citep{Hearin2017_halotools}, we randomly generated a phase-space distribution in an isotropic NFW halo profile (\citealt{NFW1996}), with a virial mass of $1.28\times 10^{12}\msun$ \citep{Watkins2019}. From this distribution we calculated the probability that two randomly-drawn tracer particles at the distance of the objects of interest have similar orbits. Concretely, we drew $10^4$ random pairs of particles in the Galactocentric distance range between $13$--$15\kpc$ and counted the number of times these pairs possessed a relative difference in the z-component of angular momentum of $\Delta L_z <300 \kpc \kms$, and with relative difference in the energy per unit mass of $\Delta E<10000\,{\rm km^2 s^{-2}}$ (as is the case of Khsir and GD-1). We found this probability to be $\sim 0.007$. This implies that if Kshir and GD-1 are unrelated, then the probability of their chance phase-space alignment is $< 1\%$.
+
+{\it C) Common origin.} The degree of phase-space correlation as we observe for Kshir and GD-1 is possible if the two structures originated from a common parent sub-halo that was accreted onto the Milky Way. Under this scenario, the stellar contents of the sub-halo system would be deposited on very similar orbits. Cosmological simulations show that GCs that evolve within their dark sub-halos, and later accrete into the host halo, give rise to stellar streams that possess substantial morphological complexity \citep{Carlberg2018-StreamSimulation}. This often results in secondary stellar components that accompany the primary GC stream track (see figures in \citealt{Carlberg2018-DensityIn_Stream}), with the overall structure remaining kinematically coherent (much like we see here for Kshir and GD-1). In addition to this, the cosmological simulations further show that the accreted GC streams should lie embedded in broader and dispersed star streams. The reason for this is that the primary stream (which is thin and dense) that survives to the present day is formed once the GC escapes the parent sub-halo and is deposited into the main halo; whereas the wider stellar component enveloping the thin stream is the relic of the stars that were continually removed from the GC while it remained in its parent dark sub-halo. Evidence for this broader stream in GD-1 (labelled ``cocoon'' in Fig~\ref{fig:Fig_1_new}a) was already reported in \citet{MalhanCocoonDetection2019}. Moreover, these simulations also show criss-crossing of streams from separate GCs that formed in a single sub-halo; although an implication is that the sub-halo must be sufficiently massive to host multiple GCs. Therefore, both the Kshir structure and the existence of ``cocoon'' in neighbourhood of GD-1 strengthen the case for this ``accretion'' scenario. Further, the measured difference in metallicity between the two structures argues against a single GC progenitor, although again the constraint is not entirely conclusive (partially because the progenitor could have possessed a radial metallicity gradient). Alternatively, GD-1 and Kshir may correspond to stellar debris produced from either different GC members of the same dark sub-halo, or Kshir may perhaps be debris of the stellar component of the dwarf galaxy that was stripped off during the accretion. A detailed chemical abundance analysis will help to distinguish between these possibilities. Assuming the hypothesized dwarf galaxy hosted a metal poor GC and a field population with ${\rm [Fe/H]_{\rm field}\sim-1.78}$ dex, we estimate its total stellar mass as $M_{*}\sim 10^5 \msun$ (using the Stellar Mass-Stellar Metallicity Relation from \citealt{Kirby2013}), implying $M_{\rm halo}\sim 10^{8-9}\msun$ (from stellar-to-halo-mass relation from \citealt{Read2017}). This makes the progenitor very similar to Eridanus II dwarf \citep{Bechtol2015} which is also known to host a single GC \citep{Crnojevi2016}. However, if the dwarf hosted two GCs (and assuming the field stars to be at least as metal-rich as the GCs), then the above quoted mass values in this case would represent typical lower bounds. None of the luminous satellites have orbits close to GD-1's trajectory \citep{Bonaca_spur_2018}, however, a future detection of a faint disrupting galaxy along GD-1's/ Kshir's orbit would serve as ``smoking gun'' evidence for the proposed accretion scenario. On the other hand, its lack supports a scenario where Kshir and GD-1 were perhaps accreted as GC(s) within an empty dark sub-halo.
+
+
+
+The stellar streams of the Milky Way have unexpectedly revealed their rather complex morphologies \citep{WhelanBonacaGD12018, MalhanCocoonDetection2019, Bonaca2019Jhelum}, which presents evidence for a formation mechanism that appears incompatible with a simple tidal disruption model. Modeling GD-1, particularly in light of these new observational constraints, may allow us to develop an understanding of the origins of these recently-found complexities in this well-studied system. This may also allow us to examine whether some GCs can form in otherwise empty CDM sub-halos before, or shortly after re-ionization began (e.g., \citealt{Peebles1984, Mashchenko2005, Ricotti2016}), giving rise to stream structures that exhibit multiple structural components. A detailed dynamical and chemical analysis of GD-1 and Kshir may potentially be useful in distinguishing in-situ and accreted GC stream, and in probing the initial conditions of the dark sub-halo within which they came. \\
+ 
+We thank the staff of the CFHT for taking the ESPaDOnS data used here, and for their continued support throughout the project. 
+
+The authors would like to acknowledge the constructive set of comments from the anonymous reviewer. We further thank Monica Valluri and Justin I. Read for helpful conversations. K.M. acknowledges  support  by the $\rm{Vetenskapsr\mathring{a}de}$t (Swedish Research Council) through contract No.  638-2013-8993 and the Oskar Klein Centre for Cosmoparticle Physics, and is grateful for the hospitality received at Observatoire Astronomique de Strasbourg (UdS) where part of the work was performed.
+
+This work has made use of data from the European Space Agency (ESA) mission {\it Gaia} (\url{https://www.cosmos.esa.int/gaia}), processed by the {\it Gaia} Data Processing and Analysis Consortium (DPAC, \url{https://www.cosmos.esa.int/web/gaia/dpac/consortium}). Funding for the DPAC has been provided by national institutions, in particular the institutions participating in the {\it Gaia} Multilateral Agreement. 
+
+Guoshoujing Telescope (the Large Sky Area Multi-Object Fiber Spectroscopic Telescope LAMOST) is a National Major Scientific Project built by the Chinese Academy of Sciences. Funding for the project has been provided by the National Development and Reform Commission. LAMOST is operated and managed by the National Astronomical Observatories, Chinese Academy of Sciences. 
+
+Funding for SDSS-III has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, and the U.S. Department of Energy Office of Science. The SDSS-III web site is \url{http://www.sdss3.org/}.
+
+SDSS-III is managed by the Astrophysical Research Consortium for the Participating Institutions of the SDSS-III Collaboration including the University of Arizona, the Brazilian Participation Group, Brookhaven National Laboratory, Carnegie Mellon University, University of Florida, the French Participation Group, the German Participation Group, Harvard University, the Instituto de Astrofisica de Canarias, the Michigan State/Notre Dame/JINA Participation Group, Johns Hopkins University, Lawrence Berkeley National Laboratory, Max Planck Institute for Astrophysics, Max Planck Institute for Extraterrestrial Physics, New Mexico State University, New York University, Ohio State University, Pennsylvania State University, University of Portsmouth, Princeton University, the Spanish Participation Group, University of Tokyo, University of Utah, Vanderbilt University, University of Virginia, University of Washington, and Yale University. 
+
+
+\bibliographystyle{apj}
+@ARTICLE{MalhanCocoonDetection2019,
+       author = {{Malhan}, Khyati and {Ibata}, Rodrigo A. and {Carlberg}, Raymond G. and
+         {Valluri}, Monica and {Freese}, Katherine},
+        title = "{Butterfly in a Cocoon, Understanding the Origin and Morphology of Globular Cluster Streams: The Case of GD-1}",
+      journal = {The Astrophysical Journal},
+     keywords = {Galaxy: formation, Galaxy: halo, Galaxy: structure, globular clusters: general, stars: kinematics and dynamics, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Aug",
+       volume = {881},
+       number = {2},
+          eid = {106},
+        pages = {106},
+          doi = {10.3847/1538-4357/ab2e07},
+archivePrefix = {arXiv},
+       eprint = {1903.08141},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019ApJ...881..106M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{Watkins2019,
+       author = {{Watkins}, Laura L. and {van der Marel}, Roeland P. and
+         {Sohn}, Sangmo Tony and {Evans}, N. Wyn},
+        title = "{Evidence for an Intermediate-mass Milky Way from Gaia DR2 Halo Globular Cluster Motions}",
+      journal = {\apj},
+     keywords = {dark matter, Galaxy: fundamental parameters, Galaxy: halo, Galaxy: kinematics and dynamics, Galaxy: structure, globular clusters: general, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Mar",
+       volume = {873},
+       number = {2},
+          eid = {118},
+        pages = {118},
+          doi = {10.3847/1538-4357/ab089f},
+archivePrefix = {arXiv},
+       eprint = {1804.11348},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019ApJ...873..118W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{1997MNRAS.291..658D,
+   author = {{Donati}, J.-F. and {Semel}, M. and {Carter}, B.~D. and {Rees}, D.~E. and 
+	{Collier Cameron}, A.},
+    title = "{Spectropolarimetric observations of active stars}",
+  journal = {\mnras},
+ keywords = {Stellar Spectra, Polarimetry, Stellar Atmospheres, Astronomical Spectroscopy, Late Stars},
+     year = 1997,
+    month = nov,
+   volume = 291,
+    pages = {658},
+      doi = {10.1093/mnras/291.4.658},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/1997MNRAS.291..658D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Dehnen1993,
+   author = {{Dehnen}, W.},
+    title = "{A Family of Potential-Density Pairs for Spherical Galaxies and Bulges}",
+  journal = {\mnras},
+     year = 1993,
+    month = nov,
+   volume = 265,
+    pages = {250},
+      doi = {10.1093/mnras/265.1.250},
+   adsurl = {http://adsabs.harvard.edu/abs/1993MNRAS.265..250D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{2005ApJ...619..824X,
+       author = {{Xin}, Y. and {Deng}, L.},
+        title = "{Blue Stragglers in Galactic Open Clusters and Integrated Spectral Energy Distributions}",
+      journal = {\apj},
+     keywords = {Galaxies: Stellar Content, Galaxy: Stellar Content, Galaxy: Open Clusters and Associations: General, Astrophysics},
+         year = "2005",
+        month = "Feb",
+       volume = {619},
+       number = {2},
+        pages = {824-838},
+          doi = {10.1086/426681},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0410325},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2005ApJ...619..824X},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{GravityCollab2018,
+   author = {{Gravity Collaboration} and {Abuter}, R. and {Amorim}, A. and 
+	{Anugu}, N. and {Baub{\"o}ck}, M. and {Benisty}, M. and {Berger}, J.~P. and 
+	{Blind}, N. and {Bonnet}, H. and {Brandner}, W. and {Buron}, A. and 
+	{Collin}, C. and {Chapron}, F. and {Cl{\'e}net}, Y. and {Coud{\'e} Du Foresto}, V. and 
+	{de Zeeuw}, P.~T. and {Deen}, C. and {Delplancke-Str{\"o}bele}, F. and 
+	{Dembet}, R. and {Dexter}, J. and {Duvert}, G. and {Eckart}, A. and 
+	{Eisenhauer}, F. and {Finger}, G. and {F{\"o}rster Schreiber}, N.~M. and 
+	{F{\'e}dou}, P. and {Garcia}, P. and {Garcia Lopez}, R. and 
+	{Gao}, F. and {Gendron}, E. and {Genzel}, R. and {Gillessen}, S. and 
+	{Gordo}, P. and {Habibi}, M. and {Haubois}, X. and {Haug}, M. and 
+	{Hau{\ss}mann}, F. and {Henning}, T. and {Hippler}, S. and {Horrobin}, M. and 
+	{Hubert}, Z. and {Hubin}, N. and {Jimenez Rosales}, A. and {Jochum}, L. and 
+	{Jocou}, K. and {Kaufer}, A. and {Kellner}, S. and {Kendrew}, S. and 
+	{Kervella}, P. and {Kok}, Y. and {Kulas}, M. and {Lacour}, S. and 
+	{Lapeyr{\`e}re}, V. and {Lazareff}, B. and {Le Bouquin}, J.-B. and 
+	{L{\'e}na}, P. and {Lippa}, M. and {Lenzen}, R. and {M{\'e}rand}, A. and 
+	{M{\"u}ler}, E. and {Neumann}, U. and {Ott}, T. and {Palanca}, L. and 
+	{Paumard}, T. and {Pasquini}, L. and {Perraut}, K. and {Perrin}, G. and 
+	{Pfuhl}, O. and {Plewa}, P.~M. and {Rabien}, S. and {Ram{\'{\i}}rez}, A. and 
+	{Ramos}, J. and {Rau}, C. and {Rodr{\'{\i}}guez-Coira}, G. and 
+	{Rohloff}, R.-R. and {Rousset}, G. and {Sanchez-Bermudez}, J. and 
+	{Scheithauer}, S. and {Sch{\"o}ller}, M. and {Schuler}, N. and 
+	{Spyromilio}, J. and {Straub}, O. and {Straubmeier}, C. and 
+	{Sturm}, E. and {Tacconi}, L.~J. and {Tristram}, K.~R.~W. and 
+	{Vincent}, F. and {von Fellenberg}, S. and {Wank}, I. and {Waisberg}, I. and 
+	{Widmann}, F. and {Wieprecht}, E. and {Wiest}, M. and {Wiezorrek}, E. and 
+	{Woillez}, J. and {Yazici}, S. and {Ziegler}, D. and {Zins}, G.
+	},
+    title = "{Detection of the gravitational redshift in the orbit of the star S2 near the Galactic centre massive black hole}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1807.09409},
+ keywords = {Galaxy: center, gravitation, black hole physics},
+     year = 2018,
+    month = jul,
+   volume = 615,
+      eid = {L15},
+    pages = {L15},
+      doi = {10.1051/0004-6361/201833718},
+   adsurl = {http://adsabs.harvard.edu/abs/2018Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Johnson2010_omegacen,
+       author = {{Johnson}, Christian I. and {Pilachowski}, Catherine A.},
+        title = "{Chemical Abundances for 855 Giants in the Globular Cluster Omega Centauri (NGC 5139)}",
+      journal = {\apj},
+     keywords = {globular clusters: general, globular clusters: individual: Omega Centauri, stars: abundances, stars: Population II, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2010",
+        month = "Oct",
+       volume = {722},
+       number = {2},
+        pages = {1373-1410},
+          doi = {10.1088/0004-637X/722/2/1373},
+archivePrefix = {arXiv},
+       eprint = {1008.2232},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2010ApJ...722.1373J},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Bonaca_spur_2018,
+       author = {{Bonaca}, Ana and {Hogg}, David W. and {Price-Whelan}, Adrian M. and
+         {Conroy}, Charlie},
+        title = "{The Spur and the Gap in GD-1: Dynamical Evidence for a Dark Substructure in the Milky Way Halo}",
+      journal = {\apj},
+     keywords = {cosmology: observations, dark matter, Galaxy: halo, Galaxy: kinematics and dynamics, gravitation, stars: kinematics and dynamics, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics, High Energy Physics - Phenomenology},
+         year = "2019",
+        month = "Jul",
+       volume = {880},
+       number = {1},
+          eid = {38},
+        pages = {38},
+          doi = {10.3847/1538-4357/ab2873},
+archivePrefix = {arXiv},
+       eprint = {1811.03631},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019ApJ...880...38B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Harris2010,
+       author = {{Harris}, William E.},
+        title = "{A New Catalog of Globular Clusters in the Milky Way}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Galaxy Astrophysics},
+         year = "2010",
+        month = "Dec",
+          eid = {arXiv:1012.3224},
+        pages = {arXiv:1012.3224},
+archivePrefix = {arXiv},
+       eprint = {1012.3224},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2010arXiv1012.3224H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Renaud2017,
+   author = {{Renaud}, F. and {Agertz}, O. and {Gieles}, M.},
+    title = "{The origin of the Milky Way globular clusters}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1610.03101},
+ keywords = {methods: numerical, galaxies: formation, galaxies: star clusters: general},
+     year = 2017,
+    month = mar,
+   volume = 465,
+    pages = {3622-3636},
+      doi = {10.1093/mnras/stw2969},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.465.3622R},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Hearin2017_halotools,
+       author = {{Hearin}, Andrew P. and {Campbell}, Duncan and {Tollerud}, Erik and
+         {Behroozi}, Peter and {Diemer}, Benedikt and {Goldbaum}, Nathan J. and
+         {Jennings}, Elise and {Leauthaud}, Alexie and {Mao}, Yao-Yuan and
+         {More}, Surhud and {Parejko}, John and {Sinha}, Manodeep and
+         {Sip{\"o}cz}, Brigitta and {Zentner}, Andrew},
+        title = "{Forward Modeling of Large-scale Structure: An Open-source Approach with Halotools}",
+      journal = {\aj},
+     keywords = {cosmology: theory, galaxies: halos, galaxies: statistics, large-scale structure of universe, Astrophysics - Instrumentation and Methods for Astrophysics, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Astrophysics of Galaxies},
+         year = "2017",
+        month = "Nov",
+       volume = {154},
+       number = {5},
+          eid = {190},
+        pages = {190},
+          doi = {10.3847/1538-3881/aa859f},
+archivePrefix = {arXiv},
+       eprint = {1606.04106},
+ primaryClass = {astro-ph.IM},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017AJ....154..190H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{GaiaCollab2018kinematics,
+   author = {{Gaia Collaboration} and {Helmi}, A. and {van Leeuwen}, F. and 
+	{McMillan}, P.~J. and {Massari}, D. and {Antoja}, T. and {Robin}, A.~C. and 
+	{Lindegren}, L. and {Bastian}, U. and {Arenou}, F. and et al.},
+    title = "{Gaia Data Release 2. Kinematics of globular clusters and dwarf galaxies around the Milky Way}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1804.09381},
+ keywords = {Galaxy: kinematics and dynamics, astrometry, globular clusters: general, galaxies: dwarf, Local Group, Magellanic Clouds},
+     year = 2018,
+    month = aug,
+   volume = 616,
+      eid = {A12},
+    pages = {A12},
+      doi = {10.1051/0004-6361/201832698},
+   adsurl = {http://adsabs.harvard.edu/abs/2018Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{Parsec_isochrones2012,
+       author = {{Bressan}, Alessandro and {Marigo}, Paola and {Girardi}, L{\'e}o. and
+        {Salasnich}, Bernardo and {Dal Cero}, Claudia and {Rubele},
+        Stefano and {Nanni}, Ambra},
+        title = "{PARSEC: stellar tracks and isochrones with the PAdova and TRieste Stellar Evolution Code}",
+      journal = {\mnras},
+     keywords = {stars: evolution, Hertzsprung‒Russell and colour magnitude diagrams, stars: interiors, stars: low-mass, Astrophysics - Solar and Stellar Astrophysics},
+         year = 2012,
+        month = Nov,
+       volume = {427},
+        pages = {127-145},
+          doi = {10.1111/j.1365-2966.2012.21948.x},
+archivePrefix = {arXiv},
+       eprint = {1208.4498},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2012MNRAS.427..127B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Ibata_Norse_streams2019,
+       author = {{Ibata}, Rodrigo A. and {Malhan}, Khyati and {Martin}, Nicolas F.},
+        title = "{The Streams of the Gaping Abyss: A Population of Entangled Stellar Streams Surrounding the Inner Galaxy}",
+      journal = {\apj},
+     keywords = {galaxies: formation, Galaxy: halo, Galaxy: stellar content, Galaxy: structure, surveys, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Feb",
+       volume = {872},
+          eid = {152},
+        pages = {152},
+          doi = {10.3847/1538-4357/ab0080},
+archivePrefix = {arXiv},
+       eprint = {1901.07566},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2019ApJ...872..152I},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@article{GaiaDR2_2018_astrometry,
+	author = {{Lindegren, L.} and {Hernandez, J.} and {Bombrun, A.} and {Klioner, S.} and {Bastian, U.} and {Ramos-Lerate, M.}},
+	title = {Gaia Data Release 2. The astrometric solution},
+	DOI= "10.1051/0004-6361/201832727",
+	url= "https://doi.org/10.1051/0004-6361/201832727",
+	journal = {A\&A},
+	year = 2018,
+}
+@article{GaiaDR2_2018_Parallaxes,
+	author = {{Luri, Xavier} and {A Brown, A. G.} and {Sarro, L.} and {Arenou, F.} and {Bailer-Jones, C. A.L.} and {Castro-Ginard, A.} and {de Bruijne, J.} and {Prusti, T.} and {Babusiaux, C.} and {Delgado, H. E.}},
+	title = {Gaia Data Release 2. Using Gaia parallaxes},
+	DOI= "10.1051/0004-6361/201832964",
+	url= "https://doi.org/10.1051/0004-6361/201832964",
+	journal = {A\&A},
+	year = 2018,
+}
+@article{GaiaDR2_2018_photometry,
+	author = {{Evans, D. W.} and {Riello, M.} and {De Angeli, F.} and {Carrasco, J. M.} and {Montegriffo, P.} and {Fabricius, C.} and {Jordi, C.} and {Palaversa, L.} and {Diener, C.} and {Busso, G.} and {Weiler, M.} and {Cacciari, C.} and {van Leeuwen, F.}},
+	title = {Gaia Data Release 2. The photometric content and validation},
+	DOI= "10.1051/0004-6361/201832756",
+	url= "https://doi.org/10.1051/0004-6361/201832756",
+	journal = {A\&A},
+	year = 2018,
+}
+
+
+
+
+
+
+@article{Malhan_2018_PS1,
+       author = {{Malhan}, Khyati and {Ibata}, Rodrigo A. and {Goldman}, Bertrand and
+         {Martin}, Nicolas F. and {Magnier}, Eugene and {Chambers}, Kenneth},
+        title = "{STREAMFINDER II: A possible fanning structure parallel to the GD-1 stream in Pan-STARRS1}",
+      journal = {\mnras},
+     keywords = {stars: kinematics and dynamics, Galaxy: evolution, Galaxy: formation, Galaxy: halo, Galaxy: kinematics and dynamics, Galaxy: structure, Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "Aug",
+       volume = {478},
+       number = {3},
+        pages = {3862-3870},
+          doi = {10.1093/mnras/sty1338},
+archivePrefix = {arXiv},
+       eprint = {1805.08205},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018MNRAS.478.3862M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{Kaur2018,
+       author = {{Kaur}, Karamveer and {Sridhar}, S.},
+        title = "{Stalling of Globular Cluster Orbits in Dwarf Galaxies}",
+      journal = {\apj},
+     keywords = {galaxies: dwarf, galaxies: kinematics and dynamics, Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "Dec",
+       volume = {868},
+       number = {2},
+          eid = {134},
+        pages = {134},
+          doi = {10.3847/1538-4357/aaeacf},
+archivePrefix = {arXiv},
+       eprint = {1810.00369},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018ApJ...868..134K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+       
+
+@ARTICLE{Malhan_Ghostly_2018,
+       author = {{Malhan}, Khyati and {Ibata}, Rodrigo A. and {Martin}, Nicolas F.},
+        title = "{Ghostly tributaries to the Milky Way: charting the halo's stellar streams with the Gaia DR2 catalogue}",
+      journal = {\mnras},
+     keywords = {stars: kinematics and dynamics, Galaxy: halo, Galaxy: kinematics and dynamics, Galaxy: structure, Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "Dec",
+       volume = {481},
+       number = {3},
+        pages = {3442-3455},
+          doi = {10.1093/mnras/sty2474},
+archivePrefix = {arXiv},
+       eprint = {1804.11339},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018MNRAS.481.3442M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+
+
+
+
+@ARTICLE{Ibata_Phlegethon_2018,
+       author = {{Ibata}, Rodrigo A. and {Malhan}, Khyati and {Martin}, Nicolas F. and
+        {Starkenburg}, Else},
+        title = "{Phlegethon, a Nearby 75{\textdegree}-long Retrograde Stellar Stream}",
+      journal = {\apj},
+     keywords = {galaxies: formation, Galaxy: halo, Galaxy: stellar content, Galaxy: structure, surveys, Astrophysics - Astrophysics of Galaxies},
+         year = 2018,
+        month = Oct,
+       volume = {865},
+          eid = {85},
+        pages = {85},
+          doi = {10.3847/1538-4357/aadba3},
+archivePrefix = {arXiv},
+       eprint = {1806.01195},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2018ApJ...865...85I},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{BovyGalpy2015,
+   author = {{Bovy}, J.},
+    title = "{galpy: A python Library for Galactic Dynamics}",
+  journal = {\apjs},
+archivePrefix = "arXiv",
+   eprint = {1412.3451},
+ keywords = {galaxies: general, galaxies: kinematics and dynamics, Galaxy: fundamental parameters },
+     year = 2015,
+    month = feb,
+   volume = 216,
+      eid = {29},
+    pages = {29},
+      doi = {10.1088/0067-0049/216/2/29},
+   adsurl = {http://adsabs.harvard.edu/abs/2015ApJS..216...29B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Ibata_2002DM_TS,
+   author = {{Ibata}, R.~A. and {Lewis}, G.~F. and {Irwin}, M.~J. and {Quinn}, T.
+	},
+    title = "{Uncovering cold dark matter halo substructure with tidal streams}",
+  journal = {\mnras},
+   eprint = {astro-ph/0110690},
+ keywords = {galaxies: haloes, dark matter},
+     year = 2002,
+    month = jun,
+   volume = 332,
+    pages = {915-920},
+      doi = {10.1046/j.1365-8711.2002.05358.x},
+   adsurl = {http://adsabs.harvard.edu/abs/2002MNRAS.332..915I},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Pearson2015fanning,
+   author = {{Pearson}, S. and {K{\"u}pper}, A.~H.~W. and {Johnston}, K.~V. and 
+	{Price-Whelan}, A.~M.},
+    title = "{Tidal Stream Morphology as an Indicator of Dark Matter Halo Geometry: The Case of Palomar 5}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1410.3477},
+ keywords = {dark matter, Galaxy: halo, Galaxy: structure, globular clusters: individual: Palomar 5, methods: numerical},
+     year = 2015,
+    month = jan,
+   volume = 799,
+      eid = {28},
+    pages = {28},
+      doi = {10.1088/0004-637X/799/1/28},
+   adsurl = {http://adsabs.harvard.edu/abs/2015ApJ...799...28P},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{Erkal2015,
+       author = {{Erkal}, Denis and {Belokurov}, Vasily},
+        title = "{Forensics of subhalo-stream encounters: the three phases of gap growth}",
+      journal = {\mnras},
+     keywords = {galaxies: haloes, galaxies: kinematics and dynamics, galaxies: structure, cosmology: theory, dark matter, Astrophysics - Astrophysics of Galaxies},
+         year = "2015",
+        month = "Jun",
+       volume = {450},
+       number = {1},
+        pages = {1136-1149},
+          doi = {10.1093/mnras/stv655},
+archivePrefix = {arXiv},
+       eprint = {1412.6035},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015MNRAS.450.1136E},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Hattori2016,
+       author = {{Hattori}, Kohei and {Erkal}, Denis and {Sanders}, Jason L.},
+        title = "{Shepherding tidal debris with the Galactic bar: the Ophiuchus stream}",
+      journal = {\mnras},
+     keywords = {Galaxy: bulge, Galaxy: evolution, Galaxy: kinematics and dynamics, Galaxy: structure, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2016",
+        month = "Jul",
+       volume = {460},
+       number = {1},
+        pages = {497-512},
+          doi = {10.1093/mnras/stw1006},
+archivePrefix = {arXiv},
+       eprint = {1512.04536},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2016MNRAS.460..497H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@article{Malhan2018_SF,
+       author = {{Malhan}, Khyati and {Ibata}, Rodrigo A.},
+        title = "{STREAMFINDER - I. A new algorithm for detecting stellar streams}",
+      journal = {\mnras},
+     keywords = {stars: kinematics and dynamics, Galaxy: halo, Galaxy: kinematics and dynamics, Galaxy: structure, Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "Jul",
+       volume = {477},
+       number = {3},
+        pages = {4063-4076},
+          doi = {10.1093/mnras/sty912},
+archivePrefix = {arXiv},
+       eprint = {1804.11338},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018MNRAS.477.4063M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+
+
+@ARTICLE{Boer2018,
+   author = {{de Boer}, T.~J.~L. and {Belokurov}, V. and {Koposov}, S.~E. and 
+	{Ferrarese}, L. and {Erkal}, D. and {C{\^o}t{\'e}}, P. and {Navarro}, J.~F.
+	},
+    title = "{A deeper look at the GD1 stream: density variations and wiggles}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1801.08948},
+ keywords = {Galaxy: fundamental parameters, Galaxy: halo, Galaxy: structure},
+     year = 2018,
+    month = jun,
+   volume = 477,
+    pages = {1893-1902},
+      doi = {10.1093/mnras/sty677},
+   adsurl = {http://adsabs.harvard.edu/abs/2018MNRAS.477.1893D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Penarrubia2010,
+       author = {{Pe{\~n}arrubia}, Jorge and {Benson}, Andrew J. and
+         {Walker}, Matthew G. and {Gilmore}, Gerard and {McConnachie}, Alan W. and
+         {Mayer}, Lucio},
+        title = "{The impact of dark matter cusps and cores on the satellite galaxy population around spiral galaxies}",
+      journal = {\mnras},
+     keywords = {Galaxy: formation, galaxies: dwarf, dark ages, reionization, first stars, dark matter, Astrophysics - Astrophysics of Galaxies},
+         year = "2010",
+        month = "Aug",
+       volume = {406},
+       number = {2},
+        pages = {1290-1305},
+          doi = {10.1111/j.1365-2966.2010.16762.x},
+archivePrefix = {arXiv},
+       eprint = {1002.3376},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2010MNRAS.406.1290P},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Kazantzidis2004,
+       author = {{Kazantzidis}, Stelios and {Mayer}, Lucio and {Mastropietro}, Chiara and
+         {Diemand}, J{\"u}rg and {Stadel}, Joachim and {Moore}, Ben},
+        title = "{Density Profiles of Cold Dark Matter Substructure: Implications for the Missing-Satellites Problem}",
+      journal = {\apj},
+     keywords = {Cosmology: Theory, Cosmology: Dark Matter, Galaxies: Halos, Methods: n-Body Simulations, Astrophysics},
+         year = "2004",
+        month = "Jun",
+       volume = {608},
+       number = {2},
+        pages = {663-679},
+          doi = {10.1086/420840},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0312194},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2004ApJ...608..663K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Lamost2012,
+   author = {{Zhao}, G. and {Zhao}, Y. and {Chu}, Y. and {Jing}, Y. and {Deng}, L.
+	},
+    title = "{LAMOST Spectral Survey}",
+  journal = {ArXiv e-prints},
+archivePrefix = "arXiv",
+   eprint = {1206.3569},
+ primaryClass = "astro-ph.IM",
+ keywords = {Astrophysics - Instrumentation and Methods for Astrophysics},
+     year = 2012,
+    month = jun,
+   adsurl = {http://adsabs.harvard.edu/abs/2012arXiv1206.3569Z},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{Carlberg2018-StreamSimulation,
+   author = {{Carlberg}, R.~G.},
+    title = "{Globular Clusters in a Cosmological N-body Simulation}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1706.01938},
+ keywords = {dark matter, Galaxy: halo, globular clusters: general, stars: black holes},
+     year = 2018,
+    month = jul,
+   volume = 861,
+      eid = {69},
+    pages = {69},
+      doi = {10.3847/1538-4357/aac88a},
+   adsurl = {http://adsabs.harvard.edu/abs/2018ApJ...861...69C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Borsato2019,
+       author = {{Borsato}, Nicholas W. and {Martell}, Sarah L. and {Simpson}, Jeffrey D.},
+        title = "{Identifying Stellar Streams in Gaia DR2 with Data Mining Techniques}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Jul",
+          eid = {arXiv:1907.02527},
+        pages = {arXiv:1907.02527},
+archivePrefix = {arXiv},
+       eprint = {1907.02527},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190702527B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Carlberg2018-DensityIn_Stream,
+       author = {{Carlberg}, Raymond G.},
+        title = "{The Density Structure of Simulated Stellar Streams}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "Nov",
+          eid = {arXiv:1811.10084},
+        pages = {arXiv:1811.10084},
+archivePrefix = {arXiv},
+       eprint = {1811.10084},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018arXiv181110084C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Hernquist1990,
+   author = {{Hernquist}, L.},
+    title = "{An analytical model for spherical galaxies and bulges}",
+  journal = {\apj},
+ keywords = {Computational Astrophysics, Elliptical Galaxies, Galactic Bulge, Galactic Structure, Astronomical Models, Astronomical Photometry, Brightness Distribution, Distribution Functions},
+     year = 1990,
+    month = jun,
+   volume = 356,
+    pages = {359-364},
+      doi = {10.1086/168845},
+   adsurl = {http://adsabs.harvard.edu/abs/1990ApJ...356..359H},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@article{Reid2014_Sun,
+   author          = {Reid, M. J. and Menten, K. M. and Brunthaler, A. and Zheng, X. W. and Dame, T M and Xu, Y and Wu, Y and Zhang, B. and {et al.}},
+   title           = {{Trigonometric Parallaxes of High Mass Star Forming Regions: The Structure and Kinematics of the Milky Way}},
+   journal         = {ApJ},
+   year            = {2014},
+   volume          = {783},
+   number          = {2},
+   pages           = {130},
+   month           = mar
+}
+
+
+
+
+@ARTICLE{Springel_Gadget2_2005,
+   author = {{Springel}, V.},
+    title = "{The cosmological simulation code GADGET-2}",
+  journal = {\mnras},
+   eprint = {astro-ph/0505010},
+ keywords = {methods: numerical, galaxies: interactions, dark matter},
+     year = 2005,
+    month = dec,
+   volume = 364,
+    pages = {1105-1134},
+      doi = {10.1111/j.1365-2966.2005.09655.x},
+   adsurl = {http://adsabs.harvard.edu/abs/2005MNRAS.364.1105S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Orkney2019_GC_CuspCore,
+       author = {{Orkney}, M.~D.~A. and {Read}, J.~I. and {Petts}, James A. and
+         {Gieles}, Mark},
+        title = "{Globular clusters as probes of dark matter cusp-core transformations}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Jun",
+          eid = {arXiv:1906.04759},
+        pages = {arXiv:1906.04759},
+archivePrefix = {arXiv},
+       eprint = {1906.04759},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190604759O},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{King1966,
+   author = {{King}, I.~R.},
+    title = "{The structure of star clusters. III. Some simple dynamical models}",
+  journal = {\aj},
+     year = 1966,
+    month = feb,
+   volume = 71,
+    pages = {64},
+      doi = {10.1086/109857},
+   adsurl = {http://adsabs.harvard.edu/abs/1966AJ.....71...64K},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Helmi2008_haloreview,
+       author = {{Helmi}, Amina},
+        title = "{The stellar halo of the Galaxy}",
+      journal = {Astronomy and Astrophysics Review},
+     keywords = {Galaxy: halo, Galaxy: formation, Galaxy: evolution, Galaxy: kinematics and dynamics, Astrophysics},
+         year = "2008",
+        month = "Jun",
+       volume = {15},
+        pages = {145-188},
+          doi = {10.1007/s00159-008-0009-6},
+archivePrefix = {arXiv},
+       eprint = {0804.0019},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2008A&ARv..15..145H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Myeong2017_Streams,
+       author = {{Myeong}, G.~C. and {Jerjen}, Helmut and {Mackey}, Dougal and
+         {Da Costa}, Gary S.},
+        title = "{Tidal Tails around the Outer Halo Globular Clusters Eridanus and Palomar 15}",
+      journal = {\apjl},
+     keywords = {globular clusters: general, globular clusters: individual: Eridanus, Palomar 15, Astrophysics - Astrophysics of Galaxies},
+         year = "2017",
+        month = "May",
+       volume = {840},
+       number = {2},
+          eid = {L25},
+        pages = {L25},
+          doi = {10.3847/2041-8213/aa6fb4},
+archivePrefix = {arXiv},
+       eprint = {1704.07690},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017ApJ...840L..25M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Li_S5_2019,
+       author = {{Li}, T.~S. and {Koposov}, S.~E. and {Zucker}, D.~B. and {Lewis}, G.~F. and
+         {Kuehn}, K. and {Simpson}, J.~D. and {Ji}, A.~P. and {Shipp}, N. and
+         {Mao}, Y. -Y. and {Geha}, M. and {Pace}, A.~B. and {Mackey}, A.~D. and
+         {Allam}, S. and {Tucker}, D.~L. and {Da Costa}, G.~S. and {Erkal}, D. and
+         {Simon}, J.~D. and {Mould}, J.~R. and {Martell}, S.~L. and {Wan}, Z. and
+         {De Silva}, G.~M. and {Bechtol}, K. and {Balbinot}, E. and
+         {Belokurov}, V. and {Bland-Hawthorn}, J. and {Casey}, A.~R. and
+         {Cullinane}, L. and {Drlica-Wagner}, A. and {Sharma}, S. and
+         {Vivas}, A.~K. and {Wechsler}, R.~H. and {Yanny}, B.},
+        title = "{The Southern Stellar Stream Spectroscopic Survey (${S}^5$): Overview, Target Selection, Data Reduction, Validation, and Early Science}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Jul",
+          eid = {arXiv:1907.09481},
+        pages = {arXiv:1907.09481},
+archivePrefix = {arXiv},
+       eprint = {1907.09481},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190709481L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Marin-Franch2009,
+       author = {{Mar{\'\i}n-Franch}, Antonio and {Aparicio}, Antonio and
+         {Piotto}, Giampaolo and {Rosenberg}, Alfred and {Chaboyer}, Brian and
+         {Sarajedini}, Ata and {Siegel}, Michael and {Anderson}, Jay and
+         {Bedin}, Luigi R. and {Dotter}, Aaron and {Hempel}, Maren and
+         {King}, Ivan and {Majewski}, Steven and {Milone}, Antonino P. and
+         {Paust}, Nathaniel and {Reid}, I. Neill},
+        title = "{The ACS Survey of Galactic Globular Clusters. VII. Relative Ages}",
+      journal = {\apj},
+     keywords = {Galaxy: evolution, Galaxy: formation, globular clusters: general, Astrophysics},
+         year = "2009",
+        month = "Apr",
+       volume = {694},
+       number = {2},
+        pages = {1498-1516},
+          doi = {10.1088/0004-637X/694/2/1498},
+archivePrefix = {arXiv},
+       eprint = {0812.4541},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2009ApJ...694.1498M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Carollo2007metallicityhalo,
+   author = {{Carollo}, D. and {Beers}, T.~C. and {Lee}, Y.~S. and {Chiba}, M. and 
+	{Norris}, J.~E. and {Wilhelm}, R. and {Sivarani}, T. and {Marsteller}, B. and 
+	{Munn}, J.~A. and {Bailer-Jones}, C.~A.~L. and {Fiorentin}, P.~R. and 
+	{York}, D.~G.},
+    title = "{Two stellar components in the halo of the Milky Way}",
+  journal = {\nat},
+archivePrefix = "arXiv",
+   eprint = {0706.3005},
+     year = 2007,
+    month = dec,
+   volume = 450,
+    pages = {1020-1025},
+      doi = {10.1038/nature06460},
+   adsurl = {http://adsabs.harvard.edu/abs/2007Natur.450.1020C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Zemp2009_Simulation,
+       author = {{Zemp}, Marcel and {Diemand}, J{\"u}rg and {Kuhlen}, Michael and
+         {Madau}, Piero and {Moore}, Ben and {Potter}, Doug and
+         {Stadel}, Joachim and {Widrow}, Lawrence},
+        title = "{The graininess of dark matter haloes}",
+      journal = {\mnras},
+     keywords = {methods: N-body simulations, methods: numerical, galaxies: haloes, galaxies: kinematics and dynamics, galaxies: structure, dark matter, Astrophysics},
+         year = "2009",
+        month = "Apr",
+       volume = {394},
+        pages = {641-659},
+          doi = {10.1111/j.1365-2966.2008.14361.x},
+archivePrefix = {arXiv},
+       eprint = {0812.2033},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2009MNRAS.394..641Z},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@article{GaiaDR2_2018_Brown,
+	author = {{Gaia Collaboration} and {Brown, A. G. A.} and {Vallenari, A.} and {Prusti, T.} and {de Bruijne, J. H. J.} and {et al.}},
+	title = {Gaia Data Release 2. Summary of the contents and survey properties},
+	DOI= "10.1051/0004-6361/201833051",
+	url= "https://doi.org/10.1051/0004-6361/201833051",
+	journal = {A\&A},
+	year = 2018,
+}
+
+
+@ARTICLE{Penarrubia2017,
+       author = {{Pe{\~n}arrubia}, Jorge and {Varri}, Anna Lisa and {Breen}, Philip G. and
+         {Ferguson}, Annette M.~N. and {S{\'a}nchez-Janssen}, Rub{\'e}n},
+        title = "{Stellar envelopes of globular clusters embedded in dark mini-haloes}",
+      journal = {\mnras},
+     keywords = {globular clusters: general, dark matter, Astrophysics - Astrophysics of Galaxies},
+         year = "2017",
+        month = "Oct",
+       volume = {471},
+       number = {1},
+        pages = {L31-L35},
+          doi = {10.1093/mnrasl/slx094},
+archivePrefix = {arXiv},
+       eprint = {1706.02710},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.471L..31P},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Kowalczyk2017,
+   author = {{Kowalczyk}, K. and {{\L}okas}, E.~L. and {Valluri}, M.},
+    title = "{Recovering the mass profile and orbit anisotropy of mock dwarf galaxies with Schwarzschild modelling}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1702.06065},
+ keywords = {galaxies: dwarf, galaxies: fundamental parameters, galaxies: kinematics and dynamics, Local Group, dark matter},
+     year = 2017,
+    month = oct,
+   volume = 470,
+    pages = {3959-3969},
+      doi = {10.1093/mnras/stx1520},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.470.3959K},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Kleyna2003UrsaMinorCore,
+   author = {{Kleyna}, J.~T. and {Wilkinson}, M.~I. and {Gilmore}, G. and 
+	{Evans}, N.~W.},
+    title = "{A Dynamical Fossil in the Ursa Minor Dwarf Spheroidal Galaxy}",
+  journal = {\apjl},
+   eprint = {astro-ph/0304093},
+ keywords = {Celestial Mechanics, Cosmology: Dark Matter, Galaxies: Individual: Name: Ursa Minor dwarf spheroidal, Galaxies: Kinematics and Dynamics, Galaxies: Local Group, Stellar Dynamics},
+     year = 2003,
+    month = may,
+   volume = 588,
+    pages = {L21-L24},
+      doi = {10.1086/375522},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2003ApJ...588L..21K},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Mashchenko2005,
+       author = {{Mashchenko}, Sergey and {Sills}, Alison},
+        title = "{Globular Clusters with Dark Matter Halos. I. Initial Relaxation}",
+      journal = {\apj},
+     keywords = {Cosmology: Dark Matter, Cosmology: Early Universe, Galaxy: Globular Clusters: General, Methods: n-Body Simulations, Astrophysics},
+         year = "2005",
+        month = "Jan",
+       volume = {619},
+       number = {1},
+        pages = {243-257},
+          doi = {10.1086/426132},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0409605},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2005ApJ...619..243M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Peebles1984,
+       author = {{Peebles}, P.~J.~E.},
+        title = "{Dark matter and the origin of galaxies and globular star clusters}",
+      journal = {\apj},
+     keywords = {Cosmology, Dark Matter, Galactic Evolution, Globular Clusters, Star Clusters, Astronomical Models, Halos, Mass Distribution, Matter (Physics), Astrophysics},
+         year = "1984",
+        month = "Feb",
+       volume = {277},
+        pages = {470-477},
+          doi = {10.1086/161714},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1984ApJ...277..470P},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Simon2007,
+       author = {{Simon}, Joshua D. and {Geha}, Marla},
+        title = "{The Kinematics of the Ultra-faint Milky Way Satellites: Solving the Missing Satellite Problem}",
+      journal = {\apj},
+     keywords = {Cosmology: Dark Matter, Galaxies: Dwarf, Galaxies: Kinematics and Dynamics, Galaxies: Local Group, Techniques: Radial Velocities, Astrophysics},
+         year = "2007",
+        month = "Nov",
+       volume = {670},
+       number = {1},
+        pages = {313-331},
+          doi = {10.1086/521816},
+archivePrefix = {arXiv},
+       eprint = {0706.0516},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2007ApJ...670..313S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Forbes2018_GC-halomass,
+       author = {{Forbes}, Duncan A. and {Read}, Justin I. and {Gieles}, Mark and
+         {Collins}, Michelle L.~M.},
+        title = "{Extending the globular cluster system-halo mass relation to the lowest galaxy masses}",
+      journal = {\mnras},
+     keywords = {galaxies: dwarf, galaxies: haloes, galaxies: star clusters: general, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2018",
+        month = "Dec",
+       volume = {481},
+       number = {4},
+        pages = {5592-5605},
+          doi = {10.1093/mnras/sty2584},
+archivePrefix = {arXiv},
+       eprint = {1809.07831},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018MNRAS.481.5592F},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Bechtol2015,
+       author = {{Bechtol}, K. and {Drlica-Wagner}, A. and {Balbinot}, E. and
+         {Pieres}, A. and {Simon}, J.~D. and {Yanny}, B. and {Santiago}, B. and
+         {Wechsler}, R.~H. and {Frieman}, J. and {Walker}, A.~R. and
+         {Williams}, P. and {Rozo}, E. and {Rykoff}, E.~S. and {Queiroz}, A. and
+         {Luque}, E. and {Benoit-L{\'e}vy}, A. and {Tucker}, D. and
+         {Sevilla}, I. and {Gruendl}, R.~A. and {da Costa}, L.~N. and
+         {Fausti Neto}, A. and {Maia}, M.~A.~G. and {Abbott}, T. and
+         {Allam}, S. and {Armstrong}, R. and {Bauer}, A.~H. and
+         {Bernstein}, G.~M. and {Bernstein}, R.~A. and {Bertin}, E. and
+         {Brooks}, D. and {Buckley-Geer}, E. and {Burke}, D.~L. and
+         {Carnero Rosell}, A. and {Castander}, F.~J. and {Covarrubias}, R. and
+         {D'Andrea}, C.~B. and {DePoy}, D.~L. and {Desai}, S. and
+         {Diehl}, H.~T. and {Eifler}, T.~F. and {Estrada}, J. and
+         {Evrard}, A.~E. and {Fernandez}, E. and {Finley}, D.~A. and
+         {Flaugher}, B. and {Gaztanaga}, E. and {Gerdes}, D. and {Girardi}, L. and
+         {Gladders}, M. and {Gruen}, D. and {Gutierrez}, G. and {Hao}, J. and
+         {Honscheid}, K. and {Jain}, B. and {James}, D. and {Kent}, S. and
+         {Kron}, R. and {Kuehn}, K. and {Kuropatkin}, N. and {Lahav}, O. and
+         {Li}, T.~S. and {Lin}, H. and {Makler}, M. and {March}, M. and
+         {Marshall}, J. and {Martini}, P. and {Merritt}, K.~W. and {Miller}, C. and
+         {Miquel}, R. and {Mohr}, J. and {Neilsen}, E. and {Nichol}, R. and
+         {Nord}, B. and {Ogando}, R. and {Peoples}, J. and {Petravick}, D. and
+         {Plazas}, A.~A. and {Romer}, A.~K. and {Roodman}, A. and {Sako}, M. and
+         {Sanchez}, E. and {Scarpine}, V. and {Schubnell}, M. and
+         {Smith}, R.~C. and {Soares-Santos}, M. and {Sobreira}, F. and
+         {Suchyta}, E. and {Swanson}, M.~E.~C. and {Tarle}, G. and {Thaler}, J. and
+         {Thomas}, D. and {Wester}, W. and {Zuntz}, J. and {DES Collaboration}},
+        title = "{Eight New Milky Way Companions Discovered in First-year Dark Energy Survey Data}",
+      journal = {\apj},
+     keywords = {galaxies: dwarf, Local Group, Astrophysics - Astrophysics of Galaxies},
+         year = "2015",
+        month = "Jul",
+       volume = {807},
+       number = {1},
+          eid = {50},
+        pages = {50},
+          doi = {10.1088/0004-637X/807/1/50},
+archivePrefix = {arXiv},
+       eprint = {1503.02584},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015ApJ...807...50B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@article{Crnojevi2016,
+	doi = {10.3847/2041-8205/824/1/l14},
+	url = {https://doi.org/10.3847year = 2016,
+	month = {jun},
+	publisher = {American Astronomical Society},
+	volume = {824},
+	number = {1},
+	pages = {L14},
+	author = {D. Crnojevi{\'{c}} and D. J. Sand and D. Zaritsky and K. Spekkens and B. Willman and J. R. Hargis},
+	title = {{DEEP} {IMAGING} {OF} {ERIDANUS} {II} {AND} {ITS} {LONE} {STAR} {CLUSTER}},
+	journal = {The Astrophysical Journal},
+	abstract = {We present deep imaging of the most distant dwarf discovered by the Dark Energy Survey, Eridanus II (Eri II). Our Magellan/Megacam stellar photometry reaches ∼3 mag deeper than previous work and allows us to confirm the presence of a stellar cluster whose position is consistent with Eri II’s center. This makes Eri II, at , the least luminous galaxy known to host a (possibly central) cluster. The cluster is partially resolved, and at  it accounts for ∼4}
+
+
+
+@ARTICLE{Elbert2015,
+       author = {{Elbert}, Oliver D. and {Bullock}, James S. and {Garrison-Kimmel}, Shea and
+         {Rocha}, Miguel and {O{\~n}orbe}, Jose and {Peter}, Annika H.~G.},
+        title = "{Core formation in dwarf haloes with self-interacting dark matter: no fine-tuning necessary}",
+      journal = {\mnras},
+     keywords = {galaxies: haloes, cosmology: theory, dark matter, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2015",
+        month = "Oct",
+       volume = {453},
+       number = {1},
+        pages = {29-37},
+          doi = {10.1093/mnras/stv1470},
+archivePrefix = {arXiv},
+       eprint = {1412.1477},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015MNRAS.453...29E},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{Koppelman2019_Helmistream,
+       author = {{Koppelman}, Helmer H. and {Helmi}, Amina and {Massari}, Davide and
+         {Roelenga}, Sebastian and {Bastian}, Ulrich},
+        title = "{Characterization and history of the Helmi streams with Gaia DR2}",
+      journal = {\aap},
+     keywords = {Galaxy: halo, Galaxy: kinematics and dynamics, solar neighborhood, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "May",
+       volume = {625},
+          eid = {A5},
+        pages = {A5},
+          doi = {10.1051/0004-6361/201834769},
+archivePrefix = {arXiv},
+       eprint = {1812.00846},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019A&A...625A...5K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Penarrubia2012,
+       author = {{Pe{\~n}arrubia}, Jorge and {Pontzen}, Andrew and {Walker}, Matthew G. and
+         {Koposov}, Sergey E.},
+        title = "{The Coupling between the Core/Cusp and Missing Satellite Problems}",
+      journal = {\apj},
+     keywords = {dark matter, galaxies: dwarf, galaxies: formation, galaxies: halos, Local Group, Astrophysics - Astrophysics of Galaxies},
+         year = "2012",
+        month = "Nov",
+       volume = {759},
+       number = {2},
+          eid = {L42},
+        pages = {L42},
+          doi = {10.1088/2041-8205/759/2/L42},
+archivePrefix = {arXiv},
+       eprint = {1207.2772},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2012ApJ...759L..42P},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Spergel2000SIDM,
+       author = {{Spergel}, David N. and {Steinhardt}, Paul J.},
+        title = "{Observational Evidence for Self-Interacting Cold Dark Matter}",
+      journal = {\prl},
+     keywords = {Astrophysics, High Energy Physics - Phenomenology},
+         year = "2000",
+        month = "Apr",
+       volume = {84},
+       number = {17},
+        pages = {3760-3763},
+          doi = {10.1103/PhysRevLett.84.3760},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/9909386},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2000PhRvL..84.3760S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Madau2014,
+       author = {{Madau}, Piero and {Dickinson}, Mark},
+        title = "{Cosmic Star-Formation History}",
+      journal = {\araa},
+     keywords = {Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2014",
+        month = "Aug",
+       volume = {52},
+        pages = {415-486},
+          doi = {10.1146/annurev-astro-081811-125615},
+archivePrefix = {arXiv},
+       eprint = {1403.0007},
+ primaryClass = {astro-ph.CO},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2014ARA&A..52..415M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Onorbe2015,
+       author = {{O{\~n}orbe}, Jose and {Boylan-Kolchin}, Michael and
+         {Bullock}, James S. and {Hopkins}, Philip F. and
+         {Kere{\v{s}}}, Du{\v{s}}an and {Faucher-Gigu{\`e}re}, Claude-Andr{\'e} and
+         {Quataert}, Eliot and {Murray}, Norman},
+        title = "{Forged in FIRE: cusps, cores and baryons in low-mass dwarf galaxies}",
+      journal = {\mnras},
+     keywords = {methods: numerical, galaxies: dwarf, galaxies: evolution, galaxies: formation, cosmology: theory, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2015",
+        month = "Dec",
+       volume = {454},
+       number = {2},
+        pages = {2092-2106},
+          doi = {10.1093/mnras/stv2072},
+archivePrefix = {arXiv},
+       eprint = {1502.02036},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015MNRAS.454.2092O},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+
+@article{Bullock2017smallscale,
+author = {Bullock, James S. and Boylan-Kolchin, Michael},
+title = {Small-Scale Challenges to the ΛCDM Paradigm},
+journal = {Annual Review of Astronomy and Astrophysics},
+volume = {55},
+number = {1},
+pages = {343-387},
+year = {2017},
+doi = {10.1146/annurev-astro-091916-055313},
+
+URL = { 
+        https://doi.org/10.1146/annurev-astro-091916-055313
+    
+},
+eprint = { 
+        https://doi.org/10.1146/annurev-astro-091916-055313
+    
+}
+,
+    abstract = { The dark energy plus cold dark matter (ΛCDM) cosmological model has been a demonstrably successful framework for predicting and explaining the large-scale structure of the Universe and its evolution with time. Yet on length scales smaller than ∼1 Mpc and mass scales smaller than ∼1011M⊙, the theory faces a number of challenges. For example, the observed cores of many dark matter–dominated galaxies are both less dense and less cuspy than naïvely predicted in ΛCDM. The number of small galaxies and dwarf satellites in the Local Group is also far below the predicted count of low-mass dark matter halos and subhalos within similar volumes. These issues underlie the most well-documented problems with ΛCDM: cusp/core, missing satellites, and too-big-to-fail. The key question is whether a better understanding of baryon physics, dark matter physics, or both is required to meet these challenges. Other anomalies, including the observed planar and orbital configurations of Local Group satellites and the tight baryonic/dark matter scaling relations obeyed by the galaxy population, have been less thoroughly explored in the context of ΛCDM theory. Future surveys to discover faint, distant dwarf galaxies and to precisely measure their masses and density structure hold promising avenues for testing possible solutions to the small-scale challenges going forward. Observational programs to constrain or discover and characterize the number of truly dark low-mass halos are among the most important, and achievable, goals in this field over the next decade. These efforts will either further verify the ΛCDM paradigm or demand a substantial revision in our understanding of the nature of dark matter. }
+}
+
+
+
+
+@ARTICLE{Pontzen2012,
+   author = {{Pontzen}, A. and {Governato}, F.},
+    title = "{How supernova feedback turns dark matter cusps into cores}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1106.0499},
+ keywords = {galaxies: dwarf, dark matter},
+     year = 2012,
+    month = apr,
+   volume = 421,
+    pages = {3464-3471},
+      doi = {10.1111/j.1365-2966.2012.20571.x},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2012MNRAS.421.3464P},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{Read2017Gravsphere,
+       author = {{Read}, J.~I. and {Steger}, P.},
+        title = "{How to break the density-anisotropy degeneracy in spherical stellar systems}",
+      journal = {\mnras},
+     keywords = {methods: miscellaneous, proper motions, globular clusters: general, galaxies: clusters: general, galaxies: haloes, dark matter, Astrophysics - Astrophysics of Galaxies},
+         year = "2017",
+        month = "Nov",
+       volume = {471},
+       number = {4},
+        pages = {4541-4558},
+          doi = {10.1093/mnras/stx1798},
+archivePrefix = {arXiv},
+       eprint = {1701.04833},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.471.4541R},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Walker2010,
+       author = {{Walker}, Matthew G. and {McGaugh}, Stacy S. and {Mateo}, Mario and
+         {Olszewski}, Edward W. and {Kuzio de Naray}, Rachel},
+        title = "{Comparing the Dark Matter Halos of Spiral, Low Surface Brightness, and Dwarf Spheroidal Galaxies}",
+      journal = {\apj},
+     keywords = {dark matter, galaxies: dwarf, galaxies: fundamental parameters, galaxies: kinematics and dynamics, galaxies: spiral, Astrophysics - Astrophysics of Galaxies},
+         year = "2010",
+        month = "Jul",
+       volume = {717},
+       number = {2},
+        pages = {L87-L91},
+          doi = {10.1088/2041-8205/717/2/L87},
+archivePrefix = {arXiv},
+       eprint = {1004.5228},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2010ApJ...717L..87W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Jardel2013DracoCusps,
+       author = {{Jardel}, John R. and {Gebhardt}, Karl and {Fabricius}, Maximilian H. and
+         {Drory}, Niv and {Williams}, Michael J.},
+        title = "{Measuring Dark Matter Profiles Non-Parametrically in Dwarf Spheroidals: An Application to Draco}",
+      journal = {\apj},
+     keywords = {dark matter, galaxies: dwarf, galaxies: individual: Draco, galaxies: kinematics and dynamics, Local Group, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2013",
+        month = "Feb",
+       volume = {763},
+       number = {2},
+          eid = {91},
+        pages = {91},
+          doi = {10.1088/0004-637X/763/2/91},
+archivePrefix = {arXiv},
+       eprint = {1211.5376},
+ primaryClass = {astro-ph.CO},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2013ApJ...763...91J},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Goerdt2006Fornax,
+   author = {{Goerdt}, T. and {Moore}, B. and {Read}, J.~I. and {Stadel}, J. and 
+	{Zemp}, M.},
+    title = "{Does the Fornax dwarf spheroidal have a central cusp or core?}",
+  journal = {\mnras},
+   eprint = {astro-ph/0601404},
+ keywords = {methods: N-body simulations: galaxies: dwarf: galaxies: individual: Fornax: galaxies: star clusters, methods: N-body simulations, galaxies: dwarf, galaxies: individual: Fornax, galaxies: star clusters},
+     year = 2006,
+    month = may,
+   volume = 368,
+    pages = {1073-1077},
+      doi = {10.1111/j.1365-2966.2006.10182.x},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2006MNRAS.368.1073G},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Laporte2015,
+       author = {{Laporte}, C.~F.~P. and {Penarrubia}, J.},
+        title = "{Under the sword of Damocles: plausible regeneration of dark matter cusps at the smallest galactic scales.}",
+      journal = {\mnras},
+     keywords = {galaxies: dwarf, galaxies: evolution, galaxies: formation, Astrophysics - Astrophysics of Galaxies},
+         year = "2015",
+        month = "Apr",
+       volume = {449},
+        pages = {L90-L94},
+          doi = {10.1093/mnrasl/slv008},
+archivePrefix = {arXiv},
+       eprint = {1409.3848},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015MNRAS.449L..90L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Erkal2019Orphan,
+       author = {{Erkal}, D. and {Belokurov}, V. and {Laporte}, C.~F.~P. and
+         {Koposov}, S.~E. and {Li}, T.~S. and {Grillmair}, C.~J. and
+         {Kallivayalil}, N. and {Price-Whelan}, A.~M. and {Evans}, N.~W. and
+         {Hawkins}, K. and {Hendel}, D. and {Mateu}, C. and {Navarro}, J.~F. and
+         {Pino}, A. del and {Slater}, C.~T. and {Sohn}, S.~T.},
+        title = "{The total mass of the Large Magellanic Cloud from its perturbation on the Orphan stream}",
+      journal = {\mnras},
+     keywords = {Galaxy: kinematics and dynamics, Galaxy: halo, Galaxy: structure, Galaxy: evolution, galaxies: Magellanic Clouds, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "May",
+        pages = {1318},
+          doi = {10.1093/mnras/stz1371},
+archivePrefix = {arXiv},
+       eprint = {1812.08192},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.tmp.1318E},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Kravtsov2005,
+       author = {{Kravtsov}, Andrey V. and {Gnedin}, Oleg Y.},
+        title = "{Formation of Globular Clusters in Hierarchical Cosmology}",
+      journal = {\apj},
+     keywords = {Cosmology: Theory, Galaxies: Formation, Galaxies: Star Clusters, Galaxy: Globular Clusters: General, Methods: Numerical, Astrophysics},
+         year = "2005",
+        month = "Apr",
+       volume = {623},
+       number = {2},
+        pages = {650-665},
+          doi = {10.1086/428636},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0305199},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2005ApJ...623..650K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Kruijssen2014,
+       author = {{Kruijssen}, J.~M. Diederik},
+        title = "{Globular cluster formation in the context of galaxy formation and evolution}",
+      journal = {Classical and Quantum Gravity},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2014",
+        month = "Dec",
+       volume = {31},
+       number = {24},
+          eid = {244006},
+        pages = {244006},
+          doi = {10.1088/0264-9381/31/24/244006},
+archivePrefix = {arXiv},
+       eprint = {1407.2953},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2014CQGra..31x4006K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Ricotti2016,
+   author = {{Ricotti}, M. and {Parry}, O.~H. and {Gnedin}, N.~Y.},
+    title = "{A Common Origin for Globular Clusters and Ultra-faint Dwarfs in Simulations of the First Galaxies}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1607.04291},
+ keywords = {cosmology: theory, galaxies: evolution, galaxies: formation, methods: numerical},
+     year = 2016,
+    month = nov,
+   volume = 831,
+      eid = {204},
+    pages = {204},
+      doi = {10.3847/0004-637X/831/2/204},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2016ApJ...831..204R},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Naoz2014,
+   author = {{Naoz}, S. and {Narayan}, R.},
+    title = "{Globular Clusters and Dark Satellite Galaxies through the Stream Velocity}",
+  journal = {\apjl},
+archivePrefix = "arXiv",
+   eprint = {1407.3795},
+ keywords = {globular clusters: general},
+     year = 2014,
+    month = aug,
+   volume = 791,
+      eid = {L8},
+    pages = {L8},
+      doi = {10.1088/2041-8205/791/1/L8},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2014ApJ...791L...8N},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{vandenBergh2000,
+   author = {{van den Bergh}, S.},
+    title = "{Young Globular Clusters and Dwarf Spheroidals}",
+  journal = {\apj},
+   eprint = {astro-ph/9910243},
+ keywords = {GALAXIES: DWARF, GALAXY: GLOBULAR CLUSTERS: GENERAL},
+     year = 2000,
+    month = feb,
+   volume = 530,
+    pages = {777-782},
+      doi = {10.1086/308413},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2000ApJ...530..777V},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@INPROCEEDINGS{GrillmairCarlin2016,
+       author = {{Grillmair}, Carl J. and {Carlin}, Jeffrey L.},
+        title = "{Stellar Streams and Clouds in the Galactic Halo}",
+     keywords = {Physics, Astrophysics - Astrophysics of Galaxies},
+    booktitle = {Tidal Streams in the Local Group and Beyond},
+         year = "2016",
+       editor = {{Newberg}, Heidi Jo and {Carlin}, Jeffrey L.},
+       series = {Astrophysics and Space Science Library},
+       volume = {420},
+        month = "Jan",
+        pages = {87},
+          doi = {10.1007/978-3-319-19336-6_4},
+archivePrefix = {arXiv},
+       eprint = {1603.08936},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2016ASSL..420...87G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Koposov2019Orphan,
+       author = {{Koposov}, S.~E. and {Belokurov}, V. and {Li}, T.~S. and {Mateu}, C. and
+         {Erkal}, D. and {Grillmair}, C.~J. and {Hendel}, D. and
+         {Price-Whelan}, A.~M. and {Laporte}, C.~F.~P. and {Hawkins}, K. and
+         {Sohn}, S.~T. and {del Pino}, A. and {Evans}, N.~W. and
+         {Slater}, C.~T. and {Kallivayalil}, N. and {Navarro}, J.~F.},
+        title = "{Piercing the Milky Way: an all-sky view of the Orphan Stream}",
+      journal = {\mnras},
+     keywords = {Galaxy: halo, Galaxy: kinematics and dynamics, Galaxy: structure, galaxies: dwarf, galaxies: structure, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Jun",
+       volume = {485},
+       number = {4},
+        pages = {4726-4742},
+          doi = {10.1093/mnras/stz457},
+archivePrefix = {arXiv},
+       eprint = {1812.08172},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.4726K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Meingast2019,
+       author = {{Meingast}, Stefan and {Alves}, Jo{\~a}o and {F{\"u}rnkranz}, Verena},
+        title = "{Extended stellar systems in the solar neighborhood . II. Discovery of a nearby 120{\textdegree} stellar stream in Gaia DR2}",
+      journal = {\aap},
+     keywords = {stars: kinematics and dynamics, solar neighborhood, open clusters and associations: general, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Feb",
+       volume = {622},
+          eid = {L13},
+        pages = {L13},
+          doi = {10.1051/0004-6361/201834950},
+archivePrefix = {arXiv},
+       eprint = {1901.06387},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019A&A...622L..13M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Palau2019M68streamFjorm,
+       author = {{Palau}, C.~G. and {Miralda-Escud{\'e}}, J.},
+        title = "{Statistical detection of a tidal stream associated with the globular cluster M68 using Gaia data}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "May",
+          eid = {arXiv:1905.01193},
+        pages = {arXiv:1905.01193},
+archivePrefix = {arXiv},
+       eprint = {1905.01193},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190501193P},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Curtis2019,
+       author = {{Curtis}, Jason Lee and {Ag{\"u}eros}, Marcel A. and {Mamajek}, Eric E. and
+         {Wright}, Jason T. and {Cummings}, Jeffrey D.},
+        title = "{TESS reveals that the nearby Pisces-Eridanus stellar stream is only 120 Myr old}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "May",
+          eid = {arXiv:1905.10588},
+        pages = {arXiv:1905.10588},
+archivePrefix = {arXiv},
+       eprint = {1905.10588},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190510588C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{WhelanBonacaGD12018,
+   author = {{Price-Whelan}, A.~M. and {Bonaca}, A.},
+    title = "{Off the Beaten Path: Gaia Reveals GD-1 Stars outside of the Main Stream}",
+  journal = {\apjl},
+archivePrefix = "arXiv",
+   eprint = {1805.00425},
+ keywords = {dark matter, Galaxy: halo, Galaxy: kinematics and dynamics },
+     year = 2018,
+    month = aug,
+   volume = 863,
+      eid = {L20},
+    pages = {L20},
+      doi = {10.3847/2041-8213/aad7b5},
+   adsurl = {http://adsabs.harvard.edu/abs/2018ApJ...863L..20P},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Bonaca2018ColdStreams,
+   author = {{Bonaca}, A. and {Hogg}, D.~W.},
+    title = "{The Information Content in Cold Stellar Streams}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1804.06854},
+ keywords = {dark matter, Galaxy: halo, Galaxy: kinematics and dynamics, methods: statistical},
+     year = 2018,
+    month = nov,
+   volume = 867,
+      eid = {101},
+    pages = {101},
+      doi = {10.3847/1538-4357/aae4da},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2018ApJ...867..101B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@article{Hooper2015,
+	doi = {10.1088/1475-7516/2015/09/016},
+	url = {https://doi.org/10.1088year = 2015,
+	month = {sep},
+	publisher = {{IOP} Publishing},
+	volume = {2015},
+	number = {09},
+	pages = {016--016},
+	author = {Dan Hooper and Tim Linden},
+	title = {On The gamma-ray emission from Reticulum {II} and other dwarf galaxies},
+	journal = {Journal of Cosmology and Astroparticle Physics},
+	abstract = {The recent discovery of ten new dwarf galaxy candidates by the Dark Energy Survey (DES) and the Panoramic Survey Telescope and Rapid Response System (Pan-STARRS) could increase the Fermi Gamma-Ray Space Telescope's sensitivity to annihilating dark matter particles, potentially enabling a definitive test of the dark matter interpretation of the long-standing Galactic Center gamma-ray excess. In this paper, we compare the previous analyses of Fermi data from the directions of the new dwarf candidates (including the relatively nearby Reticulum II) and perform our own analysis, with the goal of establishing the statistical significance of any gamma-ray signal from these sources. We confirm the presence of an excess from Reticulum II, with a spectral shape that is compatible with the Galactic Center signal. The significance of this emission is greater than that observed from 99.84}
+
+@ARTICLE{Read2018Draco,
+       author = {{Read}, J.~I. and {Walker}, M.~G. and {Steger}, P.},
+        title = "{The case for a cold dark matter cusp in Draco}",
+      journal = {\mnras},
+     keywords = {galaxies: dwarf, galaxies: haloes, galaxies: kinematics dynamics, dark matter, cosmology: observations, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2018",
+        month = "Nov",
+       volume = {481},
+       number = {1},
+        pages = {860-877},
+          doi = {10.1093/mnras/sty2286},
+archivePrefix = {arXiv},
+       eprint = {1805.06934},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018MNRAS.481..860R},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@article{Crnojevi2016,
+	doi = {10.3847/2041-8205/824/1/l14},
+	url = {https://doi.org/10.3847year = 2016,
+	month = {jun},
+	publisher = {American Astronomical Society},
+	volume = {824},
+	number = {1},
+	pages = {L14},
+	author = {D. Crnojevi{\'{c}} and D. J. Sand and D. Zaritsky and K. Spekkens and B. Willman and J. R. Hargis},
+	title = {{DEEP} {IMAGING} {OF} {ERIDANUS} {II} {AND} {ITS} {LONE} {STAR} {CLUSTER}},
+	journal = {The Astrophysical Journal},
+	abstract = {We present deep imaging of the most distant dwarf discovered by the Dark Energy Survey, Eridanus II (Eri II). Our Magellan/Megacam stellar photometry reaches ∼3 mag deeper than previous work and allows us to confirm the presence of a stellar cluster whose position is consistent with Eri II’s center. This makes Eri II, at , the least luminous galaxy known to host a (possibly central) cluster. The cluster is partially resolved, and at  it accounts for ∼4}
+
+
+@ARTICLE{Read2017,
+       author = {{Read}, J.~I. and {Iorio}, G. and {Agertz}, O. and {Fraternali}, F.},
+        title = "{The stellar mass-halo mass relation of isolated field dwarfs: a critical test of {\ensuremath{\Lambda}}CDM at the edge of galaxy formation}",
+      journal = {\mnras},
+     keywords = {(cosmology:) dark matter, (cosmology:) cosmological parameters, (galaxies:) Local Group, galaxies: dwarf, galaxies: irregular, galaxies: kinematics, galaxies: kinematics and dynamics, Local Group, cosmological parameters, dark matter, Astrophysics - Astrophysics of Galaxies},
+         year = "2017",
+        month = "May",
+       volume = {467},
+       number = {2},
+        pages = {2019-2038},
+          doi = {10.1093/mnras/stx147},
+archivePrefix = {arXiv},
+       eprint = {1607.03127},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.467.2019R},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Koch2007,
+       author = {{Koch}, Andreas and {Kleyna}, Jan T. and {Wilkinson}, Mark I. and
+         {Grebel}, Eva K. and {Gilmore}, Gerard F. and {Evans}, N. Wyn and
+         {Wyse}, Rosemary F.~G. and {Harbeck}, Daniel R.},
+        title = "{Stellar Kinematics in the Remote Leo II Dwarf Spheroidal Galaxy-Another Brick in the Wall}",
+      journal = {\aj},
+     keywords = {galaxies: dwarf, galaxies: individual: Leo II, galaxies: kinematics and dynamics, galaxies: stellar content, galaxies: structure, Local Group, Astrophysics},
+         year = "2007",
+        month = "Aug",
+       volume = {134},
+       number = {2},
+        pages = {566-578},
+          doi = {10.1086/519380},
+archivePrefix = {arXiv},
+       eprint = {0704.3437},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2007AJ....134..566K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+
+@ARTICLE{Evans2004,
+       author = {{Evans}, N.~W. and {Ferrer}, F. and {Sarkar}, S.},
+        title = "{A travel guide to the dark matter annihilation signal}",
+      journal = {\prd},
+     keywords = {95.35.+d, Dark matter, Astrophysics},
+         year = "2004",
+        month = "Jun",
+       volume = {69},
+       number = {12},
+          eid = {123501},
+        pages = {123501},
+          doi = {10.1103/PhysRevD.69.123501},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0311145},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2004PhRvD..69l3501E},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@article{Hayes2018,
+	doi = {10.3847/2041-8213/aae9dd},
+	url = {https://doi.org/10.3847year = 2018,
+	month = {nov},
+	publisher = {American Astronomical Society},
+	volume = {867},
+	number = {2},
+	pages = {L20},
+	author = {Christian R. Hayes and David R. Law and Steven R. Majewski},
+	title = {Constraining the Solar Galactic Reflex Velocity using Gaia Observations of the Sagittarius Stream},
+	journal = {The Astrophysical Journal},
+	abstract = {Because of its particular orientation around the Galaxy—i.e., in a plane nearly perpendicular to the Galactic plane and containing both the Sun and Galactic center—the Sagittarius (Sgr) stream provides a powerful means by which to measure the solar reflex velocity, and thereby infer the velocity of the Local Standard of Rest (LSR), in a way that is independent of assumptions about the solar Galactocentric distance. Moreover, the solar reflex velocity with respect to the stream is projected almost entirely into the proper motion component of Sgr stream stars perpendicular to the Sgr plane, which makes the inferred velocity relatively immune to most Sgr model assumptions. Using Gaia Data Release 2 proper motions of ∼2000 stars identified to be Sgr stream candidates in concert with the Law & Majewski Sgr N-body models (which provide a good match to the Gaia observations), we constrain the solar reflex velocity induced by its orbital motion around the Galaxy to be Θ⊙ = 253 ± 6 km s−1. Assuming a solar peculiar motion in the direction of orbital rotation of 12 km s−1, and an LSR velocity of 12 km s−1 with respect to the local circular speed, the implied circular speed of the Milky Way at the solar circle is 229 ± 6 km s−1.}
+}
+
+@ARTICLE{Malhan2017,
+       author = {{Malhan}, Khyati and {Ibata}, Rodrigo A.},
+        title = "{Measuring the Sun's motion with stellar streams}",
+      journal = {\mnras},
+     keywords = {Sun: fundamental parameters, stars: kinematics and dynamics, Galaxy: fundamental parameters, Galaxy: halo, Galaxy: structure, Astrophysics - Astrophysics of Galaxies},
+         year = "2017",
+        month = "Oct",
+       volume = {471},
+       number = {1},
+        pages = {1005-1011},
+          doi = {10.1093/mnras/stx1618},
+archivePrefix = {arXiv},
+       eprint = {1707.00697},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.471.1005M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Shipp2019,
+       author = {{Shipp}, N. and {Li}, T.~S. and {Pace}, A.~B. and {Erkal}, D. and
+         {Drlica-Wagner}, A. and {Yanny}, B. and {Belokurov}, V. and
+         {Wester}, W. and {Koposov}, S.~E. and {Lewis}, G.~F. and
+         {Simpson}, J.~D. and {Wan}, Z. and {Zucker}, D.~B. and
+         {Martell}, S.~L. and {Wang}, M.~Y.},
+        title = "{Proper Motions of Stellar Streams Discovered in the Dark Energy Survey}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Jul",
+          eid = {arXiv:1907.09488},
+        pages = {arXiv:1907.09488},
+archivePrefix = {arXiv},
+       eprint = {1907.09488},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190709488S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Shipp2018,
+       author = {{Shipp}, N. and {Drlica-Wagner}, A. and {Balbinot}, E. and
+         {Ferguson}, P. and {Erkal}, D. and {Li}, T.~S. and {Bechtol}, K. and
+         {Belokurov}, V. and {Buncher}, B. and {Carollo}, D. and
+         {Carrasco Kind}, M. and {Kuehn}, K. and {Marshall}, J.~L. and
+         {Pace}, A.~B. and {Rykoff}, E.~S. and {Sevilla-Noarbe}, I. and
+         {Sheldon}, E. and {Strigari}, L. and {Vivas}, A.~K. and {Yanny}, B. and
+         {Zenteno}, A. and {Abbott}, T.~M.~C. and {Abdalla}, F.~B. and
+         {Allam}, S. and {Avila}, S. and {Bertin}, E. and {Brooks}, D. and
+         {Burke}, D.~L. and {Carretero}, J. and {Castander}, F.~J. and
+         {Cawthon}, R. and {Crocce}, M. and {Cunha}, C.~E. and
+         {D'Andrea}, C.~B. and {da Costa}, L.~N. and {Davis}, C. and
+         {De Vicente}, J. and {Desai}, S. and {Diehl}, H.~T. and {Doel}, P. and
+         {Evrard}, A.~E. and {Flaugher}, B. and {Fosalba}, P. and {Frieman}, J. and
+         {Garc{\'\i}a-Bellido}, J. and {Gaztanaga}, E. and {Gerdes}, D.~W. and
+         {Gruen}, D. and {Gruendl}, R.~A. and {Gschwend}, J. and
+         {Gutierrez}, G. and {Hartley}, W. and {Honscheid}, K. and {Hoyle}, B. and
+         {James}, D.~J. and {Johnson}, M.~D. and {Krause}, E. and
+         {Kuropatkin}, N. and {Lahav}, O. and {Lin}, H. and {Maia}, M.~A.~G. and
+         {March}, M. and {Martini}, P. and {Menanteau}, F. and {Miller}, C.~J. and
+         {Miquel}, R. and {Nichol}, R.~C. and {Plazas}, A.~A. and
+         {Romer}, A.~K. and {Sako}, M. and {Sanchez}, E. and {Santiago}, B. and
+         {Scarpine}, V. and {Schindler}, R. and {Schubnell}, M. and {Smith}, M. and
+         {Smith}, R.~C. and {Sobreira}, F. and {Suchyta}, E. and
+         {Swanson}, M.~E.~C. and {Tarle}, G. and {Thomas}, D. and
+         {Tucker}, D.~L. and {Walker}, A.~R. and {Wechsler}, R.~H. and
+         {DES Collaboration}},
+        title = "{Stellar Streams Discovered in the Dark Energy Survey}",
+      journal = {\apj},
+     keywords = {Galaxy: halo, Galaxy: structure, Local Group, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2018",
+        month = "Aug",
+       volume = {862},
+       number = {2},
+          eid = {114},
+        pages = {114},
+          doi = {10.3847/1538-4357/aacdab},
+archivePrefix = {arXiv},
+       eprint = {1801.03097},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018ApJ...862..114S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Bell2008,
+       author = {{Bell}, Eric F. and {Zucker}, Daniel B. and {Belokurov}, Vasily and
+         {Sharma}, Sanjib and {Johnston}, Kathryn V. and {Bullock}, James S. and
+         {Hogg}, David W. and {Jahnke}, Knud and {de Jong}, Jelte T.~A. and
+         {Beers}, Timothy C.},
+        title = "{The Accretion Origin of the Milky Way's Stellar Halo}",
+      journal = {\apj},
+     keywords = {galaxies: halos, Galaxy: evolution, Galaxy: formation, Galaxy: general, Galaxy: halo, Galaxy: structure, Astrophysics},
+         year = "2008",
+        month = "Jun",
+       volume = {680},
+       number = {1},
+        pages = {295-311},
+          doi = {10.1086/588032},
+archivePrefix = {arXiv},
+       eprint = {0706.0004},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2008ApJ...680..295B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Belokurov2006,
+       author = {{Belokurov}, V. and {Zucker}, D.~B. and {Evans}, N.~W. and
+         {Gilmore}, G. and {Vidrih}, S. and {Bramich}, D.~M. and
+         {Newberg}, H.~J. and {Wyse}, R.~F.~G. and {Irwin}, M.~J. and
+         {Fellhauer}, M. and {Hewett}, P.~C. and {Walton}, N.~A. and
+         {Wilkinson}, M.~I. and {Cole}, N. and {Yanny}, B. and {Rockosi}, C.~M. and
+         {Beers}, T.~C. and {Bell}, E.~F. and {Brinkmann}, J. and
+         {Ivezi{\'c}}, {\v{Z}}. and {Lupton}, R.},
+        title = "{The Field of Streams: Sagittarius and Its Siblings}",
+      journal = {\apj},
+     keywords = {Galaxies: Individual: Name: Sagittarius dSph, Galaxies: Kinematics and Dynamics, Galaxies: Structure, Galaxy: Halo, Galaxies: Local Group, Astrophysics},
+         year = "2006",
+        month = "May",
+       volume = {642},
+       number = {2},
+        pages = {L137-L140},
+          doi = {10.1086/504797},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0605025},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2006ApJ...642L.137B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Gaskins2008,
+   author = {{Siegal-Gaskins}, J.~M. and {Valluri}, M.},
+    title = "{Signatures of {$\Lambda$}CDM Substructure in Tidal Debris}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {0710.0385},
+ keywords = {cosmology: theory, dark matter, galaxies: structure, methods: N-body simulations},
+     year = 2008,
+    month = jul,
+   volume = 681,
+    pages = {40-52},
+      doi = {10.1086/587450},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2008ApJ...681...40S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Thomas2018_MOND_Pal5,
+       author = {{Thomas}, G.~F. and {Famaey}, B. and {Ibata}, R. and {Renaud}, F. and
+         {Martin}, N.~F. and {Kroupa}, P.},
+        title = "{Stellar streams as gravitational experiments. II. Asymmetric tails of globular cluster streams}",
+      journal = {\aap},
+     keywords = {globular clusters: individual: Palomar 5, Galaxy: kinematics and dynamics, Galaxy: structure, Galaxy: halo, gravitation, Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "Jan",
+       volume = {609},
+          eid = {A44},
+        pages = {A44},
+          doi = {10.1051/0004-6361/201731609},
+archivePrefix = {arXiv},
+       eprint = {1709.01934},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018A&A...609A..44T},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@article{Kesden2006,
+  title = {Galilean Equivalence for Galactic Dark Matter},
+  author = {Kesden, Michael and Kamionkowski, Marc},
+  journal = {Phys. Rev. Lett.},
+  volume = {97},
+  issue = {13},
+  pages = {131303},
+  numpages = {4},
+  year = {2006},
+  month = {Sep},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.97.131303},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.97.131303}
+}
+
+
+@article{Dehnen2004,
+	doi = {10.1086/383214},
+	url = {https://doi.org/10.1086year = 2004,
+	month = {may},
+	publisher = {{IOP} Publishing},
+	volume = {127},
+	number = {5},
+	pages = {2753--2770},
+	author = {Walter Dehnen and Michael Odenkirchen and Eva K. Grebel and Hans-Walter Rix},
+	title = {Modeling the Disruption of the Globular Cluster Palomar 5 by Galactic Tides},
+	journal = {The Astronomical Journal},
+	abstract = {The globular cluster Palomar 5 is remarkable not only because of its extended massive tidal tails, but also for its very low mass and velocity dispersion, and its size, which is much larger than its theoretical tidal radius. In order to understand these extreme properties, we performed more than 1000 N-body simulations of clusters traversing the Milky Way on the orbit of Pal 5. Tidal shocks at disk crossings near perigalacticon dominate the evolution of extended low-concentration clusters, resulting in massive tidal tails and often in a quick destruction of the cluster. The very large size of Pal 5 can be explained as the result of an expansion following the heating induced by the last strong disk shock ∼150 Myr ago. Some of the models can reproduce the low observed velocity dispersion and the relative fractions of stars in the tails and between the inner and outer parts of the tails. Our simulations illustrate to what extent the observable tidal tails trace out the orbit of the parent object. The tidal tails of Pal 5 show substantial structure not seen in our simulations. We argue that this structure is probably caused by Galactic substructure, such as giant molecular clouds, spiral arms, and dark matter clumps, which was ignored in our modeling. Clusters initially larger than their theoretical tidal limit remain so, because after being shocked, they settle into a new equilibrium near apogalacticon where they are unaffected by the perigalactic tidal field. This implies that, contrary to previous wisdom, globular clusters on eccentric orbits may well remain supertidally limited and hence vulnerable to strong disk shocks, which dominate their evolution until destruction. Our simulations unambiguously predict the destruction of Pal 5 at its next disk crossing in ∼110 Myr. This corresponds to only 1}
+
+
+
+@ARTICLE{Kirby2013,
+       author = {{Kirby}, Evan N. and {Cohen}, Judith G. and {Guhathakurta}, Puragra and
+         {Cheng}, Lucy and {Bullock}, James S. and {Gallazzi}, Anna},
+        title = "{The Universal Stellar Mass-Stellar Metallicity Relation for Dwarf Galaxies}",
+      journal = {\apj},
+     keywords = {galaxies: abundances, galaxies: dwarf, galaxies: fundamental parameters, galaxies: irregular, Local Group, Astrophysics - Galaxy Astrophysics, Astrophysics - Cosmology and Extragalactic Astrophysics},
+         year = "2013",
+        month = "Dec",
+       volume = {779},
+       number = {2},
+          eid = {102},
+        pages = {102},
+          doi = {10.1088/0004-637X/779/2/102},
+archivePrefix = {arXiv},
+       eprint = {1310.0814},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2013ApJ...779..102K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Odenkirchen2003,
+       author = {{Odenkirchen}, Michael and {Grebel}, Eva K. and {Dehnen}, Walter and
+         {Rix}, Hans-Walter and {Yanny}, Brian and {Newberg}, Heidi Jo and
+         {Rockosi}, Constance M. and {Mart{\'\i}nez-Delgado}, David and
+         {Brinkmann}, Jon and {Pier}, Jeffrey R.},
+        title = "{The Extended Tails of Palomar 5: A 10{\textdegree} Arc of Globular Cluster Tidal Debris}",
+      journal = {\aj},
+     keywords = {Galaxy: Halo, Galaxy: Globular Clusters: General, Galaxy: Globular Clusters: Individual: Name: Palomar 5, Astrophysics},
+         year = "2003",
+        month = "Nov",
+       volume = {126},
+       number = {5},
+        pages = {2385-2407},
+          doi = {10.1086/378601},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0307446},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2003AJ....126.2385O},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{King1962,
+   author = {{King}, I.},
+    title = "{The structure of star clusters. I. an empirical density law}",
+  journal = {\aj},
+     year = 1962,
+    month = oct,
+   volume = 67,
+    pages = {471},
+      doi = {10.1086/108756},
+   adsurl = {http://adsabs.harvard.edu/abs/1962AJ.....67..471K},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{Johnston2002DM_TS,
+   author = {{Johnston}, K.~V. and {Spergel}, D.~N. and {Haydn}, C.},
+    title = "{How Lumpy Is the Milky Way's Dark Matter Halo?}",
+  journal = {\apj},
+   eprint = {astro-ph/0111196},
+ keywords = {Cosmology: Dark Matter, Galaxy: Halo, Galaxy: Kinematics and Dynamics, Galaxy: Structure},
+     year = 2002,
+    month = may,
+   volume = 570,
+    pages = {656-664},
+      doi = {10.1086/339791},
+   adsurl = {http://adsabs.harvard.edu/abs/2002ApJ...570..656J},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{StreamGap_Erkal2016,
+   author = {{Erkal}, D. and {Belokurov}, V. and {Bovy}, J. and {Sanders}, J.~L.
+	},
+    title = "{The number and size of subhalo-induced gaps in stellar streams}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1606.04946},
+ keywords = {Galaxy: fundamental parameters, galaxies: haloes, galaxies: structure, dark matter},
+     year = 2016,
+    month = nov,
+   volume = 463,
+    pages = {102-119},
+      doi = {10.1093/mnras/stw1957},
+   adsurl = {http://adsabs.harvard.edu/abs/2016MNRAS.463..102E},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{StreamGap_Carlberg2012,
+   author = {{Carlberg}, R.~G. and {Grillmair}, C.~J. and {Hetherington}, N.
+	},
+    title = "{The Pal 5 Star Stream Gaps}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1209.1741},
+ keywords = {dark matter, galaxies: dwarf, Local Group},
+     year = 2012,
+    month = nov,
+   volume = 760,
+      eid = {75},
+    pages = {75},
+      doi = {10.1088/0004-637X/760/1/75},
+   adsurl = {http://adsabs.harvard.edu/abs/2012ApJ...760...75C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{StreamGap_Sanders2016,
+   author = {{Sanders}, J.~L. and {Bovy}, J. and {Erkal}, D.},
+    title = "{Dynamics of stream-subhalo interactions}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1510.03426},
+ keywords = {Galaxy: halo, Galaxy: kinematics and dynamics, Galaxy: structure, cosmology: theory, dark matter},
+     year = 2016,
+    month = apr,
+   volume = 457,
+    pages = {3817-3835},
+      doi = {10.1093/mnras/stw232},
+   adsurl = {http://adsabs.harvard.edu/abs/2016MNRAS.457.3817S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{GrillmairGD12006,
+   author = {{Grillmair}, C.~J. and {Dionatos}, O.},
+    title = "{Detection of a 63{\deg} Cold Stellar Stream in the Sloan Digital Sky Survey}",
+  journal = {\apjl},
+   eprint = {astro-ph/0604332},
+ keywords = {Galaxy: Halo, Galaxy: Structure, Galaxy: Globular Clusters: General},
+     year = 2006,
+    month = may,
+   volume = 643,
+    pages = {L17-L20},
+      doi = {10.1086/505111},
+   adsurl = {http://adsabs.harvard.edu/abs/2006ApJ...643L..17G},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Gaia2012deBruijne,
+   author = {{de Bruijne}, J.~H.~J.},
+    title = "{Science performance of Gaia, ESA's space-astrometry mission}",
+  journal = {\apss},
+archivePrefix = "arXiv",
+   eprint = {1201.3238},
+ primaryClass = "astro-ph.IM",
+ keywords = {Astrometry, Photometry, Spectroscopy, CCD, Telescope, Data reduction, Calibration},
+     year = 2012,
+    month = sep,
+   volume = 341,
+    pages = {31-41},
+      doi = {10.1007/s10509-012-1019-4},
+   adsurl = {http://adsabs.harvard.edu/abs/2012Apadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{McMillan2011MWMassModel,
+   author = {{McMillan}, P.~J.},
+    title = "{Mass models of the Milky Way}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1102.4340},
+ keywords = {methods: statistical, Galaxy: fundamental parameters, Galaxy: kinematics and dynamics},
+     year = 2011,
+    month = jul,
+   volume = 414,
+    pages = {2446-2457},
+      doi = {10.1111/j.1365-2966.2011.18564.x},
+   adsurl = {http://adsabs.harvard.edu/abs/2011MNRAS.414.2446M},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Lora2019,
+       author = {{Lora}, V. and {Grebel}, E.~K. and {Schmeja}, S. and {Koch}, A.},
+        title = "{Cold, old and metal-poor: New stellar substructures in the Milky Way's dwarf spheroidals}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Apr",
+          eid = {arXiv:1904.10560},
+        pages = {arXiv:1904.10560},
+archivePrefix = {arXiv},
+       eprint = {1904.10560},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190410560L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{Carlberg2018Density_Structure,
+       author = {{Carlberg}, Raymond G.},
+        title = "{The Density Structure of Simulated Stellar Streams}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "Nov",
+          eid = {arXiv:1811.10084},
+        pages = {arXiv:1811.10084},
+archivePrefix = {arXiv},
+       eprint = {1811.10084},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2018arXiv181110084C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Mayer2001,
+       author = {{Mayer}, Lucio and {Governato}, Fabio and {Colpi}, Monica and
+         {Moore}, Ben and {Quinn}, Thomas R. and {Baugh}, Carlton M.},
+        title = "{The Morphological Evolution of Galaxy Satellites}",
+      journal = {\apss},
+     keywords = {Astrophysics},
+         year = "2001",
+        month = "Mar",
+       volume = {276},
+        pages = {375-382},
+          doi = {10.1023/A:1017562225479},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/9903442},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2001Ap&SS.276..375M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{SEGUE_SDSS2009,
+   author = {{Yanny}, B. and {Rockosi}, C. and {Newberg}, H.~J. and {Knapp}, G.~R. and 
+	{Adelman-McCarthy}, J.~K. and {Alcorn}, B. and {Allam}, S. and 
+	{Allende Prieto}, C. and {An}, D. and {Anderson}, K.~S.~J. and 
+	{Anderson}, S. and {Bailer-Jones}, C.~A.~L. and {Bastian}, S. and 
+	{Beers}, T.~C. and {Bell}, E. and {Belokurov}, V. and {Bizyaev}, D. and 
+	{Blythe}, N. and {Bochanski}, J.~J. and {Boroski}, W.~N. and 
+	{Brinchmann}, J. and {Brinkmann}, J. and {Brewington}, H. and 
+	{Carey}, L. and {Cudworth}, K.~M. and {Evans}, M. and {Evans}, N.~W. and 
+	{Gates}, E. and {G{\"a}nsicke}, B.~T. and {Gillespie}, B. and 
+	{Gilmore}, G. and {Nebot Gomez-Moran}, A. and {Grebel}, E.~K. and 
+	{Greenwell}, J. and {Gunn}, J.~E. and {Jordan}, C. and {Jordan}, W. and 
+	{Harding}, P. and {Harris}, H. and {Hendry}, J.~S. and {Holder}, D. and 
+	{Ivans}, I.~I. and {Ivezi{\v c}}, {\v Z}. and {Jester}, S. and 
+	{Johnson}, J.~A. and {Kent}, S.~M. and {Kleinman}, S. and {Kniazev}, A. and 
+	{Krzesinski}, J. and {Kron}, R. and {Kuropatkin}, N. and {Lebedeva}, S. and 
+	{Lee}, Y.~S. and {French Leger}, R. and {L{\'e}pine}, S. and 
+	{Levine}, S. and {Lin}, H. and {Long}, D.~C. and {Loomis}, C. and 
+	{Lupton}, R. and {Malanushenko}, O. and {Malanushenko}, V. and 
+	{Margon}, B. and {Martinez-Delgado}, D. and {McGehee}, P. and 
+	{Monet}, D. and {Morrison}, H.~L. and {Munn}, J.~A. and {Neilsen}, Jr., E.~H. and 
+	{Nitta}, A. and {Norris}, J.~E. and {Oravetz}, D. and {Owen}, R. and 
+	{Padmanabhan}, N. and {Pan}, K. and {Peterson}, R.~S. and {Pier}, J.~R. and 
+	{Platson}, J. and {Re Fiorentin}, P. and {Richards}, G.~T. and 
+	{Rix}, H.-W. and {Schlegel}, D.~J. and {Schneider}, D.~P. and 
+	{Schreiber}, M.~R. and {Schwope}, A. and {Sibley}, V. and {Simmons}, A. and 
+	{Snedden}, S.~A. and {Allyn Smith}, J. and {Stark}, L. and {Stauffer}, F. and 
+	{Steinmetz}, M. and {Stoughton}, C. and {SubbaRao}, M. and {Szalay}, A. and 
+	{Szkody}, P. and {Thakar}, A.~R. and {Sivarani}, T. and {Tucker}, D. and 
+	{Uomoto}, A. and {Vanden Berk}, D. and {Vidrih}, S. and {Wadadekar}, Y. and 
+	{Watters}, S. and {Wilhelm}, R. and {Wyse}, R.~F.~G. and {Yarger}, J. and 
+	{Zucker}, D.},
+    title = "{SEGUE: A Spectroscopic Survey of 240,000 Stars with g = 14-20}",
+  journal = {\aj},
+archivePrefix = "arXiv",
+   eprint = {0902.1781},
+ primaryClass = "astro-ph.GA",
+ keywords = {Galaxy: halo, Galaxy: stellar content, Galaxy: structure, stars: abundances, stars: fundamental parameters, stars: general},
+     year = 2009,
+    month = may,
+   volume = 137,
+    pages = {4377-4399},
+      doi = {10.1088/0004-6256/137/5/4377},
+   adsurl = {http://adsabs.harvard.edu/abs/2009AJ....137.4377Y},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@article{Dehnen1998Massmodel,
+   author = {{Dehnen}, W. and {Binney}, J.},
+    title = "{Mass models of the Milky Way}",
+  journal = {\mnras},
+   eprint = {astro-ph/9612059},
+ keywords = {Milky Way Galaxy, Galactic Mass, Astronomical Models, Galactic Structure, Mass Distribution, Galactic Halos, Luminosity, Density Distribution},
+     year = 1998,
+    month = mar,
+   volume = 294,
+    pages = {429},
+      doi = {10.1046/j.1365-8711.1998.01282.x},
+   adsurl = {http://adsabs.harvard.edu/abs/1998MNRAS.294..429D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Schlegel1998,
+   author = {{Schlegel}, D.~J. and {Finkbeiner}, D.~P. and {Davis}, M.},
+    title = "{Maps of Dust Infrared Emission for Use in Estimation of Reddening and Cosmic Microwave Background Radiation Foregrounds}",
+  journal = {\apj},
+   eprint = {astro-ph/9710327},
+ keywords = {COSMOLOGY: DIFFUSE RADIATION, COSMOLOGY: COSMIC MICROWAVE BACKGROUND, ISM: DUST, EXTINCTION, INTERPLANETARY MEDIUM, INFRARED: ISM: CONTINUUM, Cosmology: Cosmic Microwave Background, Cosmology: Diffuse Radiation, ISM: Dust, Extinction, Infrared: ISM: Continuum, Interplanetary Medium},
+     year = 1998,
+    month = jun,
+   volume = 500,
+    pages = {525-553},
+      doi = {10.1086/305772},
+   adsurl = {http://adsabs.harvard.edu/abs/1998ApJ...500..525S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@INPROCEEDINGS{Schlafly2011,
+   author = {{Schlafly}, E. and {Finkbeiner}, D.~P.},
+    title = "{Measuring Reddening with SDSS Stellar Spectra}",
+booktitle = {American Astronomical Society Meeting Abstracts \#217},
+     year = 2011,
+   series = {Bulletin of the American Astronomical Society},
+   volume = 43,
+    month = jan,
+      eid = {434.42},
+    pages = {434.42},
+   adsurl = {http://adsabs.harvard.edu/abs/2011AAS...21743442S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{GaiaDR12016,
+   author = {{Gaia Collaboration} and {Brown}, A.~G.~A. and {Vallenari}, A. and 
+	{Prusti}, T. and {de Bruijne}, J.~H.~J. and {Mignard}, F. and 
+	{Drimmel}, R. and {Babusiaux}, C. and {Bailer-Jones}, C.~A.~L. and 
+	{Bastian}, U. and et al.},
+    title = "{Gaia Data Release 1. Summary of the astrometric, photometric, and survey properties}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1609.04172},
+ primaryClass = "astro-ph.IM",
+ keywords = {catalogs, astrometry, parallaxes, proper motions, surveys},
+     year = 2016,
+    month = nov,
+   volume = 595,
+      eid = {A2},
+    pages = {A2},
+      doi = {10.1051/0004-6361/201629512},
+   adsurl = {http://adsabs.harvard.edu/abs/2016Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@BOOK{Spitzer1987,
+   author = {{Spitzer}, L.},
+    title = "{Dynamical evolution of globular clusters}",
+ keywords = {Astronomical Models, Evolution (Development), Globular Clusters, Binary Stars, Diffusion Coefficient, Encounters, Evaporation, Fokker-Planck Equation, Gravitational Collapse, Gravitational Effects, Monte Carlo Method, Perturbation Theory, Three Body Problem, Time Dependence, Two Body Problem, Velocity Distribution},
+booktitle = {Princeton, NJ, Princeton University Press, 1987, 191 p.},
+     year = 1987,
+   adsurl = {http://adsabs.harvard.edu/abs/1987degc.book.....S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Bianchini2017,
+       author = {{Bianchini}, P. and {Sills}, A. and {Miholics}, M.},
+        title = "{Characterization of the velocity anisotropy of accreted globular clusters}",
+      journal = {\mnras},
+     keywords = {stars: kinematics and dynamics, Galaxy: evolution, globular clusters: general, galaxies: interactions, Astrophysics - Astrophysics of Galaxies},
+         year = "2017",
+        month = "Oct",
+       volume = {471},
+        pages = {1181-1191},
+          doi = {10.1093/mnras/stx1680},
+archivePrefix = {arXiv},
+       eprint = {1706.09815},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2017MNRAS.471.1181B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Meghan2016,
+       author = {{Miholics}, Meghan and {Webb}, Jeremy J. and {Sills}, Alison},
+        title = "{The dynamical evolution of accreted star clusters in the Milky Way}",
+      journal = {\mnras},
+     keywords = {stars: kinematics and dynamics, Galaxy: evolution, globular clusters: general, galaxies: interaction, Astrophysics - Astrophysics of Galaxies},
+         year = "2016",
+        month = "Feb",
+       volume = {456},
+        pages = {240-247},
+          doi = {10.1093/mnras/stv2680},
+archivePrefix = {arXiv},
+       eprint = {1511.04122},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2016MNRAS.456..240M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Balbinot2018,
+       author = {{Balbinot}, Eduardo and {Gieles}, Mark},
+        title = "{The devil is in the tails: the role of globular cluster mass evolution on stream properties}",
+      journal = {\mnras},
+     keywords = {globular clusters: general, Galaxy: structure, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2018",
+        month = "Feb",
+       volume = {474},
+        pages = {2479-2492},
+          doi = {10.1093/mnras/stx2708},
+archivePrefix = {arXiv},
+       eprint = {1702.02543},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2018MNRAS.474.2479B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{GaiaJordi2010,
+   author = {{Jordi}, C. and {Gebran}, M. and {Carrasco}, J.~M. and {de Bruijne}, J. and 
+	{Voss}, H. and {Fabricius}, C. and {Knude}, J. and {Vallenari}, A. and 
+	{Kohley}, R. and {Mora}, A.},
+    title = "{Gaia broad band photometry}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1008.0815},
+ primaryClass = "astro-ph.IM",
+ keywords = {instrumentation: photometers, techniques: photometric, Galaxy: general, dust, extinction, stars: evolution},
+     year = 2010,
+    month = nov,
+   volume = 523,
+      eid = {A48},
+    pages = {A48},
+      doi = {10.1051/0004-6361/201015441},
+   adsurl = {http://adsabs.harvard.edu/abs/2010Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Schornich2010_Sun,
+   author = {{Sch{\"o}nrich}, R. and {Binney}, J. and {Dehnen}, W.},
+    title = "{Local kinematics and the local standard of rest}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {0912.3693},
+ keywords = {stars: kinematics, Galaxy: disc, Galaxy: fundamental parameters, Galaxy: kinematics and dynamics, solar neighbourhood},
+     year = 2010,
+    month = apr,
+   volume = 403,
+    pages = {1829-1833},
+      doi = {10.1111/j.1365-2966.2010.16253.x},
+   adsurl = {http://adsabs.harvard.edu/abs/2010MNRAS.403.1829S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Koposov2010,
+   author = {{Koposov}, S.~E. and {Rix}, H.-W. and {Hogg}, D.~W.},
+    title = "{Constraining the Milky Way Potential with a Six-Dimensional Phase-Space Map of the GD-1 Stellar Stream}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {0907.1085},
+ primaryClass = "astro-ph.GA",
+ keywords = {Galaxy: fundamental parameters, Galaxy: halo, Galaxy: kinematics and dynamics, methods: statistical, stars: kinematics and dynamics, surveys},
+     year = 2010,
+    month = mar,
+   volume = 712,
+    pages = {260-273},
+      doi = {10.1088/0004-637X/712/1/260},
+   adsurl = {http://adsabs.harvard.edu/abs/2010ApJ...712..260K},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Kupper2012,
+       author = {{K{\"u}pper}, Andreas H.~W. and {Lane}, Richard R. and
+         {Heggie}, Douglas C.},
+        title = "{More on the structure of tidal tails}",
+      journal = {\mnras},
+     keywords = {methods: numerical, globular clusters: general, Galaxy: kinematics and dynamics, galaxies: star clusters: general, Astrophysics - Astrophysics of Galaxies, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2012",
+        month = "Mar",
+       volume = {420},
+       number = {3},
+        pages = {2700-2714},
+          doi = {10.1111/j.1365-2966.2011.20242.x},
+archivePrefix = {arXiv},
+       eprint = {1111.5013},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2012MNRAS.420.2700K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Bonaca2019Jhelum,
+       author = {{Bonaca}, Ana and {Conroy}, Charlie and {Price-Whelan}, Adrian M. and
+         {Hogg}, David W.},
+        title = "{Multiple Components of the Jhelum Stellar Stream}",
+      journal = {\apjl},
+     keywords = {Galaxy: halo, Galaxy: kinematics and dynamics, stars: kinematics and dynamics, Astrophysics - Astrophysics of Galaxies, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Aug",
+       volume = {881},
+       number = {2},
+          eid = {L37},
+        pages = {L37},
+          doi = {10.3847/2041-8213/ab36ba},
+archivePrefix = {arXiv},
+       eprint = {1906.02748},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019ApJ...881L..37B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Bernard2016,
+   author = {{Bernard}, E.~J. and {Ferguson}, A.~M.~N. and {Schlafly}, E.~F. and 
+	{Martin}, N.~F. and {Rix}, H.-W. and {Bell}, E.~F. and {Finkbeiner}, D.~P. and 
+	{Goldman}, B. and {Mart{\'{\i}}nez-Delgado}, D. and {Sesar}, B. and 
+	{Wyse}, R.~F.~G. and {Burgett}, W.~S. and {Chambers}, K.~C. and 
+	{Draper}, P.~W. and {Hodapp}, K.~W. and {Kaiser}, N. and {Kudritzki}, R.-P. and 
+	{Magnier}, E.~A. and {Metcalfe}, N. and {Wainscoat}, R.~J. and 
+	{Waters}, C.},
+    title = "{A Synoptic Map of Halo Substructures from the Pan-STARRS1 3{$\pi$} Survey}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1607.06088},
+ keywords = {Hertzsprung-Russell and colour-magnitude diagrams, surveys, Galaxy: halo, Galaxy: structure},
+     year = 2016,
+    month = dec,
+   volume = 463,
+    pages = {1759-1768},
+      doi = {10.1093/mnras/stw2134},
+   adsurl = {http://adsabs.harvard.edu/abs/2016MNRAS.463.1759B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{GUMS2012_Robin,
+       author = {{Robin}, A.~C. and {Luri}, X. and {Reyl{\'e}}, C. and {Isasi}, Y. and
+         {Grux}, E. and {Blanco-Cuaresma}, S. and {Arenou}, F. and
+         {Babusiaux}, C. and {Belcheva}, M. and {Drimmel}, R. and {Jordi}, C. and
+         {Krone-Martins}, A. and {Masana}, E. and {Mauduit}, J.~C. and
+         {Mignard}, F. and {Mowlavi}, N. and {Rocca-Volmerange}, B. and
+         {Sartoretti}, P. and {Slezak}, E. and {Sozzetti}, A.},
+        title = "{Gaia Universe model snapshot. A statistical analysis of the expected contents of the Gaia catalogue}",
+      journal = {\aap},
+     keywords = {methods: data analysis, Galaxy: stellar content, catalogs, Galaxy: structure, galaxies: statistics, stars: statistics, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics, Astrophysics - Instrumentation and Methods for Astrophysics, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2012",
+        month = "Jul",
+       volume = {543},
+          eid = {A100},
+        pages = {A100},
+          doi = {10.1051/0004-6361/201118646},
+archivePrefix = {arXiv},
+       eprint = {1202.0132},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2012A&A...543A.100R},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Hudson2014,
+       author = {{Hudson}, Michael J. and {Harris}, Gretchen L. and {Harris}, William E.},
+        title = "{Dark Matter Halos in Galaxies and Globular Cluster Populations}",
+      journal = {\apjl},
+     keywords = {dark matter, galaxies: formation, galaxies: fundamental parameters, galaxies: halos, galaxies: star clusters: general, stars: formation, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2014",
+        month = "May",
+       volume = {787},
+       number = {1},
+          eid = {L5},
+        pages = {L5},
+          doi = {10.1088/2041-8205/787/1/L5},
+archivePrefix = {arXiv},
+       eprint = {1404.1920},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2014ApJ...787L...5H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Taylor2015,
+       author = {{Taylor}, Matthew A. and {Puzia}, Thomas H. and {Gomez}, Matias and
+         {Woodley}, Kristin A.},
+        title = "{Observational Evidence for a Dark Side to NGC 5128's Globular Cluster System}",
+      journal = {\apj},
+     keywords = {galaxies: individual: NGC 5128, galaxies: star clusters: general, Astrophysics - Astrophysics of Galaxies},
+         year = "2015",
+        month = "May",
+       volume = {805},
+       number = {1},
+          eid = {65},
+        pages = {65},
+          doi = {10.1088/0004-637X/805/1/65},
+archivePrefix = {arXiv},
+       eprint = {1503.04198},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015ApJ...805...65T},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Bovy2016GD1Pal5,
+   author = {{Bovy}, J. and {Bahmanyar}, A. and {Fritz}, T.~K. and {Kallivayalil}, N.
+	},
+    title = "{The Shape of the Inner Milky Way Halo from Observations of the Pal 5 and GD--1 Stellar Streams}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1609.01298},
+ keywords = {dark matter, Galaxy: fundamental parameters, Galaxy: halo, Galaxy: kinematics and dynamics, Galaxy: structure, globular clusters: individual: Palomar 5},
+     year = 2016,
+    month = dec,
+   volume = 833,
+      eid = {31},
+    pages = {31},
+      doi = {10.3847/1538-4357/833/1/31},
+   adsurl = {http://adsabs.harvard.edu/abs/2016ApJ...833...31B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Freeman2002,
+   author = {{Freeman}, K. and {Bland-Hawthorn}, J.},
+    title = "{The New Galaxy: Signatures of Its Formation}",
+  journal = {\araa},
+   eprint = {astro-ph/0208106},
+ keywords = {osmology, local group, stellar populations, stellar kinematics},
+     year = 2002,
+   volume = 40,
+    pages = {487-537},
+      doi = {10.1146/annurev.astro.40.060401.093840},
+   adsurl = {http://adsabs.harvard.edu/abs/2002ARAadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{CarlbergGD1paramter2013,
+   author = {{Carlberg}, R.~G. and {Grillmair}, C.~J.},
+    title = "{Gaps in the GD-1 Star Stream}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1303.4342},
+ keywords = {dark matter, galaxies: dwarf, Local Group},
+     year = 2013,
+    month = may,
+   volume = 768,
+      eid = {171},
+    pages = {171},
+      doi = {10.1088/0004-637X/768/2/171},
+   adsurl = {http://adsabs.harvard.edu/abs/2013ApJ...768..171C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Searle1978,
+   author = {{Searle}, L. and {Zinn}, R.},
+    title = "{Compositions of halo clusters and the formation of the galactic halo}",
+  journal = {\apj},
+ keywords = {Abundance, Galactic Structure, Globular Clusters, Halos, Milky Way Galaxy, Red Giant Stars, Stellar Spectra, Carbon, Dwarf Stars, Galactic Evolution, Nitrogen, Oxygen},
+     year = 1978,
+    month = oct,
+   volume = 225,
+    pages = {357-379},
+      doi = {10.1086/156499},
+   adsurl = {http://adsabs.harvard.edu/abs/1978ApJ...225..357S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Springel2005,
+   author = {{Springel}, V. and {White}, S.~D.~M. and {Jenkins}, A. and {Frenk}, C.~S. and 
+	{Yoshida}, N. and {Gao}, L. and {Navarro}, J. and {Thacker}, R. and 
+	{Croton}, D. and {Helly}, J. and {Peacock}, J.~A. and {Cole}, S. and 
+	{Thomas}, P. and {Couchman}, H. and {Evrard}, A. and {Colberg}, J. and 
+	{Pearce}, F.},
+    title = "{Simulations of the formation, evolution and clustering of galaxies and quasars}",
+  journal = {\nat},
+   eprint = {astro-ph/0504097},
+     year = 2005,
+    month = jun,
+   volume = 435,
+    pages = {629-636},
+      doi = {10.1038/nature03597},
+   adsurl = {http://adsabs.harvard.edu/abs/2005Natur.435..629S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Carlberg2012,
+   author = {{Carlberg}, R.~G.},
+    title = "{Dark Matter Sub-halo Counts via Star Stream Crossings}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1109.6022},
+ keywords = {dark matter, galaxies: dwarf, Local Group},
+     year = 2012,
+    month = mar,
+   volume = 748,
+      eid = {20},
+    pages = {20},
+      doi = {10.1088/0004-637X/748/1/20},
+   adsurl = {http://adsabs.harvard.edu/abs/2012ApJ...748...20C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Bullock_n_Johnston2005,
+   author = {{Bullock}, J.~S. and {Johnston}, K.~V.},
+    title = "{Tracing Galaxy Formation with Stellar Halos. I. Methods}",
+  journal = {\apj},
+   eprint = {astro-ph/0506467},
+ keywords = {Cosmology: Dark Matter, Galaxies: Dwarf, Galaxies: Evolution, Galaxies: Formation, Galaxies: Halos, Galaxies: Kinematics and Dynamics, Galaxy: Evolution, Galaxy: Formation, Galaxy: Halo, Galaxy: Kinematics and Dynamics, Galaxies: Local Group},
+     year = 2005,
+    month = dec,
+   volume = 635,
+    pages = {931-949},
+      doi = {10.1086/497422},
+   adsurl = {http://adsabs.harvard.edu/abs/2005ApJ...635..931B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{Wagner-Kaiser2017,
+   author = {{Wagner-Kaiser}, R. and {Mackey}, D. and {Sarajedini}, A. and 
+	{Chaboyer}, B. and {Cohen}, R.~E. and {Yang}, S.-C. and {Cummings}, J.~D. and 
+	{Geisler}, D. and {Grocholski}, A.~J.},
+    title = "{Exploring the nature and synchronicity of early cluster formation in the Large Magellanic Cloud - II. Relative ages and distances for six ancient globular clusters}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1707.01571},
+ keywords = {globular clusters: individual: NGC 1466, globular clusters: individual: NGC 1841, globular clusters: individual: NGC 2210, globular clusters: individual: NGC 2257, globular clusters: individual: Reticulum, globular clusters: individual: Hodge 11},
+     year = 2017,
+    month = nov,
+   volume = 471,
+    pages = {3347-3358},
+      doi = {10.1093/mnras/stx1702},
+   adsurl = {http://adsabs.harvard.edu/abs/2017MNRAS.471.3347W},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Bellazzini2003,
+   author = {{Bellazzini}, M. and {Ferraro}, F.~R. and {Ibata}, R.},
+    title = "{Building Up the Globular Cluster System of the Milky Way: The Contribution of the Sagittarius Galaxy}",
+  journal = {\aj},
+   eprint = {astro-ph/0210596},
+ keywords = {Galaxies: Dwarf, Galaxy: Formation, Galaxy: Halo, Galaxy: Structure, Galaxy: Globular Clusters: General},
+     year = 2003,
+    month = jan,
+   volume = 125,
+    pages = {188-196},
+      doi = {10.1086/344072},
+   adsurl = {http://adsabs.harvard.edu/abs/2003AJ....125..188B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Forbes_Globular_Cluster_Review_2018,
+       author = {{Forbes}, Duncan A. and {Bastian}, Nate and {Gieles}, Mark and {Crain},
+        Robert A. and {Kruijssen}, J.~M. Diederik and {Larsen}, S{\o}ren
+        S. and {Ploeckinger}, Sylvia and {Agertz}, Oscar and {Trenti},
+        Michele and {Ferguson}, Annette M.~N. and {Pfeffer}, Joel and
+        {Gnedin}, Oleg Y.},
+        title = "{Globular cluster formation and evolution in the context of cosmological galaxy assembly: open questions}",
+      journal = {Proceedings of the Royal Society of London Series A},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = 2018,
+        month = Feb,
+       volume = {474},
+          eid = {20170616},
+        pages = {20170616},
+          doi = {10.1098/rspa.2017.0616},
+archivePrefix = {arXiv},
+       eprint = {1801.05818},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2018RSPSA.47470616F},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Amorisco2016,
+       author = {{Amorisco}, Nicola C. and {G{\'o}mez}, Facundo A. and {Vegetti}, Simona and
+         {White}, Simon D.~M.},
+        title = "{Gaps in globular cluster streams: giant molecular clouds can cause them too}",
+      journal = {\mnras},
+     keywords = {galaxies: haloes, galaxies: kinematics and dynamics, galaxies: structure, cosmology: theory, dark matter, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2016",
+        month = "Nov",
+       volume = {463},
+        pages = {L17-L21},
+          doi = {10.1093/mnrasl/slw148},
+archivePrefix = {arXiv},
+       eprint = {1606.02715},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2016MNRAS.463L..17A},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Amorisco2012Sculptor,
+       author = {{Amorisco}, N.~C. and {Evans}, N.~W.},
+        title = "{Dark matter cores and cusps: the case of multiple stellar populations in dwarf spheroidals}",
+      journal = {\mnras},
+     keywords = {galaxies: dwarf, galaxies: individual: Sculptor dSph, galaxies: kinematics and dynamics, Local Group, dark matter, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2012",
+        month = "Jan",
+       volume = {419},
+       number = {1},
+        pages = {184-196},
+          doi = {10.1111/j.1365-2966.2011.19684.x},
+archivePrefix = {arXiv},
+       eprint = {1106.1062},
+ primaryClass = {astro-ph.CO},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2012MNRAS.419..184A},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Cosmological_Sim_Gadget2_2005,
+       author = {{Springel}, Volker},
+        title = "{The cosmological simulation code GADGET-2}",
+      journal = {\mnras},
+     keywords = {methods: numerical, galaxies: interactions, dark matter, Astrophysics},
+         year = 2005,
+        month = Dec,
+       volume = {364},
+        pages = {1105-1134},
+          doi = {10.1111/j.1365-2966.2005.09655.x},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0505010},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/\#abs/2005MNRAS.364.1105S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@article{Inoue2009,
+    author = {Inoue, Shigeki},
+    title = "{The test for suppressed dynamical friction in a constant density core of dwarf galaxies}",
+    journal = {Monthly Notices of the Royal Astronomical Society},
+    volume = {397},
+    number = {2},
+    pages = {709-716},
+    year = {2009},
+    month = {07},
+    abstract = "{The dynamical friction problem is a long-standing dilemma about globular clusters (hereafter GCs) belonging to dwarf galaxies. GCs are strongly affected by dynamical friction in dwarf galaxies, and are presumed to fall into the galactic centre. But, GCs do exist in dwarf galaxies generally. A solution of the problem has been proposed. If dwarf galaxies have a core dark matter halo which has constant density distribution in its centre, the effect of dynamical friction will be weakened considerably, and GCs should be able to survive beyond the age of the Universe. Then, the solution argued that, in a cored dark halo, interaction between the halo and the GC constructs a new equilibrium state, in which a part of the halo rotates along with the GC (corotating state). The equilibrium state can suppress the dynamical friction in the core region. In this study, I tested whether the solution is reasonable and reconsidered why a constant density, core halo suppresses dynamical friction, by means of N-body simulations. As a result, I conclude that the true mechanism of suppressed dynamical friction is not the corotating state, although a core halo can actually suppress dynamical friction on GCs significantly.}",
+    issn = {0035-8711},
+    doi = {10.1111/j.1365-2966.2009.15066.x},
+    url = {https://doi.org/10.1111/j.1365-2966.2009.15066.x},
+    eprint = {http://oup.prod.sis.lan/mnras/article-pdf/397/2/709/2929613/mnras0397-0709.pdf},
+}
+
+
+
+@article{Koposov_2011,
+	doi = {10.1088/0004-637x/736/2/146},
+	url = {https://doi.org/10.1088year = 2011,
+	month = {jul},
+	publisher = {{IOP} Publishing},
+	volume = {736},
+	number = {2},
+	pages = {146},
+	author = {Sergey E. Koposov and G. Gilmore and M. G. Walker and V. Belokurov and N. Wyn Evans and M. Fellhauer and W. Gieren and D. Geisler and L. Monaco and J. E. Norris and S. Okamoto and J. Pe{\~{n}}arrubia and M. Wilkinson and R. F. G. Wyse and D. B. Zucker},
+	title = {{ACCURATE} {STELLAR} {KINEMATICS} {AT} {FAINT} {MAGNITUDES}: {APPLICATION} {TO} {THE} {BOÖTES} I {DWARF} {SPHEROIDAL} {GALAXY}},
+	journal = {The Astrophysical Journal},
+	abstract = {We develop, implement, and characterize an enhanced data reduction approach which delivers precise, accurate, radial velocities from moderate resolution spectroscopy with the fiber-fed VLT/FLAMES+GIRAFFE facility. This facility, with appropriate care, delivers radial velocities adequate to resolve the intrinsic velocity dispersions of the very faint dwarf spheroidal (dSph) galaxies. Importantly, repeated measurements let us reliably calibrate our individual velocity errors (0.2 kms–1 ⩽ δ
+               V
+             ⩽ 5 km s–1) and directly detect stars with variable radial velocities. We show, by application to the Boötes I dSph, that the intrinsic velocity dispersion of this system is significantly below 6.5 km s–1 reported by previous studies. Our data favor a two-population model of Boötes I, consisting of a majority “cold” stellar component, with velocity dispersion 2.4+0.9
+            – 0.5 km s–1, and a minority “hot” stellar component, with velocity dispersion ∼9 km s–1, although we cannot completely rule out a single component distribution with velocity dispersion 4.60.8
+            – 0.6 km s–1. We speculate that this complex velocity distribution actually reflects the distribution of velocity anisotropy in Boötes I, which is a measure of its formation processes.}
+}
+
+
+@ARTICLE{Toomre1972,
+   author = {{Toomre}, A. and {Toomre}, J.},
+    title = "{Galactic Bridges and Tails}",
+  journal = {\apj},
+     year = 1972,
+    month = dec,
+   volume = 178,
+    pages = {623-666},
+      doi = {10.1086/151823},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/1972ApJ...178..623T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@article{Read2006,
+    author = {Read, J. I. and Wilkinson, M. I. and Evans, N. W. and Gilmore, G. and Kleyna, Jan T.},
+    title = "{The tidal stripping of satellites}",
+    journal = {Monthly Notices of the Royal Astronomical Society},
+    volume = {366},
+    number = {2},
+    pages = {429-437},
+    year = {2006},
+    month = {02},
+    abstract = "{We present an improved analytic calculation for the tidal radius of satellites and test our results against N-body simulations.The tidal radius in general depends upon four factors: the potential of the host galaxy, the potential of the satellite, the orbit of the satellite and the orbit of the star within the satellite. We demonstrate that this last point is critical and suggest using three tidal radii to cover the range of orbits of stars within the satellite. In this way we show explicitly that prograde star orbits will be more easily stripped than radial orbits; while radial orbits are more easily stripped than retrograde ones. This result has previously been established by several authors numerically, but can now be understood analytically. For point mass, power-law (which includes the isothermal sphere), and a restricted class of split power-law potentials our solution is fully analytic. For more general potentials, we provide an equation which may be rapidly solved numerically.Over short times (≲1–2 Gyr ~1 satellite orbit), we find excellent agreement between our analytic and numerical models. Over longer times, star orbits within the satellite are transformed by the tidal field of the host galaxy. In a Hubble time, this causes a convergence of the three limiting tidal radii towards the prograde stripping radius. Beyond the prograde stripping radius, the velocity dispersion will be tangentially anisotropic.}",
+    issn = {0035-8711},
+    doi = {10.1111/j.1365-2966.2005.09861.x},
+    url = {https://doi.org/10.1111/j.1365-2966.2005.09861.x},
+    eprint = {http://oup.prod.sis.lan/mnras/article-pdf/366/2/429/4047496/366-2-429.pdf},
+}
+
+
+
+
+@article{Battaglia_2008,
+	doi = {10.1086/590179},
+	url = {https://doi.org/10.1086year = 2008,
+	month = {jun},
+	publisher = {{IOP} Publishing},
+	volume = {681},
+	number = {1},
+	pages = {L13--L16},
+	author = {G. Battaglia and A. Helmi and E. Tolstoy and M. Irwin and V. Hill and P. Jablonka},
+	title = {The Kinematic Status and Mass Content of the Sculptor Dwarf Spheroidal Galaxy},
+	journal = {The Astrophysical Journal},
+	abstract = {We present VLT FLAMES spectroscopic observations (R ∼ 6500) in the Ca  II triplet region for 470 probable kinematic members of the Sculptor (Scl) dwarf spheroidal galaxy. The accurate velocities (±2 km s−1) and large area coverage of Scl allow us to measure a velocity gradient of 7.6+ 3.0−2.2 km s−1 deg−1 along the projected major axis of Scl, likely a signature of intrinsic rotation. We also use our kinematic data to measure the mass distribution within this system. By considering independently the kinematics of the two distinct stellar components known to be present in Scl, we are able to relieve known degeneracies and find that the observed velocity dispersion profiles are best fitted by a cored dark matter halo with core radius rc = 0.5 kpc and mass enclosed within the last measured point M(<1.8 kpc) = (3.4 ± 0.7) × 108 M☉, assuming an increasingly radially anisotropic velocity ellipsoid. This results in a mass-to-light ratio of 158 ± 33 (M/L)☉ inside 1.8 kpc. An NFW profile with concentration c = 20 and mass M(<1.8 kpc) = 2.2+ 1.0−0.7 × 108 M☉ is also statistically consistent with the observations, but it tends to yield poorer fits for the metal-rich stars.}
+}
+
+
+
+
+
+@article{Mateo1998,
+author = {Mateo, Mario},
+title = {DWARF GALAXIES OF THE LOCAL GROUP},
+journal = {Annual Review of Astronomy and Astrophysics},
+volume = {36},
+number = {1},
+pages = {435-506},
+year = {1998},
+doi = {10.1146/annurev.astro.36.1.435},
+
+URL = { 
+        https://doi.org/10.1146/annurev.astro.36.1.435
+    
+},
+eprint = { 
+        https://doi.org/10.1146/annurev.astro.36.1.435
+    
+}
+,
+    abstract = { ▪ Abstract The Local Group dwarf galaxies offer a unique window to the detailed properties of the most common type of galaxy in the Universe. In this review, I update the census of Local Group dwarfs based on the most recent distance and radial velocity determinations. I then discuss the detailed properties of this sample, including (a) the integrated photometric parameters and optical structures of these galaxies, (b) the content, nature, and distribution of their interstellar medium (ISM), (c) their heavy-element abundances derived from both stars and nebulae, (d) the complex and varied star-formation histories of these dwarfs, (e) their internal kinematics, stressing the relevance of these galaxies to the “dark matter problem” and to alternative interpretations, and (f) evidence for past, ongoing, and future interactions of these dwarfs with other galaxies in the Local Group and beyond. To complement the discussion and to serve as a foundation for future work, I present an extensive set of basic observational data in tables that summarize much of what we know and do not know about these nearby dwarfs. Our understanding of these galaxies has grown impressively in the past decade, but fundamental puzzles remain that will keep the Local Group at the forefront of galaxy evolution studies for some time. }
+}
+
+
+
+
+
+@ARTICLE{Wheeler2018,
+       author = {{Wheeler}, Coral and {Hopkins}, Philip F. and {Pace}, Andrew B. and
+         {Garrison-Kimmel}, Shea and {Boylan-Kolchin}, Michael and
+         {Wetzel}, Andrew and {Bullock}, James S. and {Keres}, Dusan and
+         {Faucher-Giguere}, Claude-Andre and {Quataert}, Eliot},
+        title = "{Be it therefore resolved: Cosmological Simulations of Dwarf Galaxies with Extreme Resolution}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "Dec",
+          eid = {arXiv:1812.02749},
+        pages = {arXiv:1812.02749},
+archivePrefix = {arXiv},
+       eprint = {1812.02749},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018arXiv181202749W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@article{Di_Cintio2014,
+    author = {Di Cintio, Arianna and Brook, Chris B. and Macciò, Andrea V. and Stinson, Greg S. and Knebe, Alexander and Dutton, Aaron A. and Wadsley, James},
+    title = "{The dependence of dark matter profiles on the stellar-to-halo mass ratio: a prediction for cusps versus cores}",
+    journal = {Monthly Notices of the Royal Astronomical Society},
+    volume = {437},
+    number = {1},
+    pages = {415-423},
+    year = {2013},
+    month = {11},
+    abstract = "{We use a suite of 31 simulated galaxies drawn from the MaGICC project to investigate the effects of baryonic feedback on the density profiles of dark matter haloes. The sample covers a wide mass range: 9.4 × 109 \\&lt; Mhalo/ M⊙ \\&lt; 7.8 × 1011, hosting galaxies with stellar masses in the range 5.0 × 105 \\&lt; M*/ M⊙ \\&lt; 8.3 × 1010, i.e. from dwarf to L*. The galaxies are simulated with blastwave supernova feedback and, for some of them, an additional source of energy from massive stars is included. Within this feedback scheme we vary several parameters, such as the initial mass function, the density threshold for star formation, and energy from supernovae and massive stars. The main result is a clear dependence of the inner slope of the dark matter density profile, α in ρ ∝ rα, on the stellar-to-halo mass ratio, M*/Mhalo. This relation is independent of the particular choice of parameters within our stellar feedback scheme, allowing a prediction for cusp versus core formation. When M*/Mhalo is low, ≲0.01 per cent, energy from stellar feedback is insufficient to significantly alter the inner dark matter density, and the galaxy retains a cuspy profile. At higher stellar-to-halo mass ratios, feedback drives the expansion of the dark matter and generates cored profiles. The flattest profiles form where M*/Mhalo ∼ 0.5 per cent. Above this ratio, stars formed in the central regions deepen the gravitational potential enough to oppose the supernova-driven expansion process, resulting in cuspier profiles. Combining the dependence of α on M*/Mhalo with the empirical abundance matching relation between M* and Mhalo provides a prediction for how α varies as a function of stellar mass. Further, using the Tully–Fisher relation allows a prediction for the dependence of the dark matter inner slope on the observed rotation velocity of galaxies. The most cored galaxies are expected to have Vrot ∼ 50 km s−1, with α decreasing for more massive disc galaxies: spirals with Vrot ∼ 150 km s−1 have central slopes α ≤ −0.8, approaching again the Navarro–Frenk–White profile. This novel prediction for the dependence of α on disc galaxy mass can be tested using observational data sets and can be applied to theoretical modelling of mass profiles and populations of disc galaxies.}",
+    issn = {0035-8711},
+    doi = {10.1093/mnras/stt1891},
+    url = {https://doi.org/10.1093/mnras/stt1891},
+    eprint = {http://oup.prod.sis.lan/mnras/article-pdf/437/1/415/18452732/stt1891.pdf},
+}
+
+
+
+
+@ARTICLE{Bullock2000,
+       author = {{Bullock}, James S. and {Kravtsov}, Andrey V. and {Weinberg}, David H.},
+        title = "{Reionization and the Abundance of Galactic Satellites}",
+      journal = {\apj},
+     keywords = {Cosmology: Theory, Galaxies: Formation, Astrophysics},
+         year = "2000",
+        month = "Aug",
+       volume = {539},
+       number = {2},
+        pages = {517-521},
+          doi = {10.1086/309279},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0002214},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2000ApJ...539..517B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Martin2008,
+       author = {{Martin}, Nicolas F. and {de Jong}, Jelte T.~A. and {Rix}, Hans-Walter},
+        title = "{A Comprehensive Maximum Likelihood Analysis of the Structural Properties of Faint Milky Way Satellites}",
+      journal = {\apj},
+     keywords = {galaxies: dwarf, Local Group, Astrophysics},
+         year = "2008",
+        month = "Sep",
+       volume = {684},
+       number = {2},
+        pages = {1075-1092},
+          doi = {10.1086/590336},
+archivePrefix = {arXiv},
+       eprint = {0805.2945},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2008ApJ...684.1075M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Hernandez1998,
+   author = {{Hernandez}, X. and {Gilmore}, G.},
+    title = "{Dynamical friction in dwarf galaxies}",
+  journal = {\mnras},
+   eprint = {astro-ph/9802261},
+ keywords = {GALAXIES: COMPACT, GALAXIES: KINEMATICS AND DYNAMICS, GALAXIES: STRUCTURE, DARK MATTER},
+     year = 1998,
+    month = jun,
+   volume = 297,
+    pages = {517-525},
+      doi = {10.1046/j.1365-8711.1998.01511.x},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/1998MNRAS.297..517H},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Webb2018GD1model,
+       author = {{Webb}, Jeremy J. and {Bovy}, Jo},
+        title = "{Searching for the GD-1 stream progenitor in Gaia DR2 with direct N-body simulations}",
+      journal = {\mnras},
+     keywords = {galaxies: star clusters: general, galaxies: structure, cosmology: dark matter, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Jun",
+       volume = {485},
+       number = {4},
+        pages = {5929-5938},
+          doi = {10.1093/mnras/stz867},
+archivePrefix = {arXiv},
+       eprint = {1811.07022},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.5929W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Malhan2018PotentialGD1,
+       author = {{Malhan}, Khyati and {Ibata}, Rodrigo A.},
+        title = "{Constraining the Milky Way halo potential with the GD-1 stellar stream}",
+      journal = {\mnras},
+     keywords = {stars: kinematics and dynamics, Galaxy: fundamental parameters, Galaxy: halo, Galaxy: structure, dark matter, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Jul",
+       volume = {486},
+       number = {3},
+        pages = {2995-3005},
+          doi = {10.1093/mnras/stz1035},
+archivePrefix = {arXiv},
+       eprint = {1807.05994},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.486.2995M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{Dubinski1991,
+   author = {{Dubinski}, J. and {Carlberg}, R.~G.},
+    title = "{The structure of cold dark matter halos}",
+  journal = {\apj},
+ keywords = {Computational Astrophysics, Dark Matter, Galactic Structure, Gravitational Collapse, Halos, Many Body Problem, Computerized Simulation, Particle Density (Concentration), Tides},
+     year = 1991,
+    month = sep,
+   volume = 378,
+    pages = {496-503},
+      doi = {10.1086/170451},
+   adsurl = {http://adsabs.harvard.edu/abs/1991ApJ...378..496D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Springel2006,
+       author = {{Springel}, Volker and {Frenk}, Carlos S. and {White}, Simon D.~M.},
+        title = "{The large-scale structure of the Universe}",
+      journal = {\nat},
+     keywords = {Astrophysics},
+         year = "2006",
+        month = "Apr",
+       volume = {440},
+       number = {7088},
+        pages = {1137-1144},
+          doi = {10.1038/nature04805},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0604561},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2006Natur.440.1137S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Gilmore_dsph_core2007,
+   author = {{Gilmore}, G. and {Wilkinson}, M.~I. and {Wyse}, R.~F.~G. and 
+	{Kleyna}, J.~T. and {Koch}, A. and {Evans}, N.~W. and {Grebel}, E.~K.
+	},
+    title = "{The Observed Properties of Dark Matter on Small Spatial Scales}",
+  journal = {\apj},
+   eprint = {astro-ph/0703308},
+ keywords = {Cosmology: Dark Matter, Galaxies: Dwarf, Galaxies: Kinematics and Dynamics, Galaxies: Local Group, Stellar Dynamics},
+     year = 2007,
+    month = jul,
+   volume = 663,
+    pages = {948-959},
+      doi = {10.1086/518025},
+   adsurl = {http://adsabs.harvard.edu/abs/2007ApJ...663..948G},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Read_core_2016,
+       author = {{Read}, J.~I. and {Agertz}, O. and {Collins}, M.~L.~M.},
+        title = "{Dark matter cores all the way down}",
+      journal = {\mnras},
+     keywords = {methods: numerical, galaxies: dwarf, galaxies: haloes, galaxies: kinematics and dynamics, dark matter, Astrophysics - Astrophysics of Galaxies, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2016",
+        month = "Jul",
+       volume = {459},
+       number = {3},
+        pages = {2573-2590},
+          doi = {10.1093/mnras/stw713},
+archivePrefix = {arXiv},
+       eprint = {1508.04143},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2016MNRAS.459.2573R},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{NFW1996,
+   author = {{Navarro}, J.~F. and {Frenk}, C.~S. and {White}, S.~D.~M.},
+    title = "{The Structure of Cold Dark Matter Halos}",
+  journal = {\apj},
+   eprint = {astro-ph/9508025},
+ keywords = {COSMOLOGY: THEORY, COSMOLOGY: DARK MATTER, GALAXIES: HALOS, METHODS: NUMERICAL},
+     year = 1996,
+    month = may,
+   volume = 462,
+    pages = {563},
+      doi = {10.1086/177173},
+   adsurl = {http://adsabs.harvard.edu/abs/1996ApJ...462..563N},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Cole_2012_fornax,
+       author = {{Cole}, David R. and {Dehnen}, Walter and {Read}, Justin I. and
+         {Wilkinson}, Mark I.},
+        title = "{The mass distribution of the Fornax dSph: constraints from its globular cluster distribution}",
+      journal = {\mnras},
+     keywords = {galaxies: haloes, galaxies: kinematics and dynamics, galaxies: structure, Astrophysics - Cosmology and Nongalactic Astrophysics},
+         year = "2012",
+        month = "Oct",
+       volume = {426},
+       number = {1},
+        pages = {601-613},
+          doi = {10.1111/j.1365-2966.2012.21885.x},
+archivePrefix = {arXiv},
+       eprint = {1205.6327},
+ primaryClass = {astro-ph.CO},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2012MNRAS.426..601C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Balbinot2016Phoenix,
+       author = {{Balbinot}, E. and {Yanny}, B. and {Li}, T.~S. and {Santiago}, B. and
+         {Marshall}, J.~L. and {Finley}, D.~A. and {Pieres}, A. and
+         {Abbott}, T.~M.~C. and {Abdalla}, F.~B. and {Allam}, S.},
+        title = "{The Phoenix Stream: A Cold Stream in the Southern Hemisphere}",
+      journal = {\apj},
+     keywords = {Galaxy: halo, Galaxy: structure, Astrophysics - Astrophysics of Galaxies},
+         year = "2016",
+        month = "Mar",
+       volume = {820},
+       number = {1},
+          eid = {58},
+        pages = {58},
+          doi = {10.3847/0004-637X/820/1/58},
+archivePrefix = {arXiv},
+       eprint = {1509.04283},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2016ApJ...820...58B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Grillmair2009_fourStreams,
+       author = {{Grillmair}, C.~J.},
+        title = "{Four New Stellar Debris Streams in the Galactic Halo}",
+      journal = {\apj},
+     keywords = {Galaxy: halo, Galaxy: structure, globular clusters: general, Astrophysics},
+         year = "2009",
+        month = "Mar",
+       volume = {693},
+       number = {2},
+        pages = {1118-1127},
+          doi = {10.1088/0004-637X/693/2/1118},
+archivePrefix = {arXiv},
+       eprint = {0811.3965},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2009ApJ...693.1118G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Contenta2018EridanusII,
+       author = {{Contenta}, Filippo and {Balbinot}, Eduardo and {Petts}, James A. and
+         {Read}, Justin I. and {Gieles}, Mark and {Collins}, Michelle L.~M. and
+         {Pe{\~n}arrubia}, Jorge and {Delorme}, Maxime and {Gualandris}, Alessia},
+        title = "{Probing dark matter with star clusters: a dark matter core in the ultra-faint dwarf Eridanus II}",
+      journal = {\mnras},
+     keywords = {stars: kinematics and dynamics, galaxies: dwarf, galaxies: haloes, galaxies: individual: Eridanus II, galaxies: star clusters: general, galaxies: structure, Astrophysics - Astrophysics of Galaxies},
+         year = "2018",
+        month = "May",
+       volume = {476},
+       number = {3},
+        pages = {3124-3136},
+          doi = {10.1093/mnras/sty424},
+archivePrefix = {arXiv},
+       eprint = {1705.01820},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018MNRAS.476.3124C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Petts2016,
+       author = {{Petts}, J.~A. and {Read}, J.~I. and {Gualandris}, A.},
+        title = "{A semi-analytic dynamical friction model for cored galaxies}",
+      journal = {\mnras},
+     keywords = {methods: numerical, galaxies: kinematics and dynamics, Astrophysics - Astrophysics of Galaxies},
+         year = "2016",
+        month = "Nov",
+       volume = {463},
+       number = {1},
+        pages = {858-869},
+          doi = {10.1093/mnras/stw2011},
+archivePrefix = {arXiv},
+       eprint = {1607.04284},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2016MNRAS.463..858P},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Dehnen_NEMO_2002,
+   author = {{Dehnen}, W.},
+    title = "{A Hierarchical $\lt$E10$\gt$O$\lt$/E10$\gt$(N) Force Calculation Algorithm}",
+  journal = {Journal of Computational Physics},
+   eprint = {astro-ph/0202512},
+     year = 2002,
+    month = jun,
+   volume = 179,
+    pages = {27-42},
+      doi = {10.1006/jcph.2002.7026},
+   adsurl = {http://adsabs.harvard.edu/abs/2002JCoPh.179...27D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Ibata2001Sgr,
+   author = {{Ibata}, R. and {Irwin}, M. and {Lewis}, G.~F. and {Stolte}, A.
+	},
+    title = "{Galactic Halo Substructure in the Sloan Digital Sky Survey: The Ancient Tidal Stream from the Sagittarius Dwarf Galaxy}",
+  journal = {\apjl},
+   eprint = {astro-ph/0004255},
+ keywords = {Galaxies: Halos, Galaxies: Individual: Name: Sagittarius, Galaxies: Kinematics and Dynamics, Galaxy: Halo, Galaxy: Structure, Galaxies: Local Group},
+     year = 2001,
+    month = feb,
+   volume = 547,
+    pages = {L133-L136},
+      doi = {10.1086/318894},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2001ApJ...547L.133I},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{Lane2019_Opiuchus,
+       author = {{Lane}, James M.~M. and {Navarro}, Julio F. and {Fattahi}, Azadeh and
+         {Oman}, Kyle A. and {Bovy}, Jo},
+        title = "{The Ophiuchus stream progenitor: a new type of globular cluster and its possible Sagittarius connection}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "May",
+          eid = {arXiv:1905.12633},
+        pages = {arXiv:1905.12633},
+archivePrefix = {arXiv},
+       eprint = {1905.12633},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190512633L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{Ibata2019_omegaCen,
+       author = {{Ibata}, Rodrigo and {Bellazzini}, Michele and {Malhan}, Khyati and
+         {Martin}, Nicolas and {Bianchini}, Paolo},
+        title = "{Identification of the Long Stellar Stream of the Prototypical Massive Globular Cluster \$\textbackslashomega\$ Centauri}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Feb",
+          eid = {arXiv:1902.09544},
+        pages = {arXiv:1902.09544},
+archivePrefix = {arXiv},
+       eprint = {1902.09544},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190209544I},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@INPROCEEDINGS{Teuben_1995,
+   author = {{Teuben}, P.},
+    title = "{The Stellar Dynamics Toolbox NEMO}",
+booktitle = {Astronomical Data Analysis Software and Systems IV},
+     year = 1995,
+   series = {Astronomical Society of the Pacific Conference Series},
+   volume = 77,
+   editor = {{Shaw}, R.~A. and {Payne}, H.~E. and {Hayes}, J.~J.~E.},
+    pages = {398},
+   adsurl = {http://adsabs.harvard.edu/abs/1995ASPC...77..398T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+ 
+
+
+
+
+\end{document}

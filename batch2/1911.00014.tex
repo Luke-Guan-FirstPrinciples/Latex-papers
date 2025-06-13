@@ -1,0 +1,3220 @@
+\documentclass[a4paper,fleqn,usenatbib]{mnras}
+
+\usepackage{newtxtext,newtxmath}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage{xcolor}
+\usepackage{ulem}
+
+\usepackage{subfig}
+\usepackage[export]{adjustbox}
+
+\usepackage{graphicx}	\usepackage{amsmath}	\usepackage{amssymb}	\usepackage{verbatim}
+\usepackage{bm}
+
+\newcommand{\petc}[1]{\textcolor{cyan}{[PIER: #1]}}
+\newcommand{\p}[1]{\textcolor{black}{#1}} \newcommand{\tim}[1]{\textcolor{red}{[TIM: #1]}} \newcommand{\tc}[1]{\textcolor{black}{#1}} 
+
+\graphicspath{{./plots/}}
+
+\newcommand{\vzrms}{$v_{\mathrm{z,rms}}$}	\newcommand{\vsq}{$v^2_{\mathrm{z,rms}}$}	\newcommand{\pvol}{\,cm$^{-3}$ }                      \newcommand{\logg}{$\log g$ }                          \newcommand{\teff}{$T_{\mathrm{eff}}$ }
+\newcommand{\tautop}{$\tau_{\mathrm{R,top}}$ }
+\newcommand{\taubot}{$\tau_{\mathrm{R,bot}}$ }
+\newcommand{\tauR}{$\tau_{\mathrm{R}}$ }
+\newcommand{\tfull}{$t_{\mathrm{full}}$ }
+\newcommand{\zrms}{$z_{\mathrm{rms}}$}
+\newcommand{\zstarms}{$z^{*}_{\mathrm{rms}}$}
+\newcommand{\thalf}{$\sqrt{t}$ }
+\newcommand{\km}{$\, \mathrm{km}$ }
+\newcommand{\cobold}{CO$^5$BOLD}
+\newcommand{\rhotrace}{$\rho_{\mathrm{tracer}}$}
+\newcommand{\T}[1]{$T_{\mathrm{eff}} = #100\,{\mathrm{K}}$}
+\newcommand{\Mwd}{$M_{\mathrm{WD}}$}
+\newcommand{\MH}{$M_{\mathrm{H}}$}
+\newcommand{\MHe}{$M_{\mathrm{He}}$}
+\newcommand{\Msun}{$M_{\odot}$}
+\newcommand{\kms}{km\,s$^{-1}$}
+\newcommand{\tdiff}{$t_{\mathrm{diff}}$}
+\newcommand{\zst}{$z_{\mathrm{S,top}}$}
+\newcommand{\zsb}{$z_{\mathrm{S,bot}}$}
+
+\newcommand{\nH}{$n_{\mathrm{H}}$}
+\newcommand{\nHe}{$n_{\mathrm{He}}$}
+\newcommand{\Pwd}{$P_{\mathrm{WD}}$}
+\newcommand{\gaia}{{\it Gaia}}
+\newcommand{\tbetween}[2]{{#1}~$\leqslant T_{\mathrm{eff}}/{\rm [K]} \leqslant $~{#2}}
+\newcommand{\treverse}[2]{{#1}~$\geqslant T_{\mathrm{eff}}/{\rm [K]} \geqslant $~{#2}}
+\newcommand{\tH}{$T_{\mathrm{eff, H}}$ }
+\newcommand{\tHe}{$T_{\mathrm{eff, He}}$ }
+
+\newcommand{\mteff}{T_{\mathrm{eff}}}
+
+
+
+
+
+\title[White Dwarf Spectral Evolution]{From Hydrogen to Helium: The Spectral Evolution of White Dwarfs as Evidence for Convective Mixing}
+
+\author[T.~Cunningham et. al]{Tim Cunningham,$^{1}$\thanks{E-mail: t.cunningham@warwick.ac.uk}
+Pier-Emmanuel Tremblay,$^{1}$ Nicola Pietro Gentile Fusillo,$^{1}$
+\newauthor{Mark Hollands,$^{1}$ and Elena Cukanovaite$^{1}$}
+\\
+$^{1}$Department of Physics, University of Warwick, Coventry, CV4 7AL, UK
+}
+
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+\pubyear{2019}
+
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+\begin{abstract}
+We present a study of the hypothesis that white dwarfs undergo a spectral change from hydrogen- to helium-dominated atmospheres using a volume-limited photometric sample drawn from the {\it Gaia} DR2 catalogue, the Sloan Digital Sky Survey (SDSS) and the {\it Galaxy Evolution Explorer} ({\it GALEX}). We exploit the strength of the Balmer jump in hydrogen-atmosphere DA white dwarfs to separate them from helium-dominated objects in SDSS colour space. Across the effective temperature range from 20\,000~K to 9000~K we find that 22\% of white dwarfs will undergo a spectral change, with no spectral evolution being ruled out at 5$\sigma$. The most likely explanation is that the increase in He-rich objects is caused by the convective mixing of DA stars with thin hydrogen layers, in which helium is dredged up from deeper layers by a surface hydrogen convection zone. The rate of change in the fraction of He-rich objects as a function of temperature, coupled with a recent grid of 3D radiation-hydrodynamic simulations of convective DA white dwarfs - which include the full overshoot region - lead to a discussion on the distribution of total hydrogen mass in white dwarfs. We find that 60\% of white dwarfs must have a hydrogen mass larger than $M_{\rm H}/M_{\rm WD} = 10^{-10}$, another 25\% have masses in the range $M_{\rm H}/M_{\rm WD} = 10^{-14}-10^{-10}$, and 15\% have less hydrogen than $M_{\rm H}/M_{\rm WD} = 10^{-14}$. These results have implications for white dwarf asteroseismology, stellar evolution through the asymptotic giant branch (AGB) and accretion of planetesimals onto white dwarfs.
+\end{abstract}
+
+\begin{keywords}
+white dwarfs -- convection -- photometric -- evolution -- atmospheres
+\end{keywords}
+
+
+
+
+
+\section{Introduction}
+\label{intro}
+
+From models of stellar evolution it is generally considered that white dwarfs are born with canonical masses of hydrogen and helium, \MH/\Mwd\ $\approx 10^{-4}$ and \MHe/\Mwd\ $\approx 10^{-2}$, where \Mwd\ is the total mass of the white dwarf \citep{schoenberner83,iben1983,dantona90},  with more recent estimates providing a parameterisation as a function of stellar mass \citep{althaus15,romero17}. These values are determined based on nuclear burning rates following the main sequence lifetime of the progenitor to the white dwarf. Over some decades, however, analyses of pulsating white dwarfs and stars evolving through and beyond the AGB \citep{werner06,deGeronimo18}, as well as population studies of cool white dwarfs \citep{tremblay08,rolland18,blouin19}, have led to the understanding that this is in all likelihood an upper limit on the mass of hydrogen. There has been much interest in constraining the mass of light elements in white dwarfs over the last few decades to understand their formation and evolution. 
+
+Pulsating DA stars (DAV or ZZ Cetis) provide the opportunity to probe the chemical structure of white dwarfs as they cool between $\approx$ 12\,500\,K and 10\,500\,K \citep{tremblay15b}. It is generally accepted that all (non-magnetic) DA stars will exhibit variability from non-radial g-mode pulsations as they move through this temperature range during their evolution \citep{brickhill83,brickhill91,bradley96,fontaine08}. One of the great benefits of studying this population of white dwarfs is that models of asteroseismology describing the oscillatory behaviour are most sensitive to, among other parameters, the mass of the hydrogen layer \citep{fontaine08}. Predicted pulsation periods typically decrease when the hydrogen layer mass is increased, with the mean period spacing also decreasing slightly \citep{bradley96}. Recent asteroseismological studies often require significantly smaller hydrogen masses than the canonical value ($\log M_{\mathrm{H}}/M_{\mathrm{WD}} \ll -4$) to allow matching observed and predicted g-mode pulsations \citep{giammichele16,romero17}.
+
+The small hydrogen masses that are invoked to model observed pulsations in some ZZ Cetis are thought to be explained by late hydrogen burning during the AGB and post-AGB \citep{dantona90,herwig99,werner06,althaus10}. Numerical simulations and theoretical calculations have shown that thermal pulses during and shortly after the AGB phase are able to burn up almost all of the remaining hydrogen \citep{straniero02}.
+
+The radii of DA white dwarfs derived using evolutionary models with thin hydrogen layers are smaller than those with thick layers for a given mass \citep{wood90,t17}. Overestimating the hydrogen layer thickness can also lead to ages that are up to $\approx$1~Gyr too old for the coolest known white dwarfs \citep{fontaine01}. The field of Galactic archaeology has found white dwarfs to be useful chronometers in studies of the solar neighbourhood \citep{tremblay14} and in determinations of the age of the Galactic disk \citep{winget87,fontaine01,wood90,leggett98,chen12} or the Galactic halo \citep{kalirai12,kilic19}. Providing an independent constraint on the occurrence of different hydrogen layer masses could help to improve the accuracy of these models. 
+
+As white dwarfs cool, the total amount of hydrogen and helium present, either primordial or accreted, can influence their subsequent evolution, and in particular their spectral appearance. The study of the spectral evolution of white dwarfs \citep{sion84,fontaine87,bergeron01,tremblay08} thus provides a method to learn about their past history and internal structure. In this work we focus on the hydrogen content, although we note that the study of hot hydrogen-deficient PG1159 stars \citep{werner06,miller16}, carbon dredge-up in helium-rich atmosphere DQ white dwarfs \citep{pelletier86,coutu19,koester19}, as well as asteroseismology can also help to constrain the mass of helium.
+
+After gravitational separation has occurred \citep{schatzman45}, it is thought that hot white dwarfs will either cool as helium-rich DO atmospheres with He {\small II} lines, or hydrogen-atmosphere DA white dwarfs with Balmer lines if there is enough hydrogen to float at the surface. In both cases, radiative levitation can still keep trace metal species for $\approx$100\,Myr, long after gravitational settling is complete \citep{chayer14,koester14,werner18}. Both types of white dwarfs can also develop convective instabilities in their atmospheres or envelopes as they grow older, allowing for further changes in spectral types.
+
+If a white dwarf has a thick enough hydrogen envelope ($\log$~\MH/\Mwd\ $\gtrapprox -14$; \citealt{rolland18}; \citealt{genest-Beaulieu19}) the convection zone will initially be confined to the hydrogen atmosphere. Recent numerical simulations have constrained the onset of convection in DA white dwarfs to arise at 18\,000--18\,250~K \citep{cunningham19} which sets an upper limit on the temperature range over which convection can impact the evolution of these objects. As the convection zone grows with decreasing surface temperature, if the hydrogen layer is sufficiently small ($\log M_{\mathrm{H}}/M_{\rm WD} \lessapprox -6$), eventually the convection zone will reach the deeper helium layer \citep{fontaine01}. At this point the significantly larger reservoir of helium ($\log M_{\mathrm{He}}/M_{\rm WD} \approx -2$) is expected to be immediately mixed into the surface convection zone in a runaway process resulting in a larger helium-dominated convection zone, a process named {\it convective mixing} \citep{strittmatter71,shipman72,baglin73,koester76}. With convective velocities reaching $v\approx$~1 km~s$^{-1}$ the chemical profile will almost instantaneously become homogeneously mixed \citep{elena1,cunningham19}. The result will appear to be a helium-rich atmosphere white dwarf (DB spectral type with He {\small I} lines or DC type with no lines) that may have detectable hydrogen \citep[DBA or DA spectral types;][]{rolland18}.
+
+If a white dwarf has a thin enough total hydrogen mass ($\log$~\MH/\Mwd\ $\lessapprox -14$), a different evolutionary path is expected. Either the full evolution is in the form of a hydrogen-deficient PG1159, DO, DB, and then DC atmosphere \citep{genest-Beaulieu19}, or alternatively when the DO white dwarf reaches $T_{\rm eff} \approx$ 45\,000\,K it transforms into a DA with a very thin hydrogen atmosphere. Such a hydrogen layer is sufficiently small that the underlying helium layer is expected to become unstable to convection in the range 30\,000 $\gtrapprox T_{\rm eff}$/[K] $\gtrapprox$ 18\,000 \citep{macDonald91,rolland18,genest-Beaulieu19}. Convective overshoot is then expected to rapidly mix the top hydrogen layer with the underlying small helium convection zone \citep{cunningham19,elena2}, resulting in the so-called {\it convective dilution} process. The result is a DB or DBA white dwarf like in the convective mixing process described above, albeit with a different range of possible hydrogen abundances \citep{genest-Beaulieu19}.
+
+In principle the hydrogen abundances in DBA stars could be used to reconstruct their past evolution, but this is not accounting for the fact that accretion of planetary debris can significantly impact their hydrogen content. In fact, several DBA white dwarfs have orders of magnitude more hydrogen than would be possible by the convective dilution or convective mixing scenarios, and it is thought that the accretion of water-rich asteroids is the most likely explanation for the hydrogen abundance in these objects \citep{farihi11,raddi15,ngf17}. The study of spectral evolution is clearly complex and involves many competing models that need to be constrained with well defined samples of the local white dwarf population.
+
+Observational statistical studies on the number ratio of hydrogen- to helium-atmospheres as a function of temperature have mainly been carried out using spectroscopically identified samples with a magnitude limit \citep{bergeron97,bergeron01,tremblay08,blouin19,ourique19,genest-Beaulieu19} with the exception of \citet{limoges15} who relied on the volume-limited 40\,pc sample. In particular, we note that studying spectral evolution with the Sloan Digital Sky Survey spectroscopic sample, the largest known such sample for white dwarfs \citep{kepler19}, involves complex completeness corrections that are still not fully understood \citep{ngf15}. Photometrically selected or volume-complete samples have a strong advantage because the selection effects are better understood, especially in light of the recent \gaia\ Data Release 2 \citep{gaia2016,gaia-dr2}.
+
+In this work we make use of \gaia\ and a new robust photometric technique to study spectral evolution for volume-complete white dwarf samples. We utilise a catalogue of $\approx$ 260\,000 high probability white dwarf candidates from \gaia\ \citep{ngf19} to select among them those with $ugriz$ photometry from the Sloan Digital Sky Survey (SDSS; \citealt{blanton17}). The SDSS $u-g$ colour is sensitive to the Balmer jump in the range 20\,000 $\gtrapprox T_{\rm eff}$/[K] $\gtrapprox$ 9000, allowing us to separate white dwarfs with hydrogen atmospheres (H-rich) from those with helium atmospheres (He-rich) without using the much more incomplete SDSS spectroscopic sample. Coupling photometric data from \gaia, SDSS, and {\it GALEX} with a grid of 3D radiation-hydrodynamic simulations of convective DA white dwarf atmospheres \citep{tremblay13c,cunningham19}, we study the scenario of convective mixing which is expected to happen within that temperature range. We investigate the mass distribution of hydrogen layers in white dwarfs with the highest precision to date, albeit within a limited mass range of $-14 \lessapprox \log$ \MH/\Mwd\ $\lessapprox -10$ given the $T_{\rm eff}$ range allowed to be studied with our technique.
+
+We first describe our observed sample selection in Section~\ref{sec:sample}. Section \ref{sec:model_params} discusses the atmospheric models used to fit the photometric and astrometric data for the determination of effective temperature and stellar mass. Section \ref{sec:results} highlights the key results from the investigation and Section \ref{sec:discussion} contextualises the implications of our study.
+
+\section{Photometric Sample}
+\label{sec:sample}
+For this investigation we chose a volume limited sample of high-confidence white dwarfs using the \gaia\ DR2 catalogue built by \citet{ngf19}. The selection criteria used were; a quality cut (\Pwd\ $\geq0.75$) which returned 262\,480 objects, a parallax cut (parallax $\geq 7.5$~mas) returning 35\,056 objects, an effective temperature range determined by fits to the \gaia\ parallax and photometry ($20000 \geq T_{\mathrm{eff}}/\mathrm{[K]} \geq 9000$) returning 6512 objects and a cross-match with the Sloan Digital Sky Survey (SDSS) photometry which returned a final sample size of 2207 objects. We emphasise that a large fraction of these objects do not have SDSS spectra. The cut in effective temperature is not essential at this stage, but included to indicate the size of the working sample. In Section~\ref{sec:results} the parallax cut is also relaxed to explore the results at greater distances and diagnose whether small number statistics can impact our results. All significant results, however, are borne from the sample with cuts detailed in the aforementioned.  
+
+In order to separate the hydrogen- and helium-dominated atmosphere white dwarfs from photometry alone we exploit the Balmer jump discontinuity which can be observed in spectra from sources with \teff$\approx$ 8\,000 -- 20\,000\,K. This discontinuity occurs at $\lambda \approx 364.4 - 380.0$~nm, depending on the stellar mass and strength of non-ideal effects \citep{hummer88}, making the SDSS $u$ and $g$ filters (central wavelengths of 354.3 and 477.0~nm, respectively) ideally suited to detect this feature. As a comparison colour we use $g-r$ with the central wavelength of $r$ at 623.1~nm. As an illustration, Fig.~\ref{fg:col-SDSS-spec} shows the sub-sample of 690 objects with SDSS spectra in a $u-g$, $g-r$ colour-colour plot where spectroscopically classified DAs are shown with pink circles and non-DAs are shown with green squares. The convention used throughout is that DAs include magnetic (DAH) and metal-rich (DAZ) objects, whilst non-DAs comprise DB, DBA, DAB, DC, DQ and all magnetic (H) and polluted (Z) variations therein.
+
+Fig.~\ref{fg:col-SDSS} shows the full sample from the photometric \gaia\ - SDSS cross-match in an analogous plot where objects with a spectral classification are shown in pink (DA, DAH, DAZ) and green (non-DA), while objects with blue points have no spectroscopic classification. 
+
+Obtaining an immaculate separation of spectrally classified DA and non-DA objects is not feasible, with some DA objects (pink) occupying the same colour space as the strip of non-DA objects (green). An inspection of their spectra reveals that predominantly the DA type objects in the He-rich region of the colour plot are He-rich DA or DAZ \citep{zuckerman07,tremblay11,ngf17,rolland18}. In these instances - where there is sufficient helium to suppress the Balmer jump - these objects are correctly positioned photometrically, despite being classified as DA. That these objects sit in the photometric He-rich region is apposite for our analysis of the H- to He-rich atmosphere ratio. However there exists an area between the photometric clusters sparsely populated by objects which have an ambiguous atmospheric composition. To improve the separation we employ additional photometry from {\it GALEX} which we discuss in the following.
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_01-u-g-SDSS-1.pdf}}
+  \caption{Colour-colour diagram showing 690 objects from the volume limited white dwarf sample (parallax $\geq 7.5$~mas) with a SDSS spectral classification \citep{ngf19}. Of those shown, 479 are spectrally classified as DA (including DAH or DAZ) and 211 are classified as non-DA (including DB, DC, DQ, DBA, DAB and all magnetic and polluted variants of the aforementioned) with pink (circles) and green (squares), respectively.}
+ \label{fg:col-SDSS-spec}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_01-u-g-SDSS-0.pdf}}
+  \caption{Colour-colour diagram showing 2207 objects (blue) from the volume limited \gaia-SDSS photometric sample (parallax $\geq 7.5$~mas). Of those shown, 479 are spectrally classified as DA (including DAH or DAZ) and 211 are classified as non-DA (including DB, DC, DQ, DBA, DAB and all magnetic and polluted variants of the aforementioned) in pink (circles) and green (squares), respectively. 74 objects from the full sample populate a region of colour space outside the axis range shown. A manual inspection of the SDSS catalogue revealed that $\approx$65\% of those objects had been marked with a CLEAN=0 flag. The vast majority of all outliers are close to a bright star. We therefore remove these 74 objects from our sample.}
+ \label{fg:col-SDSS}
+\end{figure}
+
+\subsection{{\it GALEX}}
+The all-sky survey {\it GALEX} \citep{galex} provides photometry in the near- and far-ultraviolet for a large number of objects in our sample. We find that the separation between the spectrally classified sources (Fig.~\ref{fg:col-GALEX}) is increased when the colour $g-r$ (see Fig.~\ref{fg:col-SDSS}) is replaced by $nuv-g$. The large majority of DA stars found in the He-rich cluster in colour-space are He-rich DA white dwarfs, with only a handful of true contaminants (see Section~\ref{sec:results}). Approximately 400 objects in the sample were found to have unreliable or missing near-UV photometric data in {\it GALEX}, reducing the final working sample to 1781 high-confidence white dwarfs. Of those, 604 have SDSS spectral classifications as either DA[H,Z] (423) or non-DA (181). 
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_01-nuv-g-GALEX-0.pdf}}
+ \caption{Similar to Fig.~\ref{fg:col-SDSS} but utilising NUV from {\it GALEX}, which reduces the sample to 1781 objects (blue). Of those, 423 are spectrally classified as DA (pink circles) and 183 are classified as non-DA (green squares).}
+ \label{fg:col-GALEX}
+\end{figure}
+
+
+\subsection{Completeness}
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_01c-mag-distr-nuv-g-75.pdf}}
+  \caption{Distribution of \gaia\ $G$ magnitudes for the 1781 objects included in our working sample after a cross-match with SDSS and {\it GALEX}. The mean magnitude is 17.0 with a standard deviation of 1.0.}
+ \label{fg:mag-distr}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{plots/spec_evo_01de-col-distr-u_g-g_r.pdf}}
+  \caption{Colour distributions of percentage of SDSS objects (Fig.~\ref{fg:col-SDSS}) recovered during the GALEX cross-match. In blue is the $u-g$ distribution for objects with colours from $-$0.2 to 0.6~mag. In orange we show the $g-r$ distribution for objects with colours from $-$0.5 to 0.1~mag. The colour ranges encompass the full extent of the locus of points in Fig.~\ref{fg:col-SDSS}.}
+ \label{fg:col-distr}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{plots/spec_evo_01g-distance-distr.pdf}}
+  \caption{Distance distribution, inferred from \gaia\ parallax, of the percentage of the SDSS sample (Fig.~\ref{fg:col-SDSS}) recovered during the {\it GALEX} cross-match.}
+ \label{fg:dist-distr}
+\end{figure}
+
+We have shown that it is possible to calculate the fraction of H- and He-rich atmosphere white dwarfs relying solely on \gaia, SDSS and {\it GALEX} photometry for a limited $T_{\rm eff}$ range but it is also important to understand the completeness of this sample. A discussion on the completeness of the \gaia-SDSS photometric sample is in section 6 of \citet{ngf19} and summarised below. We emphasise that these authors also derive a \gaia-SDSS spectroscopic sample (their section 5), which is separate and not as complete since SDSS used complex surveying strategies to follow-up their photometric sources \citep[see, e.g.,][]{eisenstein06}. In Figs.\,\ref{fg:col-SDSS-spec}-\ref{fg:col-SDSS} and Section\,\ref{sec:results} we use this spectroscopic sample as a guide and comparison to our main photometric results. However, it is outside of the scope of this work to review the completeness of the spectroscopic \gaia-SDSS sample, which is known to vary considerably within colour-colour space, hence with $T_{\rm eff}$ and spectral type \citep{ngf15,ngf19}, and very likely impacting DA to non-DA ratios. Most earlier studies on spectral evolution have used such spectroscopic samples, although not as complete as with the selection defined in \citet{ngf19}. As a consequence we do not attempt to quantify the differences between these earlier studies and our method until spectroscopic completeness is better understood. Volume-complete spectroscopic samples, e.g. within 40\,pc \citep{limoges15}, still suffer from low number statistics in the $T_{\rm eff}$ range we are interested in.
+
+In \citet{ngf19} the authors estimated the completeness of the \gaia-SDSS photometric cross-match based on the number of objects from the SDSS that were successfully retrieved by \gaia. They found that for white dwarfs with $G\leq20$ and \teff$\geq$ 7\,000~K, \gaia\ catalogued 60--85\% of the objects in the fairly complete SDSS footprint (sky images). However this includes white dwarfs at faint magnitudes and large distances that are too far to have a detectable parallax in \gaia. Given that our sample only includes objects within 133\,pc we expect the completeness of the cross-match to be much higher than this estimate. In fact \citet{hollands18b} find that the Gaia completeness is near 99\% for white dwarfs at 20\,pc, and \citet{ngf19} argue that there is no reason for this completeness to drop significantly within $\approx$ 100\,pc and for $G<20$~mag. Most importantly, \citet{ngf19} also quantified the completeness with respect to $u-g$ colour using the SDSS filters and found it to be colour independent (see their figure 18). This is a key parameter that makes our photometric method potentially more robust than earlier spectroscopic studies.
+
+The SDSS footprint covers approximately one third of the sky meaning our sample is volume-limited only over the SDSS footprint. Within the distance set by the parallax cut our sample should be representative of the whole sky. The SDSS has a bright magnitude limit, with most white dwarfs brighter than $G \approx 15$ missing from the cross-match. Our sample is therefore not truly volume-limited. Our final magnitude distribution peaks at $G = 17.0$ with a standard deviation of 1.0 (Fig.~\ref{fg:mag-distr}) and, with 70 of the 1781 objects having $G<15$, we infer that we are likely missing no more than $\approx 4\%$ of all objects which is not expected to introduce a significant DA versus non-DA bias (see Section\,\ref{sec:PIER}).
+
+The final sample uses a further cross-match with {\it GALEX}, and as such the completeness of {\it GALEX} is also important. To assess whether the inclusion of {\it GALEX} photometry introduces any bias within our sample we consider the colour distributions for the percentage of objects in the original SDSS sample which were also retrieved during the {\it GALEX} cross-match. Fig.~\ref{fg:col-distr} shows the distributions for $u-g$ (blue, hatched) and $g-r$ (orange, solid) colours for the final working sample. We find no significant colour dependence for objects found in the {\it GALEX} cross-match, where all bins are consistent with an $\approx$ 80\% retrieval rate to within 1$\sigma$.
+
+We also show the distribution of objects recovered in the {\it GALEX}-SDSS cross-match as a function of distance (Fig.~\ref{fg:dist-distr}) to investigate whether any spatial bias could have been introduced. The distance is inferred using the \gaia\ parallax and we find the recovery rate of objects in {\it GALEX} shows no dependence on this parameter. As with the colour distributions we find all bins are consistent with a retrieval rate of 80\% to within 1$\sigma$. We conclude that the volume completeness of the final, working sample is likely to be 80\% that of the original SDSS sample and that no bias has been introduced as a result of including {\it GALEX} photometry. Given the SDSS bright magnitude limit and our \teff\ range, our {\it GALEX} sources do not suffer significantly from non-linearity problems \citep{camarota2014,wall2019}.
+
+Finally we note that given our lower temperature limit of 9000\,K and the lower magnitude limits of \gaia, SDSS and {\it GALEX}, our distance limit of 133\,pc ensures that a negligible amount of white dwarfs are removed for being too faint in any of the surveys. At 9000\,K \gaia\ is the limiting survey and Fig.~\ref{fg:mag-distr} illustrates that our distribution peaks well above the lower magnitude limit of $G \approx 20$.
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{{PET-simulations}.pdf}}
+ \caption{Simulated temperature dependence of the helium dominated white dwarf fraction for volume (open circles) and magnitude limited samples (filled circles) assuming no spectral evolution at any time during the evolution. Input at birth included 72\% H-rich and 28\% He-rich atmospheres. The coolest bin is affected by the age of the Galactic disk and collision-induced opacities and should be interpreted with caution \citep{blouin19}.}
+ \label{fg:PET-sims}
+\end{figure}
+
+\subsection{Absolute magnitudes and cooling rates}
+\label{sec:PIER}
+
+The use of a volume-limited sample largely removes possible selection biases due to absolute magnitude differences between spectral types but this concern still applies because of the bright magnitude limit of the SDSS. In addition a difference in the cooling rates of DA and DB stars could influence the ratio of spectral types as a function of temperature. To understand these biases we have simulated \gaia\ samples using the methods outlined in \citet{tremblay16} and \citet{ngf19}. These simulations assume a stellar formation rate \citep{tremblay14}, the Salpeter initial mass function, the \citet{cummings16} initial-to-final mass relation and the white dwarf evolution models of \citet{fontaine01}. Most importantly, 28\% of the white dwarfs are born with He-atmospheres (all with thin hydrogen layers), and 72\% with hydrogen atmospheres (where among those 14\% have thin hydrogen layers). In the subsequent evolution no spectral change is allowed. To eliminate random noise the white dwarf space density was artificially enhanced. Fig.~\ref{fg:PET-sims} demonstrates that for a volume limited sample, differences in cooling rates lead to small few percent-level changes of spectral type ratio over time. For reference, Fig.~\ref{fg:PET-sims} also shows the evolution for a magnitude-limited sample, where differences in absolute magnitude between DA and DB also play a role in the observed ratio. Once again, the effect from these biases is fairly minor, as outlined in \citet{tremblay08}. We conclude that any significant change ($>2\%$) in the observed $N_{\mathrm{He}}/N_{\mathrm{Tot}}$ ratio, in the range 20\,000 $\gtrapprox T_{\rm eff}$/[K] $\gtrapprox$ 9000 and for a volume-limited sample, must be caused by additional physical processes that happen during white dwarf evolution and that are not included in our simulations, such as convective mixing or accretion. 
+
+\section{Atmospheric Composition}
+\label{sec:model_params}
+
+Using \gaia\ photometry and astrometry, most high-probability white dwarfs in the DR2 catalogue of \citet{ngf19} have a derived effective temperature from a dereddening procedure and model atmosphere calculation under the assumption of either a pure hydrogen or a pure helium atmosphere. The catalogue also makes use of the mass-radius relation of \citet{fontaine01} to derive a mass for each object.
+
+The authors showed that, for a sample of 4778 bright DA stars, the \teff determinations using \gaia\ photometry were in agreement with those derived independently utilising photometry from SDSS and Pan-STARRS. 
+ 
+\citet{tremblay19} and \citet{genest-beaulieu2019a} also made a comparison of photometric and spectroscopic effective temperatures derived from the SDSS. Individual objects were in agreement to within 1--2$\sigma$, but spectroscopic temperatures were systematically higher than those derived from \gaia\ photometry. It was concluded that this was most likely due to residual issues with the spectroscopic temperature scale. 
+
+
+\cite{bergeron19} have shown that using pure-He models in the photometric technique for objects below \teff $\approx$ 11\,000\,K results in a systematic effective temperature and mass offset compared to mixed H/He models (see their figures~10 \& 11). In the following section, the ratio of He- and H-rich objects - calculated from the SDSS-{\it GALEX}-\gaia\ photometric sample and empirical cuts described below - is computed using \teff bins of 1000~K. Hence the systematic offset in \teff and mass is not a significant concern for this analysis.
+
+The cuts in $u-g$, $g-r$ and $u-g$, $nuv-g$ space employed to optimise the separation between the spectrally classified objects in Figs.\,\ref{fg:col-SDSS-spec}-\ref{fg:col-GALEX} are given, respectively, by the following equations:
+\begin{align}
+ (g-r) &= 0.8 \times (u-g) - 0.3 		\label{eq:phot_cut_g-r}		\\
+ (nuv-g) &= 3.9 \times (u-g) - 0.1	 	\label{eq:phot_cut_nuv-g}
+\end{align}
+
+{\noindent}These empirical cuts are then used to estimate the ratio of H- to He-dominated atmospheres, below and above those lines, respectively. We then employ the \gaia\ photometric effective temperatures as described in \citet{ngf19} to transform this ratio into the context of white dwarf spectral evolution. White dwarf cooling takes place over a Gyr timescale \citep{dantona90} and employing evolutionary models would allow the study of spectral evolution as a function of age. For simplicity, effective temperatures are used as a proxy for age in this study. We use the pure-H and pure-He solutions for the H-rich and He-rich sides of our colours cuts, respectively. 
+We note that the differences between H- and He-rich effective temperature using \gaia\ photometry are sufficiently small compared to the size of our bins that even if pure-H effective temperatures were used for all objects similar results would be obtained.
+
+
+
+\section{Results}
+\label{sec:results} 
+
+\begin{figure*}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_01b-quick-bin-nuv_g-75.pdf}} 
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_03b-ratios75.pdf}}\\
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_01b-quick-bin-nuv_g-50.pdf}}
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_03b-ratios50.pdf}}\\ 
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_01b-quick-bin-nuv_g-25.pdf}}
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_03b-ratios25.pdf}}\\ 
+ \caption{{\it Top-to-bottom}: Same analysis shown for samples limited by increasing volume with the parallax (bottom right) and sample size (bottom left) indicated in the panels. {\it Left}: Photometric sample with separation of colour space for hydrogen dominated (orange) and helium dominated atmospheres (blue) according to Fig.~\ref{fg:col-GALEX} and Eq.\,(\ref{eq:phot_cut_nuv-g}). Spectrally classified objects are a small subsample of the photometric sample. Any objects with a spectral classification which apparently disagrees with its photometric assessment are shown in black for DAs with photometry predicting He-dominance (triangles) and non-DAs with photometry indicating H-dominance (circles). {\it Right}: Ratio of helium dominated objects to total as a function of effective temperature based on the photometric cuts (black circles). We also show the spectroscopic ratio in the same bins with (red, dotted) and without (blue, solid) respect for the photometric cut. Error bars result from the propagation of Poisson errors (see Eq.~\eqref{eq:num_err}).} 
+ \label{fg:phot-cut}
+\end{figure*}
+
+For our derivation of the number of H- and He-atmospheres $(N_{\rm H-atm}$ and $N_{\rm He-atm})$ we devote our attention to the colour cut defined by Eq.~\eqref{eq:phot_cut_nuv-g} utilising the near-ultraviolet from {\it GALEX}, which creates a cleaner separation than Eq.~\eqref{eq:phot_cut_g-r}. The top-left panel of Fig.~\ref{fg:phot-cut} shows the effect of the photometric cut, with objects on the hydrogen side coloured orange and those on the helium side coloured blue. This includes objects with spectral classification. Shown in black are the spectrally classified objects which apparently fall on the {\it wrong} side of the photometric cut with DA-type objects on the helium side (triangles) and non-DAs on the hydrogen side (circles). Of the 604 spectrally classified objects we find 26 to be on the incorrect side of the cut. However, we point out that our goal is to separate H- and He-rich objects, rather than DA and non-DA.
+
+We note the misidentification is skewed toward DA-type objects with 5.2\% (22/423) of these objects on the He-rich side of the cut, compared to 2.2\% (4/183) for the non-DA types. An inspection of the spectra for the DA-type objects in the He-rich region finds the majority (16/22) are either He-rich DAs or DA+DC binaries \citep{rolland18,kepler19}, suggesting those objects may sit correctly in the photometric analysis. A further 5 objects on both sides show evidence of metal pollution or strong magnetic fields. Calcium lines in the former case can reduce the {\it u}-band flux \citep{hollands17}, emulating the Balmer jump, and strong magnetic fields can significantly disrupt the Balmer jump. The remaining 5 objects have \teff$\approx 9000$\,K and higher-than-average surface gravities, where we expect the strength of the Balmer jump to be marginal. We conclude that H- and He-rich atmospheres separate relatively well under the photometric colour cut chosen, with 96--98\% of objects being assigned the correct composition.
+
+The spectroscopic identifications serve as an indication of the photometric regions corresponding to hydrogen and helium dominance. Given a large enough and unbiased sample of spectra one could study the atmospheric composition of each object in turn and model the spectral evolution in that fashion. With the small size or biases present in the current spectroscopic samples this is not a well-justified approach, which is why we focus our analysis on the photometric sample.
+
+The top-right panel of the figure shows the photometric fraction, $N_{\mathrm{He-atm}}/N_{\mathrm{total}}$, as a function of effective temperature in bins of 1000\,K. As a comparison the red dotted line shows the same quantity but only including objects with SDSS spectra, i.e. following the photometric cuts without regard to the actual spectral type. In this case we also rely on the photometric temperatures since some spectral types, e.g., DC, DZ, and DQ white dwarfs, have uncertain spectroscopic temperatures. Finally, this can be compared to the spectroscopic non-DA to total ratio in the same bins with the blue solid line. It demonstrates that the combined presence, as discussed above, of a few He-rich DA, strongly magnetic DAH, and DZ white dwarfs, only have a minor impact on our results.
+
+The same analysis was carried out for increasing distance with a parallax cut of $\pi>7.5$ (upper), 5.0 (middle) and 2.5~mas (lower) also shown in the figure. As photometric precision and volume completeness decrease with distance, we expect that our colour cut of Eq.\,(\ref{eq:phot_cut_nuv-g}) becomes less reliable to select atmospheric composition, and as such we favour the smaller volume photometric results. In contrast, larger distances may be able to overcome low number statistics for spectroscopic ratios, without necessarily adding more contaminants. The largest volume results in an approach that is closer to those of \citet{genest-Beaulieu19} and \citet{ourique19}.
+
+The errors associated with the photometric and spectroscopic ratios are derived from propagated Poisson errors by the expression 
+\begin{equation}
+ \alpha = \left(\left(\frac{n_{\mathrm{He}}+\alpha_{\mathrm{He}}}{n_{\mathrm{tot}}} - \frac{n_{\mathrm{He}}}{n_{\mathrm{tot}}}\right)^2 + \left(\frac{n_{\mathrm{He}}}{n_{\mathrm{tot}}+\alpha_{\mathrm{tot}}} - \frac{n_{\mathrm{He}}}{n_{\mathrm{tot}}}\right)^2\right)^{1/2}
+\label{eq:num_err}
+\end{equation}
+where $n_{\rm tot}$ and \nHe\ are respectively the total number of objects and inferred numbers of helium dominated atmosphere white dwarfs from the photometry or spectroscopy and $\alpha_{\mathrm{X}} = \sqrt{n_{\mathrm{X}}}$ represents the counting (Poisson) error on both quantities. 
+
+Biases in the SDSS spectroscopic follow-up selection function, which depends on the SDSS colours \citep{ngf15}, implies that the spectroscopic ratio may be less reliable. However a comparison of the photometric and spectroscopic ratios for $\pi > 7.5$~mas finds them to be in agreement to within 1$\sigma$ throughout the effective temperature range studied, with the exception of the bin centered at \teff$=$ 13\,500~K. At larger distances we observe a more prominent disagreement in the same temperature range.
+
+
+The Poisson errors derived do not take into account the error on the effective temperature. We investigate the validity of the expressed error margin by calculating the sum of normal distributions in effective temperature for all objects in the top, left panel of Fig.~\ref{fg:phot-cut}. The normal distribution for species $X$ ($=$H or He), $P_X(T_i)$, assigned to data point, $i$, obeys
+\begin{equation}
+ P_X(T_i) = \frac{1}{\sqrt{2\pi}\sigma_i}\exp{\left(\frac{(T-T_i)^2}{2\sigma_i^2}\right)}
+\end{equation}
+where $T_i$ and $\sigma_i$ represent the modelled effective temperature and associated error. An expression of the continuous ratio of He-rich to total objects would then be computed as 
+\begin{equation}
+ \frac{N_{\mathrm{He-atm}}}{N_{\mathrm{total}}} = \sum_{i=1} \frac{P_{\mathrm{He}}(T_i)}{P_{\mathrm{H}}(T_i)+P_{\mathrm{He}}(T_i)}
+\end{equation}
+We find that all error bars from the original histogram bins are intersected by this function, with the exception of the bin centered at \T{10\,5}. We conclude that the errors attributed to the histogram bins from number statistics are a reasonable reflection of the uncertainty on the estimated photometric ratio.
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_09-He-frac-nuv-g.pdf}}
+ \caption{Observed fraction of helium atmosphere white dwarfs derived by the method of logistic regression using Eq.~\eqref{eq:logit} and our $\pi > 7.5$ mas \gaia-SDSS-{\it GALEX} photometric sample. Filled error regions correspond to the 1$\sigma$ and 2$\sigma$ confidence intervals. Blue vertical lines indicate the effective temperature of a white dwarf with either a He-rich or H-rich atmosphere on the top and bottom, respectively. Photometric ratio derived using the binning method (see Fig.~\ref{fg:phot-cut}; top right) are also shown in black circles.} 
+ \label{fg:continuous}
+\end{figure}
+
+\subsection{Fitting the spectral evolution}
+
+One of the aims of this research is to model the observed spectral evolution. In order to do this we wish to express the fractional change of He-rich objects as a function of effective temperature. One could employ the values attributed to the histogram bins shown in Fig.~\ref{fg:phot-cut} (top-left panel), where the local gradient is the quantity of interest. However, the local gradient of the He-rich fraction versus effective temperature in the histogram picture has some dependence on the choice of histogram bins. This is not conducive to a robust result and so we instead seek a continuous function of effective temperature.
+
+Logistic regression is a well established technique used in statistics and machine learning that estimates the likelihood of a function to describe a set of data, and it is increasingly being utilised in problems of an astrophysical nature \citep{hollands18b,chromey19}.
+We assume that at a given effective temperature, $T_{\mathrm{eff}}$, the probability of a white dwarf being He-rich is given by $S(\bm{\theta}, T_{\mathrm{eff}})$, where $\theta$ is the vector of parameters that describe the form of function $S$ - whose shape we would like to find. Given that our data is categorical - objects are either deemed to be H-rich or He-rich - logistic regression is an apposite choice for finding this function. We summarise the methodology in the following. 
+
+We define $S$ in terms of the logistic curve
+\begin{equation}
+ S(\bm{\theta}, T_{\mathrm{eff}}) = \frac{1}{1+\exp(-f(\bm{\theta}, T_{\mathrm{eff}}))}~~~,
+ \label{eq:logit}
+\end{equation}
+
+{\noindent}where the function $f$ is defined as second-order polynomial in the natural logarithm of effective temperature such that
+\begin{equation}
+ f(\bm{\theta}, T_{\mathrm{eff}}) = \theta_0 \log \left(\frac{T_{\mathrm{eff}}}{[K]}\right)^2 + \theta_1 \log \left(\frac{T_{\mathrm{eff}}}{[K]}\right) + \theta_2~~~.
+\end{equation}
+Defining $S$ in this fashion ensures that the probability of an object being He-rich is confined to the interval [0,1]. This function differs from that used by \citet{hollands18b} with the addition of the second-order term in the polynomial. Adopting this term gives the model the freedom not to tend to zero, which is important as we expect the He-rich fraction to be non-zero for all temperatures. 
+
+Now that we have a functional form with the freedom necessary to describe the likely shape of the probability of a white dwarf being He-rich, we invoke an optimization routine. The quantity we wish to maximize is the likelihood of the function $S$ with parameters $\bm{\theta}$ being the the best description of the data. Under the assumption that our data is independently Bernoulli distributed - that data has either the value 1, or 0 - the likelihood of a given $\bm{\theta}$ describing the data is expressed as
+\begin{equation}
+ L(\bm{\theta} | \mteff) = \prod_{i=1}^N{S_i^{y_i}(1-S_i)^{(1-y_i)}}
+\end{equation}
+where $N$ is the sample size and $S_i = S(\bm{\theta}, T_{\mathrm{eff,i}})$. The observation of whether an object is He-rich or H-rich is encapsulated with $y_i=1$ for He-rich objects or $y_i=0$ for H-rich objects. The optimization is made more straightforward by maximizing the natural logarithm of this quantity
+\begin{equation}
+ \log L(\bm{\theta} | \mteff) = \sum_{i=1}^N{\log(S_i)} + \sum_{i=1}^N{\log(1 - S_i)}
+\end{equation}
+Equivalently, one can minimize the negative log likelihood to find the best fit parameters. The optimization was performed using the Nelder-Mead algorithm built into the {\it minimize} function of {\sc scipy} which uses a simplex to find the minimum gradient in the parameter space \citep{scipy}.
+
+The best fit parameters for $\theta_0$, $\theta_1$ and $\theta_2$ were $0.010\pm0.007$, $-0.43\pm0.20$ and $2.57\pm1.26$, respectively. The logistic curve with these parameters is shown in Fig.~\ref{fg:continuous} with the 1$\sigma$ and 2$\sigma$ confidence intervals shown in grey. The detections of He-rich or H-rich white dwarfs are shown in blue on the top and bottom axes, respectively. For comparison we show again the values from the histogram bin method presented earlier (Fig.~\ref{fg:phot-cut}) in black circles. We remind the reader that the logistic curve is not a fit to the black points, but derived independently as discussed via the method of logistic regression. On the statistical significance of the increase of the He-fraction, an inspection of the best-fit logistic function at 17\,000 and 9\,500~K finds that the increasing He-fraction across this temperature range can be considered a 5$\sigma$ result. 
+
+Looking only at the histogram points, we find that for \treverse{20\,000}{14\,000} the percentage of helium dominated atmospheres lies between 10--20\%, with the general trend increasing by approximately 5\% toward the low temperature end of this interval, although we note that this is only a 1$\sigma$ result given the size of the error bars from Poisson errors. At lower effective temperatures, \treverse{13\,000}{10\,000}, we find a more significant increase, resulting in a final percentage of helium dominated atmospheres of 35--40\%.
+
+\subsection{Mass distribution of thin hydrogen shells}
+
+The hypothesis being tested is whether the inverse proportionality between effective temperature and the relative number of helium-atmosphere white dwarfs is due to convective mixing or convective dilution. 
+
+{\it Convective mixing}, also referred to as dredge-up, is the process by which deeper material is dragged up by convective motions near the base of the (in this case hydrogen) convection zone. If the hydrogen convection zone is sufficiently close to the chemical boundary between the hydrogen and helium layers the material dragged up will be helium, and thus the two elements will mix. 
+
+{\it Convective dilution} describes the interaction of the top of the helium convection zone with a thin hydrogen shell located above. As the upper boundary of the convection zone reaches the hydrogen layer the hydrogen will be steadily incorporated into the helium convection zone.
+
+Our first hypothesis is that the observed change in He-rich fraction is caused by convective mixing alone. As the helium envelope is typically orders of magnitude more massive \citep{iben1983,romero19}, the prediction is that this runaway process quickly leaves a trace amount of hydrogen in a predominantly helium atmosphere \citep{rolland18}. Furthermore, convective motions in He-rich envelopes are many orders of magnitude faster \citep{fontaine1976} than any microscopic diffusion process that could separate helium and hydrogen \citep{koester09}, hence we assume this transition to be permanent.  In this picture we predict that the objects which change to appear helium dominated are white dwarfs with a total mass of hydrogen equal to the size of the convectively mixed region (i.e. convection zone size for chemical mixing) for a DA white dwarf at that temperature. Across the temperature range this allows us to predict the total hydrogen mass for a percentage of the total white dwarf population within 133~pc. For DA stars that do not mix, we can only estimate the minimum mass of hydrogen. 
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_05a-mixed-mass.pdf}}
+ \caption{Temperature dependence of the fractional mass ($q = M_{\rm H}/M_{\rm WD}$) of the convectively mixed region in a DA white dwarf. Results are shown for mixed masses derived from 3D simulations (\citealt{cunningham19}, blue solid) and 1D MLT (ML2/$\alpha=0.8$) with the convection zone defined by the Schwarschild criterion (\citealt{koester09}, red dotted).
+ In this work we assume that when convective mixing occurs with the underlying helium layer, the mixed mass of hydrogen is equal to the total hydrogen mass in the star. The region in grey corresponds to hydrogen shell masses where convective dilution is expected to proceed \citep{genest-Beaulieu19}. }
+ \label{fg:mixed-mass}
+\end{figure}
+
+To parameterize the convectively mixed region as a function of effective temperature we turn to previous results from 3D radiation-hydrodynamic simulations \citep{cunningham19}. Fig.~\ref{fg:mixed-mass} shows the predicted mass of hydrogen being mixed convectively. Results from 3D numerical simulations for white dwarfs in the temperature range \tbetween{11\,400}{18\,000} are shown in solid blue where the multi-dimensional treatment allows for the inclusion of convective overshoot without employing free-parameters. Mixing-length theory mixed masses taken from \citet{koester09}, with updated tables, are shown in dotted red. \citet{cunningham19} found that the mixed mass can be increased by 2.5 dex when convective overshoot is accounted for in these hydrogen atmosphere white dwarfs.
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_09c-mass-histo-nuv-g.pdf}}
+ \caption{Percentage of white dwarfs with a given total hydrogen mass inferred from the percentage change of He-dominated white dwarfs (see Fig.~\ref{fg:continuous}). Results are shown for the two mixed mass prescriptions described in Fig.~\ref{fg:mixed-mass} with 3D and 1D results in blue and red, respectively. The sum is less than 100\% because we do not include white dwarfs with lower or upper limits on the total hydrogen masses (see Section\,\ref{sec:discussion}). The region in grey corresponds to hydrogen shell masses that are {\it forbidden} for DA white dwarfs in our studied $T_{\rm eff}$ range according to convective dilution studies \citep{genest-Beaulieu19}. Under that scenario these objects would evolve as He-rich white dwarfs and show no spectral change in our studied $T_{\rm eff}$ range.}
+ \label{fg:cum-mass}
+\end{figure}
+
+We show our derived total mass of hydrogen for white dwarfs within 133~pc in Fig.~\ref{fg:cum-mass} as a percentage of the total sample. Similarly to Fig.~\ref{fg:mixed-mass}, results are given for the convectively mixed mass with (blue) and without (red, dotted) the inclusion of convective overshoot. To derive the histogram values we sampled the parameter space of the function given in Eq.~\eqref{eq:logit} using normally distributed parameters with means and standard deviations equal to the best-fit parameters and their associated errors, respectively. The histogram values presented are the mean of the 10\,000 histograms calculated and the error is the standard deviation around that mean.
+
+We find that including the larger mixed masses borne from the convective overshoot results increases the inferred total mass of hydrogen for $\approx$~15\% of the population by 2 dex. An increase in mixed mass due to convective overshoot is expected for \teff$<$~11\,400~K but is currently not accessible directly from 3D numerical simulations. As such no difference is accounted for in the current model for total hydrogen masses above $M_{\mathrm{H}}/M_{\mathrm{WD}} \approx 10^{-12}$ because of the convergence of 3D and 1D results at lower temperatures (see Fig.~\ref{fg:mixed-mass}). 
+
+The second hypothesis includes the possibility of convective dilution occurring. We use results from \citet{genest-Beaulieu19} which predict that convective dilution will occur in white dwarfs with a thin hydrogen shell of mass of $\log M_{\mathrm{H}}/M_{\mathrm{WD}}<-14.0$ when they cool to \teff$\approx$ 25\,000~K. The inference is that these thinnest hydrogen shells are unlikely to exist by the time the white dwarf reaches \teff$<$ 20\,000~K. More massive hydrogen layers are predicted to suppress convection in the underlying helium layer, preventing convective dilution, and allowing the hydrogen and helium shells to remain stratified down to lower effective temperatures or until convective mixing happens. In this scenario convective mixing can therefore only occur in white dwarfs with total hydrogen masses $\log M_{\mathrm{H}}/M_{\mathrm{WD}}>-14$. Fig.~\ref{fg:mixed-mass} shows the region where convective dilution would have already happened in grey. In other words, convective mixing is only permitted for white dwarfs with \teff$<$ 13\,750~K in the 3D picture or \teff$<$ 11\,500~K in the 1D picture. 
+
+In Fig.~\ref{fg:continuous} the temperature dependence of the helium-rich percentage appears to follow a steeper gradient for \teff$\lessapprox$ 14\,000~K, while a zero gradient could be used to fit the behaviour of the percentage for \teff$>$ 14\,000~K. This interpretation supports the hypothesis that convective dilution has already occurred in objects with $\log M_{\mathrm{H}}/M_{\mathrm{WD}}<-14.0$ by \teff$=$~20\,000~K and the next available mechanism for spectral evolution is the onset of convective mixing at \teff$\approx$ 14\,000~K. 
+
+Fig.~\ref{fg:cum-mass} also includes the region of stratified hydrogen masses \textit{forbidden} by convective dilution in grey. It shows that, in this scenario, approximately half of the thin hydrogen shell masses predicted using 1D models of convection would be ruled out as nonphysical at the $T_{\rm eff}$ values of interest. So too would a quarter of the inferred hydrogen shell masses in the 3D picture. The fewer non-physical predictions of the latter model suggests the 3D overshoot picture provides a more robust description of convection in these objects. Furthermore, for the 3D results we find that the two bins associated with the smallest total hydrogen mass are consistent with zero within $2\sigma$. This provides evidence that the 3D overshoot model is in better agreement with the convective dilution model than a simple 1D treatment of convection alone. We note that the predictions of the convective dilution scenario are borne from a 1D mixing length treatment of convection. However, it was previously inferred that once the top of the helium layer becomes convectively unstable, a mechanism, that we suggest here is likely to be 3D convective overshoot, is able to dilute the top hydrogen layer into the helium convection zone \citep{rolland18}. As such 3D effects are already accounted implicitly in this scenario, although hydrodynamical simulations may give a more detailed picture of the onset of convective dilution, which is outside the scope of this work. 
+
+We will now go on to discuss the implications of these results for the evolution of white dwarfs and time-dependent accretion.
+
+\section{Discussion}
+\label{sec:discussion}
+
+We have presented a statistical analysis of a sample of 1781 white dwarfs to extract the most accurate characterisation of the fraction of He-rich white dwarfs as a function of temperature or cooling age. There is a highly statistically significant trend that the fraction of objects to have He-dominated atmospheres increases with cooling age. We find that this fraction increases from 10--20\% to 35--40\% between 20\,000 and 9000~K, corresponding to cooling ages ranging from 60 to 800 Myr. The implementation of a rigorous optimization method allowed to constrain this increase continuously across the temperature range. When combined with our convective mixing model, this provided a mass distribution of thin hydrogen shells (total hydrogen mass in the star) as a percentage of the total white dwarf population. We now consider some of the implications of these results outside of the white dwarf sample directly considered in this paper. 
+
+The He-rich fractions observed at 20\,000\,K and 9000~K, respectively, allow for a mass distribution to be inferred across the full range of physically reasonable hydrogen shell masses. Fig.~\ref{fg:chunky-mass} shows this distribution for three bins. The central bin in orange comprises all objects observed to change from H- to He-rich in this study, where we use 3D convection for the hydrogen mass determination. The blue bins comprise all objects inferred to remain unchanged across the temperature range considered. We find that 61\% of white dwarfs must have a total hydrogen mass greater than $\log M_{\mathrm{H}}/M_{\mathrm{WD}}=-10$, and canonically it is considered that white dwarfs must have no more than $\log M_{\mathrm{H}}/M_{\mathrm{WD}} \approx -4$ \citep{romero19}. 
+
+At the other extreme of masses we find that $\sim$15\% of white dwarfs must have a total hydrogen mass less than $\log M_{\mathrm{H}}/M_{\mathrm{WD}}=-14$. We note that this mass is dictated by the mass limit found in the convective dilution studies of \citet{rolland18} and \citet{genest-Beaulieu19}. These objects may have been DA stars at temperatures higher than 20\,000\,K. Our study can not derive the total number of white dwarfs that spend their full evolution as He-rich atmospheres. For this result, spectral evolution must be studied directly at hotter and cooler temperatures.
+
+\subsection{Connecting with previous studies}
+The temperature range considered throughout this study was defined by the region where the Balmer lines have the greatest prominence. For cooler temperatures this technique does not satisfactorily distinguish between H-rich and He-rich atmosphere white dwarfs. There have been recent efforts to quantify the ratio of DA to non-DA white dwarfs for cooler temperatures \citep{blouin19}.
+
+We expect the contribution of convective mixing to the spectral evolution of white dwarfs to be less significant below 9000~K as the size of the convection zone becomes less sensitive to effective temperature. This was evidenced in \citet{blouin19} where they observed a small change in He-rich fraction for white dwarfs with effective temperatures 8000--4000~K. Therefore we would expect the He-rich fraction at the cooler end of our study to be somewhat comparable to the warmer end of the sample in their study.  In Table~\ref{tb:blouin-values} we show the fraction of He-rich white dwarfs between 8000 and 7000~K from literature values derived via various methods. To draw a comparison we consider the results obtained for the objects with effective temperature in the range 10\,000--9000~K. The histogram method returned a He-rich fraction of 0.34 $\pm$ 0.03, whilst the logistic regression method found a He-rich fraction of 0.36 $\pm$ 0.02 at 9500~K, i.e. in the centre of that temperature bin. We find our results to be in agreement within 1$\sigma$ with four earlier studies \citep{bergeron97,leggett98,bergeron01,tremblay08}. In contrast \citet{limoges15} and \citet{blouin19} find lower He-fractions. These differences could be investigated in the future with volume-complete spectroscopic follow-ups of local \gaia\ white dwarfs.
+
+\begin{table}
+	\centering
+        \caption{Fraction of helium-rich atmosphere white dwarfs ($N_{\mathrm{He-atm}}/N_{\mathrm{tot}}$) in the temperature range 8000--7000~K presented in previous studies, collated by \citet{blouin19}.}
+        \label{tab:grid}
+        \begin{tabular}{lcc}
+                Study & $N_{\mathrm{He-atm}}/N_{\mathrm{tot}}$\\ 
+                \hline
+                \cite{bergeron97} & $0.33 \pm 0.12$ \\
+                \cite{leggett98}  & $0.45 \pm 0.23$ \\
+                \cite{bergeron01} & $0.37 \pm 0.09$ \\
+                \cite{tremblay08} & $0.31 \pm 0.06$ \\ 
+                \cite{limoges15}  & $0.23 \pm 0.05$ \\
+                \cite{blouin19}   & $0.14 \pm 0.03$ \\
+                \hline
+        \end{tabular}
+        \label{tb:blouin-values}\\
+\end{table}
+
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_09d-mass-chunky-nuv-g.pdf}}
+ \caption{Percentage of white dwarfs with a given total hydrogen mass. The percentage observed to undergo a spectral change from DA to non-DA within the range 20\,000 $\geqslant T_{\rm eff}/{\rm[K]} \geqslant$ 9000 are shown in orange. Those for which no change was observed within that range are shown in blue. Spectral evolution may be possible for temperatures outside of that range. }
+ \label{fg:chunky-mass}
+\end{figure}
+
+\subsection{Hydrogen abundance in DBA white dwarfs}
+
+The origin of hydrogen in DB(A) white dwarfs above 9000~K \citep{rolland18} can be reviewed in light of our improved description of the scenario of convective mixing. In Fig.~\ref{fg:H-limit} we plot in black circles the observed surface hydrogen abundance in a sample of 79 He-rich white dwarfs from \citet{rolland18}. Open circles correspond to upper limits inferred from a non-detection of hydrogen.
+
+For each effective temperature, the convective mixing scenario predicts a mass of hydrogen that gets mixed with the underlying helium layer. Since this mass increases with decreasing $T_{\rm eff}$, at any given temperature, the maximum amount of hydrogen possible in a DB(A) white dwarf is for an object that has just experienced mixing. Lower hydrogen abundances are possible for DB(A) stars that have mixed at higher temperatures. We restrict our discussion to this upper limit of hydrogen in DB(A) stars.
+
+For the mass of the helium convection zone we use the results of a grid of 3D simulations of DBA white dwarfs \citep{elena2}. These simulations do not include a parameterisation for (helium) convective overshoot since DB(A) stars in that temperature range have deep convection zones for which a direct simulation is not yet possible. Including overshoot would result in larger helium convection zones, and therefore smaller upper limits on the surface abundance of hydrogen. This grid is interpolated iteratively so that the final surface hydrogen abundance is taken into account for the size of the convection zone.
+
+
+The red, dashed line in Fig.~\ref{fg:H-limit} shows the predicted abundance of hydrogen in a He-rich white dwarf after convective mixing has occurred assuming a 1D mixed mass. The blue line shows the same quantity with the inclusion of the larger mixed mass from convective overshoot \citep{cunningham19}. In both cases the calculation assumes that the hydrogen is homogeneously mixed into a larger He-rich convection zone.
+
+The shaded regions beneath these upper limits can be considered the region in which all observations should lie if explained only by convective mixing. We note that the scenario of convective dilution predicts even smaller hydrogen abundances \citep{genest-Beaulieu19}. The entire observed sample of \citet{rolland18} lies well outside of these regions, with hydrogen abundances being $\approx$ 3--5~dex higher than the upper limit derived from 3D overshoot results. It seems clear that another mechanism must be invoked to explain these hydrogen abundances. 3D effects are clearly not able to provide a better fit to the observed hydrogen abundances. We favour the accretion of planetesimals as the most likely source of the observed hydrogen. 
+
+In principle, hydrogen accretion could cause a reverse change from He- to H-dominated atmospheres. However, recent studies on the spectral evolution of helium atmosphere white dwarfs and their accretion of hydrogen have suggested that this is an extremely rare scenario \citep{ngf17,rolland18}. As such our assumption that the relative number of helium-atmosphere white dwarfs should increase monotonically with cooling age is likely a robust one.
+
+\begin{figure}
+ \centering
+ \subfloat{\includegraphics[width=1.0\columnwidth]{spec_evo_10_abundance_limits.pdf}}
+ \caption{Observed hydrogen abundances in DB(A) white dwarfs drawn from the spectroscopic observations of \citet{rolland18}. Filled circles show detections while open circles designate upper limits based on a non-detection of hydrogen lines. Theoretical upper limits calculated using the overshoot model of \citet{cunningham19} shown in blue, and limits using 1D convection \citep{koester09} are shown in red dashed. Shaded regions correspond to H abundances that could be explained by convective mixing in either the 3D overshoot (blue) or no overshoot (red) models. All observed H-abundances are well outside the range predicted by these models.}
+ \label{fg:H-limit}
+\end{figure}
+
+
+\section{Conclusions}
+\label{conclusions}
+We have presented a statistically significant (>5$\sigma$) detection of white dwarfs undergoing a transition from hydrogen-dominated to helium-dominated atmospheres as they cool across the effective temperature range 20\,000--9000~K. This was done using the largest volume limited sample (133~pc) of white dwarfs for any previous study of this kind, with the precise determinations of effective temperature utilising \gaia\ photometry. We have characterised the temperature dependence of the rate of spectral evolution and used the most current grid of convection zone sizes for DA white dwarfs to determine the distribution of total hydrogen masses in white dwarfs. We find that the observed distribution of hydrogen shells in the white dwarf population peaks in the range of $\log M_{\mathrm{H}}/M_{\rm WD}$ from $-10$ to $-4$, with 60\% of all objects found within that range. Another 25\% of white dwarfs have thin hydrogen masses in the range $-14 < \log M_{\mathrm{H}}/M_{\rm WD} < -10$, and finally 15\% have even thinner hydrogen masses ($\log M_{\mathrm{H}}/M_{\rm WD}$ < $-14$).
+
+These results have implications for models of pulsations in white dwarfs, stellar evolution - in particular during the AGB - and the accretion of material after the formation of white dwarfs. In the future, volume-complete spectroscopic samples will be able to increase the range in mass for which we can constrain the total amount of hydrogen in a white dwarf.
+
+\section*{Acknowledgements}
+This work has made use of data from the European Space Agency (ESA) mission {\it Gaia} (\url{https://www.cosmos.esa.int/gaia}), processed by the {\it Gaia}
+Data Processing and Analysis Consortium (DPAC, \url{https://www.cosmos.esa.int/web/gaia/dpac/consortium}). Funding for the DPAC has been provided by national institutions, in particular the institutions participating in the {\it Gaia} Multilateral Agreement.
+
+Funding for SDSS-III has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, and the U.S. Department of Energy Office of Science. The SDSS-III web site is http://www.sdss3.org/.
+
+SDSS-III is managed by the Astrophysical Research Consortium for the Participating Institutions of the SDSS-III Collaboration including the University of Arizona, the Brazilian Participation Group, Brookhaven National Laboratory, Carnegie Mellon University, University of Florida, the French Participation Group, the German Participation Group, Harvard University, the Instituto de Astrofisica de Canarias, the Michigan State/Notre Dame/JINA Participation Group, Johns Hopkins University, Lawrence Berkeley National Laboratory, Max Planck Institute for Astrophysics, Max Planck Institute for Extraterrestrial Physics, New Mexico State University, New York University, Ohio State University, Pennsylvania State University, University of Portsmouth, Princeton University, the Spanish Participation Group, University of Tokyo, University of Utah, Vanderbilt University, University of Virginia, University of Washington, and Yale University.
+
+
+The research leading to these results has received funding from the European Research Council under the European Union's Horizon 2020 research and innovation programme n. 677706 (WD3D).
+
+
+
+
+
+
+
+
+\bibliographystyle{mnras}
+
+
+
+@ARTICLE{iben1983,
+       author = {{Iben}, I., Jr. and {Renzini}, A.},
+        title = "{Asymptotic giant branch evolution and beyond.}",
+      journal = {\araa},
+     keywords = {Asymptotic Giant Branch Stars, Giant Stars, Stellar Evolution, Stellar Mass Ejection, Supernovae, White Dwarf Stars, Abundance, Pulsed Radiation, Star Clusters, Stellar Spectrophotometry, Thermal Radiation, Astrophysics},
+         year = "1983",
+        month = "Jan",
+       volume = {21},
+        pages = {271-342},
+          doi = {10.1146/annurev.aa.21.090183.001415},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1983ARA&A..21..271I},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{fontaine1976,
+       author = {{Fontaine}, G. and {van Horn}, H.~M.},
+        title = "{Convective white-dwarf envelope model grids for H-, He-, and C-rich compositions.}",
+      journal = {\apjs},
+     keywords = {Carbon Stars, Stellar Envelopes, Stellar Models, White Dwarf Stars, Astrophysics, Convective Heat Transfer, Helium, Hydrogen, Astrophysics},
+         year = "1976",
+        month = "Jul",
+       volume = {31},
+        pages = {467-487},
+          doi = {10.1086/190388},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1976ApJS...31..467F},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{genest-beaulieu2019a,
+       author = {{Genest-Beaulieu}, C. and {Bergeron}, P.},
+        title = "{A Comprehensive Spectroscopic and Photometric Analysis of DA and DB White Dwarfs from SDSS and Gaia}",
+      journal = {\apj},
+     keywords = {stars: fundamental parameters, techniques: photometric, techniques: spectroscopic, white dwarfs},
+         year = "2019",
+        month = "Feb",
+       volume = {871},
+       number = {2},
+          eid = {169},
+        pages = {169},
+          doi = {10.3847/1538-4357/aafac6},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019ApJ...871..169G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{sdss2002,
+       author = {{Strauss}, Michael A. and {Weinberg}, David H. and {Lupton}, Robert H. and
+         {Narayanan}, Vijay K. and {Annis}, James and {Bernardi}, Mariangela and
+         {Blanton}, Michael and {Burles}, Scott and {Connolly}, A.~J. and
+         {Dalcanton}, Julianne and {Doi}, Mamoru and {Eisenstein}, Daniel and
+         {Frieman}, Joshua A. and {Fukugita}, Masataka and {Gunn}, James E. and
+         {Ivezi{\'c}}, {\v{Z}}eljko and {Kent}, Stephen and {Kim}, Rita S.~J. and
+         {Knapp}, G.~R. and {Kron}, Richard G. and {Munn}, Jeffrey A. and
+         {Newberg}, Heidi Jo and {Nichol}, R.~C. and {Okamura}, Sadanori and
+         {Quinn}, Thomas R. and {Richmond}, Michael W. and {Schlegel}, David J. and
+         {Shimasaku}, Kazuhiro and {SubbaRao}, Mark and {Szalay}, Alexander S. and
+         {Vanden Berk}, Dan and {Vogeley}, Michael S. and {Yanny}, Brian and
+         {Yasuda}, Naoki and {York}, Donald G. and {Zehavi}, Idit},
+        title = "{Spectroscopic Target Selection in the Sloan Digital Sky Survey: The Main Galaxy Sample}",
+      journal = {\aj},
+     keywords = {Galaxies: Distances and Redshifts, Galaxies: Photometry, Surveys, Astrophysics},
+         year = "2002",
+        month = "Sep",
+       volume = {124},
+       number = {3},
+        pages = {1810-1824},
+          doi = {10.1086/342343},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0206225},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2002AJ....124.1810S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{eisenstein06,
+       author = {{Eisenstein}, Daniel J. and {Liebert}, James and {Harris}, Hugh C. and
+         {Kleinman}, S.~J. and {Nitta}, Atsuko and {Silvestri}, Nicole and
+         {Anderson}, Scott A. and {Barentine}, J.~C. and
+         {Brewington}, Howard J. and {Brinkmann}, J. and {Harvanek}, Michael and
+         {Krzesi{\'n}ski}, Jurek and {Neilsen}, Eric H., Jr. and {Long}, Dan and
+         {Schneider}, Donald P. and {Snedden}, Stephanie A.},
+        title = "{A Catalog of Spectroscopically Confirmed White Dwarfs from the Sloan Digital Sky Survey Data Release 4}",
+      journal = {\apjs},
+     keywords = {Catalogs, Stars: Subdwarfs, Stars: White Dwarfs, Astrophysics},
+         year = "2006",
+        month = "Nov",
+       volume = {167},
+       number = {1},
+        pages = {40-58},
+          doi = {10.1086/507110},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0606700},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2006ApJS..167...40E},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{hollands17,
+       author = {{Hollands}, M.~A. and {Koester}, D. and {Alekseev}, V. and
+         {Herbert}, E.~L. and {G{\"a}nsicke}, B.~T.},
+        title = "{Cool DZ white dwarfs - I. Identification and spectral analysis}",
+      journal = {\mnras},
+     keywords = {planets and satellites: composition, stars: abundances, stars: atmospheres, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2017",
+        month = "Jun",
+       volume = {467},
+       number = {4},
+        pages = {4970-5000},
+          doi = {10.1093/mnras/stx250},
+archivePrefix = {arXiv},
+       eprint = {1701.07827},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.467.4970H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{werner06,
+   author = {{Werner}, K. and {Herwig}, F.},
+    title = "{The Elemental Abundances in Bare Planetary Nebula Central Stars and the Shell Burning in AGB Stars}",
+  journal = {\pasp},
+   eprint = {astro-ph/0512320},
+ keywords = {Stars: AGB and Post-AGB, Stars: Abundances, Stars: Atmospheres, Stars: Evolution, Stars: Interiors, nuclear reactions, nucleosynthesis, abundances},
+     year = 2006,
+    month = feb,
+   volume = 118,
+    pages = {183-204},
+      doi = {10.1086/500443},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2006PASP..118..183W},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{galex,
+       author = {{Morrissey}, Patrick and {Conrow}, Tim and {Barlow}, Tom A. and
+         {Small}, Todd and {Seibert}, Mark and {Wyder}, Ted K. and
+         {Budav{\'a}ri}, Tam{\'a}s and {Arnouts}, Stephane and
+         {Friedman}, Peter G. and {Forster}, Karl and {Martin}, D. Christopher and
+         {Neff}, Susan G. and {Schiminovich}, David and {Bianchi}, Luciana and
+         {Donas}, Jos{\'e} and {Heckman}, Timothy M. and {Lee}, Young-Wook and
+         {Madore}, Barry F. and {Milliard}, Bruno and {Rich}, R. Michael and
+         {Szalay}, Alex S. and {Welsh}, Barry Y. and {Yi}, Sukyoung K.},
+        title = "{The Calibration and Data Products of GALEX}",
+      journal = {\apjs},
+     keywords = {Space Vehicles, Surveys, Telescopes, Ultraviolet: General},
+         year = "2007",
+        month = "Dec",
+       volume = {173},
+       number = {2},
+        pages = {682-697},
+          doi = {10.1086/520512},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2007ApJS..173..682M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{hummer88,
+       author = {{Hummer}, D.~G. and {Mihalas}, Dimitri},
+        title = "{The Equation of State for Stellar Envelopes. I. an Occupation Probability Formalism for the Truncation of Internal Partition Functions}",
+      journal = {\apj},
+     keywords = {Equations Of State, Stellar Atmospheres, Stellar Envelopes, Stellar Interiors, Charged Particles, Cosmic Plasma, Coulomb Potential, Perturbation Theory, Probability Density Functions, Astrophysics, ATOMIC PROCESSES, EQUATION OF STATE, STARS: ATMOSPHERES},
+         year = "1988",
+        month = "Aug",
+       volume = {331},
+        pages = {794},
+          doi = {10.1086/166600},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1988ApJ...331..794H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{miller16,
+       author = {{Miller Bertolami}, Marcelo Miguel},
+        title = "{New models for the evolution of post-asymptotic giant branch stars and central stars of planetary nebulae}",
+      journal = {\aap},
+     keywords = {stars: AGB and post-AGB, stars: low-mass, stars: evolution, planetary nebulae: general, Astrophysics - Solar and Stellar Astrophysics, Astrophysics - Astrophysics of Galaxies},
+         year = "2016",
+        month = "Apr",
+       volume = {588},
+          eid = {A25},
+        pages = {A25},
+          doi = {10.1051/0004-6361/201526577},
+archivePrefix = {arXiv},
+       eprint = {1512.04129},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2016A&A...588A..25M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{shipman72,
+       author = {{Shipman}, H.~L.},
+        title = "{Masses and Radii of White Dwarfs}",
+      journal = {\apj},
+         year = "1972",
+        month = "Nov",
+       volume = {177},
+        pages = {723},
+          doi = {10.1086/151752},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1972ApJ...177..723S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{strittmatter71,
+       author = {{Strittmatter}, P.~A. and {Wickramasinghe}, D.~T.},
+        title = "{The atmospheres of white dwarfs - III. The line spectra.}",
+      journal = {\mnras},
+         year = "1971",
+        month = "Jan",
+       volume = {152},
+        pages = {47},
+          doi = {10.1093/mnras/152.1.47},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1971MNRAS.152...47S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{koester76,
+       author = {{Koester}, D.},
+        title = "{Convective Mixing and Accretion in White Dwarfs}",
+      journal = {\aap},
+         year = "1976",
+        month = "Nov",
+       volume = {52},
+        pages = {415},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1976A&A....52..415K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@INPROCEEDINGS{fontaine87,
+       author = {{Fontaine}, G. and {Wesemael}, F.},
+        title = "{Recent advances in the theory of white dwarf spectral evolution.}",
+     keywords = {Chemical Evolution, Stellar Evolution, Stellar Temperature, White Dwarf Stars, Abundance, Hydrogen, Stellar Envelopes, Trace Elements, Astrophysics, Spectral Types:White Dwarfs, White Dwarfs:Chemical Evolution, White Dwarfs:Spectral Types},
+    booktitle = {IAU Colloq. 95: Second Conference on Faint Blue Stars},
+         year = "1987",
+       editor = {{Philip}, A.~G. Davis and {Hayes}, D.~S. and {Liebert}, James W.},
+        month = "Jan",
+        pages = {319-326},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1987fbs..conf..319F},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{raddi15,
+       author = {{Raddi}, R. and {G{\"a}nsicke}, B.~T. and {Koester}, D. and
+         {Farihi}, J. and {Hermes}, J.~J. and {Scaringi}, S. and {Breedt}, E. and
+         {Girven}, J.},
+        title = "{Likely detection of water-rich asteroid debris in a metal-polluted white dwarf}",
+      journal = {\mnras},
+     keywords = {stars: abundances, stars: individual: SDSS J124231.07+522626.6, planetary systems, white dwarfs, Astrophysics - Solar and Stellar Astrophysics, Astrophysics - Earth and Planetary Astrophysics},
+         year = "2015",
+        month = "Jun",
+       volume = {450},
+       number = {2},
+        pages = {2083-2093},
+          doi = {10.1093/mnras/stv701},
+archivePrefix = {arXiv},
+       eprint = {1503.07864},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015MNRAS.450.2083R},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{pelletier86,
+       author = {{Pelletier}, C. and {Fontaine}, G. and {Wesemael}, F. and {Michaud}, G. and
+         {Wegner}, G.},
+        title = "{Carbon Pollution in Helium-rich White Dwarf Atmospheres: Time-dependent Calculations of the Dredge-up Process}",
+      journal = {\apj},
+     keywords = {Carbon, Stellar Atmospheres, Stellar Composition, Stellar Models, White Dwarf Stars, Abundance, Atmospheric Composition, Atmospheric Diffusion, Helium, Stellar Mass, Time Dependence, Astrophysics, DIFFUSION, STARS: ABUNDANCES, STARS: INTERIORS, STARS: WHITE DWARFS},
+         year = "1986",
+        month = "Aug",
+       volume = {307},
+        pages = {242},
+          doi = {10.1086/164410},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1986ApJ...307..242P},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{gaia-dr2,
+       author = {{Gaia Collaboration} and {Brown}, A.~G.~A. and {Vallenari}, A. and
+         {Prusti}, T. and {de Bruijne}, J.~H.~J. and {Babusiaux}, C. and
+         {Bailer-Jones}, C.~A.~L. and {Biermann}, M. and {Evans}, D.~W. and
+         {Eyer}, L. and {Jansen}, F. and {Jordi}, C. and {Klioner}, S.~A. and
+         {Lammers}, U. and {Lindegren}, L. and {Luri}, X. and {Mignard}, F. and
+         {Panem}, C. and {Pourbaix}, D. and {Randich}, S. and {Sartoretti}, P. and
+         {Siddiqui}, H.~I. and {Soubiran}, C. and {van Leeuwen}, F. and
+         {Walton}, N.~A. and {Arenou}, F. and {Bastian}, U. and {Cropper}, M. and
+         {Drimmel}, R. and {Katz}, D. and {Lattanzi}, M.~G. and {Bakker}, J. and
+         {Cacciari}, C. and {Casta{\~n}eda}, J. and {Chaoul}, L. and
+         {Cheek}, N. and {De Angeli}, F. and {Fabricius}, C. and {Guerra}, R. and
+         {Holl}, B. and {Masana}, E. and {Messineo}, R. and {Mowlavi}, N. and
+         {Nienartowicz}, K. and {Panuzzo}, P. and {Portell}, J. and
+         {Riello}, M. and {Seabroke}, G.~M. and {Tanga}, P. and
+         {Th{\'e}venin}, F. and {Gracia-Abril}, G. and {Comoretto}, G. and
+         {Garcia-Reinaldos}, M. and {Teyssier}, D. and {Altmann}, M. and
+         {Andrae}, R. and {Audard}, M. and {Bellas-Velidis}, I. and
+         {Benson}, K. and {Berthier}, J. and {Blomme}, R. and {Burgess}, P. and
+         {Busso}, G. and {Carry}, B. and {Cellino}, A. and {Clementini}, G. and
+         {Clotet}, M. and {Creevey}, O. and {Davidson}, M. and {De Ridder}, J. and
+         {Delchambre}, L. and {Dell'Oro}, A. and {Ducourant}, C. and
+         {Fern{\'a}ndez-Hern{\'a}ndez}, J. and {Fouesneau}, M. and
+         {Fr{\'e}mat}, Y. and {Galluccio}, L. and {Garc{\'\i}a-Torres}, M. and
+         {Gonz{\'a}lez-N{\'u}{\~n}ez}, J. and {Gonz{\'a}lez-Vidal}, J.~J. and
+         {Gosset}, E. and {Guy}, L.~P. and {Halbwachs}, J. -L. and
+         {Hambly}, N.~C. and {Harrison}, D.~L. and {Hern{\'a}ndez}, J. and
+         {Hestroffer}, D. and {Hodgkin}, S.~T. and {Hutton}, A. and
+         {Jasniewicz}, G. and {Jean-Antoine-Piccolo}, A. and {Jordan}, S. and
+         {Korn}, A.~J. and {Krone-Martins}, A. and {Lanzafame}, A.~C. and
+         {Lebzelter}, T. and {L{\"o}ffler}, W. and {Manteiga}, M. and
+         {Marrese}, P.~M. and {Mart{\'\i}n-Fleitas}, J.~M. and {Moitinho}, A. and
+         {Mora}, A. and {Muinonen}, K. and {Osinde}, J. and {Pancino}, E. and
+         {Pauwels}, T. and {Petit}, J. -M. and {Recio-Blanco}, A. and
+         {Richards}, P.~J. and {Rimoldini}, L. and {Robin}, A.~C. and
+         {Sarro}, L.~M. and {Siopis}, C. and {Smith}, M. and {Sozzetti}, A. and
+         {S{\"u}veges}, M. and {Torra}, J. and {van Reeven}, W. and {Abbas}, U. and
+         {Abreu Aramburu}, A. and {Accart}, S. and {Aerts}, C. and
+         {Altavilla}, G. and {{\'A}lvarez}, M.~A. and {Alvarez}, R. and
+         {Alves}, J. and {Anderson}, R.~I. and {Andrei}, A.~H. and
+         {Anglada Varela}, E. and {Antiche}, E. and {Antoja}, T. and
+         {Arcay}, B. and {Astraatmadja}, T.~L. and {Bach}, N. and
+         {Baker}, S.~G. and {Balaguer-N{\'u}{\~n}ez}, L. and {Balm}, P. and
+         {Barache}, C. and {Barata}, C. and {Barbato}, D. and {Barblan}, F. and
+         {Barklem}, P.~S. and {Barrado}, D. and {Barros}, M. and
+         {Barstow}, M.~A. and {Bartholom{\'e} Mu{\~n}oz}, S. and
+         {Bassilana}, J. -L. and {Becciani}, U. and {Bellazzini}, M. and
+         {Berihuete}, A. and {Bertone}, S. and {Bianchi}, L. and
+         {Bienaym{\'e}}, O. and {Blanco-Cuaresma}, S. and {Boch}, T. and
+         {Boeche}, C. and {Bombrun}, A. and {Borrachero}, R. and {Bossini}, D. and
+         {Bouquillon}, S. and {Bourda}, G. and {Bragaglia}, A. and
+         {Bramante}, L. and {Breddels}, M.~A. and {Bressan}, A. and
+         {Brouillet}, N. and {Br{\"u}semeister}, T. and {Brugaletta}, E. and
+         {Bucciarelli}, B. and {Burlacu}, A. and {Busonero}, D. and
+         {Butkevich}, A.~G. and {Buzzi}, R. and {Caffau}, E. and
+         {Cancelliere}, R. and {Cannizzaro}, G. and {Cantat-Gaudin}, T. and
+         {Carballo}, R. and {Carlucci}, T. and {Carrasco}, J.~M. and
+         {Casamiquela}, L. and {Castellani}, M. and {Castro-Ginard}, A. and
+         {Charlot}, P. and {Chemin}, L. and {Chiavassa}, A. and {Cocozza}, G. and
+         {Costigan}, G. and {Cowell}, S. and {Crifo}, F. and {Crosta}, M. and
+         {Crowley}, C. and {Cuypers}, J. and {Dafonte}, C. and {Damerdji}, Y. and
+         {Dapergolas}, A. and {David}, P. and {David}, M. and {de Laverny}, P. and
+         {De Luise}, F. and {De March}, R. and {de Martino}, D. and
+         {de Souza}, R. and {de Torres}, A. and {Debosscher}, J. and
+         {del Pozo}, E. and {Delbo}, M. and {Delgado}, A. and {Delgado}, H.~E. and
+         {Di Matteo}, P. and {Diakite}, S. and {Diener}, C. and {Distefano}, E. and
+         {Dolding}, C. and {Drazinos}, P. and {Dur{\'a}n}, J. and
+         {Edvardsson}, B. and {Enke}, H. and {Eriksson}, K. and {Esquej}, P. and
+         {Eynard Bontemps}, G. and {Fabre}, C. and {Fabrizio}, M. and
+         {Faigler}, S. and {Falc{\~a}o}, A.~J. and {Farr{\`a}s Casas}, M. and
+         {Federici}, L. and {Fedorets}, G. and {Fernique}, P. and
+         {Figueras}, F. and {Filippi}, F. and {Findeisen}, K. and {Fonti}, A. and
+         {Fraile}, E. and {Fraser}, M. and {Fr{\'e}zouls}, B. and {Gai}, M. and
+         {Galleti}, S. and {Garabato}, D. and {Garc{\'\i}a-Sedano}, F. and
+         {Garofalo}, A. and {Garralda}, N. and {Gavel}, A. and {Gavras}, P. and
+         {Gerssen}, J. and {Geyer}, R. and {Giacobbe}, P. and {Gilmore}, G. and
+         {Girona}, S. and {Giuffrida}, G. and {Glass}, F. and {Gomes}, M. and
+         {Granvik}, M. and {Gueguen}, A. and {Guerrier}, A. and {Guiraud}, J. and
+         {Guti{\'e}rrez-S{\'a}nchez}, R. and {Haigron}, R. and
+         {Hatzidimitriou}, D. and {Hauser}, M. and {Haywood}, M. and
+         {Heiter}, U. and {Helmi}, A. and {Heu}, J. and {Hilger}, T. and
+         {Hobbs}, D. and {Hofmann}, W. and {Holland}, G. and {Huckle}, H.~E. and
+         {Hypki}, A. and {Icardi}, V. and {Jan{\ss}en}, K. and
+         {Jevardat de Fombelle}, G. and {Jonker}, P.~G. and
+         {Juh{\'a}sz}, {\'A}. L. and {Julbe}, F. and {Karampelas}, A. and
+         {Kewley}, A. and {Klar}, J. and {Kochoska}, A. and {Kohley}, R. and
+         {Kolenberg}, K. and {Kontizas}, M. and {Kontizas}, E. and
+         {Koposov}, S.~E. and {Kordopatis}, G. and {Kostrzewa-Rutkowska}, Z. and
+         {Koubsky}, P. and {Lambert}, S. and {Lanza}, A.~F. and {Lasne}, Y. and
+         {Lavigne}, J. -B. and {Le Fustec}, Y. and {Le Poncin-Lafitte}, C. and
+         {Lebreton}, Y. and {Leccia}, S. and {Leclerc}, N. and
+         {Lecoeur-Taibi}, I. and {Lenhardt}, H. and {Leroux}, F. and {Liao}, S. and
+         {Licata}, E. and {Lindstr{\o}m}, H.~E.~P. and {Lister}, T.~A. and
+         {Livanou}, E. and {Lobel}, A. and {L{\'o}pez}, M. and {Managau}, S. and
+         {Mann}, R.~G. and {Mantelet}, G. and {Marchal}, O. and
+         {Marchant}, J.~M. and {Marconi}, M. and {Marinoni}, S. and
+         {Marschalk{\'o}}, G. and {Marshall}, D.~J. and {Martino}, M. and
+         {Marton}, G. and {Mary}, N. and {Massari}, D. and
+         {Matijevi{\v{c}}}, G. and {Mazeh}, T. and {McMillan}, P.~J. and
+         {Messina}, S. and {Michalik}, D. and {Millar}, N.~R. and {Molina}, D. and
+         {Molinaro}, R. and {Moln{\'a}r}, L. and {Montegriffo}, P. and
+         {Mor}, R. and {Morbidelli}, R. and {Morel}, T. and {Morris}, D. and
+         {Mulone}, A.~F. and {Muraveva}, T. and {Musella}, I. and
+         {Nelemans}, G. and {Nicastro}, L. and {Noval}, L. and {O'Mullane}, W. and
+         {Ord{\'e}novic}, C. and {Ord{\'o}{\~n}ez-Blanco}, D. and {Osborne}, P. and
+         {Pagani}, C. and {Pagano}, I. and {Pailler}, F. and {Palacin}, H. and
+         {Palaversa}, L. and {Panahi}, A. and {Pawlak}, M. and
+         {Piersimoni}, A.~M. and {Pineau}, F. -X. and {Plachy}, E. and
+         {Plum}, G. and {Poggio}, E. and {Poujoulet}, E. and {Pr{\v{s}}a}, A. and
+         {Pulone}, L. and {Racero}, E. and {Ragaini}, S. and {Rambaux}, N. and
+         {Ramos-Lerate}, M. and {Regibo}, S. and {Reyl{\'e}}, C. and
+         {Riclet}, F. and {Ripepi}, V. and {Riva}, A. and {Rivard}, A. and
+         {Rixon}, G. and {Roegiers}, T. and {Roelens}, M. and
+         {Romero-G{\'o}mez}, M. and {Rowell}, N. and {Royer}, F. and
+         {Ruiz-Dern}, L. and {Sadowski}, G. and {Sagrist{\`a} Sell{\'e}s}, T. and
+         {Sahlmann}, J. and {Salgado}, J. and {Salguero}, E. and {Sanna}, N. and
+         {Santana-Ros}, T. and {Sarasso}, M. and {Savietto}, H. and
+         {Schultheis}, M. and {Sciacca}, E. and {Segol}, M. and
+         {Segovia}, J.~C. and {S{\'e}gransan}, D. and {Shih}, I. -C. and
+         {Siltala}, L. and {Silva}, A.~F. and {Smart}, R.~L. and {Smith}, K.~W. and
+         {Solano}, E. and {Solitro}, F. and {Sordo}, R. and {Soria Nieto}, S. and
+         {Souchay}, J. and {Spagna}, A. and {Spoto}, F. and {Stampa}, U. and
+         {Steele}, I.~A. and {Steidelm{\"u}ller}, H. and {Stephenson}, C.~A. and
+         {Stoev}, H. and {Suess}, F.~F. and {Surdej}, J. and {Szabados}, L. and
+         {Szegedi-Elek}, E. and {Tapiador}, D. and {Taris}, F. and {Tauran}, G. and
+         {Taylor}, M.~B. and {Teixeira}, R. and {Terrett}, D. and {Teyssand
+        ier}, P. and {Thuillot}, W. and {Titarenko}, A. and {Torra Clotet}, F. and
+         {Turon}, C. and {Ulla}, A. and {Utrilla}, E. and {Uzzi}, S. and
+         {Vaillant}, M. and {Valentini}, G. and {Valette}, V. and
+         {van Elteren}, A. and {Van Hemelryck}, E. and {van Leeuwen}, M. and
+         {Vaschetto}, M. and {Vecchiato}, A. and {Veljanoski}, J. and
+         {Viala}, Y. and {Vicente}, D. and {Vogt}, S. and {von Essen}, C. and
+         {Voss}, H. and {Votruba}, V. and {Voutsinas}, S. and {Walmsley}, G. and
+         {Weiler}, M. and {Wertz}, O. and {Wevers}, T. and {Wyrzykowski}, {\L}. and
+         {Yoldas}, A. and {{\v{Z}}erjal}, M. and {Ziaeepour}, H. and
+         {Zorec}, J. and {Zschocke}, S. and {Zucker}, S. and {Zurbach}, C. and
+         {Zwitter}, T.},
+        title = "{Gaia Data Release 2. Summary of the contents and survey properties}",
+      journal = {\aap},
+     keywords = {catalogs, astrometry, techniques: radial velocities, stars: fundamental parameters, stars: variables: general, minor planets, asteroids: general, Astrophysics - Astrophysics of Galaxies, Astrophysics - Instrumentation and Methods for Astrophysics},
+         year = "2018",
+        month = "Aug",
+       volume = {616},
+       eid = {A1},
+        pages = {A1},
+          doi = {10.1051/0004-6361/201833051},
+archivePrefix = {arXiv},
+       eprint = {1804.09365},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018A&A...616A...1G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{kepler19,
+       author = {{Kepler}, S.~O. and {Pelisoli}, Ingrid and {Koester}, Detlev and
+         {Reindl}, Nicole and {Geier}, Stephan and {Romero}, Alejandra D. and
+         {Ourique}, Gustavo and {Oliveira}, Cristiane de Paula and
+         {Amaral}, Larissa A.},
+        title = "{White dwarf and subdwarf stars in the Sloan Digital Sky Survey Data Release 14}",
+      journal = {\mnras},
+     keywords = {catalogues, subdwarfs, white dwarfs; stars: fundamental parameters; cataclysmic variables, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Jun",
+       volume = {486},
+       number = {2},
+        pages = {2169-2183},
+          doi = {10.1093/mnras/stz960},
+archivePrefix = {arXiv},
+       eprint = {1904.01626},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.486.2169K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{gentile15,
+       author = {{Gentile Fusillo}, Nicola Pietro and {G{\"a}nsicke}, Boris T. and
+         {Greiss}, Sandra},
+        title = "{A photometric selection of white dwarf candidates in Sloan Digital Sky Survey Data Release 10}",
+      journal = {\mnras},
+     keywords = {catalogues, surveys, white dwarfs},
+         year = "2015",
+        month = "Apr",
+       volume = {448},
+       number = {3},
+        pages = {2260-2274},
+          doi = {10.1093/mnras/stv120},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015MNRAS.448.2260G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{ourique19,
+       author = {{Ourique}, G. and {Romero}, A.~D. and {Kepler}, S.~O. and {Koester}, D. and
+         {Amaral}, L.~A.},
+        title = "{A study of cool white dwarfs in the Sloan Digital Sky Survey Data Release 12}",
+      journal = {\mnras},
+     keywords = {catalogues, stars: abundances, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Jan",
+       volume = {482},
+       number = {1},
+        pages = {649-657},
+          doi = {10.1093/mnras/sty2751},
+archivePrefix = {arXiv},
+       eprint = {1810.03554},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.482..649O},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+@ARTICLE{elena2,
+       author = {{Cukanovaite}, E. and {Tremblay}, P. -E. and {Freytag}, B. and
+         {Ludwig}, H. -G. and {Fontaine}, G. and {Brassard}, P. and
+         {Toloza}, O. and {Koester}, D.},
+        title = "{Calibration of the mixing length theory for structures of helium-dominated atmosphere white dwarfs}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Sep",
+          eid = {arXiv:1909.10532},
+        pages = {arXiv:1909.10532},
+archivePrefix = {arXiv},
+       eprint = {1909.10532},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190910532C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{elena1,
+       author = {{Cukanovaite}, E. and {Tremblay}, P. -E. and {Freytag}, B. and
+         {Ludwig}, H. -G. and {Bergeron}, P.},
+        title = "{Pure-helium 3D model atmospheres of white dwarfs}",
+      journal = {\mnras},
+     keywords = {convection, hydrodynamics, techniques: spectroscopic, stars: atmospheres, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2018",
+        month = "Dec",
+       volume = {481},
+       number = {2},
+        pages = {1522-1537},
+          doi = {10.1093/mnras/sty2383},
+archivePrefix = {arXiv},
+       eprint = {1809.00590},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018MNRAS.481.1522C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{chayer14,
+       author = {{Chayer}, P.},
+        title = "{Radiative levitation of silicon in the atmospheres of two Hyades DA white dwarfs}",
+      journal = {\mnras},
+     keywords = {diffusion, stars: chemically peculiar, stars: individual: WD 0412+162, stars: individual: WD 0431+126, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2014",
+        month = "Jan",
+       volume = {437},
+       number = {1},
+        pages = {L95-L99},
+          doi = {10.1093/mnrasl/slt149},
+archivePrefix = {arXiv},
+       eprint = {1310.6245},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2014MNRAS.437L..95C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{koester14,
+       author = {{Koester}, D. and {G{\"a}nsicke}, B.~T. and {Farihi}, J.},
+        title = "{The frequency of planetary debris around young white dwarfs}",
+      journal = {\aap},
+     keywords = {white dwarfs, stars: atmospheres, stars: abundances, circumstellar matter, planetary systems, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2014",
+        month = "Jun",
+       volume = {566},
+          eid = {A34},
+        pages = {A34},
+          doi = {10.1051/0004-6361/201423691},
+archivePrefix = {arXiv},
+       eprint = {1404.2617},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2014A&A...566A..34K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{werner18,
+       author = {{Werner}, K. and {Rauch}, T. and {Kruk}, J.~W.},
+        title = "{Metal abundances in hot white dwarfs with signatures of a superionized wind}",
+      journal = {\aap},
+     keywords = {stars: abundances, stars: atmospheres, stars: evolution, stars: AGB and post-AGB, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2018",
+        month = "Jan",
+       volume = {609},
+          eid = {A107},
+        pages = {A107},
+          doi = {10.1051/0004-6361/201731740},
+archivePrefix = {arXiv},
+       eprint = {1711.04138},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018A&A...609A.107W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{coutu19,
+       author = {{Coutu}, S. and {Dufour}, P. and {Bergeron}, P. and {Blouin}, S. and
+         {Loranger}, E. and {Allard}, N.~F. and {Dunlap}, B. H},
+        title = "{Analysis of Helium-Rich White Dwarfs Polluted by Heavy Elements in the Gaia Era}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Jul",
+          eid = {arXiv:1907.05932},
+        pages = {arXiv:1907.05932},
+archivePrefix = {arXiv},
+       eprint = {1907.05932},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190705932C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{koester19,
+       author = {{Koester}, D. and {Kepler}, S.~O.},
+        title = "{Carbon-rich (DQ) white dwarfs in the Sloan Digital Sky Survey}",
+      journal = {\aap},
+     keywords = {stars: atmospheres, white dwarfs, stars: carbon, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Aug",
+       volume = {628},
+          eid = {A102},
+        pages = {A102},
+          doi = {10.1051/0004-6361/201935946},
+archivePrefix = {arXiv},
+       eprint = {1905.11174},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019A&A...628A.102K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{althaus15,
+       author = {{Althaus}, Leandro G. and {Camisassa}, Mar{\'\i}a E. and
+         {Miller Bertolami}, Marcelo M. and {C{\'o}rsico}, Alejandro H. and
+         {Garc{\'\i}a-Berro}, Enrique},
+        title = "{White dwarf evolutionary sequences for low-metallicity progenitors: The impact of third dredge-up}",
+      journal = {\aap},
+     keywords = {stars: evolution, stars: interiors, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2015",
+        month = "Apr",
+       volume = {576},
+          eid = {A9},
+        pages = {A9},
+          doi = {10.1051/0004-6361/201424922},
+archivePrefix = {arXiv},
+       eprint = {1502.03882},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015A&A...576A...9A},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{kilic19,
+       author = {{Kilic}, Mukremin and {Bergeron}, P. and {Dame}, Kyra and
+         {Hambly}, N.~C. and {Rowell}, N. and {Crawford}, Courtney L.},
+        title = "{The age of the Galactic stellar halo from Gaia white dwarfs}",
+      journal = {\mnras},
+     keywords = {stars: evolution, white dwarfs, Galaxy: stellar content, Astrophysics - Solar and Stellar Astrophysics, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Jan",
+       volume = {482},
+       number = {1},
+        pages = {965-979},
+          doi = {10.1093/mnras/sty2755},
+archivePrefix = {arXiv},
+       eprint = {1810.03536},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.482..965K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{kalirai12,
+       author = {{Kalirai}, Jason S.},
+        title = "{The age of the Milky Way inner halo}",
+      journal = {\nat},
+     keywords = {Astrophysics - Astrophysics of Galaxies},
+         year = "2012",
+        month = "Jun",
+       volume = {486},
+       number = {7401},
+        pages = {90-92},
+          doi = {10.1038/nature11062},
+archivePrefix = {arXiv},
+       eprint = {1205.6802},
+ primaryClass = {astro-ph.GA},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2012Natur.486...90K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{sion84,
+       author = {{Sion}, E.~M.},
+        title = "{Implications of the absolute magnitude distribution functions of DA and non-DA white dwarfs.}",
+      journal = {\apj},
+     keywords = {Distribution Functions, Stellar Color, Stellar Evolution, Stellar Magnitude, Stellar Spectrophotometry, White Dwarf Stars, Balmer Series, Carbon, Helium, Iue, Astrophysics},
+         year = "1984",
+        month = "Jul",
+       volume = {282},
+        pages = {612-614},
+          doi = {10.1086/162240},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1984ApJ...282..612S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{tremblay15b,
+       author = {{Tremblay}, P. -E. and {Gianninas}, A. and {Kilic}, M. and
+         {Ludwig}, H. -G. and {Steffen}, M. and {Freytag}, B. and
+         {Hermes}, J.~J.},
+        title = "{3D Model Atmospheres for Extremely Low-mass White Dwarfs}",
+      journal = {\apj},
+     keywords = {convection, hydrodynamics, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2015",
+        month = "Aug",
+       volume = {809},
+       number = {2},
+          eid = {148},
+        pages = {148},
+          doi = {10.1088/0004-637X/809/2/148},
+archivePrefix = {arXiv},
+       eprint = {1507.01927},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015ApJ...809..148T},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{giammichele16,
+       author = {{Giammichele}, N. and {Fontaine}, G. and {Brassard}, P. and
+         {Charpinet}, S.},
+        title = "{A New Analysis of the Two Classical ZZ Ceti White Dwarfs GD 165 and Ross 548. II. Seismic Modeling}",
+      journal = {\apjs},
+     keywords = {stars: interiors, stars: oscillations, white dwarfs},
+         year = "2016",
+        month = "Mar",
+       volume = {223},
+       number = {1},
+          eid = {10},
+        pages = {10},
+          doi = {10.3847/0067-0049/223/1/10},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2016ApJS..223...10G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{romero17,
+       author = {{Romero}, Alejandra D. and {C{\'o}rsico}, A.~H. and
+         {Castanheira}, B.~G. and {De Ger{\'o}nimo}, F.~C. and {Kepler}, S.~O. and
+         {Koester}, D. and {Kawka}, A. and {Althaus}, L.~G. and {Hermes}, J.~J. and
+         {Bonato}, C. and {Gianninas}, A.},
+        title = "{Probing the Structure of Kepler ZZ Ceti Stars with Full Evolutionary Models-based Asteroseismology}",
+      journal = {\apj},
+     keywords = {stars: individual: ZZ Ceti stars, stars: variables: other, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2017",
+        month = "Dec",
+       volume = {851},
+       number = {1},
+          eid = {60},
+        pages = {60},
+          doi = {10.3847/1538-4357/aa9899},
+archivePrefix = {arXiv},
+       eprint = {1711.01338},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017ApJ...851...60R},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{althaus05,
+       author = {{Althaus}, L.~G. and {Serenelli}, A.~M. and {Panei}, J.~A. and
+         {C{\'o}rsico}, A.~H. and {Garc{\'\i}a-Berro}, E. and
+         {Sc{\'o}ccola}, C.~G.},
+        title = "{The formation and evolution of hydrogen-deficient post-AGB white dwarfs: The emerging chemical profile and the expectations for the PG 1159-DB-DQ evolutionary connection}",
+      journal = {\aap},
+     keywords = {stars: evolution, stars: abundances, stars: AGB stars: interiors, stars: white dwarfs, stars: oscillations, Astrophysics},
+         year = "2005",
+        month = "May",
+       volume = {435},
+       number = {2},
+        pages = {631-648},
+          doi = {10.1051/0004-6361:20041965},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0502005},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2005A&A...435..631A},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{gentile17,
+   author = {{Gentile Fusillo}, N.~P. and {G{\"a}nsicke}, B.~T. and {Farihi}, J. and 
+	{Koester}, D. and {Schreiber}, M.~R. and {Pala}, A.~F.},
+    title = "{Trace hydrogen in helium atmosphere white dwarfs as a possible signature of water accretion}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1702.06542},
+ primaryClass = "astro-ph.SR",
+ keywords = {planets and satellites: composition, stars: abundances, stars: individual: GD 16, stars: individual: GD 17, white dwarfs},
+     year = 2017,
+    month = jun,
+   volume = 468,
+    pages = {971-980},
+      doi = {10.1093/mnras/stx468},
+   adsurl = {http://adsabs.harvard.edu/abs/2017MNRAS.468..971G},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{kupka18,
+   author = {{Kupka}, F. and {Zaussinger}, F. and {Montgomery}, M.~H.},
+    title = "{Mixing and overshooting in surface convection zones of DA white dwarfs: first results from ANTARES}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1712.00641},
+ primaryClass = "astro-ph.SR",
+ keywords = {convection, stars: atmospheres, stars: interiors, white dwarfs},
+     year = 2018,
+    month = mar,
+   volume = 474,
+    pages = {4660-4671},
+      doi = {10.1093/mnras/stx3119},
+   adsurl = {http://adsabs.harvard.edu/abs/2018MNRAS.474.4660K},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{hollands18,
+   author = {{Hollands}, M.~A. and {G{\"a}nsicke}, B.~T. and {Koester}, D.
+	},
+    title = "{Cool DZ white dwarfs II: compositions and evolution of old remnant planetary systems}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1801.07714},
+ primaryClass = "astro-ph.SR",
+ keywords = {planets and satellites: composition, stars: abundances, stars: atmospheres, white dwarfs},
+     year = 2018,
+    month = jun,
+   volume = 477,
+    pages = {93-111},
+      doi = {10.1093/mnras/sty592},
+   adsurl = {http://adsabs.harvard.edu/abs/2018MNRAS.477...93H},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{tremblay17,
+   author = {{Tremblay}, P.-E. and {Ludwig}, H.-G. and {Freytag}, B. and 
+	{Koester}, D. and {Fontaine}, G.},
+    title = "{Convective overshoot and metal accretion onto white dwarfs.}",
+  journal = {\memsai},
+ keywords = {convection, stars: interior, white dwarfs},
+     year = 2017,
+   volume = 88,
+    pages = {104},
+   adsurl = {http://adsabs.harvard.edu/abs/2017MmSAI..88..104T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{tremblay15,
+   author = {{Tremblay}, P.-E. and {Ludwig}, H.-G. and {Freytag}, B. and 
+	{Fontaine}, G. and {Steffen}, M. and {Brassard}, P.},
+    title = "{Calibration of the Mixing-length Theory for Convective White Dwarf Envelopes}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1412.1789},
+ primaryClass = "astro-ph.SR",
+ keywords = {convection, hydrodynamics, stars: evolution, stars: fundamental parameters, stars: interiors, white dwarfs },
+     year = 2015,
+    month = feb,
+   volume = 799,
+      eid = {142},
+    pages = {142},
+      doi = {10.1088/0004-637X/799/2/142},
+   adsurl = {http://adsabs.harvard.edu/abs/2015ApJ...799..142T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{freytag96,
+   author = {{Freytag}, B. and {Ludwig}, H.-G. and {Steffen}, M.},
+    title = "{Hydrodynamical models of stellar convection. The role of overshoot in DA white dwarfs, A-type stars, and the Sun.}",
+  journal = {\aap},
+ keywords = {HYDRODYNAMICS, CONVECTION, DIFFUSION, STARS: INTERIOR},
+     year = 1996,
+    month = sep,
+   volume = 313,
+    pages = {497-516},
+   adsurl = {http://adsabs.harvard.edu/abs/1996Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{freytag17,
+   author = {{Freytag}, B.},
+    title = "{Boundary conditions in CO5BOLD}",
+  journal = {\memsai},
+ keywords = {Stars: atmospheres, Numerical methods: hydrodynamics},
+     year = 2017,
+   volume = 88,
+    pages = {12},
+   adsurl = {http://adsabs.harvard.edu/abs/2017MmSAI..88...12F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{freytag13,
+   author = {{Freytag}, B.},
+    title = "{Advances in the hydrodynamics solver of CO5BOLD}",
+  journal = {Memorie della Societa Astronomica Italiana Supplementi},
+ keywords = {Stars: atmospheres, Numerical methods: hydrodynamics},
+     year = 2013,
+   volume = 24,
+    pages = {26},
+   adsurl = {http://adsabs.harvard.edu/abs/2013MSAIS..24...26F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{freytag12,
+   author = {{Freytag}, B. and {Steffen}, M. and {Ludwig}, H.-G. and {Wedemeyer-B{\"o}hm}, S. and 
+	{Schaffenberger}, W. and {Steiner}, O.},
+    title = "{Simulations of stellar convection with CO5BOLD}",
+  journal = {Journal of Computational Physics},
+archivePrefix = "arXiv",
+   eprint = {1110.6844},
+ primaryClass = "astro-ph.SR",
+     year = 2012,
+    month = feb,
+   volume = 231,
+    pages = {919-959},
+      doi = {10.1016/j.jcp.2011.09.026},
+   adsurl = {http://adsabs.harvard.edu/abs/2012JCoPh.231..919F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{steiner07,
+   author = {{Steiner}, O. and {Vigeesh}, G. and {Krieger}, L. and {Wedemeyer-B{\"o}hm}, S. and 
+	{Schaffenberger}, W. and {Freytag}, B.},
+    title = "{First local helioseismic experiments with CO$^{5}$BOLD}",
+  journal = {Astronomische Nachrichten},
+   eprint = {astro-ph/0701029},
+ keywords = {Sun: helioseismology, Sun: magnetic fields, Sun: chromosphere},
+     year = 2007,
+    month = mar,
+   volume = 328,
+    pages = {323},
+      doi = {10.1002/asna.200610738},
+   adsurl = {http://adsabs.harvard.edu/abs/2007AN....328..323S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{freytag10,
+   author = {{Freytag}, B. and {Allard}, F. and {Ludwig}, H.-G. and {Homeier}, D. and 
+	{Steffen}, M.},
+    title = "{The role of convection, overshoot, and gravity waves for the transport of dust in M dwarf and brown dwarf atmospheres}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1002.3437},
+ primaryClass = "astro-ph.SR",
+ keywords = {brown dwarfs, hydrodynamics, convection, waves, stars: atmospheres, stars: low-mass},
+     year = 2010,
+    month = apr,
+   volume = 513,
+      eid = {A19},
+    pages = {A19},
+      doi = {10.1051/0004-6361/200913354},
+   adsurl = {http://adsabs.harvard.edu/abs/2010Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{colella84,
+   author = {{Colella}, P. and {Woodward}, P.~R.},
+    title = "{The Piecewise Parabolic Method (PPM) for Gas-Dynamical Simulations}",
+  journal = {Journal of Computational Physics},
+     year = 1984,
+    month = sep,
+   volume = 54,
+    pages = {174-201},
+      doi = {10.1016/0021-9991(84)90143-8},
+   adsurl = {http://adsabs.harvard.edu/abs/1984JCoPh..54..174C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{ludwig06,
+   author = {{Ludwig}, H.-G. and {Allard}, F. and {Hauschildt}, P.~H.},
+    title = "{Energy transport, overshoot, and mixing in the atmospheres of M-type main- and pre-main-sequence objects}",
+  journal = {\aap},
+   eprint = {astro-ph/0608264},
+ keywords = {convection, hydrodynamics, radiative transfer, stars: atmospheres, stars: late-type},
+     year = 2006,
+    month = nov,
+   volume = 459,
+    pages = {599-612},
+      doi = {10.1051/0004-6361:20054010},
+   adsurl = {http://adsabs.harvard.edu/abs/2006Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{schatzman45,
+   author = {{Schatzman}, E.},
+    title = "{Th{\'e}orie du d{\'e}bit d'{\'e}nergie des naines blanches}",
+  journal = {Annales d'Astrophysique},
+     year = 1945,
+    month = jan,
+   volume = 8,
+    pages = {143},
+   adsurl = {http://adsabs.harvard.edu/abs/1945AnAp....8..143S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{burgers60,
+   author = {{Burgers}, J.~M.},
+    title = "{Motion of a Completely Ionized Gas across a Magnetic Field in the Presence of an Electric Force}",
+  journal = {Reviews of Modern Physics},
+     year = 1960,
+    month = oct,
+   volume = 32,
+    pages = {868-880},
+      doi = {10.1103/RevModPhys.32.868},
+   adsurl = {http://adsabs.harvard.edu/abs/1960RvMP...32..868B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{paquette86a,
+   author = {{Paquette}, C. and {Pelletier}, C. and {Fontaine}, G. and {Michaud}, G.
+	},
+    title = "{Diffusion coefficients for stellar plasmas}",
+  journal = {\apjs},
+ keywords = {Diffusion Coefficient, Plasma Diffusion, Space Plasmas, Stellar Envelopes, White Dwarf Stars, Boltzmann Transport Equation, Chapman-Enskog Theory, Collision Parameters, Coulomb Potential, Dense Plasmas, Thermal Diffusion},
+     year = 1986,
+    month = may,
+   volume = 61,
+    pages = {177-195},
+      doi = {10.1086/191111},
+   adsurl = {http://adsabs.harvard.edu/abs/1986ApJS...61..177P},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{paquette86b,
+   author = {{Paquette}, C. and {Pelletier}, C. and {Fontaine}, G. and {Michaud}, G.
+	},
+    title = "{Diffusion in white dwarfs - New results and comparative study}",
+  journal = {\apjs},
+ keywords = {Metallicity, Plasma Diffusion, Stellar Composition, Stellar Envelopes, White Dwarf Stars, Cool Stars, Helium, Hydrogen, Stellar Cores, Stellar Mass Accretion},
+     year = 1986,
+    month = may,
+   volume = 61,
+    pages = {197-217},
+      doi = {10.1086/191112},
+   adsurl = {http://adsabs.harvard.edu/abs/1986ApJS...61..197P},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@BOOK{chapman&cowling70,
+   author = {{Chapman}, S. and {Cowling}, T.~G.},
+    title = "{The mathematical theory of non-uniform gases. an account of the kinetic theory of viscosity, thermal conduction and diffusion in gases}",
+booktitle = {Cambridge: University Press, 1970, 3rd ed.},
+     year = 1970,
+   adsurl = {http://adsabs.harvard.edu/abs/1970mtnu.book.....C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{thoul94,
+   author = {{Thoul}, A.~A. and {Bahcall}, J.~N. and {Loeb}, A.},
+    title = "{Element diffusion in the solar interior}",
+  journal = {\apj},
+   eprint = {astro-ph/9304005},
+ keywords = {Abundance, Diffusion, Flow Equations, Heavy Elements, Helium, Solar Interior, Stellar Composition, Stellar Models, Computerized Simulation, Stellar Evolution, Subroutines},
+     year = 1994,
+    month = feb,
+   volume = 421,
+    pages = {828-842},
+      doi = {10.1086/173695},
+   adsurl = {http://adsabs.harvard.edu/abs/1994ApJ...421..828T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@INPROCEEDINGS{fontaine15a,
+   author = {{Fontaine}, G. and {Brassard}, P. and {Dufour}, P. and {Tremblay}, P.-E.
+	},
+    title = "{Metal Accretion onto White Dwarfs. I. The Approximate Approach Based on Estimates of Diffusion Timescales}",
+booktitle = {19th European Workshop on White Dwarfs},
+     year = 2015,
+   series = {Astronomical Society of the Pacific Conference Series},
+   volume = 493,
+   editor = {{Dufour}, P. and {Bergeron}, P. and {Fontaine}, G.},
+    month = jun,
+    pages = {113},
+   adsurl = {http://adsabs.harvard.edu/abs/2015ASPC..493..113F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@INPROCEEDINGS{fontaine15b,
+   author = {{Fontaine}, G. and {Dufour}, P. and {Chayer}, P. and {Dupuis}, J. and 
+	{Brassard}, P.},
+    title = "{Metal Accretion onto White Dwarfs. II. A Better Approach Based on Time-Dependent Calculations in Static Models}",
+booktitle = {19th European Workshop on White Dwarfs},
+     year = 2015,
+   series = {Astronomical Society of the Pacific Conference Series},
+   volume = 493,
+   editor = {{Dufour}, P. and {Bergeron}, P. and {Fontaine}, G.},
+    month = jun,
+    pages = {117},
+   adsurl = {http://adsabs.harvard.edu/abs/2015ASPC..493..117F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@INPROCEEDINGS{saumon15,
+   author = {{Saumon}, D. and {Starrett}, C.~E. and {Daligault}, J.},
+    title = "{Diffusion Coefficients in White Dwarfs}",
+booktitle = {19th European Workshop on White Dwarfs},
+     year = 2015,
+   series = {Astronomical Society of the Pacific Conference Series},
+   volume = 493,
+archivePrefix = "arXiv",
+   eprint = {1410.7645},
+ primaryClass = "astro-ph.SR",
+   editor = {{Dufour}, P. and {Bergeron}, P. and {Fontaine}, G.},
+    month = jun,
+    pages = {419},
+   adsurl = {http://adsabs.harvard.edu/abs/2015ASPC..493..419S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{rolland18,
+   author = {{Rolland}, B. and {Bergeron}, P. and {Fontaine}, G.},
+    title = "{On the Spectral Evolution of Helium-atmosphere White Dwarfs Showing Traces of Hydrogen}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1803.05965},
+ primaryClass = "astro-ph.SR",
+ keywords = {stars: abundances, stars: evolution, stars: fundamental parameters, white dwarfs},
+     year = 2018,
+    month = apr,
+   volume = 857,
+      eid = {56},
+    pages = {56},
+      doi = {10.3847/1538-4357/aab713},
+   adsurl = {http://adsabs.harvard.edu/abs/2018ApJ...857...56R},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{bergfors14,
+   author = {{Bergfors}, C. and {Farihi}, J. and {Dufour}, P. and {Rocchetto}, M.
+	},
+    title = "{Signs of a faint disc population at polluted white dwarfs}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1408.0229},
+ primaryClass = "astro-ph.EP",
+ keywords = {circumstellar matter, planetary systems, white dwarfs},
+     year = 2014,
+    month = nov,
+   volume = 444,
+    pages = {2147-2156},
+      doi = {10.1093/mnras/stu1565},
+   adsurl = {http://adsabs.harvard.edu/abs/2014MNRAS.444.2147B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{gaensicke12,
+   author = {{G{\"a}nsicke}, B.~T. and {Koester}, D. and {Farihi}, J. and 
+	{Girven}, J. and {Parsons}, S.~G. and {Breedt}, E.},
+    title = "{The chemical diversity of exo-terrestrial planetary debris around white dwarfs}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1205.0167},
+ primaryClass = "astro-ph.EP",
+ keywords = {stars: individual: PG 0843+516, stars: individual: PG 1015+161, stars: individual: SDSS J122859.93+104032.9, stars: individual: GALEX J193156.8+011745, planetary systems, white dwarfs},
+     year = 2012,
+    month = jul,
+   volume = 424,
+    pages = {333-347},
+      doi = {10.1111/j.1365-2966.2012.21201.x},
+   adsurl = {http://adsabs.harvard.edu/abs/2012MNRAS.424..333G},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{koester97,
+   author = {{Koester}, D. and {Provencal}, J. and {Shipman}, H.~L.},
+    title = "{Metals in the variable DA G29-38}",
+  journal = {\aap},
+ keywords = {STARS: WHITE DWARFS, STARS: ABUNDANCES, STARS: INDIVIDUAL: G 29-38},
+     year = 1997,
+    month = apr,
+   volume = 320,
+    pages = {L57-L59},
+   adsurl = {http://adsabs.harvard.edu/abs/1997Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{zuckerman03,
+   author = {{Zuckerman}, B. and {Koester}, D. and {Reid}, I.~N. and {H{\"u}nsch}, M.
+	},
+    title = "{Metal Lines in DA White Dwarfs}",
+  journal = {\apj},
+ keywords = {Accretion, Accretion Disks, Comets: General, Stars: Abundances, Stars: White Dwarfs},
+     year = 2003,
+    month = oct,
+   volume = 596,
+    pages = {477-495},
+      doi = {10.1086/377492},
+   adsurl = {http://adsabs.harvard.edu/abs/2003ApJ...596..477Z},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{koester09,
+   author = {{Koester}, D.},
+    title = "{Accretion and diffusion in white dwarfs. New diffusion timescales and applications to GD 362 and G 29-38}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {0903.1499},
+ primaryClass = "astro-ph.SR",
+ keywords = {stars: white dwarfs, stars: abundances, accretion, accretion disks, diffusion},
+     year = 2009,
+    month = may,
+   volume = 498,
+    pages = {517-525},
+      doi = {10.1051/0004-6361/200811468},
+   adsurl = {http://adsabs.harvard.edu/abs/2009Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{farihi09,
+   author = {{Farihi}, J. and {Jura}, M. and {Zuckerman}, B.},
+    title = "{Infrared Signatures of Disrupted Minor Planets at White Dwarfs}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {0901.0973},
+ primaryClass = "astro-ph.EP",
+ keywords = {circumstellar matter, infrared: stars, minor planets, asteroids, planetary systems, stars: abundances, stars: evolution, stars: individual: GD 16 PG1457-086, stars: low-mass, brown dwarfs, white dwarfs},
+     year = 2009,
+    month = apr,
+   volume = 694,
+    pages = {805-819},
+      doi = {10.1088/0004-637X/694/2/805},
+   adsurl = {http://adsabs.harvard.edu/abs/2009ApJ...694..805F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{dufour10,
+   author = {{Dufour}, P. and {Kilic}, M. and {Fontaine}, G. and {Bergeron}, P. and 
+	{Lachapelle}, F.-R. and {Kleinman}, S.~J. and {Leggett}, S.~K.
+	},
+    title = "{The Discovery of the Most Metal-rich White Dwarf: Composition of a Tidally Disrupted Extrasolar Dwarf Planet}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1006.3710},
+ primaryClass = "astro-ph.SR",
+ keywords = {stars: abundances, stars: atmospheres, stars: evolution, white dwarfs},
+     year = 2010,
+    month = aug,
+   volume = 719,
+    pages = {803-809},
+      doi = {10.1088/0004-637X/719/1/803},
+   adsurl = {http://adsabs.harvard.edu/abs/2010ApJ...719..803D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{jura03,
+   author = {{Jura}, M.},
+    title = "{A Tidally Disrupted Asteroid around the White Dwarf G29-38}",
+  journal = {\apjl},
+   eprint = {astro-ph/0301411},
+ keywords = {Stars: Circumstellar Matter, Stars: White Dwarfs},
+     year = 2003,
+    month = feb,
+   volume = 584,
+    pages = {L91-L94},
+      doi = {10.1086/374036},
+   adsurl = {http://adsabs.harvard.edu/abs/2003ApJ...584L..91J},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{vanMaanen17,
+   author = {{van Maanen}, A.},
+    title = "{Two Faint Stars with Large Proper Motion}",
+  journal = {\pasp},
+     year = 1917,
+    month = dec,
+   volume = 29,
+    pages = {258},
+      doi = {10.1086/122654},
+   adsurl = {http://adsabs.harvard.edu/abs/1917PASP...29..258V},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{debes08,
+   author = {{Debes}, J.~H. and {L{\'o}pez-Morales}, M.},
+    title = "{A Second Look at the Metal Line Variability of G29-38}",
+  journal = {\apjl},
+archivePrefix = "arXiv",
+   eprint = {0802.2552},
+ keywords = {circumstellar matter, stars: individual: G29-38},
+     year = 2008,
+    month = apr,
+   volume = 677,
+    pages = {L43},
+      doi = {10.1086/587550},
+   adsurl = {http://adsabs.harvard.edu/abs/2008ApJ...677L..43D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@article{farihi18,
+author = {Farihi, J and vanÊLieshout, R and Cauley, P W and Dennihy, E and Su, K Y L and Kenyon, S J and Wilson, T G and Toloza, O and Gnsicke, B T and vonÊHippel, T and Redfield, S and Debes, J H and Xu, S and Rogers, L and Bonsor, A and Swan, A and Pala, A F and Reach, W T},
+title = {Dust production and depletion in evolved planetary systems},
+journal = {Monthly Notices of the Royal Astronomical Society},
+volume = {481},
+number = {2},
+pages = {2601-2611},
+year = {2018},
+doi = {10.1093/mnras/sty2331},
+URL = {http://0-dx.doi.org.pugwash.lib.warwick.ac.uk/10.1093/mnras/sty2331},
+eprint = {/oup/backfile/content_public/journal/mnras/481/2/10.1093_mnras_sty2331/1/sty2331.pdf}
+}
+
+
+
+@ARTICLE{prandtl25,
+   author = {{Prandtl}, L. and {Tietjens}, O.},
+    title = "{Kinematographische Str{\"o}mungsbilder}",
+  journal = {Naturwissenschaften},
+     year = 1925,
+    month = dec,
+   volume = 13,
+    pages = {1050-1053},
+      doi = {10.1007/BF01559280},
+   adsurl = {http://adsabs.harvard.edu/abs/1925NW.....13.1050P},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{bohm-vitense58,
+   author = {{B{\"o}hm-Vitense}, E.},
+    title = "{{\"U}ber die Wasserstoffkonvektionszone in Sternen verschiedener Effektivtemperaturen und Leuchtkr{\"a}fte. Mit 5 Textabbildungen}",
+  journal = {\zap},
+     year = 1958,
+   volume = 46,
+    pages = {108},
+   adsurl = {http://adsabs.harvard.edu/abs/1958ZA.....46..108B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{tassoul90,
+   author = {{Tassoul}, M. and {Fontaine}, G. and {Winget}, D.~E.},
+    title = "{Evolutionary models for pulsation studies of white dwarfs}",
+  journal = {\apjs},
+ keywords = {Computational Astrophysics, Stellar Evolution, Stellar Interiors, Stellar Oscillations, White Dwarf Stars, Heavy Elements, Stellar Mass, Stellar Models, Trace Elements},
+     year = 1990,
+    month = feb,
+   volume = 72,
+    pages = {335-386},
+      doi = {10.1086/191420},
+   adsurl = {http://adsabs.harvard.edu/abs/1990ApJS...72..335T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@BOOK{mihalas78,
+   author = {{Mihalas}, D.},
+    title = "{Stellar atmospheres /2nd edition/}",
+ keywords = {Absorption Cross Sections, Atmospheric Models, Gray Gas, Radiative Transfer, Stellar Atmospheres, Stellar Spectra, Stellar Winds, Absorption Spectra, Atmospheric Physics, Equilibrium Equations, Line Spectra, Radiation Distribution, Stellar Radiation, Thermodynamic Equilibrium},
+booktitle = {San Francisco, W.~H.~Freeman and Co., 1978.~650 p.},
+     year = 1978,
+   adsurl = {http://adsabs.harvard.edu/abs/1978stat.book.....M},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{veras16,
+   author = {{Veras}, D.},
+    title = "{Post-main-sequence planetary system evolution}",
+  journal = {Royal Society Open Science},
+archivePrefix = "arXiv",
+   eprint = {1601.05419},
+ primaryClass = "astro-ph.EP",
+     year = 2016,
+    month = feb,
+   volume = 3,
+      eid = {150571},
+    pages = {150571},
+      doi = {10.1098/rsos.150571},
+   adsurl = {http://adsabs.harvard.edu/abs/2016RSOS....350571V},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{wilson16,
+   author = {{Wilson}, D.~J. and {G{\"a}nsicke}, B.~T. and {Farihi}, J. and 
+	{Koester}, D.},
+    title = "{Carbon to oxygen ratios in extrasolar planetesimals}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1604.03104},
+ primaryClass = "astro-ph.EP",
+ keywords = {planets and satellites: composition, white dwarfs},
+     year = 2016,
+    month = jul,
+   volume = 459,
+    pages = {3282-3286},
+      doi = {10.1093/mnras/stw844},
+   adsurl = {http://adsabs.harvard.edu/abs/2016MNRAS.459.3282W},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{xu17,
+   author = {{Xu}, S. and {Zuckerman}, B. and {Dufour}, P. and {Young}, E.~D. and 
+	{Klein}, B. and {Jura}, M.},
+    title = "{The Chemical Composition of an Extrasolar Kuiper-Belt-Object}",
+  journal = {\apjl},
+archivePrefix = "arXiv",
+   eprint = {1702.02868},
+ primaryClass = "astro-ph.EP",
+ keywords = {Kuiper belt: general, planetary systems, stars: abundances, white dwarfs },
+     year = 2017,
+    month = feb,
+   volume = 836,
+      eid = {L7},
+    pages = {L7},
+      doi = {10.3847/2041-8213/836/1/L7},
+   adsurl = {http://adsabs.harvard.edu/abs/2017ApJ...836L...7X},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{farihi16,
+   author = {{Farihi}, J. and {Koester}, D. and {Zuckerman}, B. and {Vican}, L. and 
+	{G{\"a}nsicke}, B.~T. and {Smith}, N. and {Walth}, G. and {Breedt}, E.
+	},
+    title = "{Solar abundances of rock-forming elements, extreme oxygen and hydrogen in a young polluted white dwarf}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1608.07278},
+ primaryClass = "astro-ph.EP",
+ keywords = {stars: abundances, circumstellar matter, stars: individual: (WD 1536+520), planetary systems, white dwarfs},
+     year = 2016,
+    month = dec,
+   volume = 463,
+    pages = {3186-3192},
+      doi = {10.1093/mnras/stw2182},
+   adsurl = {http://adsabs.harvard.edu/abs/2016MNRAS.463.3186F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{melis17,
+   author = {{Melis}, C. and {Dufour}, P.},
+    title = "{Does a Differentiated, Carbonate-rich, Rocky Object Pollute the White Dwarf SDSS J104341.53+085558.2?}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1610.08016},
+ primaryClass = "astro-ph.EP",
+ keywords = {circumstellar matter, planet{\ndash}star interactions, stars: abundances, stars: individual: SDSS J104341.53+085558.2, white dwarfs},
+     year = 2017,
+    month = jan,
+   volume = 834,
+      eid = {1},
+    pages = {1},
+      doi = {10.3847/1538-4357/834/1/1},
+   adsurl = {http://adsabs.harvard.edu/abs/2017ApJ...834....1M},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{zuckerman07,
+   author = {{Zuckerman}, B. and {Koester}, D. and {Melis}, C. and {Hansen}, B.~M. and 
+	{Jura}, M.},
+    title = "{The Chemical Composition of an Extrasolar Minor Planet}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {0708.0198},
+ keywords = {Stars: Planetary Systems, Stars: Abundances, Stars: White Dwarfs},
+     year = 2007,
+    month = dec,
+   volume = 671,
+    pages = {872-877},
+      doi = {10.1086/522223},
+   adsurl = {http://adsabs.harvard.edu/abs/2007ApJ...671..872Z},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{zuckerman10,
+   author = {{Zuckerman}, B. and {Melis}, C. and {Klein}, B. and {Koester}, D. and 
+	{Jura}, M.},
+    title = "{Ancient Planetary Systems are Orbiting a Large Fraction of White Dwarf Stars}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1007.2252},
+ primaryClass = "astro-ph.SR",
+ keywords = {planetary systems, white dwarfs},
+     year = 2010,
+    month = oct,
+   volume = 722,
+    pages = {725-736},
+      doi = {10.1088/0004-637X/722/1/725},
+   adsurl = {http://adsabs.harvard.edu/abs/2010ApJ...722..725Z},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{dufour12,
+   author = {{Dufour}, P. and {Kilic}, M. and {Fontaine}, G. and {Bergeron}, P. and 
+	{Melis}, C. and {Bochanski}, J.},
+    title = "{Detailed Compositional Analysis of the Heavily Polluted DBZ White Dwarf SDSS J073842.56+183509.06: A Window on Planet Formation?}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1201.6252},
+ primaryClass = "astro-ph.SR",
+ keywords = {planetary systems, stars: abundances, stars: atmospheres, white dwarfs},
+     year = 2012,
+    month = apr,
+   volume = 749,
+      eid = {6},
+    pages = {6},
+      doi = {10.1088/0004-637X/749/1/6},
+   adsurl = {http://adsabs.harvard.edu/abs/2012ApJ...749....6D},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{farihi13,
+   author = {{Farihi}, J. and {G{\"a}nsicke}, B.~T. and {Koester}, D.},
+    title = "{Evidence for Water in the Rocky Debris of a Disrupted Extrasolar Minor Planet}",
+  journal = {Science},
+archivePrefix = "arXiv",
+   eprint = {1310.3269},
+ primaryClass = "astro-ph.EP",
+     year = 2013,
+    month = oct,
+   volume = 342,
+    pages = {218-220},
+      doi = {10.1126/science.1239447},
+   adsurl = {http://adsabs.harvard.edu/abs/2013Sci...342..218F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{chayer95a,
+   author = {{Chayer}, P. and {Fontaine}, G. and {Wesemael}, F.},
+    title = "{Radiative Levitation in Hot White Dwarfs: Equilibrium Theory}",
+  journal = {\apjs},
+ keywords = {STARS: ATMOSPHERES, STARS: ABUNDANCES, DIFFUSION, RADIATIVE TRANSFER, STARS: INTERIORS, STARS: WHITE DWARFS},
+     year = 1995,
+    month = jul,
+   volume = 99,
+    pages = {189},
+      doi = {10.1086/192184},
+   adsurl = {http://adsabs.harvard.edu/abs/1995ApJS...99..189C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{chayer95b,
+   author = {{Chayer}, P. and {Vennes}, S. and {Pradhan}, A.~K. and {Thejll}, P. and 
+	{Beauchamp}, A. and {Fontaine}, G. and {Wesemael}, F.},
+    title = "{Improved Calculations of the Equilibrium Abundances of Heavy Elements Supported by Radiative Levitation in the Atmospheres of Hot DA White Dwarfs}",
+  journal = {\apj},
+ keywords = {ATOMIC PROCESSES, DIFFUSION, STARS: ABUNDANCES, STARS: WHITE DWARFS},
+     year = 1995,
+    month = nov,
+   volume = 454,
+    pages = {429},
+      doi = {10.1086/176494},
+   adsurl = {http://adsabs.harvard.edu/abs/1995ApJ...454..429C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{farihi14,
+   author = {{Farihi}, J. and {G{\"a}nsicke}, B.~T. and {Wyatt}, M.~C. and 
+	{Girven}, J. and {Pringle}, J.~E. and {King}, A.~R.},
+    title = "{Scars of intense accretion episodes at metal-rich white dwarfs}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1205.0004},
+ primaryClass = "astro-ph.SR",
+ keywords = {accretion, accretion discs, stars: abundances, circumstellar matter, planetary systems, white dwarfs},
+     year = 2012,
+    month = jul,
+   volume = 424,
+    pages = {464-471},
+      doi = {10.1111/j.1365-2966.2012.21215.x},
+   adsurl = {http://adsabs.harvard.edu/abs/2012MNRAS.424..464F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{wachlin17,
+   author = {{Wachlin}, F.~C. and {Vauclair}, G. and {Vauclair}, S. and {Althaus}, L.~G.
+	},
+    title = "{Importance of fingering convection for accreting white dwarfs in the framework of full evolutionary calculations: the case of the hydrogen-rich white dwarfs GD 133 and G 29-38}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1612.09320},
+ primaryClass = "astro-ph.SR",
+ keywords = {white dwarfs, accretion, accretion disks, stars: abundances, stars: evolution, instabilities, stars: interiors},
+     year = 2017,
+    month = may,
+   volume = 601,
+      eid = {A13},
+    pages = {A13},
+      doi = {10.1051/0004-6361/201630094},
+   adsurl = {http://adsabs.harvard.edu/abs/2017Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+@ARTICLE{bauer18,
+   author = {{Bauer}, E.~B. and {Bildsten}, L.},
+    title = "{Increases to Inferred Rates of Planetesimal Accretion due to Thermohaline Mixing in Metal-accreting White Dwarfs}",
+  journal = {\apjl},
+archivePrefix = "arXiv",
+   eprint = {1805.05425},
+ primaryClass = "astro-ph.SR",
+ keywords = {accretion, accretion disks, diffusion, instabilities, minor planets, asteroids: general, planetary systems, white dwarfs },
+     year = 2018,
+    month = jun,
+   volume = 859,
+      eid = {L19},
+    pages = {L19},
+      doi = {10.3847/2041-8213/aac492},
+   adsurl = {http://adsabs.harvard.edu/abs/2018ApJ...859L..19B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{jura07,
+   author = {{Jura}, M. and {Farihi}, J. and {Zuckerman}, B.},
+    title = "{Externally Polluted White Dwarfs with Dust Disks}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {0704.1170},
+ keywords = {Stars: Circumstellar Matter, Minor Planets, Asteroids, Stars: White Dwarfs},
+     year = 2007,
+    month = jul,
+   volume = 663,
+    pages = {1285-1290},
+      doi = {10.1086/518767},
+   adsurl = {http://adsabs.harvard.edu/abs/2007ApJ...663.1285J},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{xu18,
+   author = {{Xu}, S. and {Rappaport}, S. and {van Lieshout}, R. and {Vanderburg}, A. and 
+	{Gary}, B. and {Hallakoun}, N. and {Ivanov}, V.~D. and {Wyatt}, M.~C. and 
+	{DeVore}, J. and {Bayliss}, D. and {Bento}, J. and {Bieryla}, A. and 
+	{Cameron}, A. and {Cann}, J.~M. and {Croll}, B. and {Collins}, K.~A. and 
+	{Dalba}, P.~A. and {Debes}, J. and {Doyle}, D. and {Dufour}, P. and 
+	{Ely}, J. and {Espinoza}, N. and {Joner}, M.~D. and {Jura}, M. and 
+	{Kaye}, T. and {McClain}, J.~L. and {Muirhead}, P. and {Palle}, E. and 
+	{Panka}, P.~A. and {Provencal}, J. and {Randall}, S. and {Rodriguez}, J.~E. and 
+	{Scarborough}, J. and {Sefako}, R. and {Shporer}, A. and {Strickland}, W. and 
+	{Zhou}, G. and {Zuckerman}, B.},
+    title = "{A dearth of small particles in the transiting material around the white dwarf WD 1145+017}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1711.06960},
+ primaryClass = "astro-ph.EP",
+ keywords = {eclipses, minor planets, asteroids: general, stars: individual: WD 1145+017, white dwarfs},
+     year = 2018,
+    month = mar,
+   volume = 474,
+    pages = {4795-4809},
+      doi = {10.1093/mnras/stx3023},
+   adsurl = {http://adsabs.harvard.edu/abs/2018MNRAS.474.4795X},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{manser16,
+   author = {{Manser}, C.~J. and {G{\"a}nsicke}, B.~T. and {Marsh}, T.~R. and 
+	{Veras}, D. and {Koester}, D. and {Breedt}, E. and {Pala}, A.~F. and 
+	{Parsons}, S.~G. and {Southworth}, J.},
+    title = "{Doppler imaging of the planetary debris disc at the white dwarf SDSS J122859.93+104032.9}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1511.02230},
+ primaryClass = "astro-ph.SR",
+ keywords = {accretion, accretion discs, line: profiles, circumstellar matter, stars: individual: SDSS J122859.93+104032.9, white dwarfs},
+     year = 2016,
+    month = feb,
+   volume = 455,
+    pages = {4467-4478},
+      doi = {10.1093/mnras/stv2603},
+   adsurl = {http://adsabs.harvard.edu/abs/2016MNRAS.455.4467M},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{vanderburg16,
+   author = {{Vanderburg}, A. and {Johnson}, J.~A. and {Rappaport}, S. and 
+	{Bieryla}, A. and {Irwin}, J. and {Lewis}, J.~A. and {Kipping}, D. and 
+	{Brown}, W.~R. and {Dufour}, P. and {Ciardi}, D.~R. and {Angus}, R. and 
+	{Schaefer}, L. and {Latham}, D.~W. and {Charbonneau}, D. and 
+	{Beichman}, C. and {Eastman}, J. and {McCrady}, N. and {Wittenmyer}, R.~A. and 
+	{Wright}, J.~T.},
+    title = "{A disintegrating minor planet transiting a white dwarf}",
+  journal = {\nat},
+archivePrefix = "arXiv",
+   eprint = {1510.06387},
+ primaryClass = "astro-ph.EP",
+     year = 2015,
+    month = oct,
+   volume = 526,
+    pages = {546-549},
+      doi = {10.1038/nature15527},
+   adsurl = {http://adsabs.harvard.edu/abs/2015Natur.526..546V},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{michaud70,
+   author = {{Michaud}, G.},
+    title = "{Diffusion Processes in Peculiar a Stars}",
+  journal = {\apj},
+     year = 1970,
+    month = may,
+   volume = 160,
+    pages = {641},
+      doi = {10.1086/150459},
+   adsurl = {http://adsabs.harvard.edu/abs/1970ApJ...160..641M},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{wyatt14,
+   author = {{Wyatt}, M.~C. and {Farihi}, J. and {Pringle}, J.~E. and {Bonsor}, A.
+	},
+    title = "{Stochastic accretion of planetesimals on to white dwarfs: constraints on the mass distribution of accreted material from atmospheric pollution}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1401.6173},
+ primaryClass = "astro-ph.EP",
+ keywords = {circumstellar matter, planetary systems, white dwarfs},
+     year = 2014,
+    month = apr,
+   volume = 439,
+    pages = {3371-3391},
+      doi = {10.1093/mnras/stu183},
+   adsurl = {http://adsabs.harvard.edu/abs/2014MNRAS.439.3371W},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{farihi12,
+   author = {{Farihi}, J. and {G{\"a}nsicke}, B.~T. and {Wyatt}, M.~C. and 
+	{Girven}, J. and {Pringle}, J.~E. and {King}, A.~R.},
+    title = "{Scars of intense accretion episodes at metal-rich white dwarfs}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1205.0004},
+ primaryClass = "astro-ph.SR",
+ keywords = {accretion, accretion discs, stars: abundances, circumstellar matter, planetary systems, white dwarfs},
+     year = 2012,
+    month = jul,
+   volume = 424,
+    pages = {464-471},
+      doi = {10.1111/j.1365-2966.2012.21215.x},
+   adsurl = {http://adsabs.harvard.edu/abs/2012MNRAS.424..464F},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{zahn91,
+   author = {{Zahn}, J.-P.},
+    title = "{Convective penetration in stellar interiors}",
+  journal = {\aap},
+ keywords = {Convection, Solar Interior, Stellar Interiors, Stellar Structure, Computational Astrophysics, Stellar Evolution, Stellar Physics},
+     year = 1991,
+    month = dec,
+   volume = 252,
+    pages = {179-188},
+   adsurl = {http://adsabs.harvard.edu/abs/1991Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{shaviv73,
+   author = {{Shaviv}, G. and {Salpeter}, E.~E.},
+    title = "{Convective Overshooting in Stellar Interior Models}",
+  journal = {\apj},
+     year = 1973,
+    month = aug,
+   volume = 184,
+    pages = {191-200},
+      doi = {10.1086/152318},
+   adsurl = {http://adsabs.harvard.edu/abs/1973ApJ...184..191S},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{tremblay13b,
+   author = {{Tremblay}, P.-E. and {Ludwig}, H.-G. and {Freytag}, B. and 
+	{Steffen}, M. and {Caffau}, E.},
+    title = "{Granulation properties of giants, dwarfs, and white dwarfs from the CIFIST 3D model atmosphere grid}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1307.2810},
+ primaryClass = "astro-ph.SR",
+ keywords = {convection, stars: atmospheres},
+     year = 2013,
+    month = sep,
+   volume = 557,
+      eid = {A7},
+    pages = {A7},
+      doi = {10.1051/0004-6361/201321878},
+   adsurl = {http://adsabs.harvard.edu/abs/2013Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{tremblay13a,
+   author = {{Tremblay}, P.-E. and {Ludwig}, H.-G. and {Steffen}, M. and 
+	{Freytag}, B.},
+    title = "{Pure-hydrogen 3D model atmospheres of cool white dwarfs}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1302.2013},
+ primaryClass = "astro-ph.SR",
+ keywords = {convection, line: profiles, stars: atmospheres, white dwarfs, hydrodynamics},
+     year = 2013,
+    month = apr,
+   volume = 552,
+      eid = {A13},
+    pages = {A13},
+      doi = {10.1051/0004-6361/201220813},
+   adsurl = {http://adsabs.harvard.edu/abs/2013Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{tremblay13c,
+   author = {{Tremblay}, P.-E. and {Ludwig}, H.-G. and {Steffen}, M. and 
+	{Freytag}, B.},
+    title = "{Spectroscopic analysis of DA white dwarfs with 3D model atmospheres}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1309.0886},
+ primaryClass = "astro-ph.SR",
+ keywords = {convection, hydrodynamics, line: profiles, stars: atmospheres, white dwarfs},
+     year = 2013,
+    month = nov,
+   volume = 559,
+      eid = {A104},
+    pages = {A104},
+      doi = {10.1051/0004-6361/201322318},
+   adsurl = {http://adsabs.harvard.edu/abs/2013Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+
+
+@ARTICLE{ngf19,
+   author = {{Gentile Fusillo}, N.~P. and {Tremblay}, P.-E. and {G{\"a}nsicke}, B.~T. and 
+	{Manser}, C.~J. and {Cunningham}, T. and {Cukanovaite}, E. and 
+	{Hollands}, M. and {Marsh}, T. and {Raddi}, R. and {Jordan}, S. and 
+	{Toonen}, S. and {Geier}, S. and {Barstow}, M. and {Cummings}, J.~D.
+	},
+    title = "{A Gaia Data Release 2 catalogue of white dwarfs and a comparison with SDSS}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1807.03315},
+ primaryClass = "astro-ph.SR",
+ keywords = {catalogues, surveys, white dwarfs},
+     year = 2019,
+    month = feb,
+   volume = 482,
+    pages = {4570-4591},
+      doi = {10.1093/mnras/sty3016},
+   adsurl = {http://adsabs.harvard.edu/abs/2019MNRAS.482.4570G},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{tremblay08,
+   author = {{Tremblay}, P.-E. and {Bergeron}, P.},
+    title = "{The Ratio of Helium- to Hydrogen-Atmosphere White Dwarfs: Direct Evidence for Convective Mixing}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {0710.1073},
+ keywords = {convection, stars: atmospheres, stars: interiors, white dwarfs},
+     year = 2008,
+    month = jan,
+   volume = 672,
+    pages = {1144-1152},
+      doi = {10.1086/524134},
+   adsurl = {http://adsabs.harvard.edu/abs/2008ApJ...672.1144T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{tremblay19,
+   author = {{Tremblay}, P.-E. and {Cukanovaite}, E. and {Gentile Fusillo}, N.~P. and 
+	{Cunningham}, T. and {Hollands}, M.~A.},
+    title = "{Fundamental parameter accuracy of DA and DB white dwarfs in Gaia Data Release 2}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1811.03084},
+ primaryClass = "astro-ph.SR",
+ keywords = {surveys, parallaxes, stars: fundamental parameters, white dwarfs},
+     year = 2019,
+    month = feb,
+   volume = 482,
+    pages = {5222-5232},
+      doi = {10.1093/mnras/sty3067},
+   adsurl = {http://adsabs.harvard.edu/abs/2019MNRAS.482.5222T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{pet-crystal19,
+   author = {{Tremblay}, P.-E. and {Fontaine}, G. and {Fusillo}, N.~P.~G. and 
+	{Dunlap}, B.~H. and {G{\"a}nsicke}, B.~T. and {Hollands}, M.~A. and 
+	{Hermes}, J.~J. and {Marsh}, T.~R. and {Cukanovaite}, E. and 
+	{Cunningham}, T.},
+    title = "{Core crystallization and pile-up in the cooling sequence of evolving white dwarfs}",
+  journal = {\nat},
+     year = 2019,
+    month = jan,
+   volume = 565,
+    pages = {202-205},
+      doi = {10.1038/s41586-018-0791-x},
+   adsurl = {http://adsabs.harvard.edu/abs/2019Natur.565..202T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{dantona90,
+   author = {{D'Antona}, F. and {Mazzitelli}, I.},
+    title = "{Cooling of white dwarfs}",
+  journal = {\araa},
+ keywords = {Cool Stars, Stellar Evolution, Stellar Temperature, White Dwarf Stars, Energy Transfer, Neutrinos, Stellar Composition, Stellar Envelopes, Stellar Luminosity, Stellar Oscillations},
+     year = 1990,
+   volume = 28,
+    pages = {139-181},
+      doi = {10.1146/annurev.aa.28.090190.001035},
+   adsurl = {http://adsabs.harvard.edu/abs/1990ARAadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{tremblay16,
+   author = {{Tremblay}, P.-E. and {Cummings}, J. and {Kalirai}, J.~S. and 
+	{G{\"a}nsicke}, B.~T. and {Gentile-Fusillo}, N. and {Raddi}, R.
+	},
+    title = "{The field white dwarf mass distribution}",
+  journal = {\mnras},
+archivePrefix = "arXiv",
+   eprint = {1606.05292},
+ primaryClass = "astro-ph.SR",
+ keywords = {white dwarfs, Galaxy: disc, Galaxy: evolution, solar neighbourhood, Galaxy: stellar content},
+     year = 2016,
+    month = sep,
+   volume = 461,
+    pages = {2100-2114},
+      doi = {10.1093/mnras/stw1447},
+   adsurl = {http://adsabs.harvard.edu/abs/2016MNRAS.461.2100T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{cummings16,
+   author = {{Cummings}, J.~D. and {Kalirai}, J.~S. and {Tremblay}, P.-E. and 
+	{Ramirez-Ruiz}, E. and {Bergeron}, P.},
+    title = "{An Ultramassive 1.28 M$_{â}$ White Dwarf in NGC 2099}",
+  journal = {\apjl},
+archivePrefix = "arXiv",
+   eprint = {1603.00471},
+ primaryClass = "astro-ph.SR",
+ keywords = {open clusters and associations: individual: NGC 2099, stars: evolution, stars: mass-loss, white dwarfs},
+     year = 2016,
+    month = mar,
+   volume = 820,
+      eid = {L18},
+    pages = {L18},
+      doi = {10.3847/2041-8205/820/1/L18},
+   adsurl = {http://0-adsabs.harvard.edu.pugwash.lib.warwick.ac.uk/abs/2016ApJ...820L..18C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{tremblay14,
+   author = {{Tremblay}, P.-E. and {Kalirai}, J.~S. and {Soderblom}, D.~R. and 
+	{Cignoni}, M. and {Cummings}, J.},
+    title = "{White Dwarf Cosmochronology in the Solar Neighborhood}",
+  journal = {\apj},
+archivePrefix = "arXiv",
+   eprint = {1406.5173},
+ primaryClass = "astro-ph.SR",
+ keywords = {Galaxy: disk, Galaxy: evolution, Galaxy: stellar content, solar neighborhood, white dwarfs},
+     year = 2014,
+    month = aug,
+   volume = 791,
+      eid = {92},
+    pages = {92},
+      doi = {10.1088/0004-637X/791/2/92},
+   adsurl = {http://adsabs.harvard.edu/abs/2014ApJ...791...92T},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{bergeron19,
+       author = {{Bergeron}, P. and {Dufour}, P. and {Fontaine}, G. and {Coutu}, S. and
+         {Blouin}, S. and {Genest-Beaulieu}, C. and {B{\'e}dard}, A. and {Rolland
+        }, B.},
+        title = "{On the Measurement of Fundamental Parameters of White Dwarfs in the Gaia Era}",
+      journal = {\apj},
+     keywords = {stars: fundamental parameters, techniques: photometric, techniques: spectroscopic, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "May",
+       volume = {876},
+       number = {1},
+          eid = {67},
+        pages = {67},
+          doi = {10.3847/1538-4357/ab153a},
+archivePrefix = {arXiv},
+       eprint = {1904.02022},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019ApJ...876...67B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{ngf15,
+       author = {{Gentile Fusillo}, Nicola Pietro and {G{\"a}nsicke}, Boris T. and
+         {Greiss}, Sandra},
+        title = "{A photometric selection of white dwarf candidates in Sloan Digital Sky Survey Data Release 10}",
+      journal = {\mnras},
+     keywords = {catalogues, surveys, white dwarfs},
+         year = "2015",
+        month = "Apr",
+       volume = {448},
+       number = {3},
+        pages = {2260-2274},
+          doi = {10.1093/mnras/stv120},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015MNRAS.448.2260G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{romero19,
+       author = {{Romero}, Alejandra D. and {Kepler}, S.~O. and {Joyce}, S.~R.~G. and
+         {Lauffer}, G.~R. and {C{\'o}rsico}, A.~H.},
+        title = "{The white dwarf mass-radius relation and its dependence on the hydrogen envelope}",
+      journal = {\mnras},
+     keywords = {binaries: general, stars: interiors, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Apr",
+       volume = {484},
+       number = {2},
+        pages = {2711-2724},
+          doi = {10.1093/mnras/stz160},
+archivePrefix = {arXiv},
+       eprint = {1901.04644},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.484.2711R},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{macDonald91,
+   author = {{MacDonald}, J. and {Vennes}, S.},
+    title = "{How much hydrogen is there in a white dwarf?}",
+  journal = {\apj},
+ keywords = {Helium, Hydrogen, Stellar Envelopes, Stellar Evolution, Stellar Interiors, White Dwarf Stars, Schwarzschild Metric, Stellar Atmospheres, Stellar Mass Accretion, Stellar Temperature},
+     year = 1991,
+    month = apr,
+   volume = 371,
+    pages = {719-738},
+      doi = {10.1086/169937},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/1991ApJ...371..719M},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{cunningham19,
+       author = {{Cunningham}, Tim and {Tremblay}, Pier-Emmanuel and {Freytag}, Bernd and
+         {Ludwig}, Hans-G{\"u}nter and {Koester}, Detlev},
+        title = "{Convective overshoot and macroscopic diffusion in pure-hydrogen-atmosphere white dwarfs}",
+      journal = {\mnras},
+     keywords = {convection, hydrodynamics, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Sep",
+       volume = {488},
+       number = {2},
+        pages = {2503-2522},
+          doi = {10.1093/mnras/stz1759},
+archivePrefix = {arXiv},
+       eprint = {1906.11252},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019MNRAS.488.2503C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{hollands18b,
+       author = {{Hollands}, M.~A. and {Tremblay}, P. -E. and {G{\"a}nsicke}, B.~T. and
+         {Gentile-Fusillo}, N.~P. and {Toonen}, S.},
+        title = "{The Gaia 20 pc white dwarf sample}",
+      journal = {\mnras},
+     keywords = {Hertzsprung--Russell and colour--magnitude diagrams, stars: statistics, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2018",
+        month = "Nov",
+       volume = {480},
+       number = {3},
+        pages = {3942-3961},
+          doi = {10.1093/mnras/sty2057},
+archivePrefix = {arXiv},
+       eprint = {1805.12590},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018MNRAS.480.3942H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@Misc{scipy,
+  author =    {{Jones}, E. and {Oliphant}, T. and {Peterson}, P. and {others}},
+  title =     "{{SciPy}: Open source scientific tools for {Python}}",
+  year =      "2001",
+  url = "http://www.scipy.org/",
+  note = {[Online; accessed <today>]}
+}
+
+@ARTICLE{tremblay11,
+       author = {{Tremblay}, P. -E. and {Bergeron}, P. and {Gianninas}, A.},
+        title = "{An Improved Spectroscopic Analysis of DA White Dwarfs from the Sloan Digital Sky Survey Data Release 4}",
+      journal = {\apj},
+     keywords = {stars: atmospheres, stars: fundamental parameters, stars: luminosity function, mass function, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2011",
+        month = "Apr",
+       volume = {730},
+       number = {2},
+          eid = {128},
+        pages = {128},
+          doi = {10.1088/0004-637X/730/2/128},
+archivePrefix = {arXiv},
+       eprint = {1102.0056},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2011ApJ...730..128T},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{bradley98,
+       author = {{Bradley}, P.~A.},
+        title = "{Asteroseismology of DAV White Dwarf Stars}",
+      journal = {Baltic Astronomy},
+     keywords = {STARS: WHITE DWARFS, INTERIORS, OSCILLATIONS},
+         year = "1998",
+        month = "Mar",
+       volume = {7},
+        pages = {111-130},
+          doi = {10.1515/astro-1998-0115},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1998BaltA...7..111B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{wood90,
+       author = {{Wood}, M.~A.},
+        title = "{White Dwarf Stars and the Age of the Galactic Disk}",
+      journal = {\jrasc},
+     keywords = {Galactic Evolution, Stellar Luminosity, White Dwarf Stars, Chronology, Star Formation, Star Formation Rate, Stellar Composition, Astrophysics},
+         year = "1990",
+        month = "Jun",
+       volume = {84},
+        pages = {150},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1990JRASC..84..150W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{kepler95,
+       author = {{Kepler}, S.~O. and {Bradley}, P.~A.},
+        title = "{Structure and Evolution of White Dwarfs}",
+      journal = {Baltic Astronomy},
+     keywords = {STARS: WHITE DWARFS, STARS: VARIABLES},
+         year = "1995",
+        month = "Jan",
+       volume = {4},
+        pages = {166-220},
+          doi = {10.1515/astro-1995-0213},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1995BaltA...4..166K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{winget87,
+       author = {{Winget}, D.~E. and {Hansen}, C.~J. and {Liebert}, James and
+         {van Horn}, H.~M. and {Fontaine}, G. and {Nather}, R.~E. and
+         {Kepler}, S.~O. and {Lamb}, D.~Q.},
+        title = "{An Independent Method for Determining the Age of the Universe}",
+      journal = {\apjl},
+     keywords = {Chronology, Cosmology, Disk Galaxies, Stellar Evolution, Universe, White Dwarf Stars, Cool Stars, Luminous Intensity, Perturbation Theory, Solar Neighborhood, Specific Heat, Stellar Mass, Astrophysics, COSMOLOGY, STARS: EVOLUTION, STARS: WHITE DWARFS},
+         year = "1987",
+        month = "Apr",
+       volume = {315},
+        pages = {L77},
+          doi = {10.1086/184864},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1987ApJ...315L..77W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{iben89,
+       author = {{Iben}, Icko, Jr. and {Tutukov}, Alexander V.},
+        title = "{Model Stars with Degenerate Dwarf Cores and Helium-burning Shells: A Stationary-burning Approximation}",
+      journal = {\apj},
+     keywords = {Computational Astrophysics, Degenerate Matter, Shell Stars, Stellar Cores, Stellar Evolution, Stellar Models, White Dwarf Stars, Binary Stars, Helium Plasma, Nuclear Fuel Burnup, R Coronae Borealis Stars, Stellar Envelopes, Stellar Interiors, Stellar Mass Accretion, Astrophysics, STARS: BINARIES, STARS: EVOLUTION, STARS: HYDROGEN-DEFICIENT, STARS: INTERIORS, STARS: R CORONAE BOREALIS, STARS: SUBDWARFS, STARS: WHITE DWARFS},
+         year = "1989",
+        month = "Jul",
+       volume = {342},
+        pages = {430},
+          doi = {10.1086/167603},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1989ApJ...342..430I},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@INBOOK{wood95,
+       author = {{Wood}, Matt A.},
+        title = "{Theoretical White Dwarf Luminosity Functions: DA Models}",
+    booktitle = {White Dwarfs, Proceedings of the 9th European Workshop on White Dwarfs Held at Kiel, Germany, 29 August - 1 September 1994.  Lecture Notes in Physics, Vol. 443, edited by Detlev Koester and Klaus Werner. Springer-Verlag, Berlin Heidelberg New York, 1995., p.41},
+         year = "1995",
+       editor = {{Koester}, Detlev and {Werner}, Klaus},
+       volume = {443},
+        pages = {41},
+          doi = {10.1007/3-540-59157-5_171},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1995LNP...443...41W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{leggett98,
+       author = {{Leggett}, S.~K. and {Ruiz}, Maria Teresa and {Bergeron}, P.},
+        title = "{The Cool White Dwarf Luminosity Function and the Age of the Galactic Disk}",
+      journal = {\apj},
+     keywords = {STARS: EVOLUTION, STARS: FUNDAMENTAL PARAMETERS, STARS: LUMINOSITY FUNCTION, MASS FUNCTION, STARS: WHITE DWARFS, Stars: Evolution, Stars: Fundamental Parameters, Stars: Luminosity Function, Mass Function, Stars: White Dwarfs},
+         year = "1998",
+        month = "Apr",
+       volume = {497},
+       number = {1},
+        pages = {294-302},
+          doi = {10.1086/305463},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1998ApJ...497..294L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{bradley96,
+       author = {{Bradley}, P.~A.},
+        title = "{Theoretical Models for Asteroseismology of DA White Dwarf Stars}",
+      journal = {\apj},
+     keywords = {STARS: EVOLUTION, STARS: INTERIORS, STARS: WHITE DWARFS, STARS: OSCILLATIONS},
+         year = "1996",
+        month = "Sep",
+       volume = {468},
+        pages = {350},
+          doi = {10.1086/177696},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1996ApJ...468..350B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{brickhill83,
+       author = {{Brickhill}, A.~J.},
+        title = "{The pulsations of ZZ Ceti stars.}",
+      journal = {\mnras},
+     keywords = {Stellar Envelopes, Stellar Oscillations, White Dwarf Stars, Hydrogen, Light Curve, Stellar Temperature, Astrophysics},
+         year = "1983",
+        month = "Aug",
+       volume = {204},
+        pages = {537-556},
+          doi = {10.1093/mnras/204.2.537},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1983MNRAS.204..537B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{brickhill91,
+       author = {{Brickhill}, A.~J.},
+        title = "{The pulsations of ZZ Ceti stars. III. The driving mechanism.}",
+      journal = {\mnras},
+     keywords = {Stellar Oscillations, Variable Stars, White Dwarf Stars, Convection, Stellar Models, Stellar Temperature, Astrophysics},
+         year = "1991",
+        month = "Aug",
+       volume = {251},
+        pages = {673-680},
+          doi = {10.1093/mnras/251.4.673},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1991MNRAS.251..673B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@INBOOK{bradley89,
+       author = {{Bradley}, P.~A. and {Winget}, D.~E. and {Wood}, M.~A.},
+        title = "{The Effect of Varying Helium and Hydrogen Layer Masses on the Pulsation Properties of White Dwarf Models}",
+     keywords = {Helium Hydrogen Atmospheres, Stellar Models, Stellar Oscillations, White Dwarf Stars, Brunt-Vaisala Frequency, Mixing Layers (Fluids), Mixing Length Flow Theory, Stellar Evolution, Astrophysics},
+    booktitle = {White Dwarfs. Proceedings of IAU Colloquium No. 114, held at Dartmouth College, Hanover, New Hampshire, USA, August 15-19, 1988. Editor, G. Wegner; Publisher, Springer-Verlag, Berlin; New York, 1989. ISBN \# 0-387-51031-1. LC \# QB843.W5 .I28. P.286, 1989},
+         year = "1989",
+       editor = {{Wegner}, Gary},
+       volume = {328},
+        pages = {286},
+          doi = {10.1007/3-540-51031-1_333},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1989LNP...328..286B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{blouin19,
+       author = {{Blouin}, S. and {Dufour}, P. and {Thibeault}, C. and {Allard}, N.~F.},
+        title = "{A New Generation of Cool White Dwarf Atmosphere Models. IV. Revisiting the Spectral Evolution of Cool White Dwarfs}",
+      journal = {\apj},
+     keywords = {opacity, stars: atmospheres, stars: evolution, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Jun",
+       volume = {878},
+       number = {1},
+          eid = {63},
+        pages = {63},
+          doi = {10.3847/1538-4357/ab1f82},
+archivePrefix = {arXiv},
+       eprint = {1905.02174},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019ApJ...878...63B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{bergeron97,
+       author = {{Bergeron}, P. and {Ruiz}, Mar{\'\i}a Teresa and {Leggett}, S.~K.},
+        title = "{The Chemical Evolution of Cool White Dwarfs and the Age of the Local Galactic Disk}",
+      journal = {\apjs},
+     keywords = {STARS: ABUNDANCES, STARS: ATMOSPHERES, STARS: FUNDAMENTAL PARAMETERS, STARS: EVOLUTION, STARS: WHITE DWARFS, Stars: Abundances, Stars: Atmospheres, Stars: Evolution, Stars: Fundamental Parameters, Stars: White Dwarfs},
+         year = "1997",
+        month = "Jan",
+       volume = {108},
+       number = {1},
+        pages = {339-387},
+          doi = {10.1086/312955},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1997ApJS..108..339B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{bergeron01,
+       author = {{Bergeron}, P. and {Leggett}, S.~K. and {Ruiz}, Mar{\'\i}a Teresa},
+        title = "{Photometric and Spectroscopic Analysis of Cool White Dwarfs with Trigonometric Parallax Measurements}",
+      journal = {\apjs},
+     keywords = {Stars: Abundances, Stars: Atmospheres, Stars: Evolution, Stars: Fundamental Parameters, Stars: White Dwarfs, Astrophysics},
+         year = "2001",
+        month = "Apr",
+       volume = {133},
+       number = {2},
+        pages = {413-449},
+          doi = {10.1086/320356},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0011286},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2001ApJS..133..413B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{limoges15,
+       author = {{Limoges}, M. -M. and {Bergeron}, P. and {L{\'e}pine}, S.},
+        title = "{Physical Properties of the Current Census of Northern White Dwarfs within 40 pc of the Sun}",
+      journal = {\apjs},
+     keywords = {solar neighborhood, stars: distances, stars: fundamental parameters, stars: luminosity function, mass function, surveys, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2015",
+        month = "Aug",
+       volume = {219},
+       number = {2},
+          eid = {19},
+        pages = {19},
+          doi = {10.1088/0067-0049/219/2/19},
+archivePrefix = {arXiv},
+       eprint = {1505.02297},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2015ApJS..219...19L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{fontaine08,
+       author = {{Fontaine}, G. and {Brassard}, P.},
+        title = "{The Pulsating White Dwarf Stars}",
+      journal = {\pasp},
+         year = "2008",
+        month = "Oct",
+       volume = {120},
+       number = {872},
+        pages = {1043},
+          doi = {10.1086/592788},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2008PASP..120.1043F},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{fontaine01,
+       author = {{Fontaine}, G. and {Brassard}, P. and {Bergeron}, P.},
+        title = "{The Potential of White Dwarf Cosmochronology}",
+      journal = {\pasp},
+     keywords = {Galaxy: Fundamental Parameters, Galaxy: Halo, Galaxy: Globular Clusters: General, Invited Reviews, Galaxy: Solar Neighborhood, Stars: Atmospheres, Stars: Evolution, Stars: White Dwarfs},
+         year = "2001",
+        month = "Apr",
+       volume = {113},
+       number = {782},
+        pages = {409-435},
+          doi = {10.1086/319535},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2001PASP..113..409F},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{deGeronimo18,
+       author = {{De Ger{\'o}nimo}, F.~C. and {Althaus}, L.~G. and {C{\'o}rsico}, A.~H. and
+         {Romero}, A.~D. and {Kepler}, S.~O.},
+        title = "{Asteroseismology of ZZ Ceti stars with full evolutionary white dwarf models. II. The impact of AGB thermal pulses on the asteroseismic inferences of ZZ Ceti stars}",
+      journal = {\aap},
+     keywords = {asteroseismology, stars: oscillations, white dwarfs, stars: evolution, stars: interiors, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2018",
+        month = "May",
+       volume = {613},
+          eid = {A46},
+        pages = {A46},
+          doi = {10.1051/0004-6361/201731982},
+archivePrefix = {arXiv},
+       eprint = {1801.10589},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018A&A...613A..46D},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{althaus10,
+       author = {{Althaus}, L.~G. and {C{\'o}rsico}, A.~H. and {Bischoff-Kim}, A. and
+         {Romero}, A.~D. and {Renedo}, I. and {Garc{\'\i}a-Berro}, E. and
+         {Miller Bertolami}, M.~M.},
+        title = "{New Chemical Profiles for the Asteroseismology of ZZ Ceti Stars}",
+      journal = {\apj},
+     keywords = {stars: evolution, stars: interiors, stars: oscillations, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2010",
+        month = "Jul",
+       volume = {717},
+       number = {2},
+        pages = {897-907},
+          doi = {10.1088/0004-637X/717/2/897},
+archivePrefix = {arXiv},
+       eprint = {1005.2612},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2010ApJ...717..897A},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{herwig99,
+       author = {{Herwig}, F. and {Bl{\"o}cker}, T. and {Langer}, N. and {Driebe}, T.},
+        title = "{On the formation of hydrogen-deficient post-AGB stars}",
+      journal = {\aap},
+     keywords = {STARS: ABUNDANCES, STARS: AGB AND POST-AGB, STARS: EVOLUTION, STARS: INTERIORS, Astrophysics},
+         year = "1999",
+        month = "Sep",
+       volume = {349},
+        pages = {L5-L8},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/9908108},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1999A&A...349L...5H},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{giammichele18,
+       author = {{Giammichele}, N. and {Charpinet}, S. and {Fontaine}, G. and
+         {Brassard}, P. and {Green}, E.~M. and {Van Grootel}, V. and
+         {Bergeron}, P. and {Zong}, W. and {Dupret}, M. -A.},
+        title = "{A large oxygen-dominated core from the seismic cartography of a pulsating white dwarf}",
+      journal = {\nat},
+         year = "2018",
+        month = "Feb",
+       volume = {554},
+       number = {7690},
+        pages = {73-76},
+          doi = {10.1038/nature25136},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2018Natur.554...73G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{chromey19,
+       author = {{Chromey}, Alisha},
+        title = "{A 3-Dimensional Likelihood analysis method for detecting extended sources in VERITAS}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Instrumentation and Methods for Astrophysics, Astrophysics - High Energy Astrophysical Phenomena},
+         year = "2019",
+        month = "Aug",
+          eid = {arXiv:1908.05352},
+        pages = {arXiv:1908.05352},
+archivePrefix = {arXiv},
+       eprint = {1908.05352},
+ primaryClass = {astro-ph.IM},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190805352C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{t17,
+       author = {{Tremblay}, P. -E. and {Gentile-Fusillo}, N. and {Raddi}, R. and
+         {Jordan}, S. and {Besson}, C. and {G{\"a}nsicke}, B.~T. and
+         {Parsons}, S.~G. and {Koester}, D. and {Marsh}, T. and {Bohlin}, R. and
+         {Kalirai}, J. and {Deustua}, S.},
+        title = "{The Gaia DR1 mass-radius relation for white dwarfs}",
+      journal = {\mnras},
+     keywords = {parallaxes, stars: distances, stars: fundamental parameters, stars: interiors, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2017",
+        month = "Mar",
+       volume = {465},
+       number = {3},
+        pages = {2849-2861},
+          doi = {10.1093/mnras/stw2854},
+archivePrefix = {arXiv},
+       eprint = {1611.00629},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.465.2849T},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{genest-Beaulieu19,
+       author = {{Genest-Beaulieu}, C. and {Bergeron}, P.},
+        title = "{A Photometric and Spectroscopic Investigation of the DB White Dwarf Population Using SDSS and Gaia Data}",
+      journal = {\apj},
+     keywords = {stars: evolution, stars: fundamental parameters, techniques: photometric, techniques: spectroscopic, white dwarfs, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2019",
+        month = "Sep",
+       volume = {882},
+       number = {2},
+          eid = {106},
+        pages = {106},
+          doi = {10.3847/1538-4357/ab379e},
+archivePrefix = {arXiv},
+       eprint = {1908.01728},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019ApJ...882..106G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+
+@ARTICLE{ngf17,
+       author = {{Gentile Fusillo}, Nicola Pietro and {G{\"a}nsicke}, Boris T. and
+         {Farihi}, Jay and {Koester}, Detlev and {Schreiber}, Matthias R. and
+         {Pala}, Anna F.},
+        title = "{Trace hydrogen in helium atmosphere white dwarfs as a possible signature of water accretion}",
+      journal = {\mnras},
+     keywords = {planets and satellites: composition, stars: abundances, stars: individual: GD 16, stars: individual: GD 17, white dwarfs, Astrophysics - Solar and Stellar Astrophysics, Astrophysics - Earth and Planetary Astrophysics},
+         year = "2017",
+        month = "Jun",
+       volume = {468},
+       number = {1},
+        pages = {971-980},
+          doi = {10.1093/mnras/stx468},
+archivePrefix = {arXiv},
+       eprint = {1702.06542},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2017MNRAS.468..971G},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{farihi11,
+       author = {{Farihi}, J. and {Brinkworth}, C.~S. and {G{\"a}nsicke}, B.~T. and
+         {Marsh}, T.~R. and {Girven}, J. and {Hoard}, D.~W. and {Klein}, B. and
+         {Koester}, D.},
+        title = "{Possible Signs of Water and Differentiation in a Rocky Exoplanetary Body}",
+      journal = {\apjl},
+     keywords = {circumstellar matter, minor planets, asteroids: general, planetary systems, stars: abundances, white dwarfs, Astrophysics - Earth and Planetary Astrophysics, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2011",
+        month = "Feb",
+       volume = {728},
+       number = {1},
+          eid = {L8},
+        pages = {L8},
+          doi = {10.1088/2041-8205/728/1/L8},
+archivePrefix = {arXiv},
+       eprint = {1101.0158},
+ primaryClass = {astro-ph.EP},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2011ApJ...728L...8F},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{camarota2014,
+       author = {{Camarota}, L. and {Holberg}, J.~B.},
+        title = "{White-dwarf-based evaluation of the GALEX absolute calibration}",
+      journal = {\mnras},
+     keywords = {instrumentation: detectors, telescopes, white dwarfs, Astrophysics - Instrumentation and Methods for Astrophysics, Astrophysics - Solar and Stellar Astrophysics},
+         year = "2014",
+        month = "Mar",
+       volume = {438},
+       number = {4},
+        pages = {3111-3118},
+          doi = {10.1093/mnras/stt2422},
+archivePrefix = {arXiv},
+       eprint = {1312.3882},
+ primaryClass = {astro-ph.IM},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2014MNRAS.438.3111C},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{wall2019,
+       author = {{Wall}, Renae E. and {Kilic}, Mukremin and {Bergeron}, P. and {Rolland
+        }, B. and {Genest-Beaulieu}, C. and {Gianninas}, A.},
+        title = "{GALEX Absolute Calibration and Extinction Coefficients Based on White Dwarfs}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Solar and Stellar Astrophysics, Astrophysics - Astrophysics of Galaxies},
+         year = "2019",
+        month = "Sep",
+          eid = {arXiv:1909.02617},
+        pages = {arXiv:1909.02617},
+archivePrefix = {arXiv},
+       eprint = {1909.02617},
+ primaryClass = {astro-ph.SR},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190902617W},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+@ARTICLE{dufour08,
+       author = {{Dufour}, P. and {Fontaine}, G. and {Liebert}, James and
+         {Schmidt}, G.~D. and {Behara}, N.},
+        title = "{Hot DQ White Dwarfs: Something Different}",
+      journal = {\apj},
+     keywords = {stars: abundances, stars: atmospheres, stars: evolution, white dwarfs, Astrophysics},
+         year = "2008",
+        month = "Aug",
+       volume = {683},
+       number = {2},
+        pages = {978-989},
+          doi = {10.1086/589855},
+archivePrefix = {arXiv},
+       eprint = {0805.0331},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2008ApJ...683..978D},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{kepler16,
+       author = {{Kepler}, S.~O. and {Koester}, Detlev and {Ourique}, Gustavo},
+        title = "{A white dwarf with an oxygen atmosphere}",
+      journal = {Science},
+     keywords = {ASTRONOMY},
+         year = "2016",
+        month = "Apr",
+       volume = {352},
+       number = {6281},
+        pages = {67-69},
+          doi = {10.1126/science.aad6705},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2016Sci...352...67K},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@INPROCEEDINGS{schoenberner83,
+       author = {{Schoenberner}, D. and {Weidemann}, V.},
+        title = "{Evolution and mass distribution of central stars of planetary nebulae.}",
+     keywords = {Astronomical Models, Planetary Nebulae, Star Distribution, Stellar Evolution, Mass Distribution, Pulsed Radiation, Stellar Luminosity, Stellar Mass, Thermal Radiation, White Dwarf Stars, Astrophysics},
+    booktitle = {Planetary Nebulae},
+         year = "1983",
+       editor = {{Aller}, L.~H.},
+       series = {IAU Symposium},
+       volume = {103},
+        month = "Jan",
+        pages = {359-371},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1983IAUS..103..359S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{iben84,
+       author = {{Iben}, I., Jr. and {Tutukov}, A.~V.},
+        title = "{Cooling of low-mass carbon-oxygen dwarfs from the planetary nucleus stage through the crystallization stage}",
+      journal = {\apj},
+     keywords = {Carbon Stars, Late Stars, Planetary Nebulae, Stellar Evolution, White Dwarf Stars, Cooling, Crystallization, Helium, Hydrogen, Stellar Cores, Stellar Luminosity, Stellar Mass, Astrophysics},
+         year = "1984",
+        month = "Jul",
+       volume = {282},
+        pages = {615-630},
+          doi = {10.1086/162241},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1984ApJ...282..615I},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{baglin73,
+       author = {{Baglin}, A. and {Vauclair}, G.},
+        title = "{Evolutionary Sequence for DA, DB, DC White Dwarfs}",
+      journal = {\aap},
+         year = "1973",
+        month = "Sep",
+       volume = {27},
+        pages = {307},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1973A&A....27..307B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{chen12,
+   author = {{Chen}, E.~Y. and {Hansen}, B.~M.~S.},
+    title = "{The Spectral Evolution of Convective Mixing White Dwarfs, the Non-DA Gap, and White Dwarf Cosmochronology}",
+  journal = {\apjl},
+archivePrefix = "arXiv",
+   eprint = {1205.7068},
+ primaryClass = "astro-ph.SR",
+ keywords = {Galaxy: evolution, methods: numerical, white dwarfs},
+     year = 2012,
+    month = jul,
+   volume = 753,
+      eid = {L16},
+    pages = {L16},
+      doi = {10.1088/2041-8205/753/1/L16},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2012ApJ...753L..16C},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{straniero02,
+       author = {{Straniero}, Oscar and {Dom{\'\i}nguez}, Inmaculada and
+         {Imbriani}, Gianluca and {Piersanti}, Luciano},
+        title = "{The Chemical Composition of White Dwarfs as a Test of Convective Efficiency during Core Helium Burning}",
+      journal = {\apj},
+     keywords = {Convection, Nuclear Reactions, Nucleosynthesis, Abundances, Stars: Evolution, Stars: Interiors, Stars: White Dwarfs, Astrophysics},
+         year = "2003",
+        month = "Feb",
+       volume = {583},
+       number = {2},
+        pages = {878-884},
+          doi = {10.1086/345427},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0210191},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2003ApJ...583..878S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{gaia2016,
+   author = {{Gaia Collaboration} and {Prusti}, T. and {de Bruijne}, J.~H.~J. and 
+	{Brown}, A.~G.~A. and {Vallenari}, A. and {Babusiaux}, C. and 
+	{Bailer-Jones}, C.~A.~L. and {Bastian}, U. and {Biermann}, M. and 
+	{Evans}, D.~W. and et al.},
+    title = "{The Gaia mission}",
+  journal = {\aap},
+archivePrefix = "arXiv",
+   eprint = {1609.04153},
+ primaryClass = "astro-ph.IM",
+ keywords = {space vehicles: instruments, Galaxy: structure, astrometry, parallaxes, proper motions, telescopes},
+     year = 2016,
+    month = nov,
+   volume = 595,
+      eid = {A1},
+    pages = {A1},
+      doi = {10.1051/0004-6361/201629272},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2016Aadsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{blanton17,
+   author = {{Blanton}, M.~R. and {Bershady}, M.~A. and {Abolfathi}, B. and 
+	{Albareti}, F.~D. and {Allende Prieto}, C. and {Almeida}, A. and 
+	{Alonso-Garc{\'{\i}}a}, J. and {Anders}, F. and {Anderson}, S.~F. and 
+	{Andrews}, B. and et al.},
+    title = "{Sloan Digital Sky Survey IV: Mapping the Milky Way, Nearby Galaxies, and the Distant Universe}",
+  journal = {\aj},
+archivePrefix = "arXiv",
+   eprint = {1703.00052},
+ keywords = {cosmology: observations, galaxies: general, Galaxy: general, instrumentation: spectrographs, stars: general, surveys},
+     year = 2017,
+    month = jul,
+   volume = 154,
+      eid = {28},
+    pages = {28},
+      doi = {10.3847/1538-3881/aa7567},
+   adsurl = {https://ui.adsabs.harvard.edu/abs/2017AJ....154...28B},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@ARTICLE{martin05,
+       author = {{Martin}, D. Christopher and {Fanson}, James and {Schiminovich}, David and
+         {Morrissey}, Patrick and {Friedman}, Peter G. and {Barlow}, Tom A. and
+         {Conrow}, Tim and {Grange}, Robert and {Jelinsky}, Patrick N. and
+         {Milliard}, Bruno and {Siegmund}, Oswald H.~W. and {Bianchi}, Luciana and
+         {Byun}, Yong-Ik and {Donas}, Jose and {Forster}, Karl and
+         {Heckman}, Timothy M. and {Lee}, Young-Wook and {Madore}, Barry F. and
+         {Malina}, Roger F. and {Neff}, Susan G. and {Rich}, R. Michael and
+         {Small}, Todd and {Surber}, Frank and {Szalay}, Alex S. and
+         {Welsh}, Barry and {Wyder}, Ted K.},
+        title = "{The Galaxy Evolution Explorer: A Space Ultraviolet Survey Mission}",
+      journal = {\apjl},
+     keywords = {Galaxies: Evolution, Galaxies: General, Space Vehicles: Instruments, Surveys, Ultraviolet: Galaxies, Ultraviolet: General, Astrophysics},
+         year = "2005",
+        month = "Jan",
+       volume = {619},
+       number = {1},
+        pages = {L1-L6},
+          doi = {10.1086/426387},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0411302},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2005ApJ...619L...1M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\appendix
+
+
+
+
+\bsp	\label{lastpage}
+\end{document}
